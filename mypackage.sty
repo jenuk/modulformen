@@ -1,0 +1,348 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mypackage}[2017/10/20 My Package]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% colorful  - prints myemph and thm headings in color
+% no-proof  - ignores bewe enviroment
+% indent-thm - hang-indent for theorems
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[ngerman]{babel}
+
+\RequirePackage{microtype} % improves microtypographie
+\RequirePackage[shortlabels, inline]{enumitem} % gives enumerate an optional argument, inline adds * Versions for inline lists
+\setlist[enumerate,1]{label={(\roman*)}} % default numbering is roman
+
+\RequirePackage{amsmath, amssymb, amsthm, amsfonts, amsopn} % nicer math
+\addtolength{\jot}{1em} % add space between lines in align
+\RequirePackage{thmtools, mathtools} % even better math
+\renewcommand{\listtheoremname}{Liste der Sätze}
+\RequirePackage{dsfont} % Double Stroke letters, i.e. \mathds{N}
+\RequirePackage{stmaryrd} % \lightning
+\RequirePackage[dvipsnames]{xcolor} % makes things colorful
+\RequirePackage{etoolbox} % AtBeginEnviroment, AtEndEnviroment
+\RequirePackage{aurical} % qed - font
+\RequirePackage{bm} % poor man bold, \bm
+\RequirePackage{nicefrac} % \nicefrac
+\RequirePackage{comment} % comment enviroments for shorter versions
+\RequirePackage{xparse} % for complex macros
+
+\RequirePackage{tikz} % for drawing and stuff
+\usetikzlibrary{angles, patterns, quotes, calc, intersections, decorations.markings}
+\RequirePackage{standalone} % including images from standalone source file
+\RequirePackage{subcaption} % multiple images in one figure
+
+\RequirePackage{makeidx} % to create an index page
+\makeindex
+\RequirePackage[totoc]{idxlayout}
+
+% swap the meaning of two commands
+\RequirePackage{letltxmacro}
+\newcommand{\swap}[2]{
+\LetLtxMacro{\temp}{#1}
+\LetLtxMacro{#1}{#2}
+\LetLtxMacro{#2}{\temp}
+}
+
+
+% ignore warnings of font rescale
+\RequirePackage{silence} % to ignore some warnings
+\WarningFilter{latexfont}{Font shape `T1/LukasSvatba/m/n'}
+\WarningFilter{latexfont}{Font shape `T1/LukasSvatba/bx/n'}
+\WarningFilter{latexfont}{Font shape `T1/LukasSvatba/bx/sl'}
+\WarningFilter{latexfont}{Font shape `U/stmry/b/n' undefined}
+\WarningFilter{latexfont}{Some font shapes were not available, defaults substituted.}
+
+% \setlength\parindent{0pt} % no automatic indention for new par
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Macros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% defining various sets
+\newcommand{\NN}{\ensuremath{\mathds{N}}}
+\newcommand{\ZZ}{\ensuremath{\mathds{Z}}}
+\newcommand{\QQ}{\ensuremath{\mathds{Q}}}
+\newcommand{\RR}{\ensuremath{\mathds{R}}}
+\newcommand{\CC}{\ensuremath{\mathds{C}}}
+\newcommand{\EE}{\ensuremath{\mathds{E}}}
+\newcommand{\HH}{\ensuremath{\mathds{H}}}
+\newcommand{\FF}{\ensuremath{\mathds{F}}}
+\newcommand{\CCminusNN}{D_{-\NN_0}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Sp}{\mathcal{S}}
+
+% shorter commands for arrows
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Longrightarrow}
+\newcommand{\Rla}{\Longleftrightarrow}
+\newcommand{\xto}{\xrightarrow}
+
+% Define Paired Delimiters
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\erzeug{\langle}{\rangle}
+% Swap the definition of \abs* etc., so that \abs
+% resizes the size of the brackets, and the
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\let\oldceil\ceil
+\def\ceil{\@ifstar{\oldceil}{\oldceil*}}
+\let\oldfloor\floor
+\def\floor{\@ifstar{\oldfloor}{\oldfloor*}}
+\makeatother
+
+
+
+% swap some greek letters
+\swap{\phi}{\varphi}
+\swap{\epsilon}{\varepsilon}
+\swap{\theta}{\vartheta}
+
+% making leqslant and geqslant the default
+\let\leqold\leqslant
+\let\geqold\geqslant
+\swap{\leq}{\leqold}
+\swap{\geq}{\geqold}
+
+% using widetilde instead of tilde
+\let\tildeold\widetilde
+\swap{\tilde}{\tildeold}
+
+% using subseteq instead of subset
+\let\subsetold\subseteq
+\swap{\subset}{\subsetold}
+
+
+% Defining math-Operators
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\closure}[1]{\overline{#1}}
+\renewcommand{\Re}{\mathrm{Re}\,}
+\renewcommand{\Im}{\mathrm{Im}\,}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\ggt}{ggT}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\Log}{Log}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\res}{res}
+\DeclareMathOperator{\innere}{int}
+\DeclareMathOperator{\vol}{vol}
+\newcommand{\opd}{\,\mathrm{d}}
+\newcommand{\inv}[1]{#1^{-1}}
+\newcommand{\Set}[1]{\left\{\,#1\,\right\}}
+\newcommand{\at}[1]{\left.#1\,\right|}
+\newcommand{\ark}[1]{\stackrel{\frown}{#1}}
+\NewDocumentCommand{\derive}{s O{} G{z}}
+{\IfBooleanTF{#1}
+    {\frac{\partial#2}{\partial#3}}
+    {\frac{\opd#2}{\opd#3}}%
+}
+\newcommand{\sumprime}{%
+\mathop{\mathchoice
+  {\sideset{}{'}\sum}% Display Style
+  {\sum'}% Text Style
+  {\sum'}% Script Style
+  {\sum'}}% Scriptscript Style
+}
+\newcommand{\modulo}[2]{%
+\mathchoice
+	{\left.\raisebox{0.25em}{\scalebox{0.9}{$\textstyle #1$}}\scalebox{1}{$\displaystyle /$}\raisebox{-0.25em}{\scalebox{0.9}{$\textstyle #2$}}\right.}% Display
+	{\left.\raisebox{0.2em}{\scalebox{0.9}{$#1$}}\scalebox{0.9}{$/$}\raisebox{-0.2em}{\scalebox{0.9}{$#2$}}\right.}% Text
+	{\left.\raisebox{0.15em}{\scalebox{0.9}{$\scriptstyle #1$}}\scalebox{0.9}{$\scriptstyle /$}\raisebox{-0.15em}{\scalebox{0.9}{$\scriptstyle #2$}}\right.}% Script
+	{\left.{#1}/{#2}\right.}% Scriptscript
+}
+\newcommand{\linksmodulo}[2]{%
+	\mathchoice
+	{\left.\raisebox{-0.25em}{\scalebox{0.9}{$\textstyle #1$}}\scalebox{1}{$\displaystyle \backslash$}\raisebox{0.25em}{\scalebox{0.9}{$\textstyle #2$}}\right.}% Display
+	{\left.\raisebox{-0.2em}{\scalebox{0.9}{$#1$}}\scalebox{0.9}{$\backslash$}\raisebox{0.2em}{\scalebox{0.9}{$#2$}}\right.}% Text
+	{\left.\raisebox{-0.15em}{\scalebox{0.9}{$\scriptstyle #1$}}\scalebox{0.9}{$\scriptstyle \backslash$}\raisebox{0.15em}{\scalebox{0.9}{$\scriptstyle #2$}}\right.}% Script
+	{\left.{#1}\backslash{#2}\right.}% Scriptscript
+}
+\newcommand{\abcd}{%
+\mathchoice
+  {\begin{pmatrix}a&b\\c&d\end{pmatrix}}% Display Style
+  {(\begin{smallmatrix}a&b\\c&d\end{smallmatrix})}% Text Style
+  {(\begin{smallmatrix}a&b\\c&d\end{smallmatrix})}% Script Style
+  {(\begin{smallmatrix}a&b\\c&d\end{smallmatrix})}% Scriptscript Style
+}
+
+% Defining text-Commands
+\newcommand{\myquote}[1]{\glqq{}#1\grqq{}}
+\newcommand{\oE}{o.\,E.}
+\newcommand{\Ang}{\textit{Ang}}
+\newcommand{\blitz}{\ensuremath{\lightning}}
+\newcommand{\mail}[1]{\texttt{\href{mailto:#1}{#1}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Theorems
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Fonts and Utilities
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% for special emphasis
+% for black and white output
+\newcommand{\myemphfont}{\scshape}
+\newcommand{\myanmerkungfont}{\mdseries}
+\newcommand{\myheadfont}{\bfseries}
+
+% for a colorful document
+\DeclareOption{colorful}{
+    \renewcommand{\myemphfont}{\color{Orange}} % make this fancier later
+    \renewcommand{\myanmerkungfont}{\mdseries}
+    \renewcommand{\myheadfont}{\color{TealBlue!50!NavyBlue}\bfseries}
+}
+
+\NewDocumentCommand{\myemph}{o m}
+{\IfValueTF{#1}
+    {{\index{#1}\myemphfont #2}}
+    {{\index{#2}\myemphfont #2}}%
+}
+\newcommand{\mystackrel}[2]{\overset{\text{\myanmerkungfont #1}}{#2}}
+
+% redefining qed
+\renewcommand{\qedsymbol}{\text{\Fontlukas\bfseries\slshape\myheadfont q.\,e.\,d.}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Defining hang indented Theorems
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% approximately same indent as in enumerate
+\newlength\myhangindent
+\setlength{\myhangindent}{2.5em}
+
+% xdeclaretheoremstyle declares multiple styles
+%     - name:        nothing changes to \declaretheoremstyle
+%     - name-list:   theorem starts and ends with enumerate
+%     - name-indent: theorem is hangindented by \myhangindent
+
+
+% xdeclaretheorem declares multiple theorems with similar styles from xdeclaretheorem
+%     - name-ind:   use style-indent
+%     - name-list:  use style-list
+%     - name-noind: use default style
+% additionally "name" is created with default name-ind
+% Package Option no-indent sets "name" to "name-noind"
+
+\makeatletter
+\newcommand{\xdeclaretheoremstyle}[2][]{
+	\declaretheoremstyle[
+		headindent=-\myhangindent,
+		preheadhook={\begin{addmargin}[\myhangindent]{0em}},
+		postfoothook={\end{addmargin}},
+		#1]{#2-indent}
+	\declaretheoremstyle[
+	    postheadhook=\leavevmode\nobreak\@afterheading\enumerate,
+		prefoothook=\endenumerate,
+		#1]{#2-list}
+	\declaretheoremstyle[#1]{#2}
+}
+\makeatother
+
+\NewDocumentCommand{\xdeclaretheorem}{o o m}{
+    \declaretheorem[#1, #2]{#3}
+    \declaretheorem[#1-indent, #2]{#3-ind}
+    \declaretheorem[#1-list, #2]{#3-list}
+    \declaretheorem[#1, #2]{#3-noind}
+}
+
+\DeclareOption{indent-thm}{
+   \NewDocumentCommand{\xdeclaretheorem}{o o m}{
+        \declaretheorem[#1-indent, #2]{#3}
+        \declaretheorem[#1-indent, #2]{#3-ind}
+        \declaretheorem[#1-list, #2]{#3-list}
+        \declaretheorem[#1, #2]{#3-noind}
+    }
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%    Declaring Theorem Styles
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\xdeclaretheoremstyle[
+    spaceabove=3em plus 0.4em minus 0.4em
+    spacebelow=3em plus 0.3em minus 0.2em
+    bodyfont=\itshape,
+    headfont=\myheadfont,
+    notefont=\myemphfont,
+    ]{theorem-style}
+
+\xdeclaretheoremstyle[
+    spaceabove=3em plus 0.4em minus 0.4em
+    spacebelow=3em plus 0.4em minus 0.4em
+    notefont=\myemphfont,
+    headfont=\myheadfont,
+    ]{definition-style}
+
+\xdeclaretheoremstyle[
+    spaceabove=2em plus 0.4em minus 0.4em
+    spacebelow=2em plus 0.4em minus 0.4em
+    headfont=\myheadfont\mdseries\itshape,
+    notefont=\myemphfont,
+    ]{remark-style}
+
+\xdeclaretheoremstyle[
+    spaceabove=2em plus 0.3em minus 0.2em
+    spacebelow=3em plus 0.4em minus 0.4em
+    headfont=\myheadfont\mdseries\itshape,
+    notefont=\myemphfont,
+    qed=\qedsymbol
+    ]{proof-style}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%    Declaring Theorems
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\declaretheorem[parent=section]{satz-counter}
+%\declaretheorem[parent=section]{nonsatz}
+%\renewcommand*{\thenonsatz}{\thesection.\alph{nonsatz}}
+\xdeclaretheorem[style=theorem-style][name=Satz,          sibling=satz-counter]{satz}
+\xdeclaretheorem[style=theorem-style][name=Lemma,         sibling=satz-counter]{lemm}
+\xdeclaretheorem[style=theorem-style][name=Proposition,   sibling=satz-counter]{prop}
+\xdeclaretheorem[style=theorem-style][name=Korollar,      sibling=satz-counter]{koro}
+
+\xdeclaretheorem[style=definition-style][name=Definition, sibling=satz-counter]{defi}
+\xdeclaretheorem[style=definition-style][name=Beispiel,   sibling=satz-counter]{bsp}
+
+\xdeclaretheorem[style=remark-style][name=Bemerkung,      sibling=satz-counter]{beme}
+\xdeclaretheorem[style=remark-style][name=Erinnerung,     numbered=no]{erin}
+\xdeclaretheorem[style=remark-style][name=Notation,       numbered=no]{nota}
+
+\xdeclaretheorem[style=proof-style][name=Beweis,          numbered=no]{bewe}
+
+\DeclareOption{no-proof}{\excludecomment{bewe}}
+
+\ProcessOptions\relax
+\endinput

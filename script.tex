@@ -1,0 +1,63 @@
+\documentclass[parskip=half]{scrbook}
+
+\usepackage{mypackage}
+\input{layout}
+
+\usepackage[ocgcolorlinks=true, pdfusetitle=true]{hyperref} % linking inside of the document, should be last package
+
+\title{Modulformen I}
+\author{Prof. Dr. Winfried Kohnen}
+\date{Sommersemester 2018}
+
+\begin{document}
+
+\pagenumbering{roman}
+\pagestyle{plain}
+
+\maketitle
+
+\chapter*{Vorwort}
+
+Dies ist ein nicht offizielles Skript der Vorlesung Modulformen 1 aus dem Sommersemester 2018 gehalten von Professor Winfried Kohnen an der Universität Heidelberg.
+Das Skript wurde in der Vorlesung mitgetext und mit pdflatex kompiliert.
+Deshalb kann es Fehler enthalten und wir übernehmen keine Garantie für die Richtigkeit.
+
+Bei Fehlern, kann ich unter folgender Mailadresse erreicht werden:
+
+\begin{center}
+\mail{jj@mathphys.stura.uni-heidelberg.de}
+\end{center}
+
+Die aktuellste Version des Skriptes befindet sich immer unter
+\begin{center}
+\texttt{\url{https://github.com/jenuk/modulformen/blob/master/script.pdf}}
+\end{center}
+
+Die \LaTeX-Source Dateien findet man hier, auf Fehler kann hier alternativ über neues Issue aufmerksam gemacht werden:
+\begin{center}
+\texttt{\url{https://github.com/jenuk/modulformen/tree/master}}
+\end{center}
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Inhaltsverzeichnis}
+\tableofcontents
+
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{0}
+\pagestyle{fancy}
+
+%chapter 1
+\include{vorlesungen/chapter1/content}
+
+%Anhang
+
+\printindex
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Liste der Sätze}
+\listoftheorems[ignoreall, onlynamed={satz,satz-list,satz-noind,satz-ind}]
+
+\end{document}
