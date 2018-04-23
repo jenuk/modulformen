@@ -1,0 +1,208 @@
+\emph{Ziel}:
+vertieftes Studium von Modulformen, insbesondere
+\begin{itemize}
+	\item $j$-Funktion
+	\item Heckeoperatoren
+	\item Petersson-Skalar-Produkt
+	\item $L$-Reihen
+	\item Rankin-Selberg-Methode
+	\item Vorzeichenwechsel von Fourierkoeffizienten
+	\item Modulformen für Kongruenzuntergruppen
+\end{itemize}
+
+Literatur:
+\begin{itemize}
+	\item Serve, A course in Arithmetic, Springer
+	\item S. Lang, Introduction to Modular Forms, Springer
+	\item Koecher-Krieg, Modulformen und elliptische Kurven, Springer
+\end{itemize}
+
+
+
+\chapter{Grundlegende Tatsachen}
+\section{Ergebnisse aus Funktionentheorie 2 (Errinnerung)}
+\subsection{Fundamentalbereich}
+Wie üblich sei
+\[
+	\HH = \Set{z \in \CC \mid \Im z > 0}
+\]
+die obere Halbebene und
+\[
+	\SL_2(\ZZ) = \Set{M \in M_2(\RR) \mid \det M = 1}
+	\,.
+\]
+
+Dann operiert $\SL_2(\ZZ)$ auf $\HH$ durch
+\[
+	\abcd \circ z = \frac{az+b}{cz+d}
+	\,,
+\]
+das heißt $E \circ z = z$ und $(M_1M_2) \circ z = M_1 \circ (M_2 \circ z)$.
+Hierbei beachte man, dass
+\[
+	\Im \Bigl(\frac{az+b}{cz+d}\Bigr) = \frac{\Im z}{\abs{cz+d}^2}
+	\,.
+\]
+
+$\Gamma(1) = \SL_2(\ZZ) \subset \SL_2(\RR)$ ist eine diskrete Untergruppe, spezielle Matrizen in $\Gamma(1)$ sind
+\[
+	T = \begin{pmatrix}
+			1 & 1\\
+			0 & 1
+		\end{pmatrix}
+	\qquad \text{und} \qquad
+	S = \begin{pmatrix}
+			0 & -1\\
+			1 & 0
+		\end{pmatrix}
+\]
+die Translation $T \circ z = z + 1$ und Stürzung $S \circ z = - \frac{1}{z}$.
+
+Man interessiert sich für die Operation von diskreten Untergruppen $\Gamma \subset \SL_2(\ZZ)$ insbesondere $\Gamma = \Gamma(1)$.
+
+\begin{defi}
+	Eine Teilmenge $\F \subset \HH$ heißt \myemph{Fundamentalbereich} für die Operationen von $\Gamma \subset \SL_2(\RR)$ auf $\HH$, falls:
+	\begin{enumerate}
+		\item $\F$ ist offen,
+		\item zu jedem $z \in \HH$ existiert ein $M \in \Gamma$ mit $M \circ z \in \closure\F$,
+		\item Sind $z_1, z_2 \in \F$ und $z_2 = M \circ z_1$ mit $M \in \Gamma$, dann gilt $M = \pm E$ und somit $z_1 = z_2$.
+	\end{enumerate}
+\end{defi}
+
+\begin{bsp}
+	Die Menge $\F_1 := \Set{z=x+iy \mid \abs x < \frac{1}{2},\ \abs z > 1}$ ist ein Fundamentalbereich für die Operation von $\Gamma(1)$ auf $\HH$, dieser wird auch \myemph{Modulfigur} genannt.
+\end{bsp}
+
+\begin{beme}
+	Identifikationen in $\closure{\F_1}$ finden nur auf dem Rand statt. (Die Geraden $x = \pm \frac{1}{2}$ werden miteinander identifiziert unter $T$ bzw $T^{-1}$, Punkte auf den Kreisbögen rechts oder links von $i$ werden unter $S$ identifiziert.
+\end{beme}
+
+\begin{satz}
+	Die Gruppe $\Gamma(1)$ wird erzeugt von $S$ und $T$.
+\end{satz}
+
+\subsection{Modulform}
+
+\begin{defi}
+	Eine Abbildung $f\colon \HH \ra \closure\CC = \CC \cup \{\infty\}$ heißt \myemph{Modulfunktion} vom Gewicht $k \in \ZZ$ für $\Gamma(1)$, falls gilt:
+	\begin{enumerate}
+		\item $f$ ist auf $\HH$ meromorph,
+		\item $f(\frac{az+b}{cz+d}) = (cz+d)^k f(z)$ für alle $\abcd \in \Gamma(1)$,
+		\item $f$ ist meromorph in $\infty$.
+	\end{enumerate}
+\end{defi}
+
+\emph{Bedeutung von} (iii):
+Wendet man (ii) an mit $M = T$, so erhält man $f(z+1) = f(z)$.
+Sei $\mathcal R = \Set{q \in \CC \mid 0 < \abs q < 1}$.
+Die Abbildung $z \mapsto q = e^{2\pi iz}$ bildet $\HH$ auf $\mathcal R$ ab und $F(q) := f(z)$ ist wohldefiniert und holomorph bis auf mögliche Polstellen, die sich prinzipiell gegen $q=0$ häufen könnten.
+Bedingung (iii) fordert nun, dass $q=0$ eine unwesentliche isolierte Singularität\footnote{Das heißt es handelt sich um eine hebbare Singularität oder eine Polstelle.} von $F$ ist.
+Nach Funktionentheorie 1 hat dann $F$ eine Laurententwicklung
+\[
+	F(q) = \sum_{n \geq n_0} a_n q^n
+	\qquad \text{für }
+	0 < \abs q < \abs{q_0}
+\]
+wobei $n_0 \in \ZZ$ fest.
+Damit erhalten wir also
+\[
+	f(z) = \sum_{n \geq n_0} a_n e^{2\pi i nz}
+	\qquad \text{für }
+	 0 < y_0 < y
+\]
+
+\begin{defi}
+	Ein solches $f$ heißt \myemph{Modulform} falls $f$ auf $\HH$ und in $\infty$ holomorph ist (letzteres bedeutet, dass $F$ in $q=0$ hebbar ist, also $f(z) = \sum_{n \geq 0} a_n e^{2\pi inz}$ für alle $z\in\HH$).
+	Eine Modulform heißt Spitzenform, falls $a_0 = 0$.
+\end{defi}
+
+\begin{beme}
+	Die Fourierkoeffizienten $a_n$ sind im Allgemeinen wichtige und interessante Größen (z.\,B. Darstellungsanzahlen von natürlichen ahlen durch quadratische Formen, etwa $r_4(n) = \#\Set{(x,y,z,w) \in \ZZ^4 \mid n = x^2+y^2+z^2+w^2}$ oder die Anzahl von Punkten auf elliptischen Kurven über $\FF_p$).
+\end{beme}
+
+\begin{defi}
+	Sei $\colon \HH \ra \CC$, $k\in\ZZ$, $M = \abcd \in \SL_2(\RR)$.
+	Man setzt
+	\[
+		(f|_kM)(z) := (cz+d)^{-k} f\Bigl(\frac{az+b}{cz+d}\Bigr)
+	\]
+	für $z\in\HH$, dies ist der \myemph{Peterssonscher Strichoperator}.
+\end{defi}
+
+Dann gilt $f|_kE = f$ und $f|_k(M_1M_2) = (f|_kM_1)|_kM_2$ für alle $M_1$, $M_2 \in \SL_2(\RR)$.
+Es folgt:
+\begin{enumerate}
+	\item Es gilt $(f|_kM)(z) = (cz+d)^{-k} f(\frac{az+b}{cz+d}) = f(z)$ für alle $M = \abcd \in \Gamma(1)$ genau dann, wenn dies für $S$ und $T$ gilt, d.\,h. $f(-\frac{1}{z}) = z^k f(z)$ und $f(z+1) = f(z)$, da $S$ und $T$ $\SL_2(\ZZ)$ erzeugen.
+	\item Eine Funktion $f\colon \HH \ra \CC$ ist genau dann eine Modulform vom Gewicht $k$, wenn $f$ eine Fourierentwicklung
+	\[
+		f(z) = \sum_{n \geq 0} a_n e^{2\pi inz}
+		\qquad \text{für }
+		z \in \HH
+	\]
+	hat und zusätzlich gilt
+	\[
+		f\Bigl(-\frac{1}{z}\Bigr) = z^k f(z)
+	\]
+\end{enumerate}
+
+\subsection{Beispiele für Modulformen}
+
+\subsubsection{Thetareihen}
+
+\begin{defi}
+	Sei $A \in M_m(\RR)$ symmetrisch und positiv definit.
+	Dann heißt
+	\[
+		\theta_A(z) = \sum_{g \in \ZZ^m} e^{\pi i A[g]z}
+		\qquad \text{für }
+		z \in \HH
+	\]
+	eine \myemph{Thetareihe}, wobei $A[g] := g^t A g$ für $g \in \ZZ^m \cong M_{m,1}(\ZZ)$.
+\end{defi}
+
+\begin{satz-list}
+	\item $\theta_A(z)$ ist gleichmäßig absolut konvergent auf $y \geq y_0 > 0$.
+	Insbesondere ist $\theta_A(z)$ auf $\HH$ holomorph.
+	\item Es gilt die Theta-Transformationsformel: $\theta_{A^{-1}} = \sqrt{\det A} \cdot (\frac{z}{i})^{\frac{m}{2}} \theta_A(z)$.
+\end{satz-list}
+
+\begin{satz}
+	Sei $A \in M_m(\ZZ)$ symmetrisch, positiv definit, gerade\footnote{Das heißt für alle $\mu \in \Set{1, \ldots, m}$ gilt $a_{\mu\mu}$ ist gerade} und $\det A = 1$.
+	Dann gilt $8|m$ und $\theta_A(z)$ ist eine Modulform vom Gewicht $\frac{m}{2}$ für $\Gamma(1)$.
+	
+	\emph{Beachte} $\theta_A(z) = 1 + \sum_{n \geq 1} r_A(n) q^n$ wobei $r_A(n)$ die Anzahl der Darstellungen von $n$ durch die ganzzahlige, positive definite quadratische Form $x \mapsto \frac{1}{2} x^t A x$ auf $\RR^m$ ist.
+\end{satz}
+
+\subsubsection{Eisensteinreihen}
+
+\begin{defi}
+	Sei $k \in \ZZ$, $k$ gerade und $k \geq 4$.
+	Dann heißt
+	\[
+		G_k(z) = \sumprime_{m,n} \frac{1}{(mz+n)^k}
+		\qquad \text{für }
+		z \in \HH
+	\]
+	\myemph{Eisensteinreihe} vom Gewicht $k$.\footnote{$\displaystyle \sumprime_{m,n} := \sum_{\substack{(m,n) \in \ZZ^2 \\ (m,n) \not= (0,0)}}$}
+\end{defi}
+
+\begin{satz-list}
+	\item $G_k(z)$ ist gleichmäßig absolut konvergent auf $D_\epsilon = \Set{ z=x+iy \mid y \geq \epsilon,\ x^2 \leq \frac{1}{\epsilon}}$, insbesondere also holomorph auf $\HH$.
+	\item $G_k$ ist Modulform vom Gewicht $k$ für $\Gamma(1)$.
+	\item Es gilt
+	\[
+		G_k(z) = 2\zeta(k) + \frac{2(2\pi i)^k}{(k-1)!} \sum_{n \geq 1} \sigma_{k-1}(n)q^n
+	\]
+	wobei $\zeta(k) = \sum_{n=1}^\infty \frac{1}{n^k}$ und $\sigma_{k-1}(n) = \sum_{d|n} d^{k-1}$.
+	
+	Setze $E_k := \frac{1}{2\zeta(k)} G_k$ die \myemph{normalisierte Eisensteinreihe}.
+	Benutze nun
+	\[
+		\zeta(k) = \frac{(-1)^{\frac{k}{2}-1}2^{k-1} B_k}{k!} \pi^k
+	\]
+	für $k$ gerade und $k \geq 2$.
+	Damit folgt
+	\[
+		E_k = 1 - \frac{2k}{B_k} \sum_{n \geq 1} \sigma_{k-1}(n)q^n
+	\]
+\end{satz-list}
