@@ -1,69 +1,79 @@
 % Fortsetzung Eisensteinreihen
 wobei alle $B_k$ rationale Zahlen sind. Speziell gilt 
-\[
-B_4 = -\frac 1{30} \quad \Ra \quad E_4 = 1 + 240 \sum_{n \geq 1} \sigma_3 (n) q^n
-\,,
-\]
-\[
-B_6 = \frac 1{42} \quad \Ra \quad E_6 = 1 - 504 \sum_{n \geq 1} \sigma_5 (n) q^n
-\,.
-\]
+\begin{align*}
+	B_4 &= -\frac 1{30} &&\Ra& E_4 &= 1 + 240 \sum_{n \geq 1} \sigma_3 (n) q^n
+	\,, \\
+	B_6 &= \frac 1{42} &&\Ra& E_6 &= 1 - 504 \sum_{n \geq 1} \sigma_5 (n) q^n
+	\,.
+\end{align*}
 
 \subsection{Valenzformel und Anwendungen}
 
 \begin{satz}[Valenzformel]
 Sei $f$ eine Modulfunktion vom Gewicht $k \in \ZZ$, $f \not \equiv 0$. Dann gilt
 \[
-\ord_\infty f + \frac 12 \ord_i f + \frac 13 \ord_\rho f + \sum_{\substack{z \in \modulo{\HH}{\Gamma(1)}\\ z \not \sim i, \rho}} \ord_z f = \frac {k}{12}
-\,.
+	\ord_\infty f + \frac 12 \ord_i f + \frac 13 \ord_\rho f + \sum_{\substack{z \in \linksmodulo{\Gamma(1)}{\HH} \\ z \not \sim i, \rho}} \ord_z f = \frac {k}{12}
+	\,.
 \]
 Hierbei ist $\rho = e^{\frac{2 \pi i}{3}}$ und
 \[
-\ord_\infty f = \ord_{q = 0} F(q)
+	\ord_\infty f := \ord_{q = 0} F(q)
 \]
 mit $F(q) = f(z)$ für $q = e^{2\pi i z}$.
+\end{satz}
 
-% Bild aus FT2-Skript
-
+\begin{bewe}
 Zum Nachweis reduziert man auf den Fall, dass $f$ außer in $z = \rho, - \conj{\rho}, i$ keine Null- oder Polstellen auf $\partial \closure{F_1}$ hat und berechnet
 \[
-\frac{1}{2\pi i} \int_{\partial F_1} \frac{f'(z)}{f(z)} \opd z
-\,.
+	\frac{1}{2\pi i} \int_{\mathcal C} \frac{f'(z)}{f(z)} \opd z
+	\,.
 \]
+Wobei die Kurve $\mathcal C$ wie in \autoref{fig:valenzformelweg} gewählt ist.
 
-\end{satz}
+\begin{figure}
+\begin{center}
+	\includestandalone[scale=.7]{images/chapter1/valenzformelweg}
+	\caption{Die Kurve $\mathcal C$ wobei $A$ und $E$ so gewählt sind, dass $\mathcal C$ alle Null- und Polstellen enthält.}
+	\label{fig:valenzformelweg}
+\end{center}
+\end{figure}
+\end{bewe}
 
 \begin{defi}
 Sei
 \[
-\Delta (z) = \frac{1}{1728} \left( E_4^3(z) - E_6^2(z) \right)
+	\Delta (z) = \frac{1}{1728} \left( E_4^3(z) - E_6^2(z) \right)
 \]
-(\myemph{Diskriminantenfunktion}). Dann ist $\Delta$ eine Spitzenform vom Gewicht $k = 12$ mit $\Delta(z) \neq 0 \, \forall z \in \HH$ und $\ord_\infty \Delta = 1$, d.h. $\Delta = q + \ldots$.
+die \myemph{Diskriminantenfunktion}. Dann ist $\Delta$ eine Spitzenform vom Gewicht $k = 12$ mit $\Delta(z) \neq 0 \, \forall z \in \HH$ und $\ord_\infty \Delta = 1$, d.\,h. $\Delta = q + \ldots$
 \end{defi}
 
 \begin{beme}
-$\Delta$ ist die in gewisser Weise \myquote{erste} von 0 verschiedene Spitzenform und wurde von vielen Mathematikern studiert.
+$\Delta$ ist die in gewisser Weise die \myquote{erste} von 0 verschiedene Spitzenform und wurde von vielen Mathematikern studiert.
 
 \begin{bsp-list}
-\item Schreibe $\Delta(z) = \sum_{n \geq 1} \tau (n) q^n$, dann heißt $n \mapsto \tau (n)$ \myemph{Ramanujan-Funktion}. Es gilt: $\tau (n) \in \ZZ \, \forall n \geq 1$. Ferner lässt sich zeigen, dass $\tau (n) \equiv \sigma_{11}(n) \mod 691$, mithilfe von $B_{12} = - \frac{691}{2730}$.
-\item Vermutung: $\tau (n) \neq 0 \, \forall n \geq 1$ (Lehner)
+\item Schreibe $\Delta(z) = \sum_{n \geq 1} \tau (n) q^n$, dann heißt $n \mapsto \tau (n)$ \myemph{Ramanujan-Funktion}. Es gilt: $\tau (n) \in \ZZ$ für alle $n \geq 1$. Ferner lässt sich zeigen, dass $\tau (n) \equiv \sigma_{11}(n) \mod 691$, mithilfe von $B_{12} = - \frac{691}{2730}$.
+\item Vermutung: $\tau (n) \neq 0$ für alle $n \geq 1$ (Lehner)
 \end{bsp-list}
 
 \end{beme}
+
+
+Sei $M_k$ der $\CC$-Vektorraum der Modulformen vom Gewicht $k \in \ZZ$ und $S_k \subset M_k$ der Unterraum der Spitzenformen.
 
 \begin{beme}
 $M_k = \Set {0}$ für $k$ ungerade, da $f((-E) \circ z) = f(z) = (-1)^k f(z)$.
 \end{beme}
 
-Sei $M_k$ der $\CC$-Vektorraum der Modulformen vom Gewicht $k \in \ZZ$, $k$ gerade, und $S_k \subset M_k$ der Unterraum der Spitzenformen. Dann gelten folgende Aussagen:
-
-\begin{satz-list}\label{M_k1}
-\item $M_k = \Set {0}$ für $k < 0$ und $M_2 = \Set {0}$.
-\item $M_0 = \CC$.
-\item $M_k = \CC E_k \oplus S_k$, falls $k \geq 4$.
-\item Die Abbildung $f \mapsto f \cdot \Delta$ gibt einen Isomorphismus von $M_{k-12}$ auf $S_k$.
-\item $\dim M_k < \infty$.
-\end{satz-list}
+\begin{satz}\label{M_k1}
+Sei $k \in \ZZ$ gerade. Dann gilt:
+\begin{enumerate}
+	\item $M_k = \Set {0}$ für $k < 0$ und $M_2 = \Set {0}$.
+	\item $M_0 = \CC$.
+	\item $M_k = \CC E_k \oplus S_k$, falls $k \geq 4$.
+	\item Die Abbildung $f \mapsto f \cdot \Delta$ gibt einen Isomorphismus von $M_{k-12}$ auf $S_k$.
+	\item $\dim M_k < \infty$.
+\end{enumerate}
+\end{satz}
 
 \begin{satz}
 Sei $k \geq 0$ gerade. Dann gilt:
@@ -87,7 +97,7 @@ Sei $k \geq 0$ gerade. Dann gilt:
 % Ab hier neu, aber gehört thematisch noch zu oben!
 
 \begin{satz}
-Sei $k \geq 0$ gerade. Dann gilt:
+Sei $k \geq 0$ gerade. Dann bilden $E_4^\alpha E_6^\beta$ mit $4\alpha + 6\beta = k$ eine Basis von $M_k$, insbesondere gilt also
 \[
 M_k = \bigoplus_{\substack{\alpha, \beta \geq 0\\ 4\alpha + 6\beta = k}} \CC E_4^\alpha E_6^\beta
 \].
@@ -115,16 +125,16 @@ Noch zu zeigen ist, dass die Monome über $\CC$ linear unabhängig sind. Beweis 
 E_4^\alpha E_6^\beta = E_4^{\frac k4 - 3\beta'}E_6^{2\beta'} = E_4^{\frac k4} \left( \frac {E_6^2}{E_4^3} \right)^{\beta'}
 \,.
 \]
-Da $E_4^{\frac k4}$ nicht die Nullfunktion ist, ergibt sich eine nicht-triviale Polynom-Relation für $\frac{E_6^2}{E_4^3}$, d.h. die meromorphe Funktion $\frac{E_6^2}{E_4^3}$ ist Nullstelle eines nicht-trivialen Polynoms über $\CC$. Da $\CC$ algebraisch abgeschlossen ist (jedes nicht-konstante Polynom über $\CC$ zerfällt vollständig über $\CC$ in Linearfaktoren), ist $\frac{E_6^2}{E_4^3}$ somit konstant.
+Da $E_4^{\frac k4}$ nicht die Nullfunktion ist, ergibt sich eine nicht-triviale Polynom-Relation für $\frac{E_6^2}{E_4^3}$, d.\,h. die meromorphe Funktion $\frac{E_6^2}{E_4^3}$ ist Nullstelle eines nicht-trivialen Polynoms über $\CC$. Da $\CC$ algebraisch abgeschlossen ist (jedes nicht-konstante Polynom über $\CC$ zerfällt vollständig über $\CC$ in Linearfaktoren), ist $\frac{E_6^2}{E_4^3}$ somit konstant.
 
 Wir zeigen $\frac{E_6^2}{E_4^3} \equiv 0$ mit einem \emph{Trick}: Es gilt $E_6 (- \frac 1z) = z^6 E_6(z)$, denn $E_6 \in M_6$. Auswerten in $z = i = - \frac 1i$ liefert $E_6 (i) = 0$. Ferner gilt
 \[
-E_4 = 1 + 240 \sum_{n \geq 1} \sigma_3 (n) e^{2\pi i n z} \quad \Ra \quad E_4 (i) = 1 + 240 \sum_{n \geq 1} \sigma_3 (n) e^{-2 \pi n}
+E_4(z) = 1 + 240 \sum_{n \geq 1} \sigma_3 (n) e^{2\pi i n z} \quad \Ra \quad E_4 (i) = 1 + 240 \sum_{n \geq 1} \sigma_3 (n) e^{-2 \pi n}
 \,.
 \] 
-Da alle Summanden positiv sind, folgt $E_4(i) \neq 0$ und somit $\frac{E_6^2(i)}{E_4^3(i)} = 0$. Dies impliziert jedoch wegen $\frac{E_6^2}{E_4^3}$ konstant bereits $E_6 \equiv 0$. $\lightning$
+Da alle Summanden positiv sind, folgt $E_4(i) \neq 0$ und somit $\frac{E_6^2(i)}{E_4^3(i)} = 0$. Dies impliziert jedoch da $\frac{E_6^2}{E_4^3}$ konstant ist bereits $E_6 \equiv 0$. \blitz
 
-\emph{Fall 2:} Sei $k \equiv 2 \mod 4$, dann sind alle $\beta$ ungerade. Analoges Vorgehen zum ersten Fall liefert ebenfalls einen Widerspruch. $\lightning$
+\emph{Fall 2:} Sei $k \equiv 2 \mod 4$, dann sind alle $\beta$ ungerade. Analoges Vorgehen zum ersten Fall liefert ebenfalls einen Widerspruch.
 
 Somit sind die Monome über $\CC$ linear unabhängig.
 \end{bewe}
@@ -152,11 +162,11 @@ Sei $j := \frac{E_4^3}{\Delta}$.
 \begin{satz-list}
 \item $j$ ist holomorph auf $\HH$ und hat einen einfachen Pol in $\infty$.
 \item $j$ ist eine Modulfunktion vom Gewicht $0$.
-\item $j$ liefert eine Bijektion $\modulo {\HH}{\Gamma(1)} \cong \CC$.
+\item $j$ liefert eine Bijektion $\linksmodulo{\Gamma(1)}{\HH} \cong \CC$.
 \end{satz-list}
 
 \begin{satz}
-Sei $f : \HH \to \closure{\CC}$ eine meromorphe Funktion. Dann sind folgende Aussagen äquivalent:
+Sei $f\colon \HH \to \closure{\CC}$ eine meromorphe Funktion. Dann sind folgende Aussagen äquivalent:
 \begin{enumerate}
 \item $f$ ist eine Modulfunktion vom Gewicht 0.
 \item $f$ ist Quotient zweier Modulformen gleichen Gewichts.
