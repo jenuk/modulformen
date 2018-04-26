@@ -2,26 +2,33 @@
 % for compiling parts of the script
 
 \newcounter{chapter}
-% set current chapter
-\setcounter{chapter}{1}
-% set current section
-\setcounter{section}{1}
-% set current subsection
-\setcounter{subsection}{3}
 \newcommand{\chapter}[1]{\clearpage\stepcounter{chapter}\setcounter{section}{0}{\Huge \bfseries Kapitel \thechapter\\ #1}}
 \usepackage{mypackage}
 \usepackage[ocgcolorlinks=true, pdfusetitle=true]{hyperref}
-
-% set last thm number
-\setcounter{satz-counter}{13}
-
 \newcommand{\mydate}{}
 \newcommand{\newdate}[1]{\renewcommand{\mydate}{#1}}
 \newcommand{\myref}[1]{\textcolor{blue}{#1}}
 
-\newcommand{\taui}{{2\pi i}}
+% Ignore
+% ---------------------------------
+% set for correct numbering
+
+% set current chapter
+\setcounter{chapter}{1}
+% set current section
+\setcounter{section}{2}
+% set current subsection
+%\setcounter{subsection}{3}
+% set last thm number
+\setcounter{satz-counter}{1}
+
 \begin{document}
 
-\include{vorlesungen/vl-18-04-19}
+
+% -----------------------
+% set filename here
+\include{vorlesungen/lectures/vl-18-04-26}
+
+% -----------------------
 
 \end{document}
