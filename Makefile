@@ -27,3 +27,5 @@ clean:
 	rm -f *.synctex.gz
 	rm -f vorlesungen/chapter*/*.log
 	rm -f vorlesungen/chapter*/*.aux
+	rm -f vorlesungen/lectures/*.log
+	rm -f vorlesungen/lectures/*.aux
