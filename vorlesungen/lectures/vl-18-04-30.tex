@@ -1,0 +1,343 @@
+\chapter{Heckeoperatoren}
+\section{Vorbemerkung, Motivation}
+
+\begin{defi}
+Definiere 
+\[
+\GL_2^+(\RR) = \Set{ \abcd \in M_2(\RR) \mid ad-bc > 0 }
+\,.
+\]
+Damit ist $\GL_2^+(\RR)$ eine Gruppe, die $\SL_2(\RR)$ als Untergruppe enthält.
+\end{defi}
+
+\begin{defi-list}
+\item Sei 
+\[
+M = \abcd \in \GL_2^+(\RR), z \in \HH
+\,.
+\]
+Dann setze
+\[
+M \circ z := \frac{az+b}{cz+d}
+\,,
+\]
+und beachte, dass dies wohldefiniert ist.
+\item Für $k \in \ZZ$, $M = \abcd \in \GL_2^+(\RR), f \colon \HH \to \CC$ setze man
+\[
+(f |_k M)(z) = (ad - bc)^{\frac{k}{2}} (cz + d)^{-k} f \left( \frac{az+b}{cz+d} \right)
+\,.
+\]
+\end{defi-list}
+
+Diese Definitionen verallgemeinern die früheren für $\SL_2(\RR)$. Beachte, dass für alle $\lambda \in \RR_+$ gilt: $f |_k \lambda E = f$.
+
+\begin{lemm-list} \label{lemm}
+\item Die Abbildung $(M, z) \mapsto M \circ z$ definiert eine Operation von $\GL_2^+(\RR)$ auf $\HH$.
+\item Man hat $f |_k M_1 M_2 = (f |_k M_1) |_k M_2$.
+\end{lemm-list}
+
+\begin{bewe-list}
+\item Rechne nach und beachte $Im \frac{az+b}{cz+d} = (ad-bc) \frac{Im z}{\abs{cz+d}^2}$.
+\item Setze $j(M, z) = cz+d$ für $M = \abcd \in \GL_2^+(\RR)$. Dann ist $j(M_1 M_2, z) = j(M_1, M_2 \circ z) j(M_2, z)$, woraus die Behauptung folgt, denn $(cz+d)^{-k} = j(M, z)^{-k}$.
+\end{bewe-list}
+
+\emph{Ziel:} Definition gewisser linearer Operatoren $M_k \to M_k$ durch geeignete Mittelbildung.
+
+\emph{Idee:} Sei $\mathcal{M} \subset \GL_2^+(\RR)$ eine Teilmenge mit der Eigenschaft, dass $\Gamma (1) \cdot \mathcal M \subset \mathcal M$ und $\mathcal M \cdot \Gamma(1) \subset \mathcal M$, wobei $\cdot$ die gewöhnliche Matrizenmultiplikation meint, und dass $\mathcal M$ in endliche viele disjunkte Linksnebenklassen zerfällt, d.h.:
+\[
+\mathcal M = \dot{\bigcup_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}}} \Gamma(1) M
+\]
+(disjunkt und endlich). Für $f \in M_k$ setze dann
+\[
+f | T_{\mathcal M} := \sum_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}} f|_k M
+\]
+Dann ist $f | T_{\mathcal M}$ wohldefiniert, denn jedes andere Linksnebenklassensystem hat die Form $\Set{N_{\mathcal M} M}$, wobei $N_{\mathcal M} \in \Gamma(1)$ und es gilt 
+\[
+f |_k N_{\mathcal M} M = (f |_k N_{\mathcal M}) |_k M
+\]
+(Lemma \ref{lemm}), ii)
+\[
+= f |_k M
+\,,
+\]
+denn $f \in M_k$, also $f |_k A = f \, \forall A \in \Gamma(1)$.
+
+\emph{Ferner:} Sei $M_0 \in \Gamma(1)$ (nicht MF-Raum). Dann ist 
+\[
+(f | T_{\mathcal M}) |_k M_0 = \sum_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}} f |_k M M_0 = \sum_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}} f |_k M
+\,,
+\]
+denn mit $M$ durchläuft auch $M_0$ ein Vertretersystem der Rechtsnebenklassen. (Begründung: Sind $M_1, M_2$ nicht äquivalent unter Linksmultiplikation, so trivialerweise auch $M_1M_0, M_2M_0$. Auch 
+\[
+\mathcal M \overset != \mathcal M M_0 = \dot{\bigcup_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}}} \Gamma(1) M M_0
+\,.
+\]
+Aber $\mathcal M M_0 \subset \mathcal M$ nach Voraussetzung und $\mathcal = \mathcal M \inv{M_0}M_0 \subset \mathcal M M_0 \Ra \mathcal M M_0 = \mathcal M$.)
+
+\emph{Folgerung:} $f | T_{\mathcal M}$ hat das Transformationsverhalten einer Modulform vom Gewicht $k$.
+
+\section{Die Heckeoperatoren $T(n)$}
+
+\begin{defi}
+Sei $n \in \NN$. Setze 
+\[
+\mathcal M(n) := \Set{ \abcd \in M_2(\ZZ) \mid ad - bc = n }
+\,.
+\]
+\end{defi}
+
+\emph{Beobachtung:} $\mathcal M(n)$ ist invariant unter Links- und Rechtsmultiplikation von $\Gamma (1)$. 
+
+\begin{lemm}
+\[
+\mathcal M (n) = \dot{\bigcup_{\substack{ad = n\\ d > 0\\
+b \mod d}}} \Gamma(1) \begin{pmatrix}a&b\\0&d\end{pmatrix}
+\,,
+\]
+wobei die Vereinigung über alle Matrizen $\begin{pmatrix}a&b\\0&d\end{pmatrix}$ geht, derart dass $a,b,d \in \ZZ$, $ad = n$, $d > 0$ und $b$ ein volles Restsystem modulo $d$ durchläuft (also z.B. $b \in \Set{1, 2, \ldots, d}$).
+\end{lemm}
+
+\begin{bewe}
+RHS $\subset$ LHS klar. Zeige noch LHS $\subset$ RHS. Sei dazu $M = \abcd \in \mathcal M (n)$. Da $ad-bc = n > 0$, können nicht $a$ und $c$ gleichzeitig Null sein. Deswegen existiert $t := \ggt (a,c) \in \NN$. Also sind $-\frac ct$ und $\frac at$ teilerfremd und es existieren $\alpha, \beta \in \ZZ$ mit
+\[
+\begin{pmatrix}
+\alpha & \beta\\
+-\frac ct & \frac at
+\end{pmatrix} \in \Gamma (1)
+\,.
+\]
+Dann
+\[
+\begin{pmatrix}
+\alpha & \beta\\
+-\frac ct & \frac at
+\end{pmatrix} \abcd
+= \begin{pmatrix}
+* & *\\ 0 & *
+\end{pmatrix}
+\,.
+\]
+Man kann also voraussetzen, dass $c = 0$. Wegen $\det M = n$ gilt dann $ad = n$. Multipliziert man gegebenenfalls mit $-1 E$, so kann man annehmen, dass $d > 0$. Schließlich multipliziere mit 
+\[
+\begin{pmatrix}
+1 & \nu\\
+0 & 1
+\end{pmatrix} \in \Gamma (1), \nu \in \ZZ \Ra \begin{pmatrix}
+1 & \nu\\
+0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+a & b + \nu d\\
+0 & d
+\end{pmatrix}
+\,.
+\]
+Durch geeignete Wahl von $\nu \in \ZZ$ kann man erreichen, dass $b + \nu d$ in einem vorgegebenen Restsystem modulo $d$ liegt.
+
+Noch zu zeigen ist, dass die Vereinigung disjunkt ist. Angenommen, zwei Matrizen
+\[
+M \begin{pmatrix}
+a&b\\0&d
+\end{pmatrix} = \begin{pmatrix}
+a'&b'\\0&d'
+\end{pmatrix}
+\]
+für $M \in \Gamma(1)$, $ad = n = a'd'$, $d, d' > 0$, $b \mod d, b' \mod d'$ vollständige Vertretersysteme. Dann folgt, dass die (2,1)-Komponente von $M$ Null ist, $M \in \SL_2(\ZZ)$ also die Gestalt
+\[
+\begin{pmatrix}
+\pm 1 & \nu\\
+0 & \pm 1
+\end{pmatrix}
+\]
+mit $\nu \in \ZZ$ hat. Dann ist 
+\[
+\begin{pmatrix}
+a' & b'\\ 0 & d'
+\end{pmatrix} = \begin{pmatrix}
+\pm 1 & \nu\\
+0 & \pm 1
+\end{pmatrix} \begin{pmatrix}
+a & b\\0 & d
+\end{pmatrix} = \begin{pmatrix}
+\pm a & \pm b + \nu d \\ 0 & \pm d
+\end{pmatrix}
+\,.
+\]
+Es folgt $d' = \pm d$, da $d, d' > 0$ also ist das Vorzeichen $+$ und $d' = d$, $b' = b + \nu d$. Somit unterscheiden sich $b, b'$ nur um ein Vielfaches von $d = d'$ und es gilt $b' = b$ un daher
+\[
+\begin{pmatrix}
+a' & b' \\ 0 & d'
+\end{pmatrix} = \begin{pmatrix}
+a & b \\ 0 & d
+\end{pmatrix}
+\]
+\end{bewe}
+
+\begin{defi}
+Sei $n \in \NN$. Man setze dann für $f \in M_k$
+\[
+f | T(n) := \sum_{M \in \linksmodulo{\Gamma(1)}{\mathcal M (n)}} f |_k M
+\,.
+\]
+\end{defi}
+
+\begin{satz-list}
+\item Durch $T(n)$ wird eine lineare Abbildung $M_k \to M_k$ definiert. Diese lässt $S_k$ invariant (d.h. Spitzenformen werden auf Spitzenformen geschickt). Man nennt $T(n)$ den $n$-ten Hecke-Operator.
+\item Ist $f = \sum_{m \geq 0} a(m) q^m \in M_k$, so gilt
+\[
+f | T(n) = \sum_{m \geq 0} \left( \sum_{d | (m,n)} d^{k-1} a\left(\frac{mn}{d^2}\right) \right) q^m
+\]
+\end{satz-list}
+
+\emph{Beachte:} Der konstante Term von $f | T(n)$ ist gleich
+\[
+\left( \sum_{d|n} \right) a(0) = \sigma_{k-1}(n) a(0)
+\]
+
+\begin{bsp}
+Sei $n = p$ prim. Dann ist
+\begin{align*}
+f | T(p) &= \sum_{m \geq 0} \left( \sum_{d | (m,p)} d^{k-1} a\left(\frac{mp}{d^2}\right) \right) q^m\\
+&= \sum_{m \geq 0} \left( 1^{k-1} a\left(\frac{mp}{1}\right) \right) + \left( p^{k-1} a\left(\frac{mp}{p^2}\right) \right) q^m \\
+&= \sum_{m \geq 0} \left( a\left(mp\right) \right) + \left( p^{k-1} a\left(\frac{m}{p}\right) \right) q^m
+\,,
+\end{align*}
+wobei $a\left(\frac mp\right) := 0$, falls $p \not | m$. Denn:
+\[
+\sum_{d | (m,p)} d^{k-1} a \left( \frac {mn}{p^2} \right) = a \left(mp\right) + \begin{cases} 0 (p \not | m) \\ p^{k-1} a \left(\frac mp \right) (p | m) \end{cases}
+\]
+\end{bsp}
+
+\begin{bewe-list}
+\item Nach den Überlegungen in §1 wissen wir, dass $f | T(n)$ das Transformationsgesetz einer Modulform vom Gewicht $k$ hat. Auch ist $f | T(n)$ holomorph auf $\HH$. Dass $f | T(n)$ holomorph in $\infty$ ist, folgt aus ii). Dass $T(n)$ den Raum $S_k$ invariant lässt, folgt aus ii).
+\end{bewe-list}
+
+\begin{satz-list}
+\item $T(m) T(n) = \sum_{d | (m,n)} d^{k-1} a \left( \frac {mn}{d^2} \right)$
+\end{satz-list}
+
+Speziell gilt (vergleiche mit Ramanujan-$\tau$-Funktion: \begin{enumerate}
+\item $T(m) T(n) = T(mn)$, falls $(m,n) = 1$.
+\item $T(p) T(p^n) = T(p^{n+1}) + p^{k+1} T(p^{\nu-1})$ für $p$ prim und $\nu \geq 1$.
+\end{enumerate}
+
+
+\clearpage
+
+\begin{satz-list}\label{satz:j_eigenschaften}
+	\item $j$ ist holomorph auf $\HH$ und hat einen einfachen Pol in $\infty$.
+	\item $j$ ist eine Modulfunktion vom Gewicht $0$.
+	\item $j$ liefert eine Bijektion $\linksmodulo{\Gamma(1)}{\HH} \cong \CC$.
+\end{satz-list}
+
+\begin{bewe-list}
+	\item  Da $\Delta(z) \not= 0$ für alle $z\in\HH$, ist $j(z)$ holomorph auf $\HH$.
+	Ferner gilt
+	\[
+		\ord_\infty j = \ord_\infty E_4^3 - \ord_\infty \Delta = 0 - 1 = -1
+		\,.
+	\]
+	\item Da $E_4^3$, $\Delta \in M_{12}$ folgt die Aussage.
+	\item Sei $\lambda \in \CC$. Dann ist zu zeigen, dass die Modulfunktion $j_\lambda := j - \lambda$ vom Gewicht Null eine modulo $\SL_2(\ZZ)$ eindeutig bestimmte Nullstelle hat.
+	Man wendet auf $j_\lambda$ die Valenzformel an!
+	Es gilt $\ord_z j_\lambda \geq 0$ für alle $z\in\HH$ und $\ord_\infty j_\lambda = -1$.
+	Da $k = 0$ folgt mit der Valenzformel
+	\[
+		-1 + n + \frac{n'}{2} + \frac{n''}{3} = 0
+	\]
+	mit $n$, $n'$, $n'' \in \NN_0$.
+	Also
+	\begin{equation}\label{eq:basicj_valenzformel}
+		n + \frac{n'}{2} + \frac{n''}{3} = 1
+	\end{equation}
+	Man prüft nach: die einzigen Lösungen $(n,n',n'') \in \NN_0^3$ von \eqref{eq:basicj_valenzformel} sind $(1,0,0)$, $(0,2,0)$ und $(0,0,3)$.
+	Dies impliziert die Behauptung.
+\end{bewe-list}
+
+\begin{satz}\label{satz:charakterisierung_modulfunktion_0}
+	Sei $f\colon \HH \to \closure{\CC}$ eine meromorphe Funktion. Dann sind folgende Aussagen äquivalent:
+	\begin{enumerate}
+		\item $f$ ist eine Modulfunktion vom Gewicht 0.
+		\item $f$ ist Quotient zweier Modulformen gleichen Gewichts.
+		\item $f$ ist eine rationale Funktion in $j$.
+	\end{enumerate}
+\end{satz}
+
+\begin{bewe-list}
+	\item[(iii) $\Rightarrow$ (ii)] Sei $f = \frac{P(j)}{Q(j)}$ wobei $P(X) = a_0 + a_1X + \ldots + a_mX^m$ mit $a_\nu \in \CC$, $a_m \not= 0$ und $Q(X) = b_0 + b_1X + \ldots + b_nX^n$ mit $b_\nu \in \CC$, $b_n \not= 0$ mit $Q \not\equiv 0$, insbesondere also auch $Q(j) \not\equiv 0$.
+	Wegen $j = \frac{E_4^3}{\Delta}$ folgt
+	\begin{align*}
+		f
+		&= \frac{a_0 + a_1\frac{E_4^3}{\Delta} + \ldots + a_m\bigl(\frac{E_4^3}{\Delta}\bigr)^m}{b_0 + b_1\frac{E_4^3}{\Delta} + \ldots + b_n\bigl(\frac{E_4^3}{\Delta}\bigr)^n} \\
+		&= \frac{(a_0\Delta^m + a_1E_4^3\Delta^{m-1} + \ldots + a_m(E_4^3)^m)\cdot \Delta^n}{(b_0\Delta^n + b_1E_4^3\Delta^{n-1} + \ldots + b_n(E_4^3)^n) \cdot \Delta^m}
+		\,.
+	\end{align*}
+	Hier sind Zähler und Nenner Modulformen vom Gewicht $12(m+n)$.
+	Also folgt die Behauptung.
+	
+	\item[(ii) $\Rightarrow$ (i)] klar
+	
+	\item[(i) $\Rightarrow$ (iii)] Sei $f$ eine Modulfunktion vom Gewicht Null und $f \not\equiv 0$.
+	Seien $z_1, \ldots z_r$ die modulo $\Gamma(1)$ verschiedenen Polstellen von $f$ und $m_1, \ldots m_r$ deren Ordnungen.
+	Sei
+	\[
+		P(z)
+		:= \prod_{\nu = 1}^r \bigl(j(z) - j(z_\nu)\bigr)^{m_\nu}
+		\,.
+	\]
+	Dann gilt
+	\[
+		\ord_{z_\nu} P
+		= \ord_{z_\nu} \bigl(j(z) - j(z_\nu)\bigr)^{m_\nu}
+		= m_\nu \ord_{z_\nu} \bigl(j(z) - j(z_\nu)\bigr)
+		\geq m_\nu
+		\,.
+	\]
+	Dann ist $P(z)f(z)$ eine Modulfunktion vom Gewicht Null und holomorph auf $\HH$.
+	Da $P(z)$ ein Polynom in $j$ ist, genügt es die Behauptung für $P(z)f(z)$ zu zeigen.
+	Insbesondere kann man voraussetzen, dass $f$ holomorph auf $\HH$ ist.
+	Da $\ord_\infty \Delta = 1$, gibt es $n\in\NN_0$ so dass $g := \Delta^nf$ in unendlich holomorph ist.
+	Dann ist $f = \frac{g}{\Delta^n}$ und $g$ ist eine Modulform vom Gewicht $12n$.
+	Nach \autoref{satz:basis_modulformen} ist $g$ eine Linearkombination von Monomen $E_4^\alpha E_6^\beta$ mit $4\alpha + 6\beta = 12n$.
+	Es genügt somit die Behauptung für $\frac{E_4^\alpha E_6^\beta}{\Delta^n}$ zu zeigen.
+	Insbesondere gilt $3|\alpha$ und $2|\beta$, schreibe $\alpha = 3p$ und $\beta = 2q$.
+	Dann gilt
+	\[
+		\frac{E_4^\alpha E_6^\beta}{\Delta^n}
+		= \frac{(E_4^3)^p (E_6^2)^q}{\Delta^{p+q}}
+		= j^p (j-1728)^q
+		\,,
+	\]
+	denn $j-1728 = j - \frac{E_4^3 - E_6^2}{\Delta} = \frac{E_4^3}{\Delta} - \frac{E_4^3-E_6^2}{\Delta} = \frac{E_6^2}{\Delta}$.
+\end{bewe-list}
+
+\begin{beme-list}
+	\item Der Quotient $\linksmodulo{\Gamma(1)}{\HH}$ besitzt in natürlicher Weise die Struktur einer Riemannschen Fläche isomorph zu $S^2 \setminus\Set{\text{Punkt}}$ indem man die Ränder in $\closure{\F_1}$ identifiziert.
+	Fügt man den Punkt $\infty$ hinzu, so erhält an $\closure{\linksmodulo{\Gamma(1)}{\HH}} := \linksmodulo{\Gamma(1)}{\HH} \cup \Set{\infty} \cong S^2$ (die Sphäre in $\RR^3$).
+	\autoref{satz:j_eigenschaften} (iii) besagt dann, dass $j$ ein Isomorphismus von $\closure{\linksmodulo{\Gamma(1)}{\HH}} \cong S^2 \cong \mathds P^1(\CC) = \CC \cup \infty$ ist.
+	\autoref{satz:charakterisierung_modulfunktion_0} entspricht dann der Tatsache, dass die einzigen meromorphen Funktionen auf $S^2$ die rationalen Funktionen sind.
+	
+	\item Man kann zeigen (schwer!)
+	\[
+		\Delta(z) = q \prod_{n\geq1} (1-q^n)^{24}
+		\,.
+	\]
+	Damit folgt
+	\begin{align*}
+		j
+		&= \frac{E_4^3}{\Delta}
+		= \frac{1}{q} \biggl(1 + 240\sum_{n\geq1} \sigma_3(n)q^n\biggr)^3 \frac{1}{\prod_{n\geq1} (1 - q^n)^{24}} \\
+		&= \frac{1}{q} \biggl(1 + 240\sum_{n\geq1} \sigma_3(n)q^n\biggr)^3 \prod_{n\geq1} \Bigl(\sum_{m\geq0} q^{mn}\Bigr)^{24} \\
+		&= \frac{1}{q} + 744 + \sum_{n \geq 1} c(n)q^n \qquad \text{mit } c(n) \in \NN
+		\,.
+	\end{align*}
+	Also hat die $j$-Funktion eine Fourierentwicklung in $q$, wobei die Koeffizienten positive ganzen Zahlen sind.
+	
+	\item Man zeigt leicht: $\frac{1}{\prod_{n\geq1} (1-q^n)} = 1 + \sum_{n\geq1} p(n)q^n$ wobei $p(n)$ die Anzahl der Partionen von $n$ ist, d.\,h. die Anzahl der Zerlegungen von $n$ als Summe positiver, ganzer Zahlen (Beispielsweise $p(4) = 5$, denn $4 = 3 + 1 = 2 + 2 = 2 + 1 + 1 = 1 + 1 + 1 + 1$).
+	Man sagt: die erzeugende Reihe von $p(n)$ wird durch $\frac{1}{\prod_{m\geq1} (1-q^n)}$ gegeben.
+	
+	\emph{Beachte} $1 + \sum_{n\geq1} p(n)q^n = \frac{e^{\pi i\frac{z}{12}}}{\eta(z)}$ wobei $\eta(z) = e^{\pi i\frac{z}{12}} \prod_{n\geq1} (1-q^n)$ die sogenannte \myemph{Dedekindische $\eta$-Funktion} ist.
+	Beachte $\eta^{24} = \Delta$.
+	$\eta$ sollte also eine Modulform vom Gewicht $\frac{1}{2}$ sein.
+	Mit Hilfe der Theorie der Modulformen kann man zeigen $p(n) \sim \frac{1}{4\sqrt 3 n} \cdot e^{\pi \sqrt{\frac{3}{2}n}}$ für $n\to\infty$ (hier $a(n) \sim b(n)$ genau dann, wenn $\lim_{n\to\infty} \frac{a(n)}{b(n)} = 1$).
+\end{beme-list}
