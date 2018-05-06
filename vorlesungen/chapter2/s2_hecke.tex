@@ -1,97 +1,3 @@
-\chapter{Heckeoperatoren}
-\section{Vorbemerkung, Motivation}
-
-\begin{defi}
-Definiere die Gruppe
-\[
-\GL_2^+(\RR) = \Set{ \abcd \in M_2(\RR) \Bigm| ad - bc > 0 }
-\,,
-\]
-welche $\SL_2(\RR)$ als Untergruppe enthält.
-\end{defi}
-
-\begin{defi-list}
-\item Seien $z \in \HH$ und 
-\[
-M = \abcd \in \GL_2^+(\RR)
-\,,
-\]
-dann setze
-\[
-M \circ z := \frac{az+b}{cz+d}
-\,.
-\]
-\item Für $k \in \ZZ$, $M \in \GL_2^+(\RR)$ und $f \colon \HH \to \CC$ setze
-\[
-(f |_k M)(z) := (ad - bc)^{\frac{k}{2}} (cz + d)^{-k} f \left( M \circ z \right)
-\,.
-\]
-\end{defi-list}
-
-Diese Definitionen verallgemeinern die früheren Definitionen für $\SL_2(\RR)$ (siehe \myref{DefSL2}). Beachte, dass weiterhin für alle $\lambda \in \RR_+$ gilt:
-\[
-f |_k 
-\begin{pmatrix}
-\lambda & 0\\
-0 & \lambda
-\end{pmatrix}
-= f
-\,.
-\]
-
-\begin{lemm-list} \label{lemm}
-\item Die Abbildung $(M, z) \mapsto M \circ z$ definiert eine Operation von $\GL_2^+(\RR)$ auf $\HH$.
-\item Man hat $f |_k M_1 M_2 = (f |_k M_1) |_k M_2$.
-\end{lemm-list}
-
-\begin{bewe-list}
-\item Rechne nach und beachte hierbei, dass $\Im \Bigl( \frac{az+b}{cz+d} \Bigr) = (ad-bc) \frac{\Im z}{\abs{cz+d}^2}$.
-\item Für $M = \abcd \in \GL_2^+(\RR)$ setze $j(M, z) := cz+d$. Dann gilt für beliebige Matrizen $M_1, M_2 \in \GL_2^+(\RR)$, dass
-\[
-j(M_1 M_2, z) = j(M_1, M_2 \circ z) \cdot j(M_2, z)
-\,,
-\]
-woraus wegen $(cz+d)^{-k} = j(M, z)^{-k}$ die Behauptung folgt.
-\end{bewe-list}
-
-\emph{Ziel:} Definition gewisser linearer Operatoren $T \colon M_k \to M_k$ auf den Vektorräumen $M_k$ (Modulformen vom Gewicht $k \in \ZZ$) durch geeignete Mittelbildung.
-
-\emph{Idee:} Sei $\mathcal{M} \subset \GL_2^+(\RR)$ eine Teilmenge mit folgenden Eigenschaften (mit $\cdot$ die gewöhnliche Matrizenmultiplikation): \begin{enumerate}
-\item $\Gamma (1) \cdot \mathcal M \subset \mathcal M$
-\item $\mathcal M \cdot \Gamma(1) \subset \mathcal M$
-\item $\mathcal M$ zerfällt in endlich viele disjunkte Rechtsnebenklassen, d.h.
-\[
-\mathcal M = \dot{\bigcup_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}}} \Gamma(1) \cdot M
-\,,
-\]
-wobei die Vereinigung disjunkt und endlich ist. 
-\end{enumerate}
-Für eine Modulform $f \in M_k$ setze dann
-\[
-f | T_{\mathcal M} := \sum_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}} f|_k M
-\,.
-\]
-Dann ist $f | T_{\mathcal M}$ wohldefiniert, denn jede Rechtsnebenklasse $\Gamma (1) \cdot M \in \linksmodulo{\Gamma(1)}{\mathcal M}$ besteht aus Vertretern der Form $N M$ mit $N \in \Gamma (1)$ und es gilt
-\[
-f |_k N M = (f |_k N) |_k M = f |_k M
-\,
-\]
-wegen Lemma \ref{lemm}, ii) und $f |_k N = f$ für beliebiges $N \in \Gamma (1)$, da $f \in M_k$.
-
-\emph{Ferner:} Sei eine Matrix $N \in \Gamma(1)$ gegeben. Dann ist 
-\[
-(f | T_{\mathcal M}) |_k N = \sum_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}} f |_k M N = \sum_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}} f |_k M = f | T_{\mathcal M}
-\,,
-\]
-denn mit $M$ durchläuft auch $MN$ ein Vertretersystem der Rechtsnebenklassen. (Begründung: Sind zwei Matrizen $M_1, M_2 \in \mathcal M$ nicht äquivalent unter Linksmultiplikation mit $\Gamma(1)$, so gilt dies trivialerweise auch für $M_1N, M_2N$. Auch ist
-\[
-\mathcal M N = \Bigl( \dot{\bigcup_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}}} \Gamma(1) \cdot M \Bigr) N = \dot{\bigcup_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}}} \Gamma(1) \cdot M N = \mathcal M
-\,,
-\]
-denn nach Voraussetzung gilt sowohl $\mathcal M N \subset \mathcal M$ als auch $\mathcal M = \mathcal M \inv{N}N \subset \mathcal M N$.)
-
-\emph{Folgerung:} $f | T_{\mathcal M}$ hat das Transformationsverhalten einer Modulform vom Gewicht $k$.
-
 \section{Die Heckeoperatoren $T(n)$}
 
 \begin{defi}
@@ -274,8 +180,8 @@ p^{k-1} a \left(\frac mp \right) & \text{ falls } p | \, m
 \end{bsp}
 
 \begin{bewe-list}
-\item Nach den Überlegungen in \myref{§1} wissen wir, dass $f | T(n)$ das Transformationsverhalten einer Modulform vom Gewicht $k$ besitzt. Auch ist $f | T(n)$ als Summe holomorpher Funktionen selbst holomorph auf $\HH$. Zu zeigen verbleibt noch, dass $f | T(n)$ holomorph in $\infty$ ist und den Raum $S_k$ invariant lässt. Beides folgt direkt aus Teil ii) des Satzes.
-\item \myref{Nächste VL}
+\item Nach den Überlegungen in \ref{VorbemerkungHecke} wissen wir, dass $f | T(n)$ das Transformationsverhalten einer Modulform vom Gewicht $k$ besitzt. Auch ist $f | T(n)$ als Summe holomorpher Funktionen selbst holomorph auf $\HH$. Zu zeigen verbleibt noch, dass $f | T(n)$ holomorph in $\infty$ ist und den Raum $S_k$ invariant lässt. Beides folgt direkt aus Teil ii) des Satzes.
+\item Nächste VL ...
 \end{bewe-list}
 
 \begin{satz-list}
