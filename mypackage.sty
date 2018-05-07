@@ -191,6 +191,11 @@
   {(\begin{smallmatrix}a&b\\c&d\end{smallmatrix})}% Script Style
   {(\begin{smallmatrix}a&b\\c&d\end{smallmatrix})}% Scriptscript Style
 }
+\NewDocumentCommand{\mymat}{s m m m m}
+{\IfBooleanTF{#1}
+	{\begin{pmatrix}#2 & #3 \\#4 & #5 \end{pmatrix}}
+	{\bigl(\begin{smallmatrix}#2 & #3 \\#4 & #5 \end{smallmatrix}\bigr)}%
+}
 
 % Defining text-Commands
 \newcommand{\myquote}[1]{\glqq{}#1\grqq{}}
