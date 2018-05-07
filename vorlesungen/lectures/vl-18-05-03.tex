@@ -1,0 +1,157 @@
+\begin{satz-list}
+\item Durch $T(n)$ wird eine lineare Abbildung $M_k \to M_k$ definiert, diese heißt $n$-ter Heckeoperator. Es gilt $S_k|T(n) \subset S_k$.
+\item Ist $f = \sum_{m \geq 0} a(m) q^m \in M_k$, so gilt
+\[
+f | T(n) = \sum_{m \geq 0} \left( \sum_{d | (m,n)} d^{k-1} a\left(\frac{mn}{d^2}\right) \right) q^m
+\]
+\end{satz-list}
+
+\emph{Beachte:} Der konstante Term von $f | T(n)$ ist gleich
+\[
+\left( \sum_{d|n} \right) a(0) = \sigma_{k-1}(n) a(0)
+\]
+
+\begin{bsp}
+Sei $n = p$ prim. Dann ist
+\begin{align*}
+f | T(p) &= \sum_{m \geq 0} \left( \sum_{d | (m,p)} d^{k-1} a\left(\frac{mp}{d^2}\right) \right) q^m\\
+&= \sum_{m \geq 0} \left( 1^{k-1} a\left(\frac{mp}{1}\right) \right) + \left( p^{k-1} a\left(\frac{mp}{p^2}\right) \right) q^m \\
+&= \sum_{m \geq 0} \left( a\left(mp\right) \right) + \left( p^{k-1} a\left(\frac{m}{p}\right) \right) q^m
+\,,
+\end{align*}
+wobei $a\left(\frac mp\right) := 0$, falls $p \not | m$. Denn:
+\[
+\sum_{d | (m,p)} d^{k-1} a \left( \frac {mn}{p^2} \right) = a \left(mp\right) + \begin{cases} 0 (p \not | m) \\ p^{k-1} a \left(\frac mp \right) (p | m) \end{cases}
+\]
+\end{bsp}
+
+\begin{bewe-list}
+\item Nach den Überlegungen in §1 wissen wir, dass $f | T(n)$ das Transformationsgesetz einer Modulform vom Gewicht $k$ hat. Auch ist $f | T(n)$ holomorph auf $\HH$. Dass $f | T(n)$ holomorph in $\infty$ ist, folgt aus ii). Dass $T(n)$ den Raum $S_k$ invariant lässt, folgt aus ii).
+
+\item Benutze \myref{Lemma 2}, damit folgt
+\[
+	f|T(n)
+	= n^{\frac{k}{2}-1} \sum_{ad=n, d>0, b\mod d} f|_k(\begin{smallmatrix}a & b \\ 0 & d\end{smallmatrix})
+	= n^{\frac{k}{2}-1} \sum_{ad=n, d>0, b\mod d} n^{\frac{k}{2}} d^{-k} f(\frac{az+b}{d})
+	= n^{k-1} \sum_{m>0, ad=n, d>0, b\mod d} d^{-k} a(m) e^{2\pi im \frac{az+b}{d}}
+	= n^{k-1} \sum_{m>0, d|n, d>0} d^{-k} e^{2\pi im \frac{n}{d^2}z} ( \sum_{b\mod d} e^{2\pi im \frac{b}{d}})
+\]
+
+% einschub
+Es gilt
+\[
+	\sum_{b \mod d} e^{2\pi im \frac{b}{d}}
+	= \begin{cases}
+		0 & \text{falls } d\not| m \\
+		d & \text{falls } d| m
+	  \end{cases}
+\]
+
+Allgemein $1+q+\ldots q^{N-1} = \frac{q^n-1}{q-1} = 0$, falls $q\not=1$ und $q^N = 1$m wende dies an mit $q=e^{2\pi i \frac{m}{d}}$, $N=d$.
+% einschub ende
+
+\begin{align*}
+	&= n^{k-1} \sum_{m \geq 0, m \equiv 0 \mod d, d|n, d > 0} d^{-k+1} a(m) e^{2\pi \frac{mn}{d^2}z} &&(m\mapsto md) \\
+	&= \sum_{m \geq 0 , d|n, d>0} (\frac{n}{d})^{k-1} a(md) e^{2\pi i \frac{mn}{d}z} &&(d\mapsto\frac{n}{d}) \\
+	&= \sum_{m \geq 0 , d|n, d>0} d^{k-1} a(\frac{mn}{2}) e^{2\pi imdz} && (md\mapsto m) \\
+	&= \sum_{m\geq 0, m\equiv 0 \mod d, d|m, d>0} d^{k-1} a(\frac{mn}{d^2}) e^{2\pi imz} \\
+	&= \sum_{m\geq 0} (\sum_{d|m, d|n} d^{k-1} a(\frac{mn}{d^2})) q^m
+\end{align*}
+
+Man beachte: alle Vertauschungen sind gerechtfertigt wegen absoluter Konvergenz.
+\end{bewe-list}
+
+\begin{satz}
+Für alle $m$, $n \in \NN$ gilt
+\[
+	T(m) T(n) = \sum_{d | (m,n)} d^{k-1} a \left( \frac {mn}{d^2} \right)
+\]
+Speziell gilt (vergleiche mit Ramanujan-$\tau$-Funktion):
+\begin{enumerate}
+	\item $T(n)T(m) = T(mn)$ falls $\ggt(m,n) = 1$
+	\item $T(p) T(p^\nu) = T(p^{\nu+1}) + p^{k-1} T(p^{\nu-1})$ für $p$ prim und $\nu \geq 1$.
+\end{enumerate}
+
+Beachte dass (ii) äquivalent ist zur Identität
+\[
+	\frac{1}{1-T(p)X+p^{k-1}X^2} = \sum_{\nu \geq 0} T(p^\nu) X^\nu
+\]
+\end{satz}
+
+\begin{bewe}
+	in mehreren Schritten:
+	1. Schritt: Beweis von (i):
+	Seien $m$, $n$ teilerfremd.
+	Benutze \myref{Lemma 2}, dann gilt
+	\[
+		f|T(m)T(n)
+		= (mn)^{\frac{k}{2}-1} \sum_{ad=m, d>0, b\mod d} \sum_{a'd' = n, d'>0, b' \mod d'} f|_k \begin{smallmatrix}a & b\\ 0 & d\end{smallmatrix} \begin{smallmatrix}a' & b'\\ 0 & d'\end{smallmatrix}
+		= (mn)^{\frac{k}{2}-1} \sum_{ad=m, d>0, b\mod d} \sum_{a'd' = n, d'>0, b' \mod d'} f|_k \begin{smallmatrix}aa' & ab'+bd'\\ 0 & dd'\end{smallmatrix}
+	\]
+	Durchläuft $d$ alle positiven Teiler von $m$ und $d'$ alle positiven Teiler von $n$, so durchläuft $D := dd'$ alle positiven Teiler von $mn$, denn $\ggt(m, n) = 1$.
+	Setzt man $A := aa'$, so gilt dann $AD = mn$.
+	Ferner gilt: Durchläuft $b$ ein volles Restsystem $\mod d$ und $b'$ ein solches $\mod d'$, so durchläuft $B = ab+bd'$ ein volles Restsystem $\mod dd'$.
+	In der Tat genügt es zu zeigen, dass diese Zahlen inkongruent $\mod dd'$ sind (denn dann sind dies genau $dd'$ paarweise inkongruente Zahlen).
+	
+	Angenommen
+	\[
+		ab_1' + b_1d' \equiv ab_2' +b_2d' \mod dd'
+	\]
+	dann gilt
+	\[
+		a(b_1' - b_2') \equiv d(b_2 - b_1) \mod dd'
+	\]
+	Dies impliziert $a(b_1'- b_2') \equiv 0 \mod d'$. Aber $\ggt(a, d') = 1$, denn $a|m$ und $d'|n$ und $\ggt(m, n) = 1$ nach Voraussetzung.
+	Also folgt $b_1' \equiv b_2' \mod d'$, also $b_1' = b_2'$.
+	Es folgt jetzt $b_2 \equiv b_1 \mod d$, also $b_2 = b_1$.
+	Also folgt die Behauptung.
+	Und damit
+	\[
+		f|T(m)T(n)
+		= (mn)^{\frac{k}{2}-1} \sum_{AD = mn, D > 0, B \mod D} f|_k \begin{smallmatrix}A & B\\ 0 & D\end{smallmatrix}
+		= f|_kT(mn)
+	\]
+	
+	
+	2. Schritt: Beweis von (ii):
+	Es gilt nach \myref{Lemma 2}: \[f|T(p) = p^{\frac{k}{2}-1} (f|_k \begin{smallmatrix}p & 0\\ 0 & 1\end{smallmatrix}) + \sum_{\mu(p)} f|_k \begin{smallmatrix}1 & \mu \\ 0 & p\end{smallmatrix}\]
+	\[
+		f|T(p^\nu) = (p^\nu)^{\frac{k}{2}-1} \sum_{0 \leq \beta \leq \nu, b \mod p^\beta} f|_k \begin{smallmatrix}p^{\nu-\beta} & b \\ 0 & p^\beta \end{smallmatrix}
+	\]
+	
+	Dann
+	\[
+		f|T(p)T(p^\nu) = (p^{nu+1})^{\frac{k}{2}-1} ( \sum_{0 \leq \beta \leq \nu, b \mod p^\beta} f|_k \begin{smallmatrix} p & 0 \\ 0 & 1 \end{smallmatrix}\begin{smallmatrix}p^{\nu-\beta} & b \\ 0 & p^\beta \end{smallmatrix} + \sum_{0 \leq \beta \leq \nu, b \mod p^\beta} f|_k \begin{smallmatrix} 1 & \mu \\ 0 & p \end{smallmatrix}\begin{smallmatrix}p^{\nu-\beta} & b \\ 0 & p^\beta \end{smallmatrix})
+		= (p^{\nu+1})^{\frac{k}{2}-1} ( \sum_{0 \leq \beta \leq \nu, b \mod p^\beta} f|_k \begin{smallmatrix} p^{\nu +1-\beta} & pb \\ 0 & p^\beta \end{smallmatrix} + \sum_{0 \leq \beta \leq \nu, b \mod p^\beta, \mu(p)} f|_k \begin{smallmatrix}
+		p^{nu-\beta} & b+\mu p^\beta \\ 0 & p^{\beta+1}
+		\end{smallmatrix}) \tag{*}
+	\]
+	Betrache 2. Summe in \myref{(*)}:
+	Durchläuft $b$ ein Restsystem modulo $p^\beta$ und $\mu$ ein Restsystem modulo $p$, so durchläuft $b+\mu p^\beta$ ein solches modulo $p^{\beta+1}$ (denn insgesamt $p^{\beta+1}$ Zahlen, paarweise inkongruent modulo $p^{\beta+1}$).
+	Man sieht daher, dass die 2. Summe gleich
+	\[
+		f|T(p^{\nu+1}) - (p^{\nu+1})^{\frac{k}{2}} f|_k \begin{smallmatrix} p^{\nu+1} & 0 \\ 0 & 1 \end{smallmatrix} \,.
+	\]
+	
+	Betrachte 1. Summe in \myref{(*)}. Diese ist gleich
+	\[
+		(p^{\nu + 1})^{\frac{k}{2}-1} (f|_k\begin{smallmatrix} p^{\nu+1} & 0 \\ 0 & 1 \end{smallmatrix} + \sum_{1 \leq \beta \leq \nu, b(p^\beta)} f|_k \begin{smallmatrix} p^{\nu+1-\beta} & pb \\ 0 & p^\beta \end{smallmatrix} =
+	\]
+	Man erhält also
+	\[
+		f|_k T(p)T(p')
+		= F|T(p^{\nu+1}) + (p^{\nu+1})^{\frac{k}{2}-1} \underbrace{\sum_{1 \leq \beta \leq \nu, b(p^\beta)} f|_k \begin{smallmatrix} p & 0 \\ 0 & p \end{smallmatrix} |_k \begin{smallmatrix} p^{\nu-\beta} & b \\ 0 & p^{\beta-1} \end{smallmatrix}
+		}_{=: R}
+	\]
+	In $R$ ersetze $\beta$ durch $\beta + 1$, erhalte
+	\[
+		R = \sum_{0 \leq \beta \leq \nu-1, b(p^{\beta+1})} f|_k \begin{smallmatrix} p^{\nu-1-\beta} & b \\ 0 & p^{\beta+1} \end{smallmatrix}
+		% Man setze $b = \tilde b + \mu p^\beta$ wobei $\mu$ modulo $p$ und $\tilde b$ modulo $p^\beta$ läuft
+		= \sum_{ 0 \leq \beta \leq \nu-1, \tilde b(p^\beta)} f|_k \begin{smallmatrix} 1 & \mu \\ 0 & 1 \end{smallmatrix}|_k \begin{smallmatrix} p^{\nu-1-\beta} & \tilde b \\ 0 & p^\beta \end{smallmatrix}
+	\]
+	da $f$ Periode 1 hat, erhält man $(p^{\nu+1})^{\frac{k}{2}-1}R$
+	\[
+	 	(p^{\nu+1})^{\frac{k}{2}-1} p \sum_{0 \leq \beta \leq \nu-1, \tilde b(p^\beta)} f|_k \begin{smallmatrix} p^{\nu-1-\beta} & \tilde b \\ 0 & p^\beta \end{smallmatrix}
+	 	= p^{k-1} T(p^{\nu-1})
+	\]
+\end{bewe}
