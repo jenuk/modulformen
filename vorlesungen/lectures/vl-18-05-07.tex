@@ -1,0 +1,161 @@
+Zum Satz 2(
+\[
+T(m)T(n) = \sum_{d \vert (m,n)} d^{k-1} ...
+\]
+). Gemacht: Schritt 1 und 2 (das waren die beiden insbesondere-Teile i) und ii)). Im dritten Schritt zeigt man durch Induktion, dass 
+\[
+T(p^\nu) T(p^s) = \sum_{\alpha = 0}^{\min \Set {\nu, s}} (p^\alpha)^{k-1} T(p^{\nu + s - 2\alpha})
+\], d.h.
+\[
+T(p^\nu) T(p^s) = \sum_{d \vert (p^\nu, p^s)} d^{k-1} T(\frac{p^{\nu + s}}{d^2}), \quad d = p^\alpha
+\] (Übungsaufgabe).
+Der vierte Schritt ist der allgemeine Fall! Induktion über die verschiedenen Primteiler von $m$. Sei $m = p^\nu m', n = p^s n'$ mit $p \not \vert m', p \not \vert n'$. Dann nach i)
+\[
+T(m)T(n) = T(m'p^\nu) T(n'p^s) = T(m')T(p^r)T(n')T(p^s) = T(m') T(n') T(p^r) T(p^s)
+\]
+und mit Induktion und dem dritten Schritt ist das
+\[
+= \sum_{d \vert (m',n')} d^{k-1} T(\frac {m'n'}{d^2} \sum_{t \vert (p^r, p^s)} t^{k-1} T(\frac{p^rp^s}{t^2}) 
+\]
+und nach Schritt 1
+\[
+= \sum_{\substack{d \vert (m',n')\\t \vert (p^r, p^s)}} (dt)^{k-1} T(\frac {p^rm'p^sn'}{(dt)^2})
+\]
+und mit $D = dt$
+\[
+= \sum_{D \vert (m,n)} D^{k-1} T(\frac {mn}{D^2})
+\]
+
+\section{Folgerungen}
+
+\begin{satz}
+Die $T(n), n \in \NN$ erzeugen eine kommutative $\CC$-Algebra von Endomorphismen von $M_k$, welche $S_k$ stabil lässt. Diese wird bereits erzeugt von den $T(p), p$ prim.
+\end{satz}
+
+\begin{bewe}
+Die Kommutativität folgt aus \myref{Satz 2}. Sei $n = \prod_{i=1}^{r} p_i^{\alpha_i}$ die Primzahlzerlegung von $n$, dann ist nach \myref{Satz 2}
+\[
+T(n) = \prod_{i=1}^{r} T(p_i^{\alpha_i})
+\]
+ferner gilt
+\[
+T(p) T(p^\nu) = T(p^{\nu+1}) + p^{k-1} T(p^{k-1})
+\]
+also erzeugen die $T(p)$ mit $p$ prim bereits die gesamte Algebra. (Nutze die letzte Identität, um $T(p^{2})$ als Funktion von $T(p^0) = T(1) = \id_{M_k}$ und $T(p^1) = T(p)$ auszudrücken. Induktiv für alle höheren Potenzen analog.)
+\end{bewe}
+
+\begin{defi}
+Sei $f \in M_k$ mit $k > 0$. Dann heißt $f$ \myemph{Hecke-Eigenform}, falls
+\begin{enumerate}
+\item $f \not \equiv 0$,
+\item $f | T(n) = \lambda (n) f$ für alle $n \in \NN$ mit $\lambda (n) \in \CC$.
+\end{enumerate}
+\end{defi}
+
+\begin{satz}
+Sei $f \in M_k$ eine Hecke-Eigenform mit $f | T(n) = \lambda (n)f$ für alle $n \in \NN$. Sei $f = \sum_{m \geq 0} a(m) q^m$. Dann gilt:
+\begin{enumerate}
+\item $a (n) = a(1) \lambda (n)$ für alle $n \in \NN$.
+\item $a(1) \neq 0$.
+\item $\lambda(m) \lambda(n) = \sum_{d \vert (m,n)} d^{k-1} \lambda(\frac {mn}{d^2})$ für alle $m,n \in \NN$. Speziell ist ...
+\end{enumerate}
+\end{satz}
+
+\begin{bewe-list}
+\item Nach \myref{Satz 1}, ii), §2 gilt
+\[
+\lambda(n) f = f | T(n) = \sum_{m \geq 0} \Bigl( \sum_{d \vert (m,n)} d^{k-1} a\bigl( \frac {mn}{d^2} \bigr) \Bigr) q^m
+\]
+Koeffizientenvergleich bei $q$ liefert:
+\[
+\lambda (n) a(1) = a(n)
+\]
+\item Angenommen, $a(1) = 0$. Dann ist mit i) auch $a(n) = 0$ für alle $n \in \NN$. Also ist $f = a(0) \in M_0 \cap M_k$ und damit $f \equiv 0$ wegen $k > 0$ nach Definition der Hecke-Eigenformen. Dies steht im Widerspruch zur Voraussetzung.
+\item Folgt aus \myref{Satz 2, § 2} und wegen $f \not \equiv 0$. Genauer:
+\[
+f | T(m) T(n) = \sum_{d \vert (m,n)} d^{k-1} f | T \bigl( \frac{mn}{d^2} \bigr) \Ra \lambda(m) \lambda(n) = \sum_{d \vert (m,n)} d^{k-1} \lambda(\frac {mn}{d^2})
+\]
+\end{bewe-list}
+
+\begin{defi}
+Man nennt $f$ eine normalisierte Hecke-Eigenform, falls $a(1) = 1$. Dies kann man durch Division durch $a(1) \neq 0$ immer erreichen.
+\end{defi}
+
+Vorsicht vor Verwechslung mit normalisierten Eisensteinreihen, die auch Hecke-Eigenformen sind!
+
+\emph{Frage:} Gibt es immer Hecke-Eigenformen? Gibt es sogar eine Basis von Hecke-Eigenformen?
+
+\begin{beme}
+\item Man zeigt \glqq{}leicht\grqq{}, dass die Eisensteinreihe $E_k = 1 - \frac{2k}{B_k} \sum_{n \geq 1} \sigma_{k-1} (n) q^n$ mit $\sigma_{k-1} (n) = \sum_{d \vert n} d^{k-1}$ eine Hecke-Eigenform ist mit $E_k | T(n) = \sigma_{k-1}(n) E_k$ für alle $n \geq 1$.
+
+In der Tat: Der konstante Term von $E_k | T(n)$ ist gleich $\sigma_{k-1}(n)$, siehe \myref{Satz 1, § 2}. Die höheren Terme ergeben sich nach demselben Satz als 
+\[
+- \frac{2k}{B_k} \sum_{d \vert (m,n)} d^{k-1} \sigma_{k-1} (\frac{mn}{d^2}) (siehe unten) = - \frac{2k}{B_k} \sigma_{k-1}(m) \sigma_{k-1} (n)
+\]
+Man zeigt induktiv für beliebiges $m,n \in \NN$ (Übungsaufgabe; hängt überhaupt nicht von $k$ ab, geht auch mit $\alpha \in \RR$ statt $k-1$. Allerdings ergibt sich nur für $\alpha = k-1$ eine Interpretation in der Theorie der Modulformen):
+\[
+\sum_{d \vert (m,n)} d^{k-1} \sigma_{k-1} (\frac{mn}{d^2}) = \sigma_{k-1}(m) \sigma_{k-1} (n)
+\]
+\item Es ist $S_{12} = \CC \Delta$, wobei $\Delta = \frac {1}{1728} (E_4^3 - E_6^2) = \sum_{n \geq 1} \tau(n) q^n$ mit $\tau (n) \in \ZZ, \tau(1) = 1$. Daher ist $\Delta$ eine normalisierte Hecke-Eigenform in $S_{12}$. Insbesondere ist
+\begin{align*}
+\tau(m) \tau(n) &= \sum_{d \vert (m,n)} d^{11} \tau (\frac {mn}{d^2} )\\
+\tau(mn) &= \tau(m) \tau(n) \mathrm{für} (m,n) = 1\\
+\tau(p) \tau(p^\nu) &= \tau(p^{\nu+1}) + p^{11} \tau(p^{\nu-1})
+\end{align*}
+\item Man kann $S_k$ mit einem Skalarprodukt versehen, derart dass die $T(n)$ hermitesch bezüglich dieses Skalarproduktes sind. Dann folgt aus der Linearen Algebra bereits, dass die $T(n)$ \emph{simultan} diagonalisierbar sind. Daher existiert eine Basis von Hecke-Eigenformen.
+\end{beme}
+
+\chapter{Das Petersson'sche Skalarprodukt}
+\section{Invariantes Maß und Skalarprodukt}
+
+\emph{Ziel:} Definition eines \glqq{}natürlichen\grqq{} Skalarprodukts auf $S_k$. Hierzu benötigt man zunächst ein $\Gamma(1)$-invariantes Maß auf $\RR^2$.
+
+\begin{defi}
+Für $z = x + iy \in \HH$ setze man
+\[
+\opd \omega(z) := \frac {\opd x \opd y}{y^2}
+\]
+Dann gilt für alle $M \in \SL_2(\RR)$
+\[
+\opd \omega(M \circ z) = \opd \omega(z) 
+\]
+d.h. $\opd \omega(z)$ ist $\SL_2(\RR)$-invariant.
+\end{defi}
+
+\begin{bewe}
+Es gilt $\opd \omega(z) = \frac {i}{2y^2} \opd z \conj{\opd z}$. Denn
+\[
+\opd z \conj{\opd z} = (\opd x + i \opd y)(\opd x - i \opd y) = \opd x \opd x - i \opd x \opd y + i \opd y \opd x + \opd y \opd y = 0 - i \opd x \opd y - i \opd x \opd y + 0 = -2i \opd x \opd y
+\]
+Sei nun $M = \abcd \in \SL_2\RR$, dann ist
+\[
+\opd \omega(M \circ z) = \frac {i}{2 (\Im M \circ z)^2} \opd (M \circ z) \conj{\opd (M \circ z)} = \frac {i}{2 \frac{y^2}{\abs{cz+d}^4}} \frac{\opd z}{(cz+d)^2} \conj{\frac {\opd z} {(cz+d)^2}}
+\]
+Mit
+\[
+\frac {\opd (M \circ z)}{\opd z} = \frac {\opd \frac{az + b}{cz + d}}{\opd z} = \frac {a(cz+d) - (az+b)d}{(cz+d)^2} = \frac{1}{(cz+d)^2}
+\]
+ist das obige gleich
+\[
+= \frac {i}{2 \frac{y^2}{\abs{cz+d}^4}} \frac{\opd z}{(cz+d)^2} \frac {\conj{\opd z}} {\conj{(cz+d)^2}} = \frac{i}{2\frac{y^2}{\abs{cz+d}^4}} \cdot \frac {1}{\abs{cz+d}^4} \cdot \opd z \conj{\opd z} = \frac {i}{2y^2} \opd z \conj{\opd z} = \opd \omega(z)
+\]
+\end{bewe}
+
+\emph{Ansatz:} $f, g \in S_k$, setze:
+\[
+<f,g> := \int_{\closure{\mathcal F}} y^k f(z) \conj{g(z)} \opd \omega
+\]
+wobei $\mathcal F$ ein Fundamentalbereich ist.
+
+
+
+
+
+
+
+
+
+
+
+
+
