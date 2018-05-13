@@ -51,24 +51,22 @@ Es gilt
 
 Allgemein $1+q+\ldots q^{N-1} = \frac{q^n-1}{q-1} = 0$, falls $q\not=1$ und $q^N = 1$, wende dies an mit $q=e^{2\pi i \frac{m}{d}}$, $N=d$.
 % einschub ende
-
-Damit erhalten wir
+Damit erhalten wir, wobei zu beachten ist, dass die Vertauschung wegen absoluter Konvergenz gerechtfertigt sind
 \begin{align*}
 	f|T(n)
 	&= n^{k-1} \sum_{\substack{m \geq 0 \\ m \equiv 0 \bmod d \\ d|n,\ d > 0}} d^{-k+1} a(m) e^{2\pi i\frac{mn}{d^2}z} &&(m\mapsto md) \\
-	&= \sum_{\substack{m \geq 0\\ d|n,\ d>0}} \Bigl(\frac{n}{d}\Bigr)^{k-1} a(md) e^{2\pi i \frac{mn}{d}z} &&(d\mapsto\frac{n}{d}) \\
+	&= \sum_{\substack{m \geq 0\\ d|n,\ d>0}} \Bigl(\frac{n}{d}\Bigr)^{k-1} a(md) e^{2\pi i \frac{mn}{d}z} &&\Bigl(d\mapsto\frac{n}{d}\Bigr) \\
 	&= \sum_{\substack{m \geq 0 \\ d|n,\ d>0}} d^{k-1} a\Bigl(\frac{mn}{d}\Bigr) e^{2\pi imdz} && (md\mapsto m) \\
 	&= \sum_{\substack{m\geq 0 \\ m\equiv 0 \bmod d \\ d|n,\ d>0}} d^{k-1} a\Bigl(\frac{mn}{d^2}\Bigr) e^{2\pi imz} \\
-	&= \sum_{m\geq 0} \Biggl(\sum_{d|m, d|n} d^{k-1} a\biggl(\frac{mn}{d^2}\biggr)\Biggr) q^m
+	&= \sum_{m\geq 0} \Biggl(\sum_{d|m,\ d|n} d^{k-1} a\biggl(\frac{mn}{d^2}\biggr)\Biggr) q^m
+	\,.
 \end{align*}
-
-Man beachte: alle Vertauschungen sind gerechtfertigt wegen absoluter Konvergenz.
 \end{bewe-list}
 
 \begin{satz}
 Für alle $m$, $n \in \NN$ gilt
 \[
-	T(m) T(n) = \sum_{d | (m,n)} d^{k-1} a \left( \frac {mn}{d^2} \right)
+	T(m) T(n) = \sum_{d | (m,n)} d^{k-1} T \left( \frac {mn}{d^2} \right)
 \]
 Speziell gilt (vergleiche mit Ramanujan-$\tau$-Funktion):
 \begin{enumerate}
@@ -89,22 +87,22 @@ Beachte dass (ii) äquivalent ist zur Identität
 	Benutze \autoref{lemma:Mn_schoen}, dann gilt
 	\begin{align*}
 		f|T(m)T(n)
-		&= (mn)^{\frac{k}{2}-1} \sum_{\substack{ad=m \\ d>0,\ b\bmod d}} \sum_{\substack{a'd' = n\\ d'>0,\ b' \bmod d'}} f|_k \mymat ab0d \mymat{a'}{b'}{0}{d'} \\
-		&= (mn)^{\frac{k}{2}-1} \sum_{\substack{ad=m \\ d>0,\ b\bmod d}} \sum_{\substack{a'd' = n\\ d'>0,\ b' \bmod d'}} f|_k \mymat{aa'}{ab'+bd'}{0}{dd'}
+		&= (mn)^{\frac{k}{2}-1} \sum_{\substack{ad=m \vphantom{d'} \\ d>0,\ \vphantom{b'}b\bmod d}} \Biggl(\sum_{\substack{a'd' = n\\ d'>0,\ b' \bmod d'}} f|_k \mymat ab0d \mymat{a'}{b'}{0}{d'} \Biggr) \\
+		&= (mn)^{\frac{k}{2}-1} \sum_{\substack{ad=m \vphantom{d'} \\ d>0,\ \vphantom{b'}b\bmod d}} \Biggl(\sum_{\substack{a'd' = n\\ d'>0,\ b' \bmod d'}} f|_k \mymat{aa'}{ab'+bd'}{0}{dd'} \Biggr)
 		\,.
 	\end{align*}
 	Durchläuft $d$ alle positiven Teiler von $m$ und $d'$ alle positiven Teiler von $n$, so durchläuft $D := dd'$ alle positiven Teiler von $mn$, denn $\ggt(m, n) = 1$.
 	Setzt man $A := aa'$, so gilt dann $AD = mn$.
-	Ferner gilt: Durchläuft $b$ ein volles Restsystem $\mod d$ und $b'$ ein solches $\mod d'$, so durchläuft $B = ab+bd'$ ein volles Restsystem $\mod dd'$.
-	In der Tat genügt es zu zeigen, dass diese Zahlen inkongruent $\bmod dd'$ sind (denn dann sind dies genau $dd'$ paarweise inkongruente Zahlen).
-	
+	Ferner gilt: Durchläuft $b$ ein volles Restsystem $\bmod d$ und $b'$ ein solches $\mod d'$, so durchläuft $B = ab+bd'$ ein volles Restsystem $\bmod dd'$, denn in der Tat genügt es zu zeigen, dass diese Zahlen inkongruent $\bmod dd'$ sind, denn dann sind dies genau $dd'$ paarweise inkongruente Zahlen.
 	Angenommen
 	\[
 		ab_1' + b_1d' \equiv ab_2' +b_2d' \mod dd'
+		\,,
 	\]
 	dann gilt
 	\[
 		a(b_1' - b_2') \equiv d(b_2 - b_1) \mod dd'
+		\,.
 	\]
 	Dies impliziert $a(b_1'- b_2') \equiv 0 \mod d'$. Aber $\ggt(a, d') = 1$, denn $a|m$ und $d'|n$ und $\ggt(m, n) = 1$ nach Voraussetzung.
 	Also folgt $b_1' \equiv b_2' \mod d'$, also $b_1' = b_2'$.
@@ -115,11 +113,15 @@ Beachte dass (ii) äquivalent ist zur Identität
 		f|T(m)T(n)
 		= (mn)^{\frac{k}{2}-1} \sum_{\substack{AD = mn\\ D > 0,\ B \bmod D}} f|_k \mymat AB0D
 		= f|_kT(mn)
+		\,.
 	\]
 	
 	
 	2. Schritt: Beweis von (ii):
-	Es gilt nach \autoref{lemma:Mn_schoen}: \[f|T(p) = p^{\frac{k}{2}-1} \Bigl(f|_k \mymat p001\Bigr) + \sum_{\mu \bmod p} f|_k \mymat 1\mu0p\]
+	Es gilt nach \autoref{lemma:Mn_schoen}:
+	\[
+		f|T(p) = p^{\frac{k}{2}-1} \Bigl(f|_k \mymat p001 + \sum_{\mu \bmod p} f|_k \mymat 1\mu0p \Bigr)
+	\]
 	und
 	\[
 		f|T(p^\nu) = (p^\nu)^{\frac{k}{2}-1} \sum_{\substack{0 \leq \beta \leq \nu \\ b \bmod p^\beta}} f|_k \mymat{p^{\nu-\beta}}b0{p^\beta}
@@ -127,39 +129,43 @@ Beachte dass (ii) äquivalent ist zur Identität
 	\]
 	
 	Dann
-	\begin{align*}
+	\begin{align}\label{eq:tptpnu}
 		f|T(p)T(p^\nu)
-		&= (p^{\nu+1})^{\frac{k}{2}-1} \biggl( \sum_{\substack{0 \leq \beta \leq \nu \\ b \bmod p^\beta}} f|_k \mymat p001 \mymat {p^{\nu-\beta}}b0{p^\beta} + \sum_{\substack{0 \leq \beta \leq \nu \\ b \bmod p^\beta}} f|_k \mymat 1\mu0p \mymat {p^{\nu-\beta}}b0{p^\beta} \biggr) \\
-		&= (p^{\nu+1})^{\frac{k}{2}-1} ( \sum_{\substack{0 \leq \beta \leq \nu\\b \bmod p^\beta}} f|_k \mymat {p^{\nu +1-\beta}}{pb}{0}{p^\beta} + \sum_{\substack{0 \leq \beta \leq \nu \\ b \bmod p^\beta, \mu(p)}} f|_k \begin{smallmatrix}
-		p^{nu-\beta} & b+\mu p^\beta \\ 0 & p^{\beta+1}
-		\end{smallmatrix}) \tag{*}
-	\end{align*}
-	Betrache 2. Summe in \myref{(*)}:
+		&= (p^{\nu+1})^{\frac{k}{2}-1} \biggl( \sum_{\substack{0 \leq \beta \leq \nu \\ b \bmod p^\beta}} f|_k \mymat p001 \mymat {p^{\nu-\beta}}b0{p^\beta} + \sum_{\substack{0 \leq \beta \leq \nu \\ b \bmod p^\beta \\ \mu\bmod p}} f|_k \mymat 1\mu0p \mymat {p^{\nu-\beta}}b0{p^\beta} \biggr) \nonumber \\
+		&= (p^{\nu+1})^{\frac{k}{2}-1} \biggl( \sum_{\substack{0 \leq \beta \leq \nu\\b \bmod p^\beta}} f|_k \mymat {p^{\nu +1-\beta}}{pb}{0}{p^\beta} + \sum_{\substack{0 \leq \beta \leq \nu \\ b \bmod p^\beta \\ \mu \bmod p}} f|_k \mymat{p^{\nu-\beta}}{b+\mu p^\beta}0{p^{\beta+1}} \biggr)
+	\end{align}
+	Betrachte 2. Summe in \eqref{eq:tptpnu}:
 	Durchläuft $b$ ein Restsystem modulo $p^\beta$ und $\mu$ ein Restsystem modulo $p$, so durchläuft $b+\mu p^\beta$ ein solches modulo $p^{\beta+1}$ (denn insgesamt $p^{\beta+1}$ Zahlen, paarweise inkongruent modulo $p^{\beta+1}$).
 	Man sieht daher, dass die 2. Summe gleich
 	\[
-		f|T(p^{\nu+1}) - (p^{\nu+1})^{\frac{k}{2}} f|_k \begin{smallmatrix} p^{\nu+1} & 0 \\ 0 & 1 \end{smallmatrix} \,.
+		f|T(p^{\nu+1}) - (p^{\nu+1})^{\frac{k}{2}} f|_k \mymat {p^{\nu+1}}001
 	\]
+	ist.
 	
-	Betrachte 1. Summe in \myref{(*)}. Diese ist gleich
+	Betrachte 1. Summe in \eqref{eq:tptpnu}. Diese ist gleich
 	\[
-		(p^{\nu + 1})^{\frac{k}{2}-1} (f|_k\begin{smallmatrix} p^{\nu+1} & 0 \\ 0 & 1 \end{smallmatrix} + \sum_{1 \leq \beta \leq \nu, b(p^\beta)} f|_k \begin{smallmatrix} p^{\nu+1-\beta} & pb \\ 0 & p^\beta \end{smallmatrix} =
+		(p^{\nu + 1})^{\frac{k}{2}-1} \biggl(f|_k \mymat{p^{\nu+1}}001 + \sum_{\substack{1 \leq \beta \leq \nu \\ b \bmod p^\beta}} f|_k \mymat{p^{\nu+1-\beta}}{pb}0{p^\beta} \biggr)
+		\,.
 	\]
 	Man erhält also
 	\[
-		f|_k T(p)T(p')
-		= F|T(p^{\nu+1}) + (p^{\nu+1})^{\frac{k}{2}-1} \underbrace{\sum_{1 \leq \beta \leq \nu, b(p^\beta)} f|_k \begin{smallmatrix} p & 0 \\ 0 & p \end{smallmatrix} |_k \begin{smallmatrix} p^{\nu-\beta} & b \\ 0 & p^{\beta-1} \end{smallmatrix}
+		f|_k T(p)T(p^\nu)
+		= f|T(p^{\nu+1}) + (p^{\nu+1})^{\frac{k}{2}-1} \underbrace{\sum_{\substack{1 \leq \beta \leq \nu\\ b \bmod p^\beta}} f|_k \mymat p00p |_k \mymat {p^{\nu-\beta}}b0{p^{\beta-1}}
 		}_{=: R}
 	\]
 	In $R$ ersetze $\beta$ durch $\beta + 1$, erhalte
 	\[
-		R = \sum_{0 \leq \beta \leq \nu-1, b(p^{\beta+1})} f|_k \begin{smallmatrix} p^{\nu-1-\beta} & b \\ 0 & p^{\beta+1} \end{smallmatrix}
-		% Man setze $b = \tilde b + \mu p^\beta$ wobei $\mu$ modulo $p$ und $\tilde b$ modulo $p^\beta$ läuft
-		= \sum_{ 0 \leq \beta \leq \nu-1, \tilde b(p^\beta)} f|_k \begin{smallmatrix} 1 & \mu \\ 0 & 1 \end{smallmatrix}|_k \begin{smallmatrix} p^{\nu-1-\beta} & \tilde b \\ 0 & p^\beta \end{smallmatrix}
+		R = \sum_{\substack{0 \leq \beta \leq \nu-1\\ b \bmod p^{\beta+1} }} f|_k \mymat {p^{\nu-1-\beta}}b0{p^{\beta}}
+		\,,
 	\]
-	da $f$ Periode 1 hat, erhält man $(p^{\nu+1})^{\frac{k}{2}-1}R$
+	Man setze $b = \tilde b + \mu p^\beta$ wobei $\mu$ modulo $p$ und $\tilde b$ modulo $p^\beta$ läuft
 	\[
-	 	(p^{\nu+1})^{\frac{k}{2}-1} p \sum_{0 \leq \beta \leq \nu-1, \tilde b(p^\beta)} f|_k \begin{smallmatrix} p^{\nu-1-\beta} & \tilde b \\ 0 & p^\beta \end{smallmatrix}
-	 	= p^{k-1} T(p^{\nu-1})
+		R = \sum_{\substack{ 0 \leq \beta \leq \nu-1\\ \tilde b \bmod p^\beta \\ \mu \bmod p}} f|_k \mymat 1\mu01 |_k \mymat {p^{\nu-1-\beta}}{\tilde b}0{p^\beta}
+	\]
+	da $f$ Periode 1 hat, erhält man
+	\[
+		(p^{\nu+1})^{\frac{k}{2}-1}R
+	 	= p^{k-1}(p^{\nu-1})^{\frac{k}{2}-1} \sum_{\substack{0 \leq \beta \leq \nu-1 \\ \tilde b \bmod p^\beta}} f|_k \mymat {p^{\nu-1-\beta}}{\tilde b}0{p^\beta}
+	 	= p^{k-1} f|_kT(p^{\nu-1})
 	\]
 \end{bewe}
