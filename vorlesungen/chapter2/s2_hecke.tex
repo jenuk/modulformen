@@ -148,7 +148,7 @@ f | T(n) := n^{\frac k2 - 1} \sum_{M \in \linksmodulo{\Gamma(1)}{\mathcal M (n)}
 \]
 \end{defi}
 
-\begin{satz-list}
+\begin{satz-list}\label{TnEndoMk}
 \item Durch $T(n)$ wird eine lineare Abbildung $M_k \to M_k$ definiert. Diese lässt $S_k$ invariant (gemeint ist: Spitzenformen werden auf Spitzenformen geschickt). Man nennt $T(n)$ den $n$-ten \myemph{Hecke-Operator}.
 \item Ist $f = \sum_{m \geq 0} a(m) q^m \in M_k$, so gilt
 \[
@@ -180,7 +180,7 @@ p^{k-1} a \left(\frac mp \right) & \text{ falls } p | \, m
 \end{bsp}
 
 \begin{bewe-list}
-\item Nach den Überlegungen in \ref{VorbemerkungHecke} wissen wir, dass $f | T(n)$ das Transformationsverhalten einer Modulform vom Gewicht $k$ besitzt. Auch ist $f | T(n)$ als Summe holomorpher Funktionen selbst holomorph auf $\HH$. Zu zeigen verbleibt noch, dass $f | T(n)$ holomorph in $\infty$ ist und den Raum $S_k$ invariant lässt. Beides folgt direkt aus Teil ii) des Satzes.
+\item Nach den Überlegungen in \autoref{VorbemerkungHecke} wissen wir, dass $f | T(n)$ das Transformationsverhalten einer Modulform vom Gewicht $k$ besitzt. Auch ist $f | T(n)$ als Summe holomorpher Funktionen selbst holomorph auf $\HH$. Zu zeigen verbleibt noch, dass $f | T(n)$ holomorph in $\infty$ ist und den Raum $S_k$ invariant lässt. Beides folgt direkt aus Teil ii) des Satzes.
 
 \item Benutze \autoref{lemma:Mn_schoen}, damit folgt
 \begin{align*}
@@ -216,7 +216,7 @@ f|T(n)
 \end{align*}
 \end{bewe-list}
 
-\begin{satz}
+\begin{satz}\label{TmTn}
 	Für alle $m$, $n \in \NN$ gilt
 	\[
 	T(m) T(n) = \sum_{d | (m,n)} d^{k-1} T \left( \frac {mn}{d^2} \right)
@@ -322,35 +322,37 @@ f|T(n)
 	= p^{k-1} f|_kT(p^{\nu-1})
 	\]
 	
-	3. Schritt: zeige durch Induktion (Übungsaufgabe), dass 
+	3. Schritt: zeige durch Induktion nach $s \in \NN$ (Übungsaufgabe), dass 
 	\[
 	T(p^\nu) T(p^s) = \sum_{\alpha = 0}^{\min \{\nu,\,s\}} (p^\alpha)^{k-1} T(p^{\nu + s - 2\alpha})
 	\,,
 	\]
-	das heißt
+	was sich mit Teilern der Form $d = p^\alpha$ umschreiben lässt zu
 	\[
-	T(p^\nu) T(p^s) = \sum_{d \vert (p^\nu, p^s)} d^{k-1} T\Bigl(\frac{p^{\nu + s}}{d^2}\Bigr), \quad d = p^\alpha
+	T(p^\nu) T(p^s) = \sum_{d \vert (p^\nu, p^s)} d^{k-1} T\Bigl(\frac{p^{\nu + s}}{d^2}\Bigr)
 	\,.
 	\]
 	
-	4. Schritt: der allgemeine Fall! Induktion über die verschiedenen Primteiler von $m$. Sei $m = p^\nu m'$, $n = p^s n'$ mit $p \nmid m', p \nmid n'$. Dann folgt mit i), dass
+	4. Schritt: der allgemeine Fall! Induktion über die verschiedenen Primteiler von $m$. Sei $m = p^r m'$, $n = p^s n'$ mit $p \nmid m', p \nmid n'$. Dann folgt mit i), dass
 	\begin{align*}
 	T(m)T(n)
-	&= T(m'p^\nu) T(n'p^s)
+	&= T(m'p^r) T(n'p^s)
 	= T(m')T(p^r)T(n')T(p^s) \\
-	&= T(m') T(n') T(p^r) T(p^s)
+	&= T(m')T(n') T(p^r) T(p^s)
+	\,.
 	\end{align*}
-	und mit Induktion und dem dritten Schritt ist das
+	Wendet man dieses Argument nun induktiv auf $T(m')T(n')$ und weitere gemeinsame Primteiler an, so kann man davon ausgehen, dass $m', n'$ nach endlich vielen Iterationen teilerfremd sind. Dann kann man mit i) und Schritt 3 schreiben
 	\[
-	= \biggl(\sum_{d \vert (m',n')} d^{k-1} T\Bigl(\frac {m'n'}{d^2}\Bigr)\biggr) \biggl(\sum_{t \vert (p^r, p^s)} t^{k-1} T(\frac{p^rp^s}{t^2}) \biggr)
+	T(m)T(n) = \biggl(\sum_{d \vert (m',n')} d^{k-1} T\Bigl(\frac {m'n'}{d^2}\Bigr)\biggr) \biggl(\sum_{t \vert (p^r, p^s)} t^{k-1} T(\frac{p^rp^s}{t^2}) \biggr)
+	\,,
 	\]
-	und nach Schritt 1
+	was sich nach erneuter Anwendung von i) vereinfacht zu
 	\[
-	= \sum_{\substack{d \vert (m',n')\\t \vert (p^r, p^s)}} (dt)^{k-1} T\Bigl(\frac {p^rm'p^sn'}{(dt)^2}\Bigr)
+	T(m)T(n) = \sum_{\substack{d \vert (m',n')\\t \vert (p^r, p^s)}} (dt)^{k-1} T\Bigl(\frac {p^rm'p^sn'}{(dt)^2}\Bigr)
 	\]
-	und mit $D = dt$
+	und mit $D = dt$ schließlich zu
 	\[
-	= \sum_{D \vert (m,n)} D^{k-1} T\Bigl(\frac {mn}{D^2}\Bigr)
+	T(m)T(n) = \sum_{D \vert (m,n)} D^{k-1} T\Bigl(\frac {mn}{D^2}\Bigr)
+	\,.
 	\]
 \end{bewe}
-

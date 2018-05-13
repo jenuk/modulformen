@@ -1,35 +1,3 @@
-Fortsetzung Satz 2 nach Beweis von i) und ii):
-
-Im dritten Schritt zeigt man (Übungsaufgabe) durch Induktion nach $s \in \NN$, dass 
-\[
-T(p^\nu) T(p^s) = \sum_{\alpha = 0}^{\min \Set {\nu, s}} (p^\alpha)^{k-1} T(p^{\nu + s - 2\alpha})
-\,,
-\]
-was sich mit Teilern der Form $d = p^\alpha$ umschreiben lässt zu
-\[
-T(p^\nu) T(p^s) = \sum_{d \vert (p^\nu, p^s)} d^{k-1} T(\frac{p^{\nu + s}}{d^2})
-\,.
-\]
-Im abschließenden vierten Schritt behandelt man nun den allgemeinen Fall mithilfe von Induktion über die verschiedenen Primteiler von $m$. Für beliebiges $n \in N$ und einen solchen Primteiler $p$ von $m$ sei $m = p^\nu m', n = p^s n'$ mit $p \not \vert m', p \not \vert n'$. Dann lässt sich $T(m)T(n)$ nach i) umschreiben zu
-\[
-T(m)T(n) = T(m'p^\nu) T(n'p^s) = T(m')T(p^r)T(n')T(p^s) = T(m') T(n') T(p^r) T(p^s)
-\,.
-\]
-Verfährt man nun analog mit $T(m')T(n')$, so sind $m', n'$ nach endlich vielen Iterationen teilerfremd und man kann wieder i) anwenden:
-\[
-T(m)T(n) = \sum_{d \vert (m',n')} d^{k-1} T\left(\frac {m'n'}{d^2}\right) \sum_{t \vert (p^r, p^s)} t^{k-1} T\left(\frac{p^rp^s}{t^2}\right)
-\,,
-\]
-was sich nach erneuter Anwendung von i) vereinfacht zu
-\[
-T(m)T(n) = \sum_{\substack{d \vert (m',n')\\t \vert (p^r, p^s)}} (dt)^{k-1} T\left(\frac {p^rm'p^sn'}{(dt)^2}\right)
-\]
-und mit $D = dt$ schließlich zu 
-\[
-T(m)T(n) = \sum_{D \vert (m,n)} D^{k-1} T\left(\frac {mn}{D^2}\right)
-\,.
-\]
-
 \section{Folgerungen}
 
 \begin{satz}
@@ -37,12 +5,12 @@ Die Hecke-Operatoren $T(n)$ für $n \in \NN$ erzeugen eine kommutative $\CC$-Alg
 \end{satz}
 
 \begin{bewe}
-Die Kommutativität folgt direkt aus \myref{Satz 2}. Wir zeigen noch, dass für beliebiges $n \in \NN$ der Hecke-Operator $T(n)$ durch Hecke-Operatoren der Form $T(p)$ mit $p$ prim darstellbar ist. Sei dazu $n = \prod_{i=1}^{r} p_i^{\alpha_i}$ die Primzahlzerlegung von $n$, dann ist nach \myref{Satz 2}, i)
+Die Kommutativität folgt direkt aus \autoref{TmTn}. Wir zeigen noch, dass für beliebiges $n \in \NN$ der Hecke-Operator $T(n)$ durch Hecke-Operatoren der Form $T(p)$ mit $p$ prim darstellbar ist. Sei dazu $n = \prod_{i=1}^{r} p_i^{\alpha_i}$ die Primzahlzerlegung von $n$, dann ist nach \autoref{TmTn}, i)
 \[
 T(n) = \prod_{i=1}^{r} T(p_i^{\alpha_i})
 \,.
 \]
-Ferner gilt nach \myref{Satz 2}, ii)
+Ferner gilt nach \autoref{TmTn}, ii)
 \[
 T(p) T(p^\nu) = T(p^{\nu+1}) + p^{k-1} T(p^{k-1})
 \,,
@@ -79,14 +47,14 @@ sowie für $\nu \geq 1$ und $p$ prim
 \end{satz}
 
 \begin{bewe-list}
-\item Nach \myref{Satz 1}, ii), §2 gilt
+\item Nach \autoref{TnEndoMk}, ii) gilt
 \[
 \lambda(n) f = f | T(n) = \sum_{m \geq 0} \Bigl( \sum_{d \vert (m,n)} d^{k-1} a\bigl( \frac {mn}{d^2} \bigr) \Bigr) q^m
 \,.
 \]
 Koeffizientenvergleich bei $q^1$ liefert sofort $\lambda (n) \cdot a(1) = a(n)$.
 \item Angenommen, $a(1) = 0$. Dann ist nach i) auch $a(n) = 0$ für alle $n \in \NN$. Somit ist $f = a(0)$ konstant und daher in $M_0$. Da für eine Hecke-Eigenform $f \in M_k$ nach Definition $k > 0$ gefordert wird, folgt aus $f \in M_0 \cap M_k$ bereits $f \equiv 0$, was im Widerspruch zur Definition der Hecke-Eigenformen steht.
-\item Folgt aus \myref{Satz 2, § 2} und wegen $f \not \equiv 0$. Genauer gilt
+\item Folgt aus \autoref{TmTn} und wegen $f \not \equiv 0$. Genauer gilt
 \[
 f | T(m) T(n) = \sum_{d \vert (m,n)} d^{k-1} f | T \left( \frac{mn}{d^2} \right) \Ra \lambda(m) \lambda(n) = \sum_{d \vert (m,n)} d^{k-1} \lambda\left(\frac {mn}{d^2}\right)
 \,.
@@ -109,7 +77,7 @@ E_k = 1 - \frac{2k}{B_k} \sum_{n \geq 1} \sigma_{k-1} (n) q^n \quad \text{ mit }
 \]
 eine Hecke-Eigenform ist mit $E_k | T(n) = \sigma_{k-1}(n) E_k$ für alle $n \geq 1$.
 
-In der Tat: Der konstante Term von $E_k | T(n)$ ist gleich $\sigma_{k-1}(n)$, siehe \myref{Satz 1, § 2}. Die höheren Terme ergeben sich nach demselben Satz als 
+In der Tat: Der konstante Term von $E_k | T(n)$ ist gleich $\sigma_{k-1}(n)$, siehe \ref{TnEndoMk}. Die höheren Terme ergeben sich nach demselben Satz als 
 \[
 - \frac{2k}{B_k} \sum_{d \vert (m,n)} d^{k-1} \sigma_{k-1} \left(\frac{mn}{d^2}\right) = - \frac{2k}{B_k} \sigma_{k-1}(m) \sigma_{k-1}(n)
 \]
@@ -127,49 +95,3 @@ für beliebiges $\alpha \in \NN$. Diese Identität lässt sich leicht induktiv z
 \end{align*}
 \item Man kann $S_k$ mit einem Skalarprodukt versehen, derart dass die $T(n)$ hermitesch bezüglich dieses Skalarproduktes sind. Dann folgt aus der Linearen Algebra bereits, dass die $T(n)$ \emph{simultan} diagonalisierbar sind. Dies garantiert die Existenz einer Basis von Hecke-Eigenformen.
 \end{beme-list}
-
-\chapter{Das Petersson'sche Skalarprodukt}
-\section{Invariantes Maß und Skalarprodukt}
-
-\emph{Ziel:} Definition eines \glqq{}natürlichen\grqq{} Skalarprodukts auf $S_k$. Hierzu benötigt man zunächst ein $\Gamma(1)$-invariantes Maß auf $\RR^2$.
-
-\begin{defi}
-Für $z = x + iy \in \HH$ setze man
-\[
-\opd \omega(z) := \frac {\opd x \opd y}{y^2}
-\]
-Dann gilt für alle $M \in \SL_2(\RR)$
-\[
-\opd \omega(M \circ z) = \opd \omega(z) 
-\]
-d.h. $\opd \omega(z)$ ist $\SL_2(\RR)$-invariant.
-\end{defi}
-
-\begin{bewe}
-Es gilt $\opd \omega(z) = \frac {i}{2y^2} \opd z \conj{\opd z}$, denn
-\begin{align*}
-\opd z \conj{\opd z} &= (\opd x + i \opd y)(\opd x - i \opd y)\\
-&= \opd x \opd x - i \opd x \opd y + i \opd y \opd x + \opd y \opd y\\
-&= 0 - i \opd x \opd y - i \opd x \opd y + 0\\
-&= -2i \opd x \opd y\,.
-\end{align*}
-Sei nun $M = \abcd \in \SL_2(\RR)$, dann gilt unter Verwendung von
-\[
-\frac {\opd (M \circ z)}{\opd z} = \frac {\opd \frac{az + b}{cz + d}}{\opd z} = \frac {a(cz+d) - (az+b)c}{(cz+d)^2} = \frac{1}{(cz+d)^2}
-\]
-die Behauptung nach
-\begin{align*}
-\opd \omega(M \circ z) &= \frac {i}{2 (\Im \left(M \circ z)^2\right)} \opd (M \circ z) \conj{\opd (M \circ z)}\\
-&= \frac {i}{2 \frac{y^2}{\abs{cz+d}^4}} \frac{\opd z}{(cz+d)^2} \conj{\frac {\opd z} {(cz+d)^2}}\\
-&= \frac {i}{2 \frac{y^2}{\abs{cz+d}^4}} \frac{\opd z}{(cz+d)^2} \frac {\conj{\opd z}} {\conj{(cz+d)^2}}\\
-&= \frac{i \abs{cz+d}^4}{2 y^2} \cdot \frac {1}{\abs{cz+d}^4} \cdot \opd z \conj{\opd z}\\
-&= \frac {i}{2y^2} \opd z \conj{\opd z}\\
-&= \opd \omega(z)\,.
-\end{align*}
-\end{bewe}
-
-\emph{Ansatz:} $f, g \in S_k$, setze:
-\[
-<f,g> := \int_{\closure{\mathcal F}} y^k f(z) \conj{g(z)} \opd \omega
-\]
-wobei $\mathcal F$ ein Fundamentalbereich ist.
