@@ -1,29 +1,38 @@
 Zum Satz 2(
 \[
-T(m)T(n) = \sum_{d \vert (m,n)} d^{k-1} ...
+	T(m)T(n) = \sum_{d \vert (m,n)} d^{k-1} ...
 \]
-). Gemacht: Schritt 1 und 2 (das waren die beiden insbesondere-Teile i) und ii)). Im dritten Schritt zeigt man durch Induktion, dass 
+). Gemacht: Schritt 1 und 2 (das waren die beiden insbesondere-Teile i) und ii)).
+
+3. Schritt: zeige durch Induktion (Übungsaufgabe), dass 
 \[
-T(p^\nu) T(p^s) = \sum_{\alpha = 0}^{\min \Set {\nu, s}} (p^\alpha)^{k-1} T(p^{\nu + s - 2\alpha})
-\], d.h.
-\[
-T(p^\nu) T(p^s) = \sum_{d \vert (p^\nu, p^s)} d^{k-1} T(\frac{p^{\nu + s}}{d^2}), \quad d = p^\alpha
-\] (Übungsaufgabe).
-Der vierte Schritt ist der allgemeine Fall! Induktion über die verschiedenen Primteiler von $m$. Sei $m = p^\nu m', n = p^s n'$ mit $p \not \vert m', p \not \vert n'$. Dann nach i)
-\[
-T(m)T(n) = T(m'p^\nu) T(n'p^s) = T(m')T(p^r)T(n')T(p^s) = T(m') T(n') T(p^r) T(p^s)
+	T(p^\nu) T(p^s) = \sum_{\alpha = 0}^{\min \{\nu,\,s\}} (p^\alpha)^{k-1} T(p^{\nu + s - 2\alpha})
+	\,,
 \]
+das heißt
+\[
+	T(p^\nu) T(p^s) = \sum_{d \vert (p^\nu, p^s)} d^{k-1} T\Bigl(\frac{p^{\nu + s}}{d^2}\Bigr), \quad d = p^\alpha
+	\,.
+\]
+
+4. Schritt: der allgemeine Fall! Induktion über die verschiedenen Primteiler von $m$. Sei $m = p^\nu m'$, $n = p^s n'$ mit $p \nmid m', p \nmid n'$. Dann folgt mit i), dass
+\begin{align*}
+	T(m)T(n)
+	&= T(m'p^\nu) T(n'p^s)
+	= T(m')T(p^r)T(n')T(p^s) \\
+	&= T(m') T(n') T(p^r) T(p^s)
+\end{align*}
 und mit Induktion und dem dritten Schritt ist das
 \[
-= \sum_{d \vert (m',n')} d^{k-1} T(\frac {m'n'}{d^2} \sum_{t \vert (p^r, p^s)} t^{k-1} T(\frac{p^rp^s}{t^2}) 
+	= \biggl(\sum_{d \vert (m',n')} d^{k-1} T\Bigl(\frac {m'n'}{d^2}\Bigr)\biggr) \biggl(\sum_{t \vert (p^r, p^s)} t^{k-1} T(\frac{p^rp^s}{t^2}) \biggr)
 \]
 und nach Schritt 1
 \[
-= \sum_{\substack{d \vert (m',n')\\t \vert (p^r, p^s)}} (dt)^{k-1} T(\frac {p^rm'p^sn'}{(dt)^2})
+	= \sum_{\substack{d \vert (m',n')\\t \vert (p^r, p^s)}} (dt)^{k-1} T\Bigl(\frac {p^rm'p^sn'}{(dt)^2}\Bigr)
 \]
 und mit $D = dt$
 \[
-= \sum_{D \vert (m,n)} D^{k-1} T(\frac {mn}{D^2})
+	= \sum_{D \vert (m,n)} D^{k-1} T\Bigl(\frac {mn}{D^2}\Bigr)
 \]
 
 \section{Folgerungen}
