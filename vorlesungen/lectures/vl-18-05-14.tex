@@ -1,0 +1,92 @@
+\section*{Exkurs: Produktdarstellung der Diskriminantenfunktion}
+
+Wir wollen zeigen, dass sich
+\[
+\Delta (z) = \frac{1}{1728} \bigl( E_4^3 (z) - E_6^2 (z) \bigr)
+\]
+in die Produktdarstellung
+\[
+\Delta (z) = q \prod_{n=1}^\infty \bigl( 1 - q^n \bigr)^24
+\]
+entwickeln lässt, wobei wie üblich $q := \exp (2\pi iz)$ ist. Diese Identität wurde zuerst von Jacobi gezeigt, wird auf dem vierten Übungsblatt elementar bewiesen und hier auf einfache Art von Professor Kohnen selbst.
+
+\begin{bewe}
+1. Schritt: Wir leiten eine zur Behauptung äquivalente Aussage her. Nehme also an, die Produktdarstellung gelte, dann können wir die logarithmische Ableitung bilden (mit Produktregel auf alle Faktoren nachrechnen):
+\begin{align*}
+\frac {\Delta'}{\Delta} &= 2\pi i - 2\pi i \cdot 24 \sum_{m=1}^\infty m \frac {q^m}{1-q^m} \\
+&= 2\pi i \Bigl( 1 - 24 \sum_{m=1}^\infty \sum_{a=1}^\infty q^{ma} \Bigr) \\
+&= 2\pi i \Bigl( 1 - 24 \sum_{n=1}^\infty \sigma_1(n) q^n \,.
+\end{align*}
+Es genügt also, folgende Aussage zu zeigen:
+\[
+\tag{*}
+\frac {\Delta'}{\Delta} = 2\pi i E_2
+\,,
+\]
+wobei $E_2(z) := 1 - 24 \sum_{m=1}^\infty \sigma_1(m) q^m$. Dies ist der \ldots
+
+2.Schritt: Für $m \in \NN$ betrachte nun
+\[
+\mathcal{M}(m) := \Set{M \in \ZZ^{2 \times 2} \mid \det (M) = m}
+\,.
+\]
+\myref{Wohl bekannt} ist, dass 
+\[
+\mathcal{M}(m) = \dot{\bigcup_{\substack{ad = m\\ d > 0\\
+b (\operatorname{mod} d)}}} \Gamma(1) \cdot 
+\begin{pmatrix}
+a & b\\
+0 & d
+\end{pmatrix}
+\]
+und damit $\# \linksmodulo{\Gamma(1)}{\mathcal{M}(m)} = \sigma_1(m)$. Definiere nun einen \glqq{}multiplikativen Hecke-Operator\grqq{} $\mathfrak{M}_m$, der eine Modulform $f$ bezüglich $\Gamma(1)$ von Gewicht $k$ auf eine solche von Gewicht $\sigma_1 (m) k$ abbildet durch
+\begin{align}
+\label{Gl 1}
+\mathfrak{M}_m (f) = \prod_{\gamma \in \linksmodulo{\Gamma(1)}{\mathcal M(m)}} f |_k \gamma = \prod_{\substack{ad = m\\ d > 0\\b (\operatorname{mod} d)}} f |_k
+\begin{pmatrix}
+a & b\\
+0 & d
+\end{pmatrix}
+\,.
+\end{align}
+Dies ist wohldefiniert (argumentiere wie bei $T(m)$). Sei im Folgenden $f = \Delta$, dann gilt, dass $\mathfrak{M}_m(\Delta)$ eine Modulform vom Gewicht $12 \sigma_1(m)$ ist ohne Nullstellen in $\HH$ mit $\ord_\infty \bigl( \mathfrak{M}_m(\Delta) \bigr) = \sigma_1(m)$.
+
+Aus der Valenzformel folgt jetzt $\mathfrak{M}_m(\Delta) = c \cdot \Delta^{\sigma_1(m)}, c \in \CC^\times$. Durch logarithmisches Ableiten von \autoref{Gl 1} erhalten wir mit $f  = \Delta$ und $\mathfrak{M}_m(\Delta) = c \cdot \Delta^{\sigma_1(m)}$
+\[
+\sum_{\substack{ad = m\\ d > 0\\
+b (\operatorname{mod} d)}} d^{-2}m \frac{\Delta'}{\Delta} \Bigl( \frac{az+b}{d} \Bigr) = \sigma_1(m) \frac {\Delta'}{\Delta}
+\,
+\]
+mit
+\[
+f |_k \mymat{a}{b}{0}{d} = m^{\frac k2} d^{-k} f\bigl( \frac{az+b}{d} \bigr)
+\]
+also
+\[
+\Bigl(f |_k \mymat{a}{b}{0}{d}\Bigr)' = m^{\frac k2} d^{-k-2} m f'\bigl( \frac{az+b}{d} \bigr)
+\,.
+\]
+Es ergibt sich:
+\[
+\tag{2}
+\sum_{\substack{ad = m\\ d > 0\\
+b (\operatorname{mod} d)}} \frac{\Delta'}{\Delta} |_2 \mymat{a}{b}{0}{d} = \sigma_1(m) \frac{\Delta'}{\Delta}
+\,.
+\]
+Aus \myref{2} ergibt sich unter formaler Anwendung der Hecke-Operatoren mit $\frac{\Delta'}{\Delta} = 2\pi i \sum_{n=0}^\infty a(n) q^n$:
+\[
+\sum_{d\vert(n,m)} d a\bigl( \frac{nm}{d^2} \bigr) = \sigma_1(m) a(n) \quad \forall n,m \in \NN
+\,.
+\]
+Setze $n = 1$: 
+\[
+\tag{3}
+a(m) = \sigma_1(m) a(1)
+\,.
+\]
+Nun folgt aus $\tau(1) = 1$ und $\tau(2) = -24$ damit $a(0) = 1$ und $a(1) = -24$. Aus \myref{3} folgt nun \myref{(*)}.
+\end{bewe}
+
+
+
+
