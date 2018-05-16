@@ -1,4 +1,4 @@
-\section*{Exkurs: Produktdarstellung der Diskriminantenfunktion}
+\section{Exkurs: Produktdarstellung der Diskriminantenfunktion}
 
 \begin{satz}
 Für die Diskriminantenfunktion $\Delta$ gilt die Produktentwicklung
@@ -14,7 +14,7 @@ Ein erster Beweis dieser Identität stammt von Jacobi; ein weiterer Beweis, der 
 
 1. Schritt: Wir leiten eine zur Behauptung äquivalente Aussage her. Nehme also an, die Produktdarstellung gelte, dann können wir die logarithmische Ableitung bilden (verifiziere durch Nachrechnen unter Beachtung der Produktregel):
 \begin{align*}
-\frac {\Delta'}{\Delta} &= 2\pi i - 2\pi i \cdot 24 \sum_{m=1}^\infty \frac m {q^m}{1-q^m} \\
+\frac {\Delta'}{\Delta} &= 2\pi i - 2\pi i \cdot 24 \sum_{m=1}^\infty m \frac {q^m}{1-q^m} \\
 &= 2\pi i \Bigl( 1 - 24 \sum_{m=1}^\infty m \sum_{a=1}^\infty q^{ma} \Bigr) \\
 &= 2\pi i \Bigl( 1 - 24 \sum_{n=1}^\infty \sigma_1(n) q^n \Bigr)
 \,.
@@ -27,12 +27,12 @@ Es genügt also, folgende Aussage zu zeigen:
 \]
 wobei $E_2(z) := 1 - 24 \sum_{n=1}^\infty \sigma_1(n) q^n$. Dies ist der \ldots
 
-2.Schritt: Für $n \in \NN$ betrachte nun \myref{wie gewohnt}
+2.Schritt: Für $n \in \NN$ betrachte nun wie in \autoref{defiM(n)}
 \[
 \mathcal{M}(n) := \Set{M \in \ZZ^{2 \times 2} \mid \det (M) = n}
 \,.
 \]
-\myref{Wohl bekannt} ist, dass 
+Wohl bekannt ist aus \autoref{lemma:Mn_schoen}, dass 
 \[
 \mathcal{M}(n) = \dot{\bigcup_{\substack{ad = n\\ d > 0\\
 b (\operatorname{mod} d)}}} \Gamma(1) \cdot 
@@ -41,13 +41,13 @@ a & b\\
 0 & d
 \end{pmatrix}
 \]
-und damit $\# \linksmodulo{\Gamma(1)}{\mathcal{M}(n)} = \sigma_1(n)$. Definiere nun einen \glqq{}multiplikativen Hecke-Operator\grqq{} $\mathfrak{M}_n$, der eine Modulform $f$ bezüglich $\Gamma(1)$ von Gewicht $k$ auf eine solche von Gewicht $\sigma_1 (n) \cdot k$ abbildet durch
+und damit $\# \linksmodulo{\Gamma(1)}{\mathcal{M}(n)} = \sigma_1(n)$. Definiere nun einen \glqq{}multiplikativen Hecke-Operator\grqq{} $\mathfrak{M}_n$, der eine Modulform $f$ vom Gewicht $k$ bezüglich $\Gamma(1)$ auf eine solche von Gewicht $\sigma_1 (n) \cdot k$ abbildet durch
 \[
 \label{Gl 1}\tag{1}
 \mathfrak{M}_n (f) := \prod_{\gamma \in \linksmodulo{\Gamma(1)}{\mathcal M(n)}} f |_k \gamma = \prod_{\substack{ad = n\\ d > 0\\b (\operatorname{mod} d)}} f |_k \mymat{a}{b}{0}{d}
 \,.
 \]
-Dies ist wohldefiniert (argumentiere \myref{wie bei} $T(n)$). Wendet man dies auf $f = \Delta$ an, dann ist $\mathfrak{M}_n(f) = \mathfrak{M}_n(\Delta)$ eine Modulform vom Gewicht $12 \sigma_1(n)$ ohne Nullstellen in $\HH$ und mit $\ord_\infty \bigl( \mathfrak{M}_n(\Delta) \bigr) = \sigma_1(n)$.
+Dies ist wohldefiniert (argumentiere dazu wie bei $T(n)$ in \autoref{VorbemerkungHecke}). Wendet man dies nun auf $f = \Delta$ an, dann ist $\mathfrak{M}_n(f) = \mathfrak{M}_n(\Delta)$ eine Modulform vom Gewicht $12 \sigma_1(n)$ ohne Nullstellen in $\HH$ und mit $\ord_\infty \bigl( \mathfrak{M}_n(\Delta) \bigr) = \sigma_1(n)$.
 
 Aus der Valenzformel folgt jetzt $\mathfrak{M}_n(\Delta) = c \cdot \Delta^{\sigma_1(n)}$ für ein $c \in \CC^\times$. Durch logarithmisches Ableiten beider Seiten von \autoref{Gl 1} erhalten wir mit $f  = \Delta$ und $\mathfrak{M}_n(\Delta) = c \cdot \Delta^{\sigma_1(n)}$, dass
 \[
@@ -64,7 +64,7 @@ ist für beliebiges $f \colon \HH \to \CC$ gegeben durch
 \Bigl(f |_k \mymat{a}{b}{0}{d}\Bigr)' = n^{\frac k2} d^{-k} \frac ad f' \Bigl( \frac{az+b}{d} \Bigr) = n^{\frac k2} d^{-k-2} n f'\Bigl( \frac{az+b}{d} \Bigr)
 \,.
 \]
-Setzt man $\frac{\Delta'}{\Delta} = 2\pi i \sum_{m=0}^\infty a(m) q^m$, so ergibt sich aus \autoref{Gl 2} unter formaler Anwendung der Hecke-Operatoren für beliebige $m,n \in \NN$
+Setzt man $\frac{\Delta'}{\Delta} = 2\pi i \sum_{m=0}^\infty a(m) q^m$, so ergibt sich aus \autoref{Gl 2} unter formaler Anwendung der Hecke-Operatoren (siehe Beweis von \autoref{TnEndoMk}, ii)) für beliebige $m,n \in \NN$
 \[
 \sigma_1(n) a(m) = \sum_{d\vert(m,n)} d a\bigl( \frac{mn}{d^2} \bigr)
 \,.
@@ -75,9 +75,9 @@ Einsetzen von $m = 1$ liefert
 \]
 und garantiert damit, dass $\frac{\Delta'}{\Delta}$ von der Form
 \[
-\frac{\Delta'}{\Delta}(z) = 2\pi i \Bigl( a(0) + a(1) \sum_{n=1} \sigma_1(n) q^n \Bigr)
+\frac{\Delta'}{\Delta}(z) = 2\pi i \Bigl( a(0) + a(1) \sum_{n=1}^\infty \sigma_1(n) q^n \Bigr)
 \]
-ist. Multipliziert man nun beide Seiten mit $\Delta(z) = \sum_{m=1} \tau(m) q^m$ und beachtet dabei $\tau(1) = 1$ sowie $\tau(2) = -24$, ergibt sich durch Koeffizientenvergleich
+ist. Multipliziert man nun beide Seiten mit $\Delta(z) = \sum_{m=1}^\infty \tau(m) q^m$ und beachtet dabei $\tau(1) = 1$ sowie $\tau(2) = -24$, ergibt sich durch Koeffizientenvergleich
 \[
 a(0) = 1 \qquad \text{und} \qquad a(1) = -24
 \,,
