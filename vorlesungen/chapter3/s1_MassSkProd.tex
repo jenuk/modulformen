@@ -7,12 +7,11 @@ Für $z = x + iy \in \HH$ setze man
 \[
 \opd \omega(z) := \frac {\opd x \opd y}{y^2}
 \]
-Dann gilt für alle $M \in \SL_2(\RR)$
-\[
-\opd \omega(M \circ z) = \opd \omega(z) 
-\]
-d.h. $\opd \omega(z)$ ist $\SL_2(\RR)$-invariant.
 \end{defi}
+
+\begin{satz}
+	Die Differentialform $\opd w = \frac{\opd y \opd y}{y^2}$ für $z=x+iy\in\HH$ ist $\SL_2(\RR)$-invariant, d.\,h. $\opd w(M\circ z) = \opd w$ für alle $M\in\SL_2(\RR)$.
+\end{satz}
 
 \begin{bewe}
 Es gilt $\opd \omega(z) = \frac {i}{2y^2} \opd z \conj{\opd z}$, denn
@@ -42,3 +41,178 @@ die Behauptung nach
 <f,g> := \int_{\closure{\mathcal F}} y^k f(z) \conj{g(z)} \opd \omega
 \]
 wobei $\mathcal F$ ein Fundamentalbereich ist.
+
+\begin{beme}\label{beme:d_eta}
+	Sei $\eta = \frac{\opd z}{y}$. Dann gilt $\opd \eta = \frac{\opd x \opd y}{y^2}$, denn
+	\[
+	\opd \eta
+	= \opd \Bigl(\frac{\opd x}{y} + i\frac{\opd y}{y}\Bigr)
+	= -\frac{1}{y^2} \opd y \opd x + i\Bigl(-\frac{1}{y^2}\Bigr) \opd y \opd y
+	= \frac{\opd x \opd y}{y^2}
+	\,.
+	\]
+\end{beme}
+
+\begin{erin}
+	Eine Teilmenge $\F \subset \HH$ heißt Fundamentalbereich (für $\Gamma(1)$), falls gilt
+	\begin{enumerate}
+		\item $\F$ ist offen,
+		\item für alle $z\in\HH$ existiert $M \in \Gamma(1)$ mit $M \circ z \in \closure \F$,
+		\item sind $z_1$, $z_2 \in \F$ und $z_2 = M \circ z_1$ mit $M \in \Gamma(1)$, dann gilt $M = \pm E$ und $z_1 = z_2$.
+	\end{enumerate}
+\end{erin}
+
+\emph{Beobachtung}: Für $A \subset \CC \cong \RR^2$ ist der Rand $\partial A$ abgeschlossen, daher meßbar. Wir werden oft fordern, dass $\partial F$ eine Nullmenge ist.
+
+\begin{bsp}\label{bsp:fundamentalbereich}
+	Der Rand des Standardfundamentalbereich \[\F_1 = \Set{z = x+iy\in\HH \mid \abs x < \frac{1}{2}, \abs z > 1}\] ist eine Nullmenge.
+\end{bsp}
+
+\begin{satz}\label{satz:int_fundamentalbereich_invariant}
+	Seien $\F_1$ und $\F_2$ Fundamentalbereiche derart, dass $\partial F_1$ und $\partial F_2$ Nullmengen sind.
+	Sei $f\colon \HH \ra \CC$ meßbar und $\Gamma(1)$-invariant, d.\,h. $f(M \circ z) = f(z)$ für alle $M \in \Gamma(1)$.
+	Ferner gelte \[\int_{\closure{\F_1}} \abs f \opd w < \infty\,,\] d.\,h. also dass $\abs f$ über $\closure{\F_1}$ integrierbar ist, dies impliziert, dass $f$ über $\closure{\F_1}$ integrierbar ist.
+	
+	Dann ist $f$ auch über $\closure{F_2}$ integriebar und
+	\[
+	\int_{\closure{\F_1}} f \opd w
+	= \int_{\closure{\F_2}} f \opd w
+	\,.
+	\]
+\end{satz}
+
+\begin{bewe}
+	Nach Eigenschaft (ii) eines Fundamentalbereichs gilt (mit $\Gamma(1)' = \modulo{\Gamma(1)}{\pm E}$)
+	\[
+	\HH = \bigcup_{M \in \Gamma(1)'} M^{-1} \circ \closure{\F_1} = \bigcup_{M \in \Gamma(1)'} M \circ \closure{\F_2}
+	\,.
+	\]
+	
+	Nach (iii) gilt $M \circ \F_1 \cap N \circ \F_1 = \emptyset$ für $M \not= \pm N$.
+	Wegen $\closure{\F_1} = \F_1 \cup \partial\F_1$ und da $\partial F_1$ eine Nullmenge, folgt, dass
+	\[
+	M \circ \closure{\F_1} \cap N\circ\closure{\F_2} \text{ eine Nullmenge für } M\not=\pm N
+	\,,
+	\]
+	denn
+	\begin{align*}
+	M \circ \closure{F_1} \cap N \circ \closure{\F_1}
+	&= M \circ (\F_1 \cup \partial \F_1) \cap N \circ (\F_1 \cup \partial \F_1) \\
+	&= (M \circ \F_1 \cup M \circ (\partial \F_1)) \cap (N \circ \F_1 \cup N \circ (\partial F_1)) \\
+	&= (M \circ \F_1 \cap N \circ \F_1) \cup (M \circ F_1 \cap N \circ (\partial \F_1)) \cup \ldots
+	\end{align*}
+	
+	Es gilt
+	\[
+	\int\limits_{\closure{\F_1}} f \opd w
+	= \int\limits_{\bigcup\limits_{M \in \Gamma(1)'} \!\!\!\!\!\! M \circ \closure{\F_2} \cap \closure{\F_1}} f \opd w
+	\,,
+	\]
+	wobei zu beachten ist, dass es sich um eine abzählbare Vereinigung von meßbaren Mengen handelt und die Durchschnitte haben Maß Null, also gilt die abzählbare Additivität des Integrals:
+	\begin{align*}
+	\int\limits_{\closure{\F_1}} f \opd w
+	&= \sum_{M \in \Gamma(1)'} \int\limits_{M\circ \closure{\F_2} \cap \closure{\F_1}} f \opd w
+	= \sum_{M \in \Gamma(1)'} \ \int\limits_{\closure{\F_2} \cap M^{-1}\closure{F_1}} f(M \circ z) \opd w(M \circ z) \\
+	&= \sum_{M \in \Gamma(1)'}\ \int\limits_{\closure{F_2} \cap M^{-1} \circ \closure{F_1}} f \opd w
+	= \ldots = \int_{\closure{F_2}} f\opd w
+	\,.
+	\end{align*}
+\end{bewe}
+
+\begin{bsp}
+	Für jeden Fundamentalbereich $\F$, so dass $\partial \F$ eine Nullmenge ist, gilt
+	\[
+	\vol\bigl(\linksmodulo{\Gamma(1)}\HH\bigr) = \int\limits_{\closure \F} \opd w = \frac{\pi}{3} < \infty
+	\]
+\end{bsp}
+
+\begin{bewe}
+	Es genügt nach \autoref{satz:int_fundamentalbereich_invariant} den Fall von $\F = \F_1$ zu betrachten wobei $\F_1$ der Standard Fundamentalbereich ist (siehe \autoref{bsp:fundamentalbereich}).
+	
+	Es gilt für $\F_c := \F_1 \cap \Set{z \in \HH \mid y \leq c}$
+	\[
+	\int\limits_{\closure{\F_1}} \frac{\opd x \opd y}{y^2}
+	= \lim_{c \to \infty} \int\limits_{\closure{\F_c}} \frac{\opd x \opd y}{y^2}
+	= \lim_{c \to \infty} \int\limits_{\closure{\F_c}} \opd \eta
+	= \lim_{c \to \infty} \int\limits_{\partial \closure{\F_c}} \frac{\opd z}{y}
+	\,,
+	\]
+	wobei die letzte Gleichheit wegen dem Satz von Stokes und \autoref{beme:d_eta} folgt.
+	
+	Das Integral über die Gerade $z(t) = ic + t$ für $t \in [-\frac{1}{2}, \frac{1}{2}]$ ergibt
+	\[
+	\int_{-\frac{1}{2}}^{\frac{1}{2}} \frac{1}{c} \opd t = - \frac{1}{c} \xto{c \to \infty} 0
+	\,.
+	\]
+	
+	Die Integrale über die beiden Geradenstücke heben sich auf, wegen entgegengesetzer Orientierung und da $y$ invariant unter $z \mapsto z +1$.
+	Damit bleibt das Integral über den Kreisbogen, dieser wird parametrisiert durch
+	\[
+	z(z) = e^{it} = \cos t + i\sin t \qquad \text{für}\quad \frac{2\pi}{3} \leq t \leq \frac{\pi}{3}
+	\,.
+	\]
+	Integral ist reellwertig und hat damit den Wert
+	\[
+	\int_{\frac{2\pi}{3}}^{\frac{\pi}{3}} \frac{i(\cos t + i\sin t)}{\sin t} \opd t
+	= \int_{\frac{2\pi}{3}}^{\frac{\pi}{3}} \Re\Bigl(\frac{i\cos t - \sin t)}{\sin t}\Bigr) \opd t
+	= \int_{\frac{2\pi}{3}}^{\frac{\pi}{3}} (-1)\opd t
+	= \frac{2\pi}{3} - \frac{\pi}{3} = \frac{\pi}{3}
+	\,.
+	\]
+\end{bewe}
+
+\begin{satz}\label{satz:spitzenformen_beschraenkt}
+	Für $f\in M_k$ setze man $g(z) := y^{\frac{k}{2}} \abs{f(z)}$ für $z\in\HH$.
+	Dann gilt
+	\begin{enumerate}
+		\item $g$ ist invariant unter $\Gamma(1)$,
+		\item ist $f \in S_k$, dann ist $g$ auf $\HH$ beschränkt.
+	\end{enumerate}
+\end{satz}
+
+\begin{bewe-list}
+	\item Es gilt
+	\[
+	g\Bigl(\frac{az+b}{cz+d}\Bigr)
+	= \biggl(\Im \Bigl(\frac{az+b}{cz+d}\Bigr)\biggl)^{\frac{k}{2}} \abs{f\Bigl(\frac{az+b}{cz+d}\Bigr)}
+	= \Bigl(\frac{y}{\abs{cz+d}^2}\Bigr)^{\frac{k}{2}} \abs{cz+d}^k \abs{f(z)} = g(z)
+	\,.
+	\]
+	
+	\item Es ist $\HH = \bigcup_{M\in\Gamma(1)} M \circ \closure\F$. Da nach (i) $g$ invariant unter $\Gamma(1)$ ist, genügt es zu zeigen, dass $g$ auf $\closure{\F_1}$ beschränkt ist.
+	Aber
+	\[
+	\closure{\F_1} \cap \closure{\F_c} \text{ ist kompakt.}
+	\]
+	Wegen Stetigkeit genügt es also zu zeigen, dass $g$ für $y \to \infty$ beschränkt ist.
+	Sei $f(z) = \sum_{n\geq 1} a(n) e^{2\pi inz}$, beachte $n\geq1$, denn $f \in S_k$.
+	Dann gilt
+	\begin{align*}
+	\abs{g(z)} = y^{\frac{k}{2}} \abs{f(z)}
+	&= y^{\frac{k}{2}} \abs{e^{2\pi z} \sum_{n\geq 1} a(n) e^{2\pi i(n-1)z} } \\
+	&\leq y^{\frac{k}{2}} e^{-2\pi y} \left( \sum_{n\geq 1} \abs{a(n)} e^{-2\pi (n-1)y} \right) \\
+	&= y^{\frac{k}{2}} e^{-2\pi y} e^{2\pi c} \left( \sum_{n\geq1} \abs{a(n)} e^{-2\pi nc} \right) \\
+	&= \frac{y^{\frac{k}{2}}}{e^{2\pi y}} \cdot K
+	\xto{y\to\infty} 0
+	\end{align*}
+\end{bewe-list}
+
+\begin{defi}
+	Für $f$, $g \in M_k$ derart, dass $fg \in S_{2k}$, setze
+	\begin{equation}\label{eq:skalarprodukt}
+	<f, g> := \int_{\closure\F} f(z) \conj{g(z)} y^k \opd w
+	\,,
+	\end{equation}
+	wobei $\F$ ein Fundamentalbereich wie oben ist.
+\end{defi}
+
+\begin{satz-list}
+	\item \eqref{eq:skalarprodukt} ist absolut konvergent und hängt nicht von der Auswahl von $\F$ ab.
+	\item $S_k \times S_k \ra \CC$, $(f,\,g) \mapsto <f,g>$ ist ein Skalarprodukt auf $S_k$.
+\end{satz-list}
+
+\begin{bewe-list}
+	\item Beachte $fg \in S_{2k}$ und $\abs{f(z)\conj{g(z)}} y^k = y^k \abs{f(z)g(z)}$, wende \autoref{satz:spitzenformen_beschraenkt} (ii) an und bemerke $\int_{\closure \F} \opd w < \infty$.
+	Unabhängig von $\F$ folgt aus \autoref{satz:int_fundamentalbereich_invariant}.
+	\item Klar.
+\end{bewe-list}
