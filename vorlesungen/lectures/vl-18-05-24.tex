@@ -1,0 +1,158 @@
+\emph{Situation}: $f$, $g \in M_k$ mindestens eine davon in $S_k$,
+\[
+	\langle f,g \rangle = \int_{\closure \F} f(z) \conj{g(z)} \opd w(z)
+\]
+ist absolut konvergent, unabhängig von der Auswahl von $\F$.
+
+Insbesondere: $S_k \times S_k \ra \CC$, $(f,g) \mapsto \langle f,g\rangle$ ist ein Skalarprodukt auf $S_k$.
+
+\section{Anwendung: Eine Charakterisierung der Eisensteinreihen}
+
+\begin{satz}
+	Sei $k \in 2\ZZ$, $k \geq 4$. Sei $C_k := \Set{f \in M_k \mid \langle f,g\rangle = 0 \ \forall g \in S_k}$ ein Unterraum von $M_k$.
+	Dann gilt $C_k = \CC E_k$.
+\end{satz}
+
+
+\begin{bewe}
+\begin{lemm}
+	Es gilt $M_k = C_k \oplus S_k$ (und $M_k = \CC E_k \oplus S_k$).
+\end{lemm}
+
+\begin{bewe}
+	Sei $f \in C_k \cap S_k$. Dann $\langle f, f \rangle = 0$, also $f = 0$.
+	
+	Sei $f \in M_k$.
+	Die Abbildung $S_k \ra \CC$, $g \mapsto \langle g,f \rangle$ ist ein lineares Funktional.
+	Nach dem Satz von Riesz-Fischer existiert daher ein eindeutig bestimmtes Element $g_0 \in S_k$, so dass $\langle g,f \rangle = \langle g, g_0 \rangle$ für alle $g \in S_k$.
+	Daher $\langle f, f-g_0 \rangle = 0$ für alle $g\in S_k$, d.\,h. $\langle f-g_0, g \rangle = 0$ für alle $g \in S_k$.
+	Also ist $f-g_0 \in C_k$ nach Definition und somit
+	\[
+		f = \underbrace{(f-g_0)}_{\in C_k} + \underbrace{g_0}_{\in S_k} .
+	\]
+\end{bewe}
+
+Es folgt
+\[
+	\dim C_k = \dim M_k - \dim S_k = 1 + \dim S_k - \dim S_k = 1\,.
+\]
+Daher genügt es zu zeigen, dass $E_k \in C_k$, d.\,h. $\langle E_k, g \rangle = 0$ für alle $g \in S_k$.
+
+\begin{lemm}
+	Es gilt
+	\[
+		E_k(z) = \frac{1}{2} \sum_{M \in \linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}} (1|_k M)(z)\,,
+	\]
+	wobei $\Gamma(1)_\infty = \Set{\mymat 1n01 \mid n \in \ZZ}$ und $(1|_k M) = (cz+d)^{-k}$.
+\end{lemm}
+
+\begin{bewe}
+	Es gilt $E_k = \frac{1}{2\zeta(k)} G_k$ mit $G_k = \sumprime_{m,n} \frac{1}{(mz+n)^k}$.
+	Ist $(m,n) \in \ZZ^2\setminus\Set{(0,0)}$, so schreibe $(m,n) = \lambda (c,d)$ wobei $\lambda = \ggt(m,n) \in \NN$ und $(c,d) \in \ZZ^2$ mit $\ggt(c,d) = 1$.
+	Also
+	\[
+		G_k(z)
+		= \underbrace{\zeta(k)}_{= \sum_{\lambda=1}^\infty \frac{1}{\lambda^k}} \sum_{\substack{(c,d) \in \ZZ^2 \\ \ggt(c,d) = 1}} (cz+d)^{-k}
+		\,.
+	\]
+	Damit
+	\[
+		E_k = \frac{1}{2} \sum_{\substack{(c,d) \in \ZZ^2 \\ \ggt(c,d) = 1}} (cz+d)^{-k}
+		\,.
+	\]
+	Daher genügt es zu zeigen
+	\[
+		\sum_{M \in \linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}} (1|_k M)(z)
+		= \sum_{\substack{(c,d) \in \ZZ^2 \\ \ggt(c,d) = 1}} (cz+d)^{-k}
+		\,.
+	\]
+	
+	Jeder Summand links hat die Gestalt $(cz+d)^{-k}$ mit $\ggt(c,d) = 1$.
+	Umgekehrt ist zu zeigen:
+	Jedes $(c,d) \in \ZZ^2$ mit $\ggt(c,d) = 1$ lässt sich vervollständigen zu $M = \mymat abcd \in \Gamma(1)$ eindeutig bis auf Links-Multiplikation eines Elementes in $\Gamma(1)_\infty$.
+	Es gilt:
+	
+	\begin{itemize}
+		\item $\ggt(c,d) = 1$, also exisitieren $a$, $b \in \ZZ$ mit $ad - bc = 1$, denn $\ZZ$ ist ein Hauptidealring.
+		Also $M = \mymat abcd \in \Gamma(1)$.
+		
+		\item $\mymat 1n01 \mymat abcd = \mymat {a+nc}{b+nd}c{d}$.
+		
+		\item Seien $\mymat abcd$, $\mymat {a'}{b'}cd \in \Gamma(1)$. Dann $ad-bc = 1 = a'd-b'c$.
+		Also $(a-a') d = (b-b')c$, also $\frac{c}{d} = \frac{a-a'}{b-b'}$.
+		Da $\ggt(c,d) = 1$ folgt $a-a' = nc$, $b-b' = nd$ mit $n \in \ZZ$.
+		Das heißt $\mymat abcd = \mymat 1n01 \mymat{a'}{b'}cd$.
+	\end{itemize}
+\end{bewe}
+
+	Man kann dies schreiben als
+	\[
+		E_k(z)
+		= \sum_{M \in \linksmodulo{\Gamma(1)_\infty'}{\Gamma(1)'}} (1|_k M)(z)\,,
+	\]
+	wobei $\Gamma(1)' = \modulo{\Gamma(1)}{\Set{\pm E}}$ und $\Gamma(1)'_\infty = \modulo{\Set{\mymat{\pm1}n0{\pm1}} \mid n \in \ZZ}{\Set{\pm E}}$.
+	
+	Sei $g \in S_k$, zu zeigen ist $\langle E_k, g \rangle = 0$.
+	
+	Nach Definition
+	\begin{align*}
+		\langle E_k, g \rangle &= \int_{\closure \F} E_k(z) \conj{g(z)} y^k \opd w
+		= \int_{\closure \F} \biggl(\sum_{M \in \linksmodulo{\Gamma(1)_\infty'}{\Gamma(1)'}} (1|_kM(z)) \conj{g(z)} (\Im z)^k \biggr) \opd w(z)
+	\end{align*}
+	
+	Beachte
+	\begin{align*}
+		(1|_k M)(z) \conj{g(z)}(\Im z)^k
+		&= (1|_kM)(z) \conj{g(M \circ z) (1|_kM)(z)} (\Im M \circ z)^k \abs{(1|_kM)(z)}^{-2}\\
+		&= \conj{g(M \circ z)} (\Im M \circ z)^k
+		\,.
+	\end{align*}
+	Daher
+	\begin{align*}
+		\langle E_k, g \rangle
+		&= \sum_{M \in \linksmodulo{\Gamma(1)_\infty'}{\Gamma(1)'}} \int_{M \circ \closure \F} \conj{g(z)} y^{k-2} \opd x \opd y % Substituiere, Vertauschung wegen absoluter Konvergenz ok
+		= \int_{\underbrace{\bigcup_{M \in \linksmodulo{\Gamma(1)_\infty'}{\Gamma(1)'}} M \circ \closure\F}_{\text{Fundamentalbereich für die Untergruppe $\Gamma(1)'_\infty \subset \Gamma(1)'$, welche durch $z \mapsto z+n$ operiert}}} \conj{g(z)} y^{k-2} \opd x \opd y
+	\end{align*}
+	
+	Man zeigt formal: Integral ist unabhängig der Auswahl des Fundamentalbereichs $\mathcal G$.
+	Man wähle für $\mathcal G$ einen Steifen der Breite 1, etwa $\mathcal G = \Set{z = x + iy \mid \abs x < \frac{1}{2}}$.
+	Dann
+	\[
+		\langle E_k, g \rangle = \int_0^\infty \int_{-\frac{1}{2}}^{\frac{1}{2}} \conj{g(z)} y^{k-2} \opd x \opd y
+	\]
+	Sei $g(z) = \sum_{n\geq 1} a(n) e^{2\pi inz} = \sum_{n \geq 1} a(n) e^{2\pi nx} e^{-2\pi ny}$, daher $\conj{g(z)} = \sum_{n \geq 1} \conj{a(n)} e^{-2\pi ny} e^{-2\pi nx}$.
+	
+	\begin{align*}
+		\langle E_k, g \rangle
+		= \int_0^\infty \int_{-\frac{1}{2}}^{\frac{1}{2}} ( \sum_{n\geq 1} \conj{a(n)} e^{-2\pi ny} y^{k-2} e^{-2\pi nx}) \opd x \opd y
+		= 0
+	\end{align*}
+	
+	Vertausche Summe und Integral (denn $g \in S_k$) und beachte $\int_{-\frac{1}{2}}^{\frac{1}{2}} e^{-2\pi nx} \opd x = 0$, da $n \not= 0$.
+\end{bewe}
+
+\chapter{Poincaré-Reihen}
+
+\emph{Motivation}: Die Abbildung $S_k \ra \CC$, $f \mapsto a_f(n) = \text{$n$-ter Fourierkoeffizient von $f$}$ ist lineares Funktional.
+Nach dem Satz von Riesz existiert ein eindeutig bestimmtes $\tilde P_n$ für $n\in\NN$ mit
+\[
+	a_f(n) = \langle f, \tilde P_n \rangle \qquad \text{für alle } f\in S_k\,.
+\]
+
+\emph{Frage}: Kann man $\tilde P_n$ explizit angeben? Antwort: ja!
+
+\begin{defi}
+	Sei $k \in 2\ZZ$, $k \geq 4$, $n\in\NN$. Dann heißt die formale Reihe
+	\[
+		P_n(z)
+		= \frac{1}{2} \sum_{\substack{(c,d)\in\ZZ^2 \\ \ggt(c,d) = 1 \\ ad-bc = 1}} (cz+d)^{-k} e^{2\pi in \frac{az+b}{cz+d}}
+		\qquad \text{für } z \in \HH
+	\]
+	die $n$-te Poincaré Reihe vom Gewicht $k$ für $\Gamma(1)$.
+	Summiert wird über alle $(c,d) \in \ZZ^2$ mit $\ggt(c,d) = 1$ und zu jedem solcehn Paar ist $(a,b) \in \ZZ^2$ zu bestimmten, so dass $ad-bc = 1$, d\,h. $\abcd \in \Gamma(1)$).
+	Dies ist unabhängig von der Auswahl von $a$, $b$, denn ist auch $a'$, $b'$ ein solches Paar, so gilt $a' = a+nc$, $b' = b + nd$ für ein $n \in \ZZ$ und somit
+	\[
+		\frac{a'z+b'}{cz+d} = \frac{az+b}{cz + d} + m
+	\]
+	mit $m \in \ZZ$ und $e^{2\pi inm} = 1$.
+\end{defi}
