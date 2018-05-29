@@ -158,6 +158,11 @@
 \newcommand{\Set}[1]{\left\{\,#1\,\right\}}
 \newcommand{\at}[1]{\left.#1\,\right|}
 \newcommand{\ark}[1]{\stackrel{\frown}{#1}}
+\NewDocumentCommand{\scalarprd}{s m m}
+{\IfBooleanTF{#1}
+	{\left\langle#2,\,#3\right\rangle}
+	{\langle#2,\,#3\rangle}%
+}
 \NewDocumentCommand{\derive}{s O{} G{z}}
 {\IfBooleanTF{#1}
     {\frac{\partial#2}{\partial#3}}
@@ -298,7 +303,7 @@
 
 \xdeclaretheoremstyle[
     spaceabove=3em plus 0.4em minus 0.4em
-    spacebelow=3em plus 0.3em minus 0.2em
+    spacebelow=0.6em plus 0.3em minus 0.2em
     bodyfont=\itshape,
     headfont=\myheadfont,
     notefont=\myemphfont,
@@ -319,7 +324,7 @@
     ]{remark-style}
 
 \xdeclaretheoremstyle[
-    spaceabove=2em plus 0.3em minus 0.2em
+    spaceabove=0.6em plus 0.3em minus 0.2em
     spacebelow=3em plus 0.4em minus 0.4em
     headfont=\myheadfont\mdseries\itshape,
     notefont=\myemphfont,
