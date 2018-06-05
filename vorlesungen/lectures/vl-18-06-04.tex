@@ -1,0 +1,163 @@
+\subsection{Anwendungen}
+
+Darstellungssatz von Fréchet-Riesz
+
+a' = a + mc, b' = b + md
+
+vgl. Kapitel III, Par 2, Lemma 3.2.3, S. 32
+
+%%%
+
+\begin{beme}
+Es gilt $P_0 = E_k$.
+\end{beme}
+
+\begin{satz-list}
+\item Die Reihe $P_n$ konvergiert absolut und auf Kompakta in $\HH$ gleichmäßig, stellt also dort eine holomorphe Funktion dar. Es gilt $P_n \in S_k$ für $n \geq 1$.
+\item Es gilt 
+\[
+	\scalarprd {f}{P_n} = \frac{(k-2)!}{(4\pi n)^{k-1}} a_f(n)
+	\,.
+\]
+für alle $f \in S_k$ mit $f = \sum_{m\geq 1} a_f(m) q^m$.
+\end{satz-list}
+
+\begin{bewe-list}
+\item Es gilt, da $\frac{az+b}{cz+d} \in \HH$, dass
+\[
+	\abs{e^{2\pi i n \frac{az+b}{cz+d}}} \leq 1
+	\,,
+\]
+daher 
+\[
+	\sum_{c,d,det} \abs{cz+d}^{-k} \cdot \abs{e^{2\pi i n \frac{az+b}{cz+d}}} \leq \sum_{c,d,det} \abs{cz+d}^{-k}
+	\,,
+\]
+die Reihe der Absolutbeträge wird daher durch die Eisensteinreihe von Gewicht $k$ majorisiert. Letztere konvergiert nach FT 2 auf Kompakta in $\HH$ gleichmäßig absolut.
+
+Zeige noch $P_n \in S_k$ für $n \geq 1$ beachte zunächst, dass 
+\[
+	P_n(z) = \frac 12 \sum_{M \in \linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}} (e^n |_k M)(z)
+	\,,
+\]
+wobei $e^n(z) := e^{2 \pi inz}$. Man beachte, dass $e^n |_k M = e^n$ für $M \in \Gamma(1)_\infty$. Hierbei ist wie oben $\Gamma(1)_\infty := \Set{M \in SL_2(\ZZ) \mid M = \mymat ab0d}$. Wir müssen zeigen, dass $P_n |_k M = P_n$ für alle $M \in SL_2(\ZZ)$ und zudem in $z = i \infty$ verschwindet. Wie im Fall der Eisensteinreihen ist hierfür zu zeigen, dass 
+\[
+	\lim_{z \to i\infty} P_n(z) = 0
+	\,,
+\]
+d.h.
+\[
+	\lim_{\nu \to \infty} P_n(z_\nu) = 0
+\]
+für jede Folge von $z_\nu \in \HH$ mit $z_nu \to i\infty$. Wegen gleichmäßiger Konvergenz gilt
+\[
+	\lim_{\nu \to \infty} P_n(z_\nu) = \frac 12 \sum_{c,d,det} \lim_{\nu \to \infty} (cz_\nu + d)^{-k} e^{2\pi in \frac{az_\nu + b}{cz_\nu + d}} = 0
+	\,,
+\]
+da der hintere Faktor beschränkt ist und der vordere für $c \neq 0$ gegen 0 strebt. Für $c = 0$ geht der vordere Teil gegen $d^{-k}$, aber der hintere dann gegen 0.
+
+\item Unter Benutzung der Darstellung
+\[
+	P_n(z) = \frac 12 \sum_{M \in \linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}} (e^n |_k M)(z)
+\]
+zeigt man mit dem gleichen \glqq{}Konvolutionstrick\grqq{} wie im Beweis des Satzes in Kapitel III, Par. 2:
+\[
+	\scalarprd {f}{P_n} = \int_{\abs{x} < \frac 12, y > 0} f(z) e^{\conj{2\pi inz}} y^{k-2} \opd x \opd y
+\]
+Man stelle sich hierzu vor, dass $\HH$ als disjunkte Vereinigung von Bildern des exakten Fundamentalbereichs unter Linksmultiplikation mit $M \in \Gamma(1)$ entsteht. Teilt man nun $\Gamma(1)_\infty$ heraus, also alle Translationen, so verbleibt noch der Streifen $\abs{x} < \frac 12, y > 0$. Es gilt weiter
+\begin{align*}
+	\scalarprd {f}{P_n} &= \int_0^\infty \int_{-\frac 12}^{\frac 12} \sum_{m \geq 1} a(m) e^{2 \pi imx}e^{-2\pi my}e^{-2\pi inx}e^{-2\pi ny}y{k-2} \opd x \opd y\\
+	&= \int_0^\infty \int_{-\frac 12}^{\frac 12} \sum_{m \geq 1} a(m) e^{2 \pi i(m-n)x}e^{-2\pi (n+m)y}y{k-2} \opd x \opd y\,.
+\end{align*}
+Wegen 
+\[
+	\int_{- \frac 12}^{\frac 12} e^{2 \pi irx} \opd x = \delta_{r,0}
+\]
+(Kronecker-Delta) mit $r \in \ZZ$ folgt
+\begin{align*}
+	\scalarprd {f}{P_n} &= a(n) \int_0^\infty e^{-4\pi ny} y^{k-2} \opd y \\&= a(n) \frac{1}{(4\pi n)^{k-1}} \int_0^\infty e^{-y} y^{k-2} \opd y \\
+	&= a(n) \frac{(k-2)!}{(4\pi n)^{k-1}} \,.
+\end{align*}
+\end{bewe-list}
+
+\begin{koro}
+Die Poincare-Reihen $P_n$ generieren den Raum $S_k$ mit $n = 1, 2, \ldots$.
+\end{koro}
+
+\begin{bewe}
+Falls nicht, so existiert ein $f \in S_k$ mit $\scalarprd {f}{P_n} = 0$ für alle $n \in \NN$. Dann folgt mit Satz 1 aber $a(n) = 0$ für alle $n \in \NN$ und damit $f = 0$.
+\end{bewe}
+
+\begin{satz}
+Die Reihe $P_n$ hat die Fourier-Entwicklung
+\[
+	P_n(z) = \sum_{m \geq 1} g_n(m) q^m
+\]
+mit
+\[
+	g_n(m) = \delta_{m,n} + 2\pi (-1)^{\frac k2} (\frac mn)^{\frac {k-1}2} \sum_{c \geq 1} \frac 1c K(m,n,c) J_{k-1}(\frac{4\pi \sqrt{mn}}c)
+	\,.
+\]
+Hierbei ist die Kloosterman-Summe
+\[
+	K(m,n,c) := \sum_{d mod c (vertrsys), (d,c)=1} e^{2\pi i \frac{md + n\bar{d}}{c}}
+\]
+mit $\bar d \in \ZZ, \bar d d \equiv 1 mod c$ und die Besselfunktion
+\[
+	J_{k-1}(x) := (\frac x2)^{k-1} \sum_{\ell \geq 0} \frac{(-\frac 14 x^2)^\ell}{\ell! (k-1+\ell)!}
+	\,.
+\]
+\end{satz}
+
+\begin{bewe}
+Nach Definition ist 
+\[
+	P_n(z) = \frac 12 \sum_{(c,d) = 1, det = 1} (cz+d)^{-k} e^{2\pi in \frac{az+b}{cz+d}}
+\]
+Ist $c = 0$, so folgt $d = \pm 1$ und diese Terme geben den Beitrag $e^{2 \pi inz}$. Die übrigen Terme ergeben den Beitrag 
+\[
+	\sum_{c\geq 1, d\in \ZZ, (d,c) = 1, det = 1} (cz+d)^{-k} e^{2 \pi i n \frac{az+b}{cz+d}} = \sum_{c \geq 1} \sum_{d mod c, (c,d) = 1, det = 1} \sum_{\nu \in \ZZ} (c(z + \nu) +d)^{-k} e^{2\pi in \frac{a(z+\nu)+b}{c(z+\nu)+d}}
+	\,.
+\]
+Die zweite Gleichung folgt aus der ersten, indem man für festes $c \geq 1$ die Zahl $d$ in der Form $d + c\nu$ mit $v \in \ZZ, d mod c$ schreibt und 
+\[
+	\begin{pmatrix}
+	a & b + a\nu\\
+	c & d + c\nu
+	\end{pmatrix}
+	\in \Gamma(1)
+\]
+beachtet.
+
+\begin{lemm}
+Sei $A = \mymat abcd \in SL_2(\RR)$ mit $c > 0$. Sei $\gamma > 0$. Dann gilt
+\[
+	\sum_{\nu \in ZZ} (c(z + \nu) +d)^{-k} e^{2\pi i\gamma \frac{a(z+\nu)+b}{c(z+\nu)+d}} = \frac{2\pi (-1)^{\frac k2}}c \sum_{m \geq 1} (\frac m\gamma)^{\frac{k-1}2} J_{k-1}(\frac{4\pi\sqrt{m\gamma}}c) e^{\frac{2\pi i}c (\gamma a + md)} e^{2\pi imz}
+\]
+\end{lemm}
+
+\begin{bewe}
+Es genügt, diese Aussage nur für den Fall $A = \mymat 0{-1}10$ zu zeigen, d.h.
+\[
+	\sum_{\nu \in ZZ} (z + \nu)^{-k} e^{-2\pi i\gamma \frac{1}{z+\nu}} = \frac{2\pi (-1)^{\frac k2}}c \sum_{m \geq 1} (\frac m\gamma)^{\frac{k-1}2} J_{k-1}(4\pi\sqrt{m\gamma}) e^{2\pi imz}
+\]
+In der Tat, ersetzt man in dieser Gleichung $z$ durch $z + \frac dc$ und $\gamma$ durch $\frac{\gamma}{c^2}$ und multipliziert dann mit $c^{-k} e^{2\pi i \gamma \frac ac}$, so folgt
+\[
+	c^{-k} e^{2\pi i\gamma \frac ac} \sum_{\nu \in \ZZ} (z + \frac dc + \nu)^{-k} e^{2\pi i \frac{\gamma}{c^2}} \frac{1}{z + \frac dc + \nu} = c^{-k} e^{2\pi i \gamma \frac ac} 2\pi (-1)^{\frac k2} \sum_{m\geq 1} (\frac {m}{\frac{\gamma}{c^2}}^{\frac {k-1}2} J_{k-1}(4\pi \sqrt{\frac{m\gamma}{c^2}}) e^{2\pi i m(z+ \frac dc)}
+\]
+also die Aussage des Lemmas wegen
+\[
+- \frac{1}{c^2} \frac{1}{z+\frac dc +\nu} + \frac ac = \frac{a(z+\nu)+b}{c(z+\nu)+d}
+\]
+und beachte $bc+ad = -1$.
+\end{bewe}
+
+Fortsetzung folgt.
+
+\end{bewe}
+
+
+
+
+
+
