@@ -1,0 +1,23 @@
+\emph{Motivation}: Die Abbildung $S_k \ra \CC$, $f \mapsto a_f(n) = \text{$n$-ter Fourierkoeffizient von $f$}$ ist ein lineares Funktional.
+Nach dem Darstellungssatz von Fréchet-Riesz existiert ein eindeutig bestimmtes $\tilde P_n$ für $n\in\NN$ mit
+\[
+	a_f(n) = \scalarprd f{\tilde P_n} \qquad \text{für alle } f\in S_k\,.
+\]
+
+\emph{Frage}: Kann man $\tilde P_n$ explizit angeben? Antwort: ja!
+
+\begin{defi}
+	Sei $k \in 2\ZZ$, $k \geq 4$, $n\in\NN$. Dann heißt die formale Reihe
+	\[
+		P_n(z)
+		= \frac{1}{2} \sum_{\substack{(c,d)\in\ZZ^2 \\ \ggt(c,d) = 1 \\ ad-bc = 1}} (cz+d)^{-k} e^{2\pi in \frac{az+b}{cz+d}}
+		\qquad \text{für } z \in \HH
+	\]
+	die $n$-te Poincaré Reihe vom Gewicht $k$ für $\Gamma(1)$.
+	Summiert wird über alle $(c,d) \in \ZZ^2$ mit $\ggt(c,d) = 1$ und zu jedem solchen Paar ist $(a,b) \in \ZZ^2$ zu bestimmen, so dass $ad-bc = 1$, d.\,h. $\abcd \in \Gamma(1)$).
+	Dies ist unabhängig von der Auswahl von $a$, $b$, denn ist auch $a'$, $b'$ ein solches Paar, so gilt $a' = a+mc$, $b' = b + md$ für ein $m \in \ZZ$ und somit
+	\[
+		\frac{a'z+b'}{cz+d} = \frac{az+b}{cz + d} + m
+	\]
+	mit $m \in \ZZ$ und $e^{2\pi inm} = 1$.
+\end{defi}

@@ -1,0 +1,95 @@
+\section{Anwendungen}
+
+\begin{beme}
+Es gilt $P_0 = E_k$, wie man durch Vergleich mit \autoref{Ek_per_Gamma(1)infty} leicht einsieht.
+\end{beme}
+
+\begin{satz-list}\label{<f,Pn>}
+\item Die Reihe $P_n$ konvergiert auf Kompakta in $\HH$ gleichmäßig absolut, stellt also dort eine holomorphe Funktion dar. Es gilt $P_n \in S_k$ für $n \geq 1$.
+\item Es gilt 
+\[
+	\scalarprd {f}{P_n} = \frac{(k-2)!}{(4\pi n)^{k-1}} a_f(n)
+	\,.
+\]
+für alle $f \in S_k$ mit $f = \sum_{m\geq 1} a_f(m) q^m$.
+\end{satz-list}
+
+\begin{bewe-list}
+\item Wegen $\frac{az+b}{cz+d} \in \HH$ ist
+\[
+	\abs{e^{2\pi i n \frac{az+b}{cz+d}}} \leq 1
+\]
+und daher 
+\[
+	\sum_{\substack{(c,d)\in\ZZ^2 \\ \ggt(c,d) = 1 \\ ad-bc = 1}} \abs{cz+d}^{-k} \cdot \abs{e^{2\pi i n \frac{az+b}{cz+d}}} \leq \sum_{\substack{(c,d)\in\ZZ^2 \\ \ggt(c,d) = 1 \\ ad-bc = 1}} \abs{cz+d}^{-k}
+	\,,
+\]
+sodass die Reihe der Absolutbeträge nach \autoref{Ek_per_Gamma(1)infty} durch die Eisensteinreihe von Gewicht $k$ majorisiert wird. Letztere konvergiert nach FT~2 auf Kompakta in $\HH$ gleichmäßig absolut.
+
+Zeige noch $P_n \in S_k$ für $n \geq 1$. Schreibe zunächst
+\[
+	P_n(z) = \frac 12 \sum_{M \in \linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}} (e^n |_k M)(z)
+	\,,
+\]
+mit $e^n(z) := e^{2 \pi inz}$ und beachte, dass $e^n |_k M = e^n$ für $M \in \Gamma(1)_\infty$. Hierbei ist wie in \autoref{Ek_per_Gamma(1)infty} 
+\[
+	\Gamma(1)_\infty := \Set{M \in \SL_2(\ZZ) \mid M = \mymat ab0d}
+	\,.
+\]	
+Für $P_n \in S_k$ müssen wir zeigen, dass $P_n |_k M = P_n$ für alle $M \in \SL_2(\ZZ)$ und zudem in $z = i \infty$ verschwindet. Wie im Fall der Eisensteinreihen ist hierfür zu zeigen, dass 
+\[
+	\lim_{z \to i\infty} P_n(z) = 0
+	\,,
+\]
+also
+\[
+	\lim_{\nu \to \infty} P_n(z_\nu) = 0
+\]
+für jede Folge von $z_\nu \in \HH$ mit $z_\nu \to i\infty$. Wegen gleichmäßiger Konvergenz gilt
+\[
+	\lim_{\nu \to \infty} P_n(z_\nu) = \frac 12 \sum_{\substack{(c,d)\in\ZZ^2 \\ \ggt(c,d) = 1 \\ ad-bc = 1}} \lim_{\nu \to \infty} (cz_\nu + d)^{-k} e^{2\pi in \frac{az_\nu + b}{cz_\nu + d}}
+\]
+und alle Grenzwerte unter der Summe sind 0. In der Tat ist der Exponentialterm wegen $\frac{az_\nu + b}{cz_\nu + d} \in \HH$ beschränkt und für $c \neq 0$ strebt $(cz_\nu + d)^{-k}$ gegen 0. Andererseits ist für $c = 0$ der vordere Term gleich $d^{-k}$ und somit beschränkt, während
+\[
+	\tfrac{az_\nu + b}{d} \to i\infty \quad \Ra \quad e^{2\pi in \frac{az_\nu + b}{d}} \to 0
+	\,.
+\]
+Damit ist alles gezeigt.
+
+\item Unter Benutzung der Darstellung
+\[
+	P_n(z) = \frac 12 \sum_{M \in \linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}} (e^n |_k M)(z)
+\]
+zeigt man mit dem gleichen \glqq{}Konvolutionstrick\grqq{} wie im Beweis von \autoref{CharEk}, dass
+\[
+	\scalarprd {f}{P_n} = \int_0^\infty \int_{-\frac 12}^{\frac 12} f(z) e^{\conj{2\pi inz}} y^{k-2} \opd x \opd y
+	\,.
+\]
+Man stelle sich hierzu vor, dass $\HH$ als disjunkte Vereinigung von Bildern des exakten Fundamentalbereichs unter Linksmultiplikation mit $M \in \Gamma(1)$ entsteht. Teilt man nun $\Gamma(1)_\infty$ heraus, also alle Translationen, so verbleibt noch der Streifen $\abs{x} < \frac 12, y > 0$. 
+
+Es gilt weiter für beliebiges $f \in S_k$ mit Darstellung $f(z) = \sum_{m \geq 1} a(m)q^m$, wie üblich $q = \exp(2\pi iz)$ und $z = x + iy$, dass
+\begin{align*}
+	\scalarprd {f}{P_n} &= \int_0^\infty \int_{-\frac 12}^{\frac 12} \sum_{m \geq 1} a(m) e^{2 \pi imx}e^{-2\pi my}e^{-2\pi inx}e^{-2\pi ny}y^{k-2} \opd x \opd y\\
+	&= \int_0^\infty \int_{-\frac 12}^{\frac 12} \sum_{m \geq 1} a(m) e^{2 \pi i(m-n)x}e^{-2\pi (n+m)y}y^{k-2} \opd x \opd y\,.
+\end{align*}
+Wegen 
+\[
+	\int_{- \frac 12}^{\frac 12} e^{2 \pi irx} \opd x = \delta_{r,0} := \begin{cases}1, & r = 0\\0, & r \neq 0\end{cases} \quad \text{(Kronecker-Delta)}
+\]
+für beliebiges $r \in \ZZ$ folgt
+\begin{align*}
+	\scalarprd {f}{P_n} &= \int_0^\infty \sum_{m \geq 1} a(m) \delta_{m,n} e^{-2\pi (n+m)y}y^{k-2} \opd y \\
+	&= a(n) \int_0^\infty e^{-4\pi ny} y^{k-2} \opd y \\
+	&= a(n) \frac{1}{(4\pi n)^{k-1}} \underbrace{\int_0^\infty e^{-y} y^{k-2} \opd y}_{= \Gamma(k-1)} \\
+	&= a(n) \frac{(k-2)!}{(4\pi n)^{k-1}}
+	\,.
+\end{align*}
+\end{bewe-list}
+
+\begin{koro}
+Die Poincaré-Reihen $\Set{ P_n \mid n \in \NN}$ zu einem festen Gewicht $k \geq 4$ mit $k$~gerade, erzeugen den Raum $S_k$.
+\end{koro}
+
+\begin{bewe}
+Angenommen die $P_n$ erzeugen nicht ganz $S_k$, dann existiert ein $f \in S_k$ mit $\scalarprd {f}{P_n} = 0$ für alle $n \in \NN$. Mit \autoref{<f,Pn>}, ii) folgt hieraus aber $a(n) = 0$ für alle $n \in \NN$ und damit $f \equiv 0$.
+\end{bewe}
