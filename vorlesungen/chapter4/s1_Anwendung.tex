@@ -93,3 +93,96 @@ Die Poincaré-Reihen $\Set{ P_n \mid n \in \NN}$ zu einem festen Gewicht $k \geq
 \begin{bewe}
 Angenommen die $P_n$ erzeugen nicht ganz $S_k$, dann existiert ein $f \in S_k$ mit $\scalarprd {f}{P_n} = 0$ für alle $n \in \NN$. Mit \autoref{<f,Pn>}, ii) folgt hieraus aber $a(n) = 0$ für alle $n \in \NN$ und damit $f \equiv 0$.
 \end{bewe}
+
+\begin{satz}
+Die Reihe $P_n$ hat die Fourier-Entwicklung
+\[
+	P_n(z) = \sum_{m \geq 1} g_n(m) q^m
+\]
+mit
+\[
+	g_n(m) := \delta_{m,n} + 2\pi \cdot (-1)^{\frac k2} \cdot \left(\frac mn\right)^{\frac {k-1}2} \cdot \sum_{c \geq 1} \left[ \frac 1c \cdot K(m,n,c) \cdot J_{k-1}\left(\frac{4\pi \sqrt{mn}}c\right) \right]
+	\,.
+\]
+Hierbei ist die Kloosterman-Summe $K$ definiert als
+\[
+	K(m,n,c) := \sum_{\substack{d (\operatorname{mod} c) \\ (c,d)=1}} e^{2\pi i \frac{md + n\bar{d}}{c}}
+	\,,
+\]
+wobei $\bar d \in \ZZ$ mit $\bar d d \equiv 1 \mod c$ ist, und die Besselfunktion $J_{k-1}$ definiert als
+\[
+	J_{k-1}(x) := \left(\frac x2\right)^{k-1} \sum_{\ell \geq 0} \frac{(-\frac 14 x^2)^\ell}{\ell! (k-1+\ell)!}
+	\,.
+\]
+\end{satz}
+
+\begin{bewe}
+Nach Definition ist 
+\[
+	P_n(z) = \frac 12 \sum_{\substack{(c,d)\in\ZZ^2 \\ \ggt(c,d) = 1 \\ ad-bc = 1}} (cz+d)^{-k} e^{2\pi in \frac{az+b}{cz+d}}
+	\,.
+\]
+Ist $c = 0$, so folgt aus $\ggt(c,d) = 1$ bereits $d = a = \pm 1$ und unabhängig von $b \in \ZZ$ ergibt sich zweimal der Term
+\[
+	\frac 12 (\pm 1)^{-k} e^{2\pi in \frac{\pm z + b}{\pm 1}} = \frac 12 e^{2\pi in z} e^{\pm 2\pi in b} = \frac 12 e^{2 \pi inz}
+	\,,
+\]
+zusammengenommen also $e^{2 \pi inz}$. Die übrigen Terme ergeben den Beitrag 
+\[
+	\sum_{\substack{c \geq 1, d \in \ZZ \\ \ggt(c,d) = 1 \\ ad-bc = 1}} (cz+d)^{-k} e^{2 \pi i n \frac{az+b}{cz+d}} = \sum_{c \geq 1} \sum_{\substack{d' (\operatorname{mod} c) \\ \ggt(c,d') = 1 \\ ad'-b'c = 1}} \sum_{\nu \in \ZZ} (c(z + \nu) +d')^{-k} e^{2\pi in \frac{a(z+\nu)+b'}{c(z+\nu)+d'}}
+	\,.
+\]
+Die rechte Seite entsteht aus der linken, indem man für festes $c \geq 1$ und ein festes Vertretersystem $d' (\operatorname{mod} c)$ jedes $d \in \ZZ$ in der Form $d = d' + c\nu$ mit $v \in \ZZ$ und $d'$ im vorgegebenen Vertretersystem schreibt. Schreibt man zudem mit geeignetem $b' \in \ZZ$ auch $b = b' + a\nu$, so wird die Bedingung $ad - bc = 1$ zu
+\[
+	1 = ad - bc = a(d' + c\nu) - (b' + a\nu)c = ad' - b'c
+\]
+und die obige Darstellung folgt durch Ausklammern von $c$ und $a$. Im Folgenden schreiben wir wieder $d$ und $b$ statt $d'$ und $b'$.
+
+\begin{lemm}
+Sei $A = \mymat abcd \in \SL_2(\RR)$ mit $c > 0$. Sei $\gamma > 0$ beliebig (insbesondere nicht unbedingt ganzzahlig). Dann gilt
+\[
+	\sum_{\nu \in \ZZ} (c(z + \nu) +d)^{-k} e^{2\pi i\gamma \frac{a(z+\nu)+b}{c(z+\nu)+d}} 
+	= 
+	\tfrac{2\pi (-1)^{\frac k2}}c \sum_{m \geq 1} \left(\!\frac m\gamma\!\right)^{\!\!\frac{k-1}2} \!\! J_{k-1}\left(\!\tfrac{4\pi\sqrt{m\gamma}}c\right) e^{\frac{2\pi i}c (\gamma a + md)} e^{2\pi imz}
+	\,.
+\]
+\end{lemm}
+
+\begin{bewe}
+Es genügt, diese Aussage nur für den Fall $A = \mymat 0{-1}10$ zu zeigen, d.h.
+\[
+	\sum_{\nu \in \ZZ} (z + \nu)^{-k} e^{-2\pi i\gamma \frac{1}{z+\nu}} = 2\pi (-1)^{\frac k2} \sum_{m \geq 1} \left(\!\frac m\gamma\!\right)^{\!\!\frac{k-1}2} \!\! J_{k-1}(4\pi\sqrt{m\gamma}) e^{2\pi imz}
+	\,.
+\]
+In der Tat: Ersetzt man in dieser Gleichung $z$ durch $z + \frac dc$ und $\gamma$ durch $\frac{\gamma}{c^2}$ und multipliziert dann mit $c^{-k} e^{2\pi i \gamma \frac ac}$, so wird die linke Seite zu
+\begin{align*}
+	c^{-k} e^{2\pi i\gamma \frac ac} \sum_{\nu \in \ZZ} (z + \tfrac dc + \nu)^{-k} e^{-2\pi i \frac{\gamma}{c^2} \frac{1}{z + \frac dc + \nu}} 
+	&= \sum_{\nu \in \ZZ} (cz + d + c\nu)^{-k} e^{2\pi i\gamma \frac ac - 2\pi i \frac{\gamma}{c} \frac{1}{cz + d + c\nu}} \\
+	&= \sum_{\nu \in \ZZ} (c(z + \nu) + d)^{-k} e^{\frac{2\pi i\gamma}c \left( a - \frac{1}{c(z + \nu) + d} \right)} \\[-12pt]
+	&= \sum_{\nu \in \ZZ} (c(z + \nu) + d)^{-k} e^{\frac{2\pi i\gamma}c \frac{ac(z + \nu) + \overbrace{\scriptscriptstyle ad - 1}^{= bc}}{c(z + \nu) + d}} \\
+	&= \sum_{\nu \in \ZZ} (c(z + \nu) + d)^{-k} e^{2\pi i\gamma \frac{a(z + \nu) + b}{c(z + \nu) + d}} \\
+\end{align*}
+sowie die rechte Seite zu
+\begin{multline*}
+	c^{-k} e^{2\pi i \gamma \frac ac} 2\pi (-1)^{\frac k2} \sum_{m\geq 1} \left(\!\frac {mc^2}{\gamma}\right)^{\!\!\frac {k-1}2} \!\! J_{k-1} \left(\! 4\pi \sqrt{\frac{m\gamma}{c^2}}\right) e^{2\pi i m(z + \frac dc)} \\
+\begin{split}
+	= c^{-k+2\frac{k-1}2} 2\pi (-1)^{\frac k2} \sum_{m\geq 1} \left(\!\frac {m}{\gamma}\!\right)^{\!\!\frac {k-1}2} \!\! J_{k-1} \left(\! \tfrac{4\pi \sqrt{m\gamma}}c\right) e^{2\pi i \gamma \frac ac + 2\pi i mz + 2\pi im\frac dc} \\
+	= \frac{2\pi (-1)^{\frac k2}}c \sum_{m\geq 1} \left(\!\frac {m}{\gamma}\!\right)^{\!\!\frac {k-1}2} \!\! J_{k-1} \left(\! \tfrac{4\pi \sqrt{m\gamma}}c\right) e^{\frac{2\pi i}c \left(\gamma a + md\right)} e^{2\pi i mz}
+	\,.
+\end{split}
+\end{multline*}
+
+%\begin{align*}
+%	c^{-k} e^{2\pi i \gamma \frac ac} 2\pi (-1)^{\frac k2} &\sum_{m\geq 1} \left(\!\frac {mc^2}{\gamma}\right)^{\!\!\frac {k-1}2} \!\! J_{k-1} \left(\! 4\pi \sqrt{\frac{m\gamma}{c^2}}\right) e^{2\pi i m(z + \frac dc)} \\
+%	= c^{-k+2\frac{k-1}2} 2\pi (-1)^{\frac k2} &\sum_{m\geq 1} \left(\!\frac {m}{\gamma}\!\right)^{\!\!\frac {k-1}2} \!\! J_{k-1} \left(\! \tfrac{4\pi \sqrt{m\gamma}}c\right) e^{2\pi i \gamma \frac ac + 2\pi i mz + 2\pi im\frac dc} \\
+%	= \frac{2\pi (-1)^{\frac k2}}c &\sum_{m\geq 1} \left(\!\frac {m}{\gamma}\!\right)^{\!\!\frac {k-1}2} \!\! J_{k-1} \left(\! \tfrac{4\pi \sqrt{m\gamma}}c\right) e^{\frac{2\pi i}c \left(\gamma a + md\right)} e^{2\pi i mz}
+%	\,.
+%\end{align*}
+
+Fortsetzung folgt (Beweis des Lemmas für $A = S$).
+
+\end{bewe}
+
+Fortsetzung folgt (Beweis des Satzes).
+
+\end{bewe}
