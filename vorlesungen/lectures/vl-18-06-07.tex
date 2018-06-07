@@ -1,0 +1,228 @@
+\begin{satz}
+Die Reihe $P_n$ hat die Fourier-Entwicklung
+\[
+	P_n(z) = \sum_{m \geq 1} g_n(m) q^m
+\]
+mit
+\[
+	g_n(m) := \delta_{m,n} + 2\pi \cdot (-1)^{\frac k2} \cdot \left(\frac mn\right)^{\frac {k-1}2} \cdot \sum_{c \geq 1} \left[ \frac 1c \cdot K(m,n,c) \cdot J_{k-1}\left(\frac{4\pi \sqrt{mn}}c\right) \right]
+	\,.
+\]
+Hierbei ist die Kloosterman-Summe $K$ definiert als
+\[
+	K(m,n,c) := \sum_{\substack{d (\operatorname{mod} c) \\ (c,d)=1}} e^{2\pi i \frac{md + n\bar{d}}{c}}
+	\,,
+\]
+wobei $\bar d \in \ZZ$ mit $\bar d d \equiv 1 \mod c$ ist, und die Besselfunktion $J_{k-1}$ definiert als
+\[
+	J_{k-1}(x) := \left(\frac x2\right)^{k-1} \sum_{\ell \geq 0} \frac{(-\frac 14 x^2)^\ell}{\ell! (k-1+\ell)!}
+	\,.
+\]
+\end{satz}
+
+\begin{bewe}
+Nach Definition ist 
+\[
+	P_n(z) = \frac 12 \sum_{\substack{(c,d)\in\ZZ^2 \\ \ggt(c,d) = 1 \\ ad-bc = 1}} (cz+d)^{-k} e^{2\pi in \frac{az+b}{cz+d}}
+	\,.
+\]
+Ist $c = 0$, so folgt aus $\ggt(c,d) = 1$ bereits $d = a = \pm 1$ und unabhängig von $b \in \ZZ$ ergibt sich zweimal der Term
+\[
+	\frac 12 (\pm 1)^{-k} e^{2\pi in \frac{\pm z + b}{\pm 1}} = \frac 12 e^{2\pi in z} e^{\pm 2\pi in b} = \frac 12 e^{2 \pi inz}
+	\,,
+\]
+zusammengenommen also $e^{2 \pi inz}$. Die übrigen Terme ergeben den Beitrag 
+\[
+	\sum_{\substack{c \geq 1, d \in \ZZ \\ \ggt(c,d) = 1 \\ ad-bc = 1}} (cz+d)^{-k} e^{2 \pi i n \frac{az+b}{cz+d}} = \sum_{c \geq 1} \sum_{\substack{d' (\operatorname{mod} c) \\ \ggt(c,d') = 1 \\ ad'-b'c = 1}} \sum_{\nu \in \ZZ} (c(z + \nu) +d')^{-k} e^{2\pi in \frac{a(z+\nu)+b'}{c(z+\nu)+d'}}
+	\,.
+\]
+Die rechte Seite entsteht aus der linken, indem man für festes $c \geq 1$ und ein festes Vertretersystem $d' (\operatorname{mod} c)$ jedes $d \in \ZZ$ in der Form $d = d' + c\nu$ mit $v \in \ZZ$ und $d'$ im vorgegebenen Vertretersystem schreibt. Schreibt man zudem mit geeignetem $b' \in \ZZ$ auch $b = b' + a\nu$, so wird die Bedingung $ad - bc = 1$ zu
+\[
+	1 = ad - bc = a(d' + c\nu) - (b' + a\nu)c = ad' - b'c
+\]
+und die obige Darstellung folgt durch Ausklammern von $c$ und $a$. Im Folgenden schreiben wir wieder $d$ und $b$ statt $d'$ und $b'$.
+
+\begin{lemm}
+Sei $A = \mymat abcd \in \SL_2(\RR)$ mit $c > 0$. Sei $\gamma > 0$ beliebig (insbesondere nicht unbedingt ganzzahlig). Dann gilt
+\[
+	\sum_{\nu \in \ZZ} (c(z + \nu) +d)^{-k} e^{2\pi i\gamma \frac{a(z+\nu)+b}{c(z+\nu)+d}} 
+	= 
+	\tfrac{2\pi (-1)^{\frac k2}}c \sum_{m \geq 1} \left(\!\frac m\gamma\!\right)^{\!\!\frac{k-1}2} \!\! J_{k-1}\left(\!\tfrac{4\pi\sqrt{m\gamma}}c\right) e^{\frac{2\pi i}c (\gamma a + md)} e^{2\pi imz}
+	\,.
+\]
+\end{lemm}
+
+\begin{bewe}
+Es genügt, diese Aussage nur für den Fall $A = \mymat 0{-1}10$ zu zeigen, d.h.
+\[
+	\sum_{\nu \in \ZZ} (z + \nu)^{-k} e^{-2\pi i\gamma \frac{1}{z+\nu}} = 2\pi (-1)^{\frac k2} \sum_{m \geq 1} \left(\!\frac m\gamma\!\right)^{\!\!\frac{k-1}2} \!\! J_{k-1}(4\pi\sqrt{m\gamma}) e^{2\pi imz}
+	\,.
+\]
+In der Tat: Ersetzt man in dieser Gleichung $z$ durch $z + \frac dc$ und $\gamma$ durch $\frac{\gamma}{c^2}$ und multipliziert dann mit $c^{-k} e^{2\pi i \gamma \frac ac}$, so wird die linke Seite zu
+\begin{align*}
+	c^{-k} e^{2\pi i\gamma \frac ac} \sum_{\nu \in \ZZ} (z + \tfrac dc + \nu)^{-k} e^{-2\pi i \frac{\gamma}{c^2} \frac{1}{z + \frac dc + \nu}} 
+	&= \sum_{\nu \in \ZZ} (cz + d + c\nu)^{-k} e^{2\pi i\gamma \frac ac - 2\pi i \frac{\gamma}{c} \frac{1}{cz + d + c\nu}} \\
+	&= \sum_{\nu \in \ZZ} (c(z + \nu) + d)^{-k} e^{\frac{2\pi i\gamma}c \left( a - \frac{1}{c(z + \nu) + d} \right)} \\[-12pt]
+	&= \sum_{\nu \in \ZZ} (c(z + \nu) + d)^{-k} e^{\frac{2\pi i\gamma}c \frac{ac(z + \nu) + \overbrace{\scriptscriptstyle ad - 1}^{= bc}}{c(z + \nu) + d}} \\
+	&= \sum_{\nu \in \ZZ} (c(z + \nu) + d)^{-k} e^{2\pi i\gamma \frac{a(z + \nu) + b}{c(z + \nu) + d}} \\
+\end{align*}
+sowie die rechte Seite zu
+
+\begin{align*}
+	&c^{-k} e^{2\pi i \gamma \frac ac} 2\pi (-1)^{\frac k2} \sum_{m\geq 1} \left(\!\frac {mc^2}{\gamma}\right)^{\!\!\frac {k-1}2} \!\! J_{k-1} \left(\! 4\pi \sqrt{\frac{m\gamma}{c^2}}\right) e^{2\pi i m(z + \frac dc)} \\
+	&\qquad = c^{-k+2\frac{k-1}2} 2\pi (-1)^{\frac k2} \sum_{m\geq 1} \left(\!\frac {m}{\gamma}\!\right)^{\!\!\frac {k-1}2} \!\! J_{k-1} \left(\! \tfrac{4\pi \sqrt{m\gamma}}c\right) e^{2\pi i \gamma \frac ac + 2\pi i mz + 2\pi im\frac dc} \\
+	&\qquad = \frac{2\pi (-1)^{\frac k2}}c \sum_{m\geq 1} \left(\!\frac {m}{\gamma}\!\right)^{\!\!\frac {k-1}2} \!\! J_{k-1} \left(\! \tfrac{4\pi \sqrt{m\gamma}}c\right) e^{\frac{2\pi i}c \left(\gamma a + md\right)} e^{2\pi i mz}
+	\,.
+\end{align*}
+
+% Hier fängt es an
+
+Die linke Seite von \myref{(**)} konvergiert gleichmäßig absolut auf kompakten Mengen in $\HH$ und hat den Limes 0 für $q\to \infty$ (gleicher Beweis wie in \myref{Satz 1}).
+Sie hat daher eine Fourierentwicklung $\sum_{m\geq 1} c(m) q^m$ mit
+\[
+	c(m) = \int_{ic}^{ic+1} \biggl( \sum_{\nu \in \ZZ} (z+\nu)^{-k} e^{-2\pi \gamma \frac{1}{z+\nu}} \biggr) e^{-2\pi imz} \opd z
+	\stackrel{z \mapsto is}{=} -i^{-k+1} \int_{c-i \infty}^{c + i\infty} s^{-k} e^{-2\pi \frac{\gamma}{s}} e^{2\pi ms} \opd s
+\]
+Es gilt nach \myquote{Abramowitz-Stegun}, Seite 1026, Formel 29.3.80:
+\[
+	\frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} s^{-k} e^{-\frac{\alpha}{s}} e^{ts} \opd s = \Bigl(\frac{t}{\alpha}\Bigr)^{\frac{k-1}{2}} J_{k-1}(2\sqrt{\alpha t})
+\]
+
+Setzt man $\alpha = 2\pi \gamma$, $t = 2\pi m$, so folgt
+\[
+	c(m) = -i^{-k+1} \cdot 2\pi i \Bigl( \frac{2\pi m}{2\pi \gamma}\Bigr)^{\frac{k-1}{2}} J_{k-1} (2\sqrt{2\pi \gamma - 2 \pi m}) = (-1)^{\frac{k}{2}} \cdot 2\pi \Bigl(\frac{m}{\gamma}\Bigr)^{\frac{k-1}{2}} J_{k-1} (2\pi \sqrt{m\gamma})
+\]
+wie behauptet.
+
+
+\end{bewe}
+
+Nach dem Lemma folgt nun
+\[
+	P_n(z) = e^{2\pi nz} + \sum{c\geq1} \sum_{d \mod c, (d,c) = 1} \frac{2\pi (-1)^{\frac{k}{2}}}{c} \sum_{m\geq 1} \Bigl(\frac{m}{n})^{k-1}{2} J_{m-1} (\frac{4\pi \sqrt{mn}}{c}) \cdot e^{\frac{2\pi i}{c}(na+md)} e^{2\pi imz}
+\]
+und die Behauptung folgt nach Vertauschung der Summation über c und m (absolute Konvergenz). Beachte $ad \equiv 1 \mod c$.
+
+\end{bewe}
+
+\section{Anwendung: die Ramanujan $\tau$-Funktion}
+
+\begin{satz}
+	Sei $\Delta(z) = \sum_{n \geq 1} q^n \in S_{12}$ ($\tau(1) = 1, \tau(2) = -24, \ldots $).
+	Dann gilt
+	\[
+		\tau(n) \not= 0 \Rla P_{n,12} \not= 0 \Rla g_n(n) \text{( = $n$-ter Fourier-Koeffizient von $P_{n,12}$ gegeben durch Satz 2)} \not= 0
+	\]
+\end{satz}
+\begin{bewe}
+	Es gilt $P_n = c_n\Delta$ mit $c_n \in \CC$.
+	Durch Vergleich der 1- Fourier-Koeffizienten folgt $c_n \in \RR$.
+	Aus $\scalarprd{\Delta}{P_n} \sim \tau(n)$ (\myref{Satz 1,(iii)}) folgt $c_n \scalarprd \Delta \Delta \sim \tau(n)$, also gilt $\tau(n) = 0 \Rla c_n = 0$. Aber $c_n = 0 \Rla P_n \equiv 0 \Rla g_n(n) \sim \scalarprd{P_n}{P_n} = 0$.
+	Hieraus folgt die Behauptung.
+	Wobei $x \sim y \Rla x = ky$
+\end{bewe}
+
+\begin{beme}
+	Es wird vermutet, dass $\tau(n) \not= 0$ für alle $n\in\NN$ (Lehmer).
+\end{beme}
+
+\section{Anwendung: Die Peterssonschen Formeln und Abschätzungen für Fourier-Koeffizienten}
+
+Sei $\Set{f_1, f_2, \ldots f_g}$ irgendeine orthogonale Basis von $S_k$ (nach dem Gram-Schmidt-Verfahren kann man z.\,B. jedes $f\in S_k\setminus\{0\}$ zu irgendeiner orthogonalen Basis $\Set{f, \ldots, f_g}$ ergänzen).
+Dann gilt nach \myref{Satz 1, (ii)} für jedes $n\in\NN$:
+\[
+	P_n = \frac{(k-2)!}{(4\pi n)^{k-1}} \sum_{\nu = 0}^\infty \frac{\conj{a_\nu(n)}f_\nu}{\scalarprd{f_\nu}{f_\nu}}
+\]
+wenn $f_\nu = \sum_{m\geq 1} a_\nu(m) q^m$.
+Nimmt man auf beiden Seiten den $m$-ten Fourier-Koeffizieten so erhält man
+\[
+	g_n(m) = \sum_{(k-2)!}{(2\pi n)^{k-1}} \sum_{\nu=1}^\infty \frac{a_\nu(m) \conj{a_\nu(m)}}{\scalarprd{f_\nu}{f_\nu}}
+\]
+Damit folgt
+\[
+	g_n(n) = \frac{(k-2)!}{(4\pi n)^{k-1}} \sum_{\nu = 1}^g \frac{\abs{a_\nu(n)}^2}{\scalarprd{f_\nu}{f_\nu}}
+\]
+Speziell ist
+\[
+	\abs{a_\nu(n)}^2 \leq \norm{f}^2 \frac{(4\pi n)^{k-1}}{(k-2)!} g_n(n)
+\]
+Für $g_n(n)$ substituiert man aus \myref{Satz 2} explizite Formeln. Benutzt man $J_n(x) = \mathcal{O}(\min \{x^{-\frac{1}{2}}, x^n\})$ (einfach) und $k(n,n,c) = \mathcal{O}_\epsilon( (n,c)^{\frac{1}{2}}c^{\frac{1}{2}+\epsilon})$ (Weilsche Abschätzung, tiefliegend) so erhält man nach einigen Rechnungen
+\[
+	g_n(n) = \mathcal{O} (n^{\frac{1}{2}+\epsilon})
+\]
+also folgt
+\[
+	a_\nu(n) = \mathcal{O}_\epsilon(n^{\frac{k}{2}-\frac{1}{4} + \epsilon} )
+\]
+Man erhält also 
+\begin{satz}
+	Sei $f \in S_k$. Dann gilt $a(n) = \mathcal{O}_\epsilon (n^{\frac{k}{2}-\frac{1}{4} + \epsilon})$, für $\epsilon > 0$.
+\end{satz}
+
+\begin{beme-list}
+	\item Man kann leicht zeigen, dass $a(n) \ll_f n^{\frac{k}{2}}$ (siehe später)
+	\item Mit der Theorie der L-Reihen zu Modulformen kann man
+	\[
+		a(n) \ll_{f,\epsilon} n^{\frac{k}{2} - \frac{1}{4} + \epsilon}
+	\]
+	zeigen
+	\item Nach Deligne (sehr tiefliegend) gilt sogar $a(n) \ll_{f,\epsilon} n^{\frac{k}{2}-\frac{1}{2}+\epsilon}$, $\epsilon > 0$ (Ramanujan-Petersson-Vermutung).
+	Dies ist bestmöglich, denn nach Rankin gilt
+	\[
+		\limsup_{n\to\infty} \frac{\abs{a_f(n)}^2}{n^{k-1}} = \infty
+	\]
+%	\[
+%		y^2 = x^3 + ax + b \mod p
+%	\]
+	
+\end{beme-list}
+
+\section{Anwendung: Hecke-Operatoren sind hermitesch}
+
+\begin{satz}
+	Sei $P_m$ für $m \in \NN$ die $m$-te Poincaré-Reihe in $S_k$.
+	Dann
+	\[
+		P_m | T(m) = \sum_{d | (m,n)} \Bigl( \frac{n}{d} \Bigr)^{k-1} P_{\frac{mn}{d^2}}
+		\,.
+	\]
+\end{satz}
+\begin{bewe}
+	Nach Definition ist
+	\[
+		P_m = \frac{1}{2} \sum_{M\in \linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}} e^m |_k M
+	\]
+	unabhängig vom Vertretersystem von $\linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}$.
+	Es gilt
+	\[
+		2 P_m | T(m) = n^{\frac{k}{2}-1} \sum_{M \in \linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}, N \in \linksmodulo{\Gamma(1)}{\mathcal{M}(n)}} e^m|_k MN
+		= n^{\frac{k}{2}-1} \sum_{R \in \linksmodulo{\Gamma(1)_\infty}{\mathcal{M}(n)}} e^m|R
+	\]
+	Wir behaupten nun, dass die Menge 
+	\[
+		\Set{MN | N = \mymat ab0d, ad=n, d>0, b \mod d, M \mymat \alpha\beta\gamma\delta, \text{ mit } (\gamma, \delta) \in \ZZ^2, \ggt(\gamma, \delta) = 1 \text{ und } (\alpha, \beta) \in \ZZ^2 \text{ fixiert mit } \alpha\delta - \beta\gamma = 1}
+	\]
+	ein Vertretersystem für $\linksmodulo{\Gamma(1)_\infty}{\mathcal{M}(n)}$ ist.
+	
+	Wir zeigen zunächst, dass die gesamten Matrizen inäquivalent modulo $\Gamma(1)_\infty$ sind.
+	Angenommen
+	\[
+		\mymat 1\nu01 NM = N'M'
+	\]
+	mit $\nu \in \ZZ$ und $N$, $N'$ und $M$, $M'$ wie oben.
+	Daraus folgt
+	\[
+		N'^{-1} \mymat 1\nu01 N = M'M^{-1}
+	\]
+	also
+	\[
+		\mymat*{\frac{d'}{d}}{\frac{d'b-b'd+\nu d'd}{n}}{0}{\frac{d}{d'}}
+		= M' M^{-1}
+	\]
+	Da $M'M^{-1}$ Komponenten in $\ZZ$ hat, folgt $\frac{d}{d'}$, $\frac{d'}{d} \in \ZZ$, also $d = \pm d'$, also $d = d'$ und $a' = a$ und somit 
+	\[
+		M'M^{-1} \in \Gamma(1)_\infty
+	\]
+	d.\,h. $M' = M$, da Vertretersystem modulo $\Gamma(1)_\infty$.
+	Dann folgt aber $\mymat 1\nu01 N = N'$, bzw. $b' = b + \nu d$, also $b = b'$ und damit $N' = N$.
+\end{bewe}
