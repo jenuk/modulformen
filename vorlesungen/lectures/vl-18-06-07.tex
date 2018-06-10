@@ -68,16 +68,16 @@ In der Tat: Ersetzt man in dieser Gleichung $z$ durch $z + \frac dc$ und $\gamma
 \end{align*}
 sowie die rechte Seite zu
 
-\begin{align*}
+\begin{align}\label{eq:fourierreihePn}
 	&c^{-k} e^{2\pi i \gamma \frac ac} 2\pi (-1)^{\frac k2} \sum_{m\geq 1} \left(\!\frac {mc^2}{\gamma}\right)^{\!\!\frac {k-1}2} \!\! J_{k-1} \left(\! 4\pi \sqrt{\frac{m\gamma}{c^2}}\right) e^{2\pi i m(z + \frac dc)} \\
-	&\qquad = c^{-k+2\frac{k-1}2} 2\pi (-1)^{\frac k2} \sum_{m\geq 1} \left(\!\frac {m}{\gamma}\!\right)^{\!\!\frac {k-1}2} \!\! J_{k-1} \left(\! \tfrac{4\pi \sqrt{m\gamma}}c\right) e^{2\pi i \gamma \frac ac + 2\pi i mz + 2\pi im\frac dc} \\
-	&\qquad = \frac{2\pi (-1)^{\frac k2}}c \sum_{m\geq 1} \left(\!\frac {m}{\gamma}\!\right)^{\!\!\frac {k-1}2} \!\! J_{k-1} \left(\! \tfrac{4\pi \sqrt{m\gamma}}c\right) e^{\frac{2\pi i}c \left(\gamma a + md\right)} e^{2\pi i mz}
+	&\qquad = c^{-k+2\frac{k-1}2} 2\pi (-1)^{\frac k2} \sum_{m\geq 1} \left(\!\frac {m}{\gamma}\!\right)^{\!\!\frac {k-1}2} \!\! J_{k-1} \left(\! \tfrac{4\pi \sqrt{m\gamma}}c\right) e^{2\pi i \gamma \frac ac + 2\pi i mz + 2\pi im\frac dc} \nonumber \\
+	&\qquad = \frac{2\pi (-1)^{\frac k2}}c \sum_{m\geq 1} \left(\!\frac {m}{\gamma}\!\right)^{\!\!\frac {k-1}2} \!\! J_{k-1} \left(\! \tfrac{4\pi \sqrt{m\gamma}}c\right) e^{\frac{2\pi i}c \left(\gamma a + md\right)} e^{2\pi i mz} \nonumber
 	\,.
-\end{align*}
+\end{align}
 
 % Hier fängt es an
 
-Die linke Seite von \myref{(**)} konvergiert gleichmäßig absolut auf kompakten Mengen in $\HH$ und hat den Limes 0 für $q\to \infty$ (gleicher Beweis wie in \myref{Satz 1}).
+Die linke Seite von \eqref{eq:fourierreihePn} konvergiert gleichmäßig absolut auf kompakten Mengen in $\HH$ und hat den Limes 0 für $q\to \infty$ (gleicher Beweis wie in \autoref{<f,Pn>}).
 Sie hat daher eine Fourierentwicklung $\sum_{m\geq 1} c(m) q^m$ mit
 \[
 	c(m) = \int_{ic}^{ic+1} \biggl( \sum_{\nu \in \ZZ} (z+\nu)^{-k} e^{-2\pi \gamma \frac{1}{z+\nu}} \biggr) e^{-2\pi imz} \opd z
@@ -99,44 +99,47 @@ wie behauptet.
 
 Nach dem Lemma folgt nun
 \[
-	P_n(z) = e^{2\pi nz} + \sum{c\geq1} \sum_{d \mod c, (d,c) = 1} \frac{2\pi (-1)^{\frac{k}{2}}}{c} \sum_{m\geq 1} \Bigl(\frac{m}{n})^{k-1}{2} J_{m-1} (\frac{4\pi \sqrt{mn}}{c}) \cdot e^{\frac{2\pi i}{c}(na+md)} e^{2\pi imz}
+	P_n(z) = e^{2\pi nz} + \sum_{c\geq1} \sum_{\substack{d \bmod c\\ \ggt(d,c) = 1}} \frac{2\pi (-1)^{\frac{k}{2}}}{c} \sum_{m\geq 1} \Bigl(\frac{m}{n}\Bigr)^{\frac{k-1}{2}} J_{m-1} \Bigl(\frac{4\pi \sqrt{mn}}{c}\Bigr) \cdot e^{\frac{2\pi i}{c}(na+md)} e^{2\pi imz}
 \]
 und die Behauptung folgt nach Vertauschung der Summation über c und m (absolute Konvergenz). Beachte $ad \equiv 1 \mod c$.
 
 \end{bewe}
 
-\section{Anwendung: die Ramanujan $\tau$-Funktion}
+\subsection[Die Ramanujan \texorpdfstring{$\tau$}{tau}-Funktion]{Die Ramanujan {\boldmath $\tau$}-Funktion}
 
 \begin{satz}
-	Sei $\Delta(z) = \sum_{n \geq 1} q^n \in S_{12}$ ($\tau(1) = 1, \tau(2) = -24, \ldots $).
+	Sei $\Delta(z) = \sum_{n \geq 1} \tau(n) q^n \in S_{12}$ ($\tau(1) = 1$, $\tau(2) = -24, \ldots $).
 	Dann gilt
-	\[
-		\tau(n) \not= 0 \Rla P_{n,12} \not= 0 \Rla g_n(n) \text{( = $n$-ter Fourier-Koeffizient von $P_{n,12}$ gegeben durch Satz 2)} \not= 0
-	\]
+	\begin{align*}
+		\tau(n) \not= 0
+		&\Rla P_{n,12} \not= 0 \\
+		&\Rla g_n(n) \not= 0
+	\end{align*}
+	wobei $g_n(n)$ der $n$-te Fourier-Koeffizient von $P_{n,12}$ ist (siehe \autoref{satz:Pn_Fourier}).
 \end{satz}
 \begin{bewe}
-	Es gilt $P_n = c_n\Delta$ mit $c_n \in \CC$.
-	Durch Vergleich der 1- Fourier-Koeffizienten folgt $c_n \in \RR$.
-	Aus $\scalarprd{\Delta}{P_n} \sim \tau(n)$ (\myref{Satz 1,(iii)}) folgt $c_n \scalarprd \Delta \Delta \sim \tau(n)$, also gilt $\tau(n) = 0 \Rla c_n = 0$. Aber $c_n = 0 \Rla P_n \equiv 0 \Rla g_n(n) \sim \scalarprd{P_n}{P_n} = 0$.
+	Es gilt $P_n = c_n \cdot \Delta$ mit $c_n \in \CC$.
+	Durch Vergleich des ersten Fourier-Koeffizienten folgt $c_n \in \RR$.
+	Aus $\scalarprd{\Delta}{P_n} \sim \tau(n)$ (siehe \autoref{<f,Pn>} (ii)) folgt $c_n \scalarprd \Delta \Delta \sim \tau(n)$, also gilt $\tau(n) = 0$ genau dann, wenn $c_n = 0$. Aber $c_n = 0$ genau dann, wenn $P_n \equiv 0$ genau dann, wenn $g_n(n) \sim \scalarprd{P_n}{P_n} = 0$.
 	Hieraus folgt die Behauptung.
-	Wobei $x \sim y \Rla x = ky$
+	Wobei $x \sim y \Rla x = ky$.
 \end{bewe}
 
 \begin{beme}
 	Es wird vermutet, dass $\tau(n) \not= 0$ für alle $n\in\NN$ (Lehmer).
 \end{beme}
 
-\section{Anwendung: Die Peterssonschen Formeln und Abschätzungen für Fourier-Koeffizienten}
+\subsection{Die Peterssonschen Formeln und Abschätzungen für Fourier-Koeffizienten}
 
 Sei $\Set{f_1, f_2, \ldots f_g}$ irgendeine orthogonale Basis von $S_k$ (nach dem Gram-Schmidt-Verfahren kann man z.\,B. jedes $f\in S_k\setminus\{0\}$ zu irgendeiner orthogonalen Basis $\Set{f, \ldots, f_g}$ ergänzen).
-Dann gilt nach \myref{Satz 1, (ii)} für jedes $n\in\NN$:
+Dann gilt nach \autoref{<f,Pn>} (ii) für jedes $n\in\NN$:
 \[
-	P_n = \frac{(k-2)!}{(4\pi n)^{k-1}} \sum_{\nu = 0}^\infty \frac{\conj{a_\nu(n)}f_\nu}{\scalarprd{f_\nu}{f_\nu}}
+	P_n = \frac{(k-2)!}{(4\pi n)^{k-1}} \sum_{\nu = 0}^g \frac{\conj{a_\nu(n)}f_\nu}{\scalarprd{f_\nu}{f_\nu}}
 \]
 wenn $f_\nu = \sum_{m\geq 1} a_\nu(m) q^m$.
 Nimmt man auf beiden Seiten den $m$-ten Fourier-Koeffizieten so erhält man
 \[
-	g_n(m) = \sum_{(k-2)!}{(2\pi n)^{k-1}} \sum_{\nu=1}^\infty \frac{a_\nu(m) \conj{a_\nu(m)}}{\scalarprd{f_\nu}{f_\nu}}
+	g_n(m) = \frac{(k-2)!}{(2\pi n)^{k-1}} \sum_{\nu=1}^g \frac{a_\nu(m) \conj{a_\nu(m)}}{\scalarprd{f_\nu}{f_\nu}}
 \]
 Damit folgt
 \[
@@ -146,15 +149,16 @@ Speziell ist
 \[
 	\abs{a_\nu(n)}^2 \leq \norm{f}^2 \frac{(4\pi n)^{k-1}}{(k-2)!} g_n(n)
 \]
-Für $g_n(n)$ substituiert man aus \myref{Satz 2} explizite Formeln. Benutzt man $J_n(x) = \mathcal{O}(\min \{x^{-\frac{1}{2}}, x^n\})$ (einfach) und $k(n,n,c) = \mathcal{O}_\epsilon( (n,c)^{\frac{1}{2}}c^{\frac{1}{2}+\epsilon})$ (Weilsche Abschätzung, tiefliegend) so erhält man nach einigen Rechnungen
+Für $g_n(n)$ substituiert man aus \autoref{satz:Pn_Fourier} explizite Formeln. Benutzt man $J_n(x) = \mathcal{O}(\min \{x^{-\frac{1}{2}}, x^n\})$ (einfach) und $k(n,n,c) = \mathcal{O}_\epsilon( (n,c)^{\frac{1}{2}}c^{\frac{1}{2}+\epsilon})$ (Weilsche Abschätzung, tiefliegend) so erhält man nach einigen Rechnungen
 \[
 	g_n(n) = \mathcal{O} (n^{\frac{1}{2}+\epsilon})
 \]
 also folgt
 \[
 	a_\nu(n) = \mathcal{O}_\epsilon(n^{\frac{k}{2}-\frac{1}{4} + \epsilon} )
+	\,.
 \]
-Man erhält also 
+
 \begin{satz}
 	Sei $f \in S_k$. Dann gilt $a(n) = \mathcal{O}_\epsilon (n^{\frac{k}{2}-\frac{1}{4} + \epsilon})$, für $\epsilon > 0$.
 \end{satz}
@@ -177,7 +181,7 @@ Man erhält also
 	
 \end{beme-list}
 
-\section{Anwendung: Hecke-Operatoren sind hermitesch}
+\subsection{Hecke-Operatoren sind hermitesch}
 
 \begin{satz}
 	Sei $P_m$ für $m \in \NN$ die $m$-te Poincaré-Reihe in $S_k$.
@@ -195,13 +199,15 @@ Man erhält also
 	unabhängig vom Vertretersystem von $\linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}$.
 	Es gilt
 	\[
-		2 P_m | T(m) = n^{\frac{k}{2}-1} \sum_{M \in \linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}, N \in \linksmodulo{\Gamma(1)}{\mathcal{M}(n)}} e^m|_k MN
+		2 P_m | T(m) = n^{\frac{k}{2}-1} \sum_{\substack{M \in \linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}\\ N \in \linksmodulo{\Gamma(1)}{\mathcal{M}(n)}}} e^m|_k MN
 		= n^{\frac{k}{2}-1} \sum_{R \in \linksmodulo{\Gamma(1)_\infty}{\mathcal{M}(n)}} e^m|R
 	\]
 	Wir behaupten nun, dass die Menge 
-	\[
-		\Set{MN | N = \mymat ab0d, ad=n, d>0, b \mod d, M \mymat \alpha\beta\gamma\delta, \text{ mit } (\gamma, \delta) \in \ZZ^2, \ggt(\gamma, \delta) = 1 \text{ und } (\alpha, \beta) \in \ZZ^2 \text{ fixiert mit } \alpha\delta - \beta\gamma = 1}
-	\]
+	\begin{equation*}
+	\begin{split}
+		\{\,MN \mid &N = \mymat ab0d\colon ad=n, d>0,\ b \bmod d, \\ &M = \mymat \alpha\beta\gamma\delta\colon (\gamma, \delta) \in \ZZ^2\colon \ggt(\gamma, \delta) = 1 \text{ und } (\alpha, \beta) \in \ZZ^2 \text{ fixiert s.\,d. } \alpha\delta - \beta\gamma = 1\,\}
+	\end{split}
+	\end{equation*}
 	ein Vertretersystem für $\linksmodulo{\Gamma(1)_\infty}{\mathcal{M}(n)}$ ist.
 	
 	Wir zeigen zunächst, dass die gesamten Matrizen inäquivalent modulo $\Gamma(1)_\infty$ sind.
