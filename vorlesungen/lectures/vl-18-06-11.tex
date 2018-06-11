@@ -1,0 +1,128 @@
+Sei nun $\mymat ABCD \in \mathcal M (n)$. Wir wollen schreiben
+\[
+	\mymat* ABCD = \mymat* 1\nu 01 \mymat* ab0d \mymat* \alpha \beta \gamma \delta
+	\,,
+\]
+d.h. 
+\[
+	\mymat* ABCD \mymat* \delta{-\beta}{-\gamma}\alpha = \mymat* 1\nu 01 \mymat* ab0d
+\]
+mit $\nu \in \ZZ$ und $ad = n, d > 0, b (\operatorname{mod} d)$ und $(\gamma, \delta) \in \ZZ^2, \ggt(\gamma, \delta) = 1, \alpha\delta - \beta\gamma = 1$. Man bestimmt zunächst $(\gamma, \delta) \in \ZZ^2$ mit $\ggt(\gamma, \delta) = 1$, sodass $C\delta - D\gamma = 0$, dann ist
+\[
+	\mymat* ABCD \mymat* \delta{-\beta}{-\gamma}\alpha = \mymat* {*}{*}0{*} \in \mathcal M(n)
+	\,,
+\]
+also
+\[
+	\mymat* ABCD \mymat* \delta{-\beta}{-\gamma}\alpha = \mymat* a{\tilde b}0d 
+\]
+mit $\tilde b \in \ZZ, ad = n$. Indem man gegebenenfalls mit $-E$ multipliziert, d.h. $(\gamma, \delta)$ durch $(-\gamma, -\delta)$ ersetzt, kann man auch $d > 0$ erreichen. Wähle nun $\nu \in \ZZ$, sodass $\tilde b = b + \nu d$. Dies zeigt die Behauptung.
+
+Es gilt nun
+\[
+	2 P_m | T(n) = n^{\frac k2 - 1} \sum_{M \in \linksmodulo {\Gamma(1)_\infty}{\Gamma(1)}} \left( \sum_{\substack{ad = n, d > 0 \\ b (\operatorname{mod} d)}} e^m |_k \mymat* ab0d \right) |_k M
+	\,.
+\]
+Die innere Summe ist gleich 
+\[
+	\sum_{d|n} n^{\frac k2} d^{-n} e^{2\pi im \left( \frac {n}{d^2} z + \frac bd \right)} = n^{\frac k2} \sum_{d | (m,n)} d^{1-k} e^{2\pi i \frac {mn}{d^2} z}
+	\,,
+\]
+wegen 
+\[
+	\sum_{b (\operatorname{mod} d)} e^{2\pi i \frac bd m} = \begin{cases} d, &d|m \\ 0, &\text{sonst}\end{cases}
+	\,.
+\]
+Hieraus folgt die Behauptung.
+
+\begin{satz}
+Die Operatoren $T(n), n \in \NN$ eingeschränkt auf $S_k$ sind hermitesch bezüglich des Petersson-Skalarproduktes, d.h.
+\[
+	\scalarprd {f|T(n)}g = \scalarprd f{g|T(n)} \qquad \forall f,g, \in S_k
+	\,.
+\]
+\end{satz}
+
+\begin{bewe}
+Man zeigt dies normalerweise, indem man Modulformen zu sogenannten Kongruenzuntergruppen von $\Gamma(1)$ und deren Skalarprodukt definiert und dann gewisse Invarianzeigenschaften des Skalarproduktes (beim Übergang von einer Untergruppe zur anderen) beachtet. Wir werden hier die Behauptung unter Benutzung von \myref{Satz 1} beweisen. Da die $P_m, m \in \NN$ den Raum $S_k$ erzeugen, genügt es zu zeigen, dass
+\[
+	\scalarprd {f|T(n)}{P_m} = \scalarprd f{P_m|T(n)}
+	\,.
+\]
+Man schreibe $f = \sum_{l \geq 1} a(l) q^l$ und $f | T(n) = \sum_{l \geq 1} b(l) q^l$. Nach \myref{Satz 1, ii), §1} ist
+\begin{align*}
+	\scalarprd {f|T(n)}{P_m} &= \frac {(k-2)!}{(4\pi m)^{k-1}} b(m) \\
+	&= \frac {(k-2)!}{(4\pi m)^{k-1}} \sum_{d|(m,n)} d^{k-1} a\left( \frac {mn}{d^2} \right)
+	\,.
+\end{align*}
+Andererseits ist nach \myref{Satz 1 von eben}:
+\begin{align*}
+	\scalarprd f{P_m|T(n)} &= \sum_{d|(m,n)} \left( \frac nd \right)^{k-1} \scalarprd f{P_{\frac {mn}{d^2}}} \\
+	&= \sum_{d|(m,n)} \left( \frac nd \right)^{k-1} \frac {(k-2)!}{(4\pi \frac {mn}{d^2})^{k-1}} a\left( \frac {mn}{d^2} \right) \\
+	&= \frac {(k-2)!}{(4\pi m)^{k-1}} \sum_{d|(m,n)} d^{k-1} a\left( \frac {mn}{d^2} \right)
+	\,.
+\end{align*}
+\end{bewe}
+
+\begin{koro}
+Die Eigenwerte von $T(n)$ sind reell.
+\end{koro}
+\begin{bewe}
+Ist nach LA 1 klar.
+\end{bewe}
+
+\begin{koro}
+Seien $f, g$ normalisierte Eigenformen in $S_k$. Dann ist entweder $f = g$ oder $\scalarprd fg = 0$.
+\end{koro}
+
+\begin{bewe}
+Seien $f = \sum_{n \geq 1} a(n) q^n$ und $g = \sum_{n \geq 1} b(n) q^n$. Wegen $a(1) = b(1) = 1$ ist dann $f | T(n) = a(n) f$ und $g | T(n) = b(n) g$. Daher
+\[
+	a(n) \scalarprd fg = \scalarprd {f|T(n)}g = \scalarprd f{g|T(n)} = \conj{b(n)} \scalarprd fg = b(n) \scalarprd fg
+	\,.
+\]
+Aus $\scalarprd fg \neq 0$ folgt damit $a(n) = b(n)$ für alle $n \in \NN$, also $f = g$.
+\end{bewe}
+
+\begin{lemm}
+Sei $V$ ein endlich-dimensionaler komplexer Hilbertraum mit Skalarprodukt $\scalarprd \cdot \cdot$ und sei $\Set {T_\mu}_{\mu \in I}$ eine Familie von hermiteschen, miteinander kommutativen Endomorphismen von $V$. Dann besitzt $V$ eine orthogonale Basis bestehend aus gemeinsamen Eigenvektoren aller Operatoren $T_\mu$ mit $\mu \in I$. 
+\end{lemm}
+
+\begin{bewe}
+Sei $W$ die Menge der $\CC$-linearen Endomorphismen von $V$ aufgefasst als reeller Vektorraum. Wegen $\dim_\CC V < \infty$ ist auch $\dim_\RR W < \infty$. Die $T_\mu$ erzeugen daher einen endlich-dimensionalen Unterraum von $W$, sodass es genügt, die Aussage für endlich viele Operatoren $T_1, \ldots, T_m$ zu zeigen.
+
+Wir zeigen zunächst durch Induktion nach $m$, dass $V$ einen gemeinsamen Eigenvektor von $T_1, \ldots, T_m$ enthält. Für $m = 1$ ist dies klar, da $V$ einen Eigenvektor von $T_1$ enthält. Sei nun $m \geq 2$ und $\lambda$ ein Eigenwert von $T_1$ mit zugehörigem Eigenraum $V_\lambda := \Set {v \in V | T_1 v = \lambda v }$. Wegen $T_\mu T_1 = T_1 T_\mu$ für alle $\mu$ gilt, dass $T_\mu V_\lambda \subset V_\lambda$ ($\mu = 2, \ldots, m$). Nach Induktionsvoraussetzung besitzt $V_\lambda$ einen Eigenvektor von $T_2, \ldots, T_m$. Dieser ist nach Definition auch Eigenvektor von $T_1$. (Beachte: Dieser Eigenvektor ist nichttrivial, also nicht der Nullvektor. Da $T_1$ hermitesch, besitzt es einen solchen nichttrivialen Eigenvektor. Den betrachtet man auch weiterhin; wenn Eigenwerte 0 werden, ist das kein Problem.)
+
+Wir zeigen nun die Aussage des Lemmas durch Induktion nach $\dim_\CC V$. Für $\dim_\CC V = 1$ ist die Aussage klar. Sei also $m = \dim_\CC V \geq 2$. Man schreibe $V = \CC v \oplus (\CC v)^\bot$, wobei $v$ ein Eigenvektor aller $T_\mu$ mit $1 \leq \mu \leq m$ ist. Da die $T_\mu$ hermitesch sind und $\CC v$ invariant lassen, lassen sie auch $(\CC v)^\bot$ invariant. Nach Induktionsvoraussetzung besitzt $(\CC v)^\bot$ eine orthogonale Basis von Eigenvektoren für alle $T_\mu$. Hieraus folgt die Behauptung.
+\end{bewe}
+
+\begin{koro}
+Der Raum $S_k$ besitzt eine orthogonale Basis von gemeinsamen Eigenfunktionen für alle $T(n), n \in \NN$.
+\end{koro}
+\begin{bewe}
+Folgt direkt aus dem obigen Beweis
+\end{bewe}
+
+\begin{beme}
+Nach \myref{Korollar 2: f=g oder <f,g> = 0} ist diese orthogonale Basis bis auf Permutation und Multiplikation mit Skalaren in $\CC^\times$ eindeutig bestimmt.
+\end{beme}
+
+
+
+\chapter{Die Eichler-Selberg-Spurformel auf $\SL_2(\ZZ)$}
+
+Sei von nun an stets $k \geq 4$ gerade und wie üblich $T(m), m \geq 1$ der $m$-te Hecke-Operator auf $M_k (\Gamma(1))$. Wir können $T(m)$ zu einem Endomorphismus auf $S_k$ einschränken.
+
+\emph{Ziel:} Bestimmung einer analytischen (einfach) und arithmetischen (schwer) Formel für die Spur $\operatorname{Tr} T(m)$ für alle $m$.
+
+Sei $h(z, z')$ eine komplexwertige Funktion auf $\HH \times \HH$ ($\HH$ wie üblich die obere Halbebene), welche in beiden Variablen eine Spitzenform von Gewicht $k$ ist, d.h. 
+\begin{align*}
+	h(\cdot, z') \in S_k &\quad \forall z' \in \HH \\
+	h(z, \cdot) \in S_k &\quad \forall z \in \HH
+\end{align*}
+Für $f \in S_k$ definieren wir dann $f \ast h$ als eine Funktion
+\[
+	f \ast h \colon \HH \to \CC, z' \mapsto (f \ast h)(z') := \int_{\mathcal F} f(z) \conj{ h(z, \conj{-z'})} y^{k-2} \opd x \opd y \qquad (z = x + iy)
+	\,.
+\]
+Dies ist im Wesentlichen das Petersson-Skalarprodukt $\scalarprd f{h(\cdot, \conj{-z'})}$. Wir wollen zunächst zeigen, dass $T(m) \colon S_k \to S_k$ als ein Integral dieses Typs geschrieben werden kann mit einem bestimmten Kern $h = h_m$ (bis auf eine Konstante). Aus diesen Überlegungen folgt dann auch sogleich eine analytische Formel für $\operatorname{Tr} T(m)$.

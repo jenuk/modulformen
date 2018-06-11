@@ -132,7 +132,7 @@ zusammengenommen also $e^{2 \pi inz}$. Die übrigen Terme ergeben den Beitrag
 	\sum_{\substack{c \geq 1, d \in \ZZ \\ \ggt(c,d) = 1 \\ ad-bc = 1}} (cz+d)^{-k} e^{2 \pi i n \frac{az+b}{cz+d}} = \sum_{c \geq 1} \sum_{\substack{d' (\operatorname{mod} c) \\ \ggt(c,d') = 1 \\ ad'-b'c = 1}} \sum_{\nu \in \ZZ} (c(z + \nu) +d')^{-k} e^{2\pi in \frac{a(z+\nu)+b'}{c(z+\nu)+d'}}
 	\,.
 \]
-Die rechte Seite entsteht aus der linken, indem man für festes $c \geq 1$ und ein festes Vertretersystem $d' (\operatorname{mod} c)$ jedes $d \in \ZZ$ in der Form $d = d' + c\nu$ mit $v \in \ZZ$ und $d'$ im vorgegebenen Vertretersystem schreibt. Schreibt man zudem mit geeignetem $b' \in \ZZ$ auch $b = b' + a\nu$, so wird die Bedingung $ad - bc = 1$ zu
+Die rechte Seite entsteht aus der linken, indem man für festes $c \geq 1$ und ein festes Vertretersystem $d' (\operatorname{mod} c)$ jedes $d \in \ZZ$ mit $\ggt(c,d) = 1$ in der Form $d = d' + c\nu$ mit $v \in \ZZ$ und $d'$ im vorgegebenen Vertretersystem schreibt. Schreibt man zudem mit geeignetem $b' \in \ZZ$ auch $b = b' + a\nu$, so wird die Bedingung $ad - bc = 1$ zu
 \[
 	1 = ad - bc = a(d' + c\nu) - (b' + a\nu)c = ad' - b'c
 \]
@@ -160,7 +160,7 @@ In der Tat: Ersetzt man in dieser Gleichung $z$ durch $z + \frac dc$ und $\gamma
 	&= \sum_{\nu \in \ZZ} (cz + d + c\nu)^{-k} e^{2\pi i\gamma \frac ac - 2\pi i \frac{\gamma}{c} \frac{1}{cz + d + c\nu}} \\
 	&= \sum_{\nu \in \ZZ} (c(z + \nu) + d)^{-k} e^{\frac{2\pi i\gamma}c \left( a - \frac{1}{c(z + \nu) + d} \right)} \\[-12pt]
 	&= \sum_{\nu \in \ZZ} (c(z + \nu) + d)^{-k} e^{\frac{2\pi i\gamma}c \frac{ac(z + \nu) + \overbrace{\scriptscriptstyle ad - 1}^{= bc}}{c(z + \nu) + d}} \\
-	&= \sum_{\nu \in \ZZ} (c(z + \nu) + d)^{-k} e^{2\pi i\gamma \frac{a(z + \nu) + b}{c(z + \nu) + d}} \\
+	&= \sum_{\nu \in \ZZ} (c(z + \nu) + d)^{-k} e^{2\pi i\gamma \frac{a(z + \nu) + b}{c(z + \nu) + d}}
 \end{align*}
 sowie die rechte Seite zu
 \begin{multline*}
