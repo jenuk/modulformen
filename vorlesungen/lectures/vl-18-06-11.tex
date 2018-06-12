@@ -35,7 +35,7 @@ wegen
 \]
 Hieraus folgt die Behauptung.
 
-\begin{satz}
+\begin{satz}\label{T(n)herm}
 Die Operatoren $T(n), n \in \NN$ eingeschränkt auf $S_k$ sind hermitesch bezüglich des Petersson-Skalarproduktes, d.h.
 \[
 	\scalarprd {f|T(n)}g = \scalarprd f{g|T(n)} \qquad \forall f,g, \in S_k
@@ -44,7 +44,7 @@ Die Operatoren $T(n), n \in \NN$ eingeschränkt auf $S_k$ sind hermitesch bezüg
 \end{satz}
 
 \begin{bewe}
-Man zeigt dies normalerweise, indem man Modulformen zu sogenannten Kongruenzuntergruppen von $\Gamma(1)$ und deren Skalarprodukt definiert und dann gewisse Invarianzeigenschaften des Skalarproduktes (beim Übergang von einer Untergruppe zur anderen) beachtet. Wir werden hier die Behauptung unter Benutzung von \myref{Satz 1} beweisen. Da die $P_m, m \in \NN$ den Raum $S_k$ erzeugen, genügt es zu zeigen, dass
+Man zeigt dies normalerweise, indem man Modulformen zu sogenannten Kongruenzuntergruppen von $\Gamma(1)$ und deren Skalarprodukt definiert und dann gewisse Invarianzeigenschaften des Skalarproduktes (beim Übergang von einer Untergruppe zur anderen) beachtet. Wir werden hier die Behauptung unter Benutzung von \myref{Satz 1} beweisen. Da die $P_m$ mit $m \in \NN$ den Raum $S_k$ erzeugen, genügt es zu zeigen, dass
 \[
 	\scalarprd {f|T(n)}{P_m} = \scalarprd f{P_m|T(n)}
 	\,.
@@ -68,15 +68,15 @@ Andererseits ist nach \myref{Satz 1 von eben}:
 Die Eigenwerte von $T(n)$ sind reell.
 \end{koro}
 \begin{bewe}
-Ist nach LA 1 klar.
+Ist nach \autoref{T(n)herm} und LA 1 klar.
 \end{bewe}
 
-\begin{koro}
+\begin{koro}\label{normEigfkt:id/orth}
 Seien $f, g$ normalisierte Eigenformen in $S_k$. Dann ist entweder $f = g$ oder $\scalarprd fg = 0$.
 \end{koro}
 
 \begin{bewe}
-Seien $f = \sum_{n \geq 1} a(n) q^n$ und $g = \sum_{n \geq 1} b(n) q^n$. Wegen $a(1) = b(1) = 1$ ist dann $f | T(n) = a(n) f$ und $g | T(n) = b(n) g$. Daher
+Seien $f = \sum_{n \geq 1} a(n) q^n$ und $g = \sum_{n \geq 1} b(n) q^n$. Wegen $a(1) = b(1) = 1$ ist dann $f | T(n) = a(n) f$ und $g | T(n) = b(n) g$. Daher gilt mit \autoref{T(n)herm}
 \[
 	a(n) \scalarprd fg = \scalarprd {f|T(n)}g = \scalarprd f{g|T(n)} = \conj{b(n)} \scalarprd fg = b(n) \scalarprd fg
 	\,.
@@ -97,21 +97,21 @@ Wir zeigen nun die Aussage des Lemmas durch Induktion nach $\dim_\CC V$. Für $\
 \end{bewe}
 
 \begin{koro}
-Der Raum $S_k$ besitzt eine orthogonale Basis von gemeinsamen Eigenfunktionen für alle $T(n), n \in \NN$.
+Der Raum $S_k$ besitzt eine orthogonale Basis von gemeinsamen Eigenfunktionen für alle $T(n)$ mit $n \in \NN$.
 \end{koro}
 \begin{bewe}
-Folgt direkt aus dem obigen Beweis
+Folgt direkt aus dem obigen Lemma mit $V = S_k$ und $\Set {T_\mu}_{\mu \in I} = \Set {T(n)}_{n \in \NN}$.
 \end{bewe}
 
 \begin{beme}
-Nach \myref{Korollar 2: f=g oder <f,g> = 0} ist diese orthogonale Basis bis auf Permutation und Multiplikation mit Skalaren in $\CC^\times$ eindeutig bestimmt.
+Nach \autoref{normEigfkt:id/orth} ist diese orthogonale Basis bis auf Permutation und Multiplikation mit Skalaren in $\CC^\times$ eindeutig bestimmt.
 \end{beme}
 
 
 
 \chapter{Die Eichler-Selberg-Spurformel auf $\SL_2(\ZZ)$}
 
-Sei von nun an stets $k \geq 4$ gerade und wie üblich $T(m), m \geq 1$ der $m$-te Hecke-Operator auf $M_k (\Gamma(1))$. Wir können $T(m)$ zu einem Endomorphismus auf $S_k$ einschränken.
+Sei von nun an stets $k \geq 4$ gerade und wie üblich $T(m)$ mit $m \geq 1$ der $m$-te Hecke-Operator auf $M_k (\Gamma(1))$. Wir wissen bereits, dass wir $T(m)$ zu einem Endomorphismus auf $S_k$ einschränken können.
 
 \emph{Ziel:} Bestimmung einer analytischen (einfach) und arithmetischen (schwer) Formel für die Spur $\operatorname{Tr} T(m)$ für alle $m$.
 
