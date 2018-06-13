@@ -44,18 +44,18 @@ Die Operatoren $T(n), n \in \NN$ eingeschränkt auf $S_k$ sind hermitesch bezüg
 \end{satz}
 
 \begin{bewe}
-Man zeigt dies normalerweise, indem man Modulformen zu sogenannten Kongruenzuntergruppen von $\Gamma(1)$ und deren Skalarprodukt definiert und dann gewisse Invarianzeigenschaften des Skalarproduktes (beim Übergang von einer Untergruppe zur anderen) beachtet. Wir werden hier die Behauptung unter Benutzung von \myref{Satz 1} beweisen. Da die $P_m$ mit $m \in \NN$ den Raum $S_k$ erzeugen, genügt es zu zeigen, dass
+Man zeigt dies normalerweise, indem man Modulformen zu sogenannten Kongruenzuntergruppen von $\Gamma(1)$ und deren Skalarprodukt definiert und dann gewisse Invarianzeigenschaften des Skalarproduktes (beim Übergang von einer Untergruppe zur anderen) beachtet. Wir werden hier die Behauptung unter Benutzung von \myref{Hecke(Pm)} beweisen. Da die $P_m$ mit $m \in \NN$ den Raum $S_k$ erzeugen, genügt es zu zeigen, dass
 \[
 	\scalarprd {f|T(n)}{P_m} = \scalarprd f{P_m|T(n)}
 	\,.
 \]
-Man schreibe $f = \sum_{l \geq 1} a(l) q^l$ und $f | T(n) = \sum_{l \geq 1} b(l) q^l$. Nach \myref{Satz 1, ii), §1} ist
+Man schreibe $f = \sum_{l \geq 1} a(l) q^l$ und $f | T(n) = \sum_{l \geq 1} b(l) q^l$. Nach \myref{<f,Pn>}, ii) ist
 \begin{align*}
 	\scalarprd {f|T(n)}{P_m} &= \frac {(k-2)!}{(4\pi m)^{k-1}} b(m) \\
 	&= \frac {(k-2)!}{(4\pi m)^{k-1}} \sum_{d|(m,n)} d^{k-1} a\left( \frac {mn}{d^2} \right)
 	\,.
 \end{align*}
-Andererseits ist nach \myref{Satz 1 von eben}:
+Andererseits ist nach \myref{Hecke(Pm)}:
 \begin{align*}
 	\scalarprd f{P_m|T(n)} &= \sum_{d|(m,n)} \left( \frac nd \right)^{k-1} \scalarprd f{P_{\frac {mn}{d^2}}} \\
 	&= \sum_{d|(m,n)} \left( \frac nd \right)^{k-1} \frac {(k-2)!}{(4\pi \frac {mn}{d^2})^{k-1}} a\left( \frac {mn}{d^2} \right) \\
@@ -85,15 +85,15 @@ Aus $\scalarprd fg \neq 0$ folgt damit $a(n) = b(n)$ für alle $n \in \NN$, also
 \end{bewe}
 
 \begin{lemm}
-Sei $V$ ein endlich-dimensionaler komplexer Hilbertraum mit Skalarprodukt $\scalarprd \cdot \cdot$ und sei $\Set {T_\mu}_{\mu \in I}$ eine Familie von hermiteschen, miteinander kommutativen Endomorphismen von $V$. Dann besitzt $V$ eine orthogonale Basis bestehend aus gemeinsamen Eigenvektoren aller Operatoren $T_\mu$ mit $\mu \in I$. 
+Sei $V$ ein endlich-dimensionaler komplexer Hilbertraum mit Skalarprodukt $\scalarprd \cdot \cdot$ und sei $\Set {T_\mu}_{\mu \in I}$ eine Familie von hermiteschen, miteinander kommutierenden Endomorphismen von $V$. Dann besitzt $V$ eine orthogonale Basis bestehend aus gemeinsamen Eigenvektoren aller Operatoren $T_\mu$ mit $\mu \in I$. 
 \end{lemm}
 
 \begin{bewe}
-Sei $W$ die Menge der $\CC$-linearen Endomorphismen von $V$ aufgefasst als reeller Vektorraum. Wegen $\dim_\CC V < \infty$ ist auch $\dim_\RR W < \infty$. Die $T_\mu$ erzeugen daher einen endlich-dimensionalen Unterraum von $W$, sodass es genügt, die Aussage für endlich viele Operatoren $T_1, \ldots, T_m$ zu zeigen.
+Sei $W$ die Menge der $\CC$-linearen Endomorphismen von $V$, aufgefasst als reeller Vektorraum. Wegen $\dim_\CC V < \infty$ ist auch $\dim_\RR W < \infty$. Die $T_\mu$ erzeugen daher einen endlich-dimensionalen Unterraum von $W$, sodass es genügt, die Aussage für endlich viele Operatoren $T_1, \ldots, T_m$ zu zeigen.
 
-Wir zeigen zunächst durch Induktion nach $m$, dass $V$ einen gemeinsamen Eigenvektor von $T_1, \ldots, T_m$ enthält. Für $m = 1$ ist dies klar, da $V$ einen Eigenvektor von $T_1$ enthält. Sei nun $m \geq 2$ und $\lambda$ ein Eigenwert von $T_1$ mit zugehörigem Eigenraum $V_\lambda := \Set {v \in V | T_1 v = \lambda v }$. Wegen $T_\mu T_1 = T_1 T_\mu$ für alle $\mu$ gilt, dass $T_\mu V_\lambda \subset V_\lambda$ ($\mu = 2, \ldots, m$). Nach Induktionsvoraussetzung besitzt $V_\lambda$ einen Eigenvektor von $T_2, \ldots, T_m$. Dieser ist nach Definition auch Eigenvektor von $T_1$. (Beachte: Dieser Eigenvektor ist nichttrivial, also nicht der Nullvektor. Da $T_1$ hermitesch, besitzt es einen solchen nichttrivialen Eigenvektor. Den betrachtet man auch weiterhin; wenn Eigenwerte 0 werden, ist das kein Problem.)
+Wir zeigen zunächst durch Induktion nach $m$, dass $V$ einen gemeinsamen nichttrivialen Eigenvektor von $T_1, \ldots, T_m$ enthält. Für $m = 1$ ist dies klar, da $V$ wegen $T_1$ hermitesch einen nichttrivialen Eigenvektor von $T_1$ enthält. Sei nun $m \geq 2$ und $\lambda$ ein Eigenwert von $T_1$ mit zugehörigem Eigenraum $V_\lambda := \Set {v \in V \mid T_1 v = \lambda v }$. Für alle $\mu \in \Set {2, \ldots, m}$ besteht nach Voraussetzung die Kommutativität $T_\mu T_1 = T_1 T_\mu$ und daher gilt $T_\mu V_\lambda \subset V_\lambda$. Nach Induktionsvoraussetzung besitzt nun $V_\lambda$ einen nichttrivialen gemeinsamen Eigenvektor von $T_2, \ldots, T_m$. Dieser ist nach Definition von $V_\lambda$ auch Eigenvektor von $T_1$.
 
-Wir zeigen nun die Aussage des Lemmas durch Induktion nach $\dim_\CC V$. Für $\dim_\CC V = 1$ ist die Aussage klar. Sei also $m = \dim_\CC V \geq 2$. Man schreibe $V = \CC v \oplus (\CC v)^\bot$, wobei $v$ ein Eigenvektor aller $T_\mu$ mit $1 \leq \mu \leq m$ ist. Da die $T_\mu$ hermitesch sind und $\CC v$ invariant lassen, lassen sie auch $(\CC v)^\bot$ invariant. Nach Induktionsvoraussetzung besitzt $(\CC v)^\bot$ eine orthogonale Basis von Eigenvektoren für alle $T_\mu$. Hieraus folgt die Behauptung.
+Wir zeigen abschließend die Aussage des Lemmas durch Induktion nach $\dim_\CC V$. Für $\dim_\CC V = 1$ ist die Aussage klar. Sei also $m = \dim_\CC V \geq 2$. Man schreibe $V = \CC v \oplus (\CC v)^\bot$, wobei $v$ ein Eigenvektor aller $T_\mu$ mit $\mu \in \Set {1, \ldots, m}$ ist. Da die $T_\mu$ hermitesch sind und $\CC v$ invariant lassen, lassen sie auch $(\CC v)^\bot$ invariant. Nach Induktionsvoraussetzung besitzt $(\CC v)^\bot$ bereits eine orthogonale Basis von Eigenvektoren für alle $T_\mu$. Hieraus folgt die Behauptung.
 \end{bewe}
 
 \begin{koro}
@@ -113,14 +113,14 @@ Nach \autoref{normEigfkt:id/orth} ist diese orthogonale Basis bis auf Permutatio
 
 Sei von nun an stets $k \geq 4$ gerade und wie üblich $T(m)$ mit $m \geq 1$ der $m$-te Hecke-Operator auf $M_k (\Gamma(1))$. Wir wissen bereits, dass wir $T(m)$ zu einem Endomorphismus auf $S_k$ einschränken können.
 
-\emph{Ziel:} Bestimmung einer analytischen (einfach) und arithmetischen (schwer) Formel für die Spur $\operatorname{Tr} T(m)$ für alle $m$.
+\emph{Ziel:} Bestimmung einer analytischen (einfach) und arithmetischen (schwer) Formel für die Spur $\operatorname{Tr} T(m)$ für alle $m \in \NN$.
 
-Sei $h(z, z')$ eine komplexwertige Funktion auf $\HH \times \HH$ ($\HH$ wie üblich die obere Halbebene), welche in beiden Variablen eine Spitzenform von Gewicht $k$ ist, d.h. 
-\begin{align*}
-	h(\cdot, z') \in S_k &\quad \forall z' \in \HH \\
-	h(z, \cdot) \in S_k &\quad \forall z \in \HH
-\end{align*}
-Für $f \in S_k$ definieren wir dann $f \ast h$ als eine Funktion
+Sei $\HH$ wie üblich die obere Halbebene und $h$ eine Funktion $h: \HH \times \HH \to \CC, (z, z') \mapsto h(z, z')$, welche in beiden Variablen eine Spitzenform von Gewicht $k$ darstellt, d.h. 
+\[
+	h(\cdot, z') \in S_k \quad \forall z' \in \HH \qquad \text{und} \qquad h(z, \cdot) \in S_k \quad \forall z \in \HH
+	\,.
+\]
+Für $f \in S_k$ definieren wir dann $f \ast h$ als die Funktion
 \[
 	f \ast h \colon \HH \to \CC, z' \mapsto (f \ast h)(z') := \int_{\mathcal F} f(z) \conj{ h(z, \conj{-z'})} y^{k-2} \opd x \opd y \qquad (z = x + iy)
 	\,.
