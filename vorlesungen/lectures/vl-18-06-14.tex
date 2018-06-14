@@ -1,0 +1,181 @@
+Sei $f_1$, \ldots, $f_r$ eine Basis von normierten, simultanen, orthogonalen Eigenformen für die $T(m)$, d.\,h.
+
+\begin{align*}
+	f_i &= \sum_{n=1}^\infty a_n^i q^n \\
+	a_1^i &= 1 \\
+	T(m)f_i &= a_mf_i
+	\,.
+\end{align*}
+
+\begin{erin}
+	$\scalarprd {f_i}{f_j} = 0$ genau dann, wenn $i \not= j$.
+\end{erin}
+
+Für $m \geq 1$ definieren wir
+\[
+	h_m(z, z') = \sum_{ad-bc=m} (czz' + dz' + az + b)^{-k}
+	\,,
+\]
+dabei erstreckt sich die Summe über alle ganzzahligen Matrizen $\abcd$ mit Determinante $m$.
+Offenbar gilt ebenso
+\[
+	h_m(z,z') = \sum_{ad-bc=m} (cz+d)^{-k} (z' + \frac{az+b}{cz+d})^{-k}
+	= \sum_{M \in \mathcal{M}(m)} (z'+z)^{-k}|_{k,z} M
+\]
+Man zeigt schnell wegen $k \geq 4$, dass die Reihe auf kompakten Teilmengen $K \subset \HH \times \HH$ absolut und gleichmäßig konvergiert und dort in beiden Variablen holomorphe Funktionen darstellt.
+Da $\mathcal{M}(m) \xto{\sim} \mathcal{M}(m)$, $M \mapsto ML$ mit $L \in \SL_2(\ZZ)$.
+Also $h(z,z')|_{k,z} L = h(z. z')$.
+
+Da weiter
+\begin{align*}
+	\lim_{z \to i\infty} \sum_{M \in \M(m)} (z+z')^{-k}|_{k,z} M
+	= \sum{M \in \M(m)} \lim_{z \to i\infty} (z'+z)^{-k}|_{k,z} M
+	= 0\,,
+\end{align*}
+folgt $h_m(-, z') \in S_k$ und $h_m(z, -) \in S_k$ aus Symmetriegründen.
+\begin{satz}
+	Sei
+	\[\tag{2}
+		C_k = \frac{(-1)^{\frac{k}{2}} \pi}{2^{(k-3)}(k-1)}\,.
+	\]
+	Dann gilt
+	\begin{enumerate}
+		\item Die Funktion $C_k^{-1} M^{k-1} h_m(z,z')$ ist ein Kern für den Operator $T(m)\colon S_k \ra S_k$, d.\,h.
+		\[\tag{3}
+			(f * h_m)(z') = C_km^{-k+1} (T(m)f)(z')
+		\]
+		\item Es gilt die Identität 
+		\[\tag{4}
+			C_k^{-1} m^{k-1} h_m(z,z') = \sum_{i=1}^r a_m^i \frac{f_i(z) \cdot f_i(z')}{\scalarprd{f_i}{f_i}}
+		\]
+		\item Die Spur $\Tr T(m)$ ist gegeben durch
+		\[\tag{5}
+			\Tr T(m) = C_k^{-1} m^{k-1} \int_\F h_m(z, -\conj z) y^{k-2} \opd x \opd y
+		\]
+	\end{enumerate}
+\end{satz}
+
+\begin{bewe}
+	Sei zunächst $m=1$.
+	Falls $\gamma = \abcd \in \SL_2(\ZZ)$, dann gilt
+	\[
+		(c\conj z + d)^{-k} f(z) y^k = f(\gamma z) \cdot \Im (\gamma z)^k
+	\]
+	Aus der Definition von $h_m$ erhalten wir demnach
+	\[
+		f(z)\conj{h_1(z, z')} y^k
+		= \sum_{\gamma \in \Gamma} (\conj{z'} + \gamma \conj z)^{-k} f(\gamma z) \Im(\gamma z)^k
+	\]
+	und demnach
+	\begin{equation}\tag{6}
+	\begin{split}
+		(f * g_1)(z') &= \int_\F \sum_{\gamma \in \Gamma} (-z' + \gamma \conj z)^{-k} f(\gamma z) \Im(\gamma z)^k \frac{\opd x \opd y}{y^2} \\
+		&= \sum_{\gamma \in \Gamma} \int_{\partial \F} (-z' + \conj z)^{-k} f(z) y^{k-2} \opd x \opd y \\
+		&= 2 \int_0^\infty \int_{-\infty}^\infty (x-iy - z')^{-k} f(x+iy) y^{k-2} \opd x \opd y
+		\end{split}
+	\end{equation}
+	Nach Cauchy's Formel (und da $f$ Spitzenform) gilt
+	\[
+		\int_{-\infty}^\infty (x-iy - z')^{-k} f(x+iy) \opd x
+		= \frac{2\pi i}{(k-1)!} f^{(k-1)} (2iy + z')
+	\]
+	
+	Daraus folgt, dass die rechte Seite von \myref{6} wie folgt umgeformt werden kann
+	\begin{equation*}
+	\begin{split}
+		(f * h1)(z') &= \frac{4\pi i}{(k-1)!} \int_0^\infty y^{k-2} f^{(k-1)} (2iy + z') \opd y \\
+		&= \frac{4\pi i}{(k-1)!} \int_0^\infty \frac{1}{(2i)^{k-2}} (\derive{t})^{k-2} f'(2ity + z') |_{t=1} \opd y \\
+		&= \frac{4\pi i}{(k-1)!} \frac{1}{(2i)^{k-2}} (\derive{t})^{k-2} \int_0^\infty f'(2i ty + z') \opd y |_{t=1} \\
+		&= \frac{4\pi i}{(k-1)!} \frac{1}{(2i)^{k-2}} (\derive{t})^{k-2} ( 0 - \frac{f(z')}{2it}) |_{t=1} \\
+		&= C_k f(z')
+	\end{split}
+	\end{equation*}
+	Das beweist \myref{3} im Fall $m=1$.
+	Für den allgemeinen Fall beachte
+	\[
+		T(m)h_1(z,z') = T(m) \sum_{\gamma\in\Gamma(1)} (z'+z)^{-k} |_{k,z} \gamma
+		= m^{k-1} \sum_{M \in \linksmodulo{\Gamma(1)}{\M(m)}} (z'+z)^{-k} |_{k,z} \gamma M
+		= m^{k-1} \sum_{R \in \M(m)} (z'+z)^{-k}|_{k,z} R
+		= m^{k-1} h_m
+	\]
+	Damit folgt (i).
+	
+	Für (ii) beachte, dass wir $h_m$ schreiben können mit $z_1$, \ldots, $z_r$ paarweise verschieden und $z_\nu \not\equiv i, \rho \mod \Gamma(1)$ als
+	\[
+		h_m(z,z') = \sum_{i,j=1}^r c_{ij}f_i(z)f_j(z)
+	\]
+	Argument siehe Bild.
+	
+	Wende nun \myref{1} auf die Funktion $f = f_\mu$ mit $1 \leq \mu \leq e$, an:
+	\[
+		(f_\mu * h_m)(z')
+		= \int\F f_\mu(z) \sum_{i,j}^r \conj{c_{ij} f_i(z) f_j(-\conj{z'})} y^{k-2} \opd x \opd y
+		= \sum{i,j}^r \conj{c_{ij}} f_j(z') \int_\F f_\mu(z) \conj{f_i(z)} \opd x \opd y
+		= \sum_{j=1}^r \conj{c_{\mu j}} f_j(z') \scalarprd{f_mu}{f_mu}
+		\stackrel{(i)}{=} c_km^{1-k} a_m^\mu f_\mu(z')
+	\]
+	Da $f_1$, \ldots $f_r$ eine Basis, folgt
+	\[
+		c_{\mu j} =
+		\begin{cases}
+			0 & \text{falls } j \not= \mu \\
+			C_k m^{1-k} \scalarprd{f_\mu}{f_\mu}^{-1} & \text{falls } j = \mu
+		\end{cases}
+	\]
+	Damit folgt (ii).
+	
+	Für (iii) beachte
+	\[
+		C_k^{-1} m^{k-1} \int_\F h_m(z, -\conj{z}) y^{k-2}\opd x \opd y
+		= \int_\F \sum_{i=1}^r a_m^i \frac{f_i(z)f_i(-\conj z)}{\scalarprd{f_i}{f_i}} y^{k-2} \opd x \opd y
+		= \sum_{i=1}^r a_mî \int_F \frac{f_i(z) \conj{f_i(z)}}{\scalarprd{f_i}{f_i}} y ^{k-2} \opd x \opd y
+		= \sum_{i=1}^r a_m^i = \Tr T(m)
+	\]
+\end{bewe}
+
+Die zweite arithmetische Darstellung liefert eine explizite Beschreibung der Spur.
+Dafür müssen wir etwas ausholen.
+
+\begin{defi}
+	Ein Polynom $q \in \ZZ[X, Y]$ mit $q(X,Y) = aX^2 + bXY + cY^2$ heißt ganze, binäre \myemph{quadratische Form}.
+	Diese ist induziert von der Matrix
+	\[
+		Q = \mymat*{a}{\frac{b}{2}}{\frac{b}{2}}{c}
+	\]
+	via $q(x,y) = (x, y) \cdot Q \cdot (x,y)^t$.
+	
+	$q$ heißt positiv definit, falls $q(x,y) > 0$ für alle $(x,y) \in \ZZ^2\setminus\{(0,0)\}$.
+	
+	Wir bezeichnen $D = b^2 - 4ac$ als die \myemph[quadratische Form!Diskriminante einer quadratischen Form]{Diskriminante} von $q$.
+	
+	Zwei quadratische Formen $q$ und $q'$ heißen äquivalent, falls es eine Matrix $U \in \SL_2(\ZZ)$ gibt mit $Q' = U^t Q U$, man kann zeigen, dass $Q$ eine Klasseninvariante ist.
+	Die Rückrichtung ist im Allgemeinen falsch.
+	
+	Definiere eine Abbildung
+	\[
+		H\colon \ZZ \ra \QQ
+	\]
+	durch
+	\begin{enumerate}
+		\item $H(n) = 0$ für $n > 0$,
+		\item $H(0) = - \frac{1}{12}$,
+		\item $H(n)$ ist für $n > 0$ die Zahl der Äquivalenzklassen positiv definiter binärer ganzer quadratischen Formen mit Diskriminante $D = b^2-4ac = -n < 0$, wobei Klassen mit Repräsentanten der Form $d\cdot (X^2 + Y^2)$ respektive $e \cdot e \cdot (X^2 + XY + Y)^2$ mit Vielfachheit $\frac{1}{2}$ beziehungsweise $\frac{1}{3}$ gezählt werden sollen.
+	\end{enumerate}
+	Man kann zeigen, dass $H(n)$ wohldefiniert ist.
+	Definiere zudem Polynome via
+	\[
+		(1-tx+Nx^2)^{-1} = \sum_{k=0}^\infty P_{k+2}(t,N) x^k
+	\]
+\end{defi}
+
+Mit diesen Werkzeugen gilt nun
+\begin{theorem}[Spurformel, Eichler-Selberg]
+	Sei $k \geq 4$ gerade und $m > 0$ beliebig. Dann gilt
+	\[
+		\Tr T(m) = -\frac{1}{2} \sum_{t=-\infty}^\infty P_k(t,m) H(4m-t^2) - \frac{1}{2} \sum_{d|m} \min(d, \frac{m}{d})^{k-1}\,.
+	\]
+\end{theorem}
+
+\begin{bewe}
+	Wir übergehen den langen Beweis und verweisen auf Sergo Lang, Introduction to modular forms.
+\end{bewe}
