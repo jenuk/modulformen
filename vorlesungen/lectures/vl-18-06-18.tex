@@ -1,0 +1,123 @@
+\begin{theorem}[Spurformel, Eichler-Selberg]
+	Sei $k \geq 4$ gerade und $m > 0$ beliebig. Dann gilt
+	\[
+		\Tr T(m) = -\frac{1}{2} \sum_{t=-\infty}^\infty P_k(t,m) H(4m-t^2) - \frac{1}{2} \sum_{d|m} \min\Bigl(d, \frac{m}{d}\Bigr)^{k-1}\,.
+	\]
+\end{theorem}
+
+\begin{bewe}
+	Wir übergehen den langen Beweis doch nicht, verweisen aber stellenweise auf Sergo Lang, Introduction to modular forms.
+	
+Im vorherigen Satz haben wir die Identität
+\[
+	\Tr T(m) = C_k^{-1} m^{k-1} \int_{\F} \sum_{ad-bc = m} \frac{y^k}{\left(c \abs{z}^2 + d \conj z - az - b\right)^k} \frac{\opd x \opd y}{y^2}
+\]
+Dabei ist die innere Summe invariant unter $\Gamma(1)$, da ansonsten das Integral ansonsten nicht unabhängig von der Wahl des Fundamentalbereiches $\F$ wäre. Ersetzt man $z$ durch $\gamma z$ mit $\gamma \in \Gamma(1)$ in den Summanden, so ist dies äquivalent dazu, die Matrix $\abcd$ in der Summation durch $\gamma^{-1} \abcd \gamma$ zu ersetzen. Denn ist $\gamma = \mymat \alpha \beta \delta \epsilon \in \Gamma(1)$ und $M = \mymat abcd \in \M(m)$. Dann gilt:
+\begin{align*}
+	\gamma^{-1} M \gamma &= \mymat \epsilon -\beta -\delta \alpha \mymat abcd \mymat \alpha \beta \delta \epsilon \\
+	&= \mymat {\epsilon a - \beta c} {\epsilon b - \beta d} {-\delta a + \alpha c} {- \delta b + \alpha d} \mymat \alpha \beta \delta \epsilon \\
+	&= \mymat {\epsilon a \alpha - \beta c \alpha + \epsilon b \delta - \beta d \delta} {\epsilon a \beta - \beta^2 c + \epsilon^2 b - \beta d \epsilon} {-\delta a \alpha + \alpha^2 c - \delta^2 b + \alpha d \delta} {-\delta a \beta + \alpha c \beta - \delta b \epsilon + \alpha d \epsilon}
+\end{align*}
+Andererseits gilt 
+\begin{align*}
+	\frac {\Im(\gamma \circ z)^k} {\left( c \abs {\gamma \circ z}^2 + d (\conj{\gamma \circ z}) - a (\gamma \circ z) - b \right)^k} &= \frac {\frac {(\Im z)^k} {\abs{\delta z + \epsilon}^{2k}}} {\left( c \abs {\frac{\alpha z + \beta}{\delta z + \epsilon}}^2 + d (\frac{\alpha \conj z + \beta}{\delta \conj z + \epsilon}) - a (\frac{\alpha z + \beta}{\delta z + \epsilon}) - b \right)^k} \\
+	&= \frac {(\Im z)^k} {\left( c(\alpha \conj z + \beta) (\alpha z + \beta) + d(\alpha \conj z + \beta)(\delta z + \epsilon) - a (\alpha z + \beta)(\delta \conj z + \epsilon) -b (\delta \conj z + \epsilon)(\delta z + \epsilon) \right)} \\
+	&= \frac {(\Im z)^k} {\left( \abs{z}^2 (\ldots) + \conj z (\ldots) + z (\ldots) + \ldots \right)^k}
+\end{align*}
+usw. und mache Matrizenvergleich. Die Matrizen $\abcd$ und $\gamma^{-1} \abcd \gamma$ habne dieselbe Determinante und dieselbe Spur. Daher lässt sich die Summe in $\Gamma(1)$-invariante Teile zerlegen der Form
+\[
+	I(m,t) = C_k^{-1} m^{k-1} \int_\F \sum_{\substack{ad-bc = m\\a+d = t}} \frac{y^k}{\left(c \abs{z}^2 + d \conj z - az - b\right)^k} \frac{\opd x \opd y}{y^2}
+\]
+sodass
+\[
+	\Tr T(m) = \sum_{t = -\infty}^\infty I(m,t)
+\]
+Wir werden im Folgenden beweisen:
+\[
+\frac 12 (I(m,t) - I(m, -t)) = \begin{cases}
+- \frac 12 P_k(t,m) H(4m - t^2), t^2 - 4m < 0 \\ \frac{k-1}{24} m^{\frac {k-2}2} - \frac 14 m^{\frac {k-1}2}, t^2 - 4m = 0 \\ - \frac 12 \left( \frac{\abs{t} - u}2 \right), t^2 - 4m = u^2, u > 0 \\ 0, t^2 - 4m > 0 keine Quadratzahl
+\end{cases}
+\]
+Wie man schnell sieht, impliziert dies die Aussage des Theorems, wenn man $\abs {\frac {t+u}2}$ und $\abs {\frac {t-u}2}$ wie $d$ bzw. $\frac md$ in der zweiten Summe behandelt.
+
+Für das Studium des Integrals $I(m,t)$ bemerken wir zunächst, dass gilt:
+
+\begin{lemm}
+Es sei $\M_t(m)$ die Menge der ganzzahligen Matrizen mit Determinante $m$ und Spur $t$ und sei $Q_D$ die Menge der binären quadratischen Formen mit Diskriminante $D = t^2 - 4m$. Dann ist:
+\[
+	\M_t (m) \cong Q_D
+\]
+als Mengen!
+\end{lemm}
+
+\begin{bewe}
+Wir konstruieren die Bijektion durch
+\[
+	\phi \colon \M_t (m) \to Q_D, \abcd \mapsto g(u, v) = cu^2 + (d-a)uv - bv^2
+\]
+Dann gilt:
+\[
+	D_g = (d-a)^2 + 4bc = d^2 + 2ad + a^2 - 4(ad-bc) = t^2 - 4m
+\]
+Damit ist $\phi$ wohldefiniert. Betrachte nun mit
+\[
+	\phi^{-1} \colon Q_D \to \M_t (m), g(u, v) = \alpha u^2 + \beta uv + \gamma v^2 \mapsto \mymat {\frac 12 (t - \beta)} {-\gamma} \alpha {\frac 12(t + \beta)}
+\]
+einen Kandidaten für die Umkehrabbildung. Beachte hierbei, dass $t$ genau dann ungerade ist, wenn $\beta$ ungerade ist, denn wir haben
+\[
+	D_g = \beta^2 - 4\alpha \gamma = t^2 - 4m
+\]
+Es gilt zudem
+\[
+	\det \mymat {\frac 12 (t - \beta)} {-\gamma} \alpha {\frac 12(t + \beta)} = \frac 14 (t^2 - \beta^2) + \gamma \alpha = \frac 14 t^2 - \frac 14 (\beta^2 - 4\gamma \alpha) = m
+\]
+Ist nun $\alpha = c$, $\beta = d - a$ und $\gamma = -b$, gilt mit $t = a+d$
+\[
+	\mymat {\frac 12(t-d+a)} bc {\frac 12(t+d-a)} = \abcd
+\]
+also $\phi^{-1} \circ \phi = id_{\M_t(m)}$. Analog lässt sich auch $\phi \circ \phi^{-1} = id_{Q_D}$ zeigen. Damit ist das Lemma bewiesen.
+\end{bewe}
+
+Für jede Form $g(u, v) = \alpha u^2 + \beta uv + \gamma v^2$ und reelles $t$ definieren wir ($z = x + iy$)
+\[
+	R_g(z,t) = \frac {y^k} {\left( \alpha(x^2 + y^2) + \beta x + \gamma - ity \right)^k}
+\]
+Beachte, dass $g$ von der Matrix $\abcd$ herrührt via obiger Bijektion durch $\alpha = c$, $\beta = d - a$ und $\gamma = -b$. Damit gilt
+\[
+	I(m, t) = C_k^{-1} m^{k-1} \int_\F \sum_{g, D_g = t^2 - 4m} R_g(z,t) \frac {\opd x \opd y}{y^2}
+\]
+wobei sich die Summe über alle binären quadratischen Formen $g \in Q_D$, also mit Diskriminante $D_g = D = t^2 - 4m$, erstreckt.
+
+Ein beliebiges Element $\gamma \in \Gamma(1)$ liefert, angewendet auf $g$ durch
+\[
+	\gamma g := \left( (x,y) \mapsto g(\gamma \begin{pmatrix}x\\y\end{pmatrix}) \right)
+\]
+wieder eine quadratische Form. Es gilt zudem
+\[
+	R_{\gamma g} (z, t) = R_g (\gamma z, t)
+\]
+Daher haben wir für jede Diskrimante $D \equiv 0, 1 \mod 4$ (Übungsaufgabe) die Gleichheit
+\[
+	\sum_{g, D_g = D} R_g (z, t) = \sum_{g, D_g = D \mod \Gamma(1)} \sum_{\gamma \in \modulo {\Gamma(1)} {\Gamma_g}} R_{\gamma g} (z,t) = \sum_{g, D_g = D \mod \Gamma(1)} \sum_{\gamma \in \modulo {\Gamma(1)} {\Gamma_g}} R_g (\gamma z,t)
+\]
+wobei sich die erste Summe über ein Vertretersystem von Klassen (modulo $\Gamma(1)$) binärer quadratischer Formen mit Diskriminante $D$ erstreckt und die zweite Summe über alle Nebenklassen $\modulo {\Gamma(1)}{\Gamma_g}$ gebildet wird, wobei $\Gamma_g$ die Fixgruppe von $g$ ist. Für $D \neq 0$ ist die Klassenzahl endlich, also ist hier die erste Summe endlich. Wir erhalten somit für $D \neq 0$:
+\[
+	\int_\F \sum_{g, D_g = D} R_g(z,t) \frac{\opd x \opd y}{y^2} = \sum_{g, D_g = D \mod \Gamma(1)} \int_{\F_g} R_g (z,t) \frac{\opd x \opd y}{y^2}
+\]
+mit 
+\[
+	\F_g = \bigcup_{\gamma \in \modulo {\Gamma(1)}{\Gamma_g}} \gamma \F
+\]
+einem Fundamentalbereich für die Operation von $\Gamma_g$ auf $\HH$.
+
+Betrachten wir jetzt $D = 0$: Dann ist ein System von Repräsentanten gegeben durch $g_r(u,v) = rv^2$ für alle $r \in \ZZ$. Die Fixgruppe von $g_r$ ist dann gegeben durch
+\[
+	\Gamma_{g_r} = \begin{cases} \Gamma(1), falls r = 0\\ \Gamma(1)_\infty, falls r \neq 0\end{cases}
+\]
+Damit finden wir:
+\begin{align*}
+\int_\F \sum_{g, D_g = D} R_g(z,t) \frac{\opd x \opd y}{y^2} = \int_\F R_{g_0} (z,t) \frac{\opd x \opd y}{y^2} + \int_{\F_\infty} \sum_{r \neq 0} R_{g_r}(z,t) \frac{\opd x \opd y}{y^2}
+\end{align*}
+wobei $\F_\infty$ ein Fundamentalbereich von $\Gamma(1)_\infty$ auf $\HH$ ist, wie etwa der Streifen $\Set {z \in \HH \mid 0 < \Re (z) < 1}$.
+
+\end{bewe}
