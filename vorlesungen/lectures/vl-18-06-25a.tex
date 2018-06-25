@@ -1,0 +1,55 @@
+\emph{Fall 4}: $D > 0$ und keine Quadratzahl. Wir zeigen in diesem Fall
+\[
+	\int_{\F_g} R_g (z, t) \frac {\opd x \opd y}{y^2} + \int_{\F_g} R_g (z, -t) \frac {\opd x \opd y}{y^2} = 0
+	\,.
+\]
+Sei hierfür $g(u, v) = \alpha u^2 + \beta uv + \gamma v^2$ eine quadratische Form mit Diskriminante $D > 0$ kein Quadrat und außerdem $W > W'$ die Lösungen der Gleichung $\alpha u^2 + \beta u + \gamma = 0$ (wegen $D > 0$ gibt es zwei verschiedene reelle Lösungen). Dann transformiert die Matrix
+\[
+	M = (W - W')^{- \frac 12} \mymat*{W'}{-W}11 \in \GL_2(\RR)
+\]
+$g$ in $Mg$ mit
+\[
+	M g(u, v) = \sqrt{D} uv
+\]
+denn ist $T = \sqrt{W-W'}$, so gilt
+\begin{align*}
+	\mymat*{\frac {W'}T}{\frac 1T}{\frac WT}{\frac 1T} \mymat*{\alpha}{\frac \beta 2}{\frac \beta 2}{\gamma} \mymat*{\frac {W'}T}{\frac WT}{\frac 1T}{\frac 1T} 
+	&= \frac{1}{T^2} \mymat*{W' \alpha + \frac \beta 2}{\frac {W' \beta}2 + \gamma}{- W \alpha + \frac \beta 2}{\frac {W \beta}2 + \gamma} \mymat*{W'}W11 \\
+	&= \frac{1}{T^2} \mymat*{\alpha W'^2 + \frac {\beta W'}2 + \frac {\beta W'}2 + \gamma}{WW'\alpha + \frac \beta 2 w + \frac {w' \beta}2 + \gamma}{ww'\alpha + \frac {w'\beta}2 + \frac {w\beta}2 + \gamma}{\alpha w^2 + \frac {\beta w}2 + \frac {\beta w}2 + \gamma} \\
+	&= \frac{1}{T^2} \mymat* 0{\alpha \frac \gamma \alpha + \frac \beta 2 \left( - \frac \beta 2 \right) + \gamma}{\alpha \frac \gamma \alpha + \frac \beta 2 \left( - \frac \beta 2 \right) + \gamma}0
+\end{align*}
+Da nun 
+\[
+	\det \mymat* 0 {\frac {2\gamma - \frac {\beta^2}{2 \alpha}}{T^2}} {\frac {2\gamma - \frac {\beta^2}{2 \alpha}}{T^2}} 0 = - \frac D4
+\]
+folgt nach einer Rechnung $Mg = \sqrt{D} uv$.
+
+Nach nichttrivialen Überlegungen (siehe Quelle) weiß man: Die Gruppe $\inv \gamma \Gamma_g \gamma$ ist zyklisch und kann durch $\mymat \epsilon 0 0 {\frac 1 \epsilon}$ erzeugt werden, wobei $\epsilon > 1$ die Fundamentaleinheit des Ganzheitsrings $R$ in $\QQ(\sqrt{D})$ (D kein Quadrat!). Daher können wir den Fundamentalbereich $F_g$ so wählen, dass $\inv \gamma \F_g$ ein Kreisring ist mit $y > 0$ und $r_0 \leq \abs{z} \leq \epsilon^2 r_0$. Es gilt somit
+\begin{align*}
+	\int_{\F_g} R_g (z, t) \frac {\opd x \opd y}{y^2} 
+	&= \int_{\F_g} R_{\gamma g} (\inv \gamma z, t) \frac {\opd x \opd y}{y^2} \\
+	&= \int_{\inv \gamma \F_g} R_{\gamma g} (z, t) \frac {\opd x \opd y}{y^2} && \gamma g = \sqrt{D} uv \\
+	&= \int_{y > 0, r_0 \leq \abs{z} \leq \epsilon^2 r_0} \left( \sqrt{D}x - ity \right)^{-u} y^{k-2} \opd x \opd y
+\end{align*}
+
+Setze $z = x + iy$ udn $z = r e^{i \theta}$ in Polarkoordinaten, erhalte damit
+\begin{align*}
+	&= \int_0^{\pi} \int_{r_0}^{r_0 \epsilon^2} \left( \sqrt{D} \cos \theta - it \sin \theta \right)^{-k} \left( \sin \theta \right)^{k-2} \frac {\opd r \opd \theta}r \\
+	&= \log (\epsilon^2) \int_0^\pi \left( \sqrt{D} \cos \theta - it \sin \theta \right)^{-k} \left( \sin \theta \right)^{k-2} \opd r \opd \theta
+\end{align*}
+
+Wir sind damit fertig, wenn wir
+\[
+	\int_{-\pi}^\pi \left( \sqrt{D} \cos \theta - it \sin \theta \right)^{-k} \left( \sin \theta \right)^{k-2} \opd r \opd \theta = 0
+\]
+zeigen können (die Summe beider Integrale für $+t$ und $-t$). Schreibe das Integral dafür um
+\begin{align*}
+	& \int_{-\pi}^{\pi} \left( \sqrt D \frac {e^{i\theta} + e^{-i\theta}}2 - it \frac {e^{i\theta} - e^{-i\theta}}{2i} \right)^{-k} \left( \frac {e^{i\theta} - e^{-i\theta}}{2i} \right)^{k-2} \opd \theta \\
+	&\quad = \int_{-\pi}^{\pi} \left( \sqrt D i \frac {e^{i\theta} + e^{-i\theta}}{e^{i\theta} - e^{-i\theta}} - it \right)^{-k} e^{2i\theta} \frac{e^{2i\theta} - 1}{2i} \opd \theta \\
+	&\quad = \frac 1{2i} \int_\gamma \left( \sqrt D i \frac {z+i}{z-i} - it \right)^{-k} \left( \frac{z-1}{2i} \right)^{-2} \opd z
+\end{align*}
+mit $\gamma \colon \left[ -\pi, \pi \right] \to \CC$ geschlossen mit $\gamma(t) = e^{2it}$. Wegen $k \geq 4$ und 
+\[
+	\sqrt D i \frac{z+1}{z-1} - it = 0 \Leftrightarrow z = \frac {\frac t{\sqrt{D}} + 1}{\frac t{\sqrt{D}} - 1} > 1
+\]
+ist $H(z)$ holomorph in einem $U_{1 + \delta}(0)$ mit $\delta > 0$ und nach dem Residuensatz ist das Integral $0$. Damit folgt rückwirkend $\frac 12 \left( I(m,t) + I(m,-t) \right) = 0$ für $D = t^2 - 4m > 0$ kein Quadrat. Damit ist die Spurformel bewiesen.
