@@ -1,0 +1,55 @@
+\chapter{L-Reihen zu Modulformen}
+
+\section{Dirichletreihen}
+
+\emph{Ziel}: Angabe elementarer Eigenschaften von \myquote{Dirichletreihen}, welche eine besondere Stellung in der analytischen Theorie der Zahlen einnehmen.
+
+\begin{defi}
+	Formell ist eine \myemph{Dirichletreihe} eine Reihe der Form
+	\[
+		\sum_{n=1}^{\infty} a(n) e^{-\lambda_n s}
+		\,,
+	\]
+	wobei die $\lambda_n$ reelle Zahlen sind mit $\lambda_1 < \lambda_2 < \lambda_3 < \ldots \xto{n\to\infty} \infty$ und $s= \sigma +it$ eine komplexe Zahl ist.
+\end{defi}
+
+\begin{beme-list}
+	\item $\lambda_n = n$ ist naheliegend führt aber mit $z = e^{-s}$ zur Theorie der Potenzreihen, die wir schon ausgiebig in der Funktionentheorie I studiert haben
+	\item $\lambda_n = \log (n)$: Mit dieser Wahl lässt sich die obere Reihe \myquote{schöner} schreiben als
+	\[\tag{*}
+		\sum_{n=1}^\infty a(n) n^{-s}
+		\,.
+	\]
+	Das ist der für die Zahlentheorie relevante Fall.
+	Eine Reihe der Gestalt \myref{*} heißt \myemph{gewöhnliche Dirichletreihe}.
+	
+	\item Im Gegensatz zu Potenzreihen weisen Dirichletreihen ein anderes Konvergenzverhalten auf als das \myquote{auf Kreisscheiben}.
+	Während also für eine Potenzreihe $f(z) = \sum_{n=0}^\infty a(n) z^n$ stets ein $0 \leq R \leq \infty$ existiert, so dass $f$ für $z \in \CC$ mit $\abs z < R$ konvergiert und für $\abs z > R$ divergiert, \myquote{konvergieren Dirichletreihen auf Halbebenen statt Kreisscheiben}.
+	Dies präzisiert der nächste Satz
+\end{beme-list}
+
+\begin{satz}
+	Es sei $F(s) := \sum_{n=1}^\infty a(n) e^{-\lambda_n s}$ eine Dirichletreihe wie in \myref{oben} definiert.
+	Ist diese für ein $s = s_0$ konvergent, so konvergiert sie auch für alle $Re(s) > \sigma_0\ (= \Re(s_0))$ und gleichmäßig auf Kompakten Mengen.
+	
+	Somit existiert eine reelle Zahl $\sigma_0$, so dass die Reihe für alle $s$ mit $\Re s > \sigma_0$ konvergiert und für alle $\Re(s) < \sigma_0$ divergiert (falls überall konvergent, setze $\sigma_0 = -\infty$, falls überall divergent setze $\sigma_0 = \infty$).
+	
+	Die in dem Gebiet $\Set{s \in \CC \mid \Re(s) > \sigma_0}$ durch $F(s)$ definierte Funktion ist dort holomorph, die Ableitungen sind gegeben durch
+	\[
+		F^{(k)}(s) = (-1)^k \sum_{n=1}^\infty \lambda_n^k a(n) e^{-\lambda_n s}\,,
+	\]
+	wobei die rechts stehende Dirichletreihe auch für $\sigma > \sigma_0$ konvergiert.
+	
+	Die Zahl $\sigma_0$ heißt \myemph{Konvergenzabszisse} der Dirichletreihe $F(s)$.
+\end{satz}
+
+\begin{bewe}
+	Es genügt die gleichmäßige Konvergenz im gesamten Bereich zu zeigen, da damit die Existenz eines $\sigma_0$ folgt und die Holomorphieaussagen aus der gleichmäßigen Konvergenz über den Satz von Weierstraß ersichtlich sind.
+	
+	Wir zeigen, dass die Reihe in jedem Gebiet
+	\[
+		\abs{\Arg (s - s_0)} \leq \frac{\pi}{2} - \epsilon < \frac{\pi}{2}
+	\]
+	gleichmäßig konvergiert.
+	Das ist stärker als die Aussage des Satzes, da jede in $\Set{s \in \CC \mid \Re(s) > \sigma_0}$ enthaltene Kompakte Menge $K$ in einem solchen Gebiet liegt.
+\end{bewe}
