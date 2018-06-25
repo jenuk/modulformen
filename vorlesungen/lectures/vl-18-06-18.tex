@@ -6,36 +6,49 @@
 \end{theorem}
 
 \begin{bewe}
-	Wir übergehen den langen Beweis doch nicht, verweisen aber stellenweise auf Sergo Lang, Introduction to modular forms.
-	
+	Wir werden den Beweis im Folgenden skizzieren, jedoch stellenweise auf Sergo Lang: \glqq{}Introduction to modular forms\grqq{} verweisen. Für eine Einführung in die Theorie der quadratischen Formen, welche im Beweis eine wichtige Rolle spielt, verweisen wir auf D. Zagier: \glqq{}Quadratische Formen und Zetafunktionen\grqq{}. Natürlich ist dieses Hintergrundwissen nicht klausurrelevant.
+
 Im vorherigen Satz haben wir die Identität
 \[
 	\Tr T(m) = C_k^{-1} m^{k-1} \int_{\F} \sum_{ad-bc = m} \frac{y^k}{\left(c \abs{z}^2 + d \conj z - az - b\right)^k} \frac{\opd x \opd y}{y^2}
 \]
-Dabei ist die innere Summe invariant unter $\Gamma(1)$, da ansonsten das Integral ansonsten nicht unabhängig von der Wahl des Fundamentalbereiches $\F$ wäre. Ersetzt man $z$ durch $\gamma z$ mit $\gamma \in \Gamma(1)$ in den Summanden, so ist dies äquivalent dazu, die Matrix $\abcd$ in der Summation durch $\gamma^{-1} \abcd \gamma$ zu ersetzen. Denn ist $\gamma = \mymat \alpha \beta \delta \epsilon \in \Gamma(1)$ und $M = \mymat abcd \in \M(m)$. Dann gilt:
+gezeigt. Die innere Summe ist hierbei invariant unter $\Gamma(1)$, da das Integral ansonsten nicht unabhängig von der Wahl des Fundamentalbereiches $\F$ wäre. Wir behaupten ($\ast$): Ersetzt man $z$ durch $\gamma z$ mit $\gamma \in \Gamma(1)$ in den Summanden, so ist dies äquivalent dazu, die Matrix $M = \abcd$ in der Summation durch $\gamma^{-1} M \gamma$ zu ersetzen. Denn: 
+
+Sei $\gamma = \mymat \alpha \beta \delta \epsilon \in \Gamma(1)$ und $M = \mymat abcd \in \M(m)$. Dann gilt
 \begin{align*}
-	\gamma^{-1} M \gamma &= \mymat \epsilon -\beta -\delta \alpha \mymat abcd \mymat \alpha \beta \delta \epsilon \\
+	\gamma^{-1} M \gamma &= \mymat \epsilon {-\beta} {-\delta} \alpha \mymat abcd \mymat \alpha \beta \delta \epsilon \\
 	&= \mymat {\epsilon a - \beta c} {\epsilon b - \beta d} {-\delta a + \alpha c} {- \delta b + \alpha d} \mymat \alpha \beta \delta \epsilon \\
 	&= \mymat {\epsilon a \alpha - \beta c \alpha + \epsilon b \delta - \beta d \delta} {\epsilon a \beta - \beta^2 c + \epsilon^2 b - \beta d \epsilon} {-\delta a \alpha + \alpha^2 c - \delta^2 b + \alpha d \delta} {-\delta a \beta + \alpha c \beta - \delta b \epsilon + \alpha d \epsilon}
+	\,.
 \end{align*}
 Andererseits gilt 
 \begin{align*}
-	\frac {\Im(\gamma \circ z)^k} {\left( c \abs {\gamma \circ z}^2 + d (\conj{\gamma \circ z}) - a (\gamma \circ z) - b \right)^k} &= \frac {\frac {(\Im z)^k} {\abs{\delta z + \epsilon}^{2k}}} {\left( c \abs {\frac{\alpha z + \beta}{\delta z + \epsilon}}^2 + d (\frac{\alpha \conj z + \beta}{\delta \conj z + \epsilon}) - a (\frac{\alpha z + \beta}{\delta z + \epsilon}) - b \right)^k} \\
-	&= \frac {(\Im z)^k} {\left( c(\alpha \conj z + \beta) (\alpha z + \beta) + d(\alpha \conj z + \beta)(\delta z + \epsilon) - a (\alpha z + \beta)(\delta \conj z + \epsilon) -b (\delta \conj z + \epsilon)(\delta z + \epsilon) \right)} \\
-	&= \frac {(\Im z)^k} {\left( \abs{z}^2 (\ldots) + \conj z (\ldots) + z (\ldots) + \ldots \right)^k}
+	& \frac {\Im(\gamma \circ z)} {c \abs {\gamma \circ z}^2 + d \cdot \left( \conj{\gamma \circ z} \right) - a \cdot \left( \gamma \circ z \right) - b} \\
+	&\quad = \frac {\frac {\Im z} {\abs{\delta z + \epsilon}^2}} {c \abs {\frac{\alpha z + \beta}{\delta z + \epsilon}}^2 + d \frac{\alpha \conj z + \beta}{\delta \conj z + \epsilon} - a \frac{\alpha z + \beta}{\delta z + \epsilon} - b} \\
+	&\quad = \frac {\Im z} {c(\alpha \conj z + \beta) (\alpha z + \beta) + d(\alpha \conj z + \beta)(\delta z + \epsilon) - a (\alpha z + \beta)(\delta \conj z + \epsilon) -b (\delta \conj z + \epsilon)(\delta z + \epsilon)} \\
+	&\quad = \frac {\Im z} {\abs{z}^2 (c\alpha^2 + d \alpha \delta - a \alpha \delta - b \delta^2) + \conj z (c \alpha \beta + d \alpha \epsilon - a \beta \delta - b \delta \epsilon) + z (\ldots) + \ldots}
+	\,.
 \end{align*}
-usw. und mache Matrizenvergleich. Die Matrizen $\abcd$ und $\gamma^{-1} \abcd \gamma$ habne dieselbe Determinante und dieselbe Spur. Daher lässt sich die Summe in $\Gamma(1)$-invariante Teile zerlegen der Form
+Multipliziert man, wie im letzten Schritt angedeutet, den Nenner vollständig aus, sortiert die Summanden nach dem Auftreten von $z, \conj z$ und vergleicht abschließend mit $\gamma^{-1} M \gamma$, so ist die Behauptung ($\ast$) klar.
+
+
+Da die Matrizen $M$ und $\gamma^{-1} M \gamma$ nicht nur dieselbe Determinante, sondern auch dieselbe Spur haben (rechne nach und beachte $\alpha \epsilon - \beta \delta = 1$), lässt sich die Summe sogar nach der Spur der Matrizen in $\Gamma(1)$-invariante Teile der Form
 \[
-	I(m,t) = C_k^{-1} m^{k-1} \int_\F \sum_{\substack{ad-bc = m\\a+d = t}} \frac{y^k}{\left(c \abs{z}^2 + d \conj z - az - b\right)^k} \frac{\opd x \opd y}{y^2}
+	I(m,t) := C_k^{-1} m^{k-1} \int_\F \sum_{\substack{ad-bc = m\\a+d = t}} \frac{y^k}{\left(c \abs{z}^2 + d \conj z - az - b\right)^k} \frac{\opd x \opd y}{y^2}
 \]
-sodass
+zerlegen, sodass
 \[
 	\Tr T(m) = \sum_{t = -\infty}^\infty I(m,t)
+	\,.
 \]
+
 Wir werden im Folgenden beweisen:
 \[
-\frac 12 (I(m,t) - I(m, -t)) = \begin{cases}
-- \frac 12 P_k(t,m) H(4m - t^2), t^2 - 4m < 0 \\ \frac{k-1}{24} m^{\frac {k-2}2} - \frac 14 m^{\frac {k-1}2}, t^2 - 4m = 0 \\ - \frac 12 \left( \frac{\abs{t} - u}2 \right), t^2 - 4m = u^2, u > 0 \\ 0, t^2 - 4m > 0 keine Quadratzahl
+	\frac 12 (I(m,t) + I(m, -t)) = \begin{cases}
+		- \frac 12 P_k(t,m) H(4m - t^2) &\text{, falls } t^2 - 4m < 0 \\
+	\frac{k-1}{24} m^{\frac {k-2}2} - \frac 14 m^{\frac {k-1}2} &\text{, falls } t^2 - 4m = 0 \\
+	- \frac 12 \left( \frac{\abs{t} - u}2 \right)&\text{, falls } t^2 - 4m = u^2, u \in \NN \\
+	0 &\text{, falls } t^2 - 4m > 0 \text{ kein Quadrat} \,.
 \end{cases}
 \]
 Wie man schnell sieht, impliziert dies die Aussage des Theorems, wenn man $\abs {\frac {t+u}2}$ und $\abs {\frac {t-u}2}$ wie $d$ bzw. $\frac md$ in der zweiten Summe behandelt.
