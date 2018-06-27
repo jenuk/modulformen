@@ -21,7 +21,6 @@ Ein erster Beweis dieser Identität stammt von Jacobi; ein weiterer Beweis, der 
 \end{align*}
 Es genügt also, folgende Aussage zu zeigen:
 \[
-\tag{*}
 \frac {\Delta'}{\Delta} = 2\pi i E_2
 \,,
 \]
@@ -42,19 +41,19 @@ a & b\\
 \end{pmatrix}
 \]
 und damit $\# \linksmodulo{\Gamma(1)}{\mathcal{M}(n)} = \sigma_1(n)$. Definiere nun einen \glqq{}multiplikativen Hecke-Operator\grqq{} $\mathfrak{M}_n$, der eine Modulform $f$ vom Gewicht $k$ bezüglich $\Gamma(1)$ auf eine solche von Gewicht $\sigma_1 (n) \cdot k$ abbildet durch
-\[
-\label{Gl 1}\tag{1}
+\begin{equation}
+\label{Gl 1}
 \mathfrak{M}_n (f) := \prod_{\gamma \in \linksmodulo{\Gamma(1)}{\mathcal M(n)}} f |_k \gamma = \prod_{\substack{ad = n\\ d > 0\\b (\operatorname{mod} d)}} f |_k \mymat{a}{b}{0}{d}
 \,.
-\]
+\end{equation}
 Dies ist wohldefiniert (argumentiere dazu wie bei $T(n)$ in \autoref{VorbemerkungHecke}). Wendet man dies nun auf $f = \Delta$ an, dann ist $\mathfrak{M}_n(f) = \mathfrak{M}_n(\Delta)$ eine Modulform vom Gewicht $12 \sigma_1(n)$ ohne Nullstellen in $\HH$ und mit $\ord_\infty \bigl( \mathfrak{M}_n(\Delta) \bigr) = \sigma_1(n)$.
 
 Aus der Valenzformel folgt jetzt $\mathfrak{M}_n(\Delta) = c \cdot \Delta^{\sigma_1(n)}$ für ein $c \in \CC^\times$. Durch logarithmisches Ableiten beider Seiten von \autoref{Gl 1} erhalten wir mit $f  = \Delta$ und $\mathfrak{M}_n(\Delta) = c \cdot \Delta^{\sigma_1(n)}$, dass
-\[
-\label{Gl 2}\tag{2}
+\begin{equation}
+\label{Gl 2}
 \sigma_1(n) \frac {\Delta'}{\Delta} = \sum_{\substack{ad = n\\ d > 0\\ b (\operatorname{mod} d)}} d^{-2}n \frac{\Delta'}{\Delta} \Bigl( \frac{az+b}{d} \Bigr) = \sum_{\substack{ad = n\\ d > 0\\ b (\operatorname{mod} d)}} \frac{\Delta'}{\Delta} \Big|_2 \mymat{a}{b}{0}{d}
 \,,
-\]
+\end{equation}
 denn die Ableitung von
 \[
 f |_k \mymat{a}{b}{0}{d} = n^{\frac k2} d^{-k} f\Bigl( \frac{az+b}{d} \Bigr)
