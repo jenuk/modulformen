@@ -1,0 +1,31 @@
+\documentclass[border=20pt]{standalone}
+\newcounter{chapter}
+\usepackage{../../mypackage}
+
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+\def\absziss{1.2}
+\draw (\absziss, -2) -- (\absziss, 2);
+\node[left] at (\absziss, 0.2) {$\sigma_0$};
+
+\draw (\absziss, 1) arc (90:60:1) coordinate (middleUpper);
+\draw (\absziss, -1) arc (-90:-60:1) coordinate (middleLower);
+\path (\absziss, 2.2) arc (90:60:2.2) coordinate (endUpper);
+\path (\absziss, -2.2) arc (-90:-60:2.2) coordinate (endLower);
+\draw (endUpper) -- (\absziss, 0) -- (endLower);
+\fill [fill=black!30!white, opacity=0.2] (\absziss, 0) -- (endLower) -- ($(endLower) + (1.5,0)$) -- ($(endUpper) + (1.5,0)$) -- (endUpper);
+
+\node [left=.3cm, above=.2cm] at (middleUpper) {$\epsilon$};
+\node [left=.3cm, below=.2cm] at (middleLower) {$\epsilon$};
+
+\draw [fill=white] ($(middleLower) + (.2, -.15)$) .. controls (\absziss+.2, -.5) and (2.5, 1) .. (2.6, .3) .. controls (2.8, -.5) .. (3.2, -.7) .. controls (3.1, -1) and (2.5, -1.5) .. cycle;
+
+\node at (2.3, -.5) {$K$};
+
+% Achsen
+\draw[thick, ->] (-1, 0) -- (4, 0) node[right] {$\Re$};
+\draw[thick, ->] (0, -2) -- (0, 2) node[right] {$\Im$};
+\end{tikzpicture}
+\end{document}

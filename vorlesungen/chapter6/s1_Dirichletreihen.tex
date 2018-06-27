@@ -43,12 +43,21 @@
 \end{satz}
 
 \begin{bewe}
+	
 	Es genügt die gleichmäßige Konvergenz im gesamten Bereich zu zeigen, da damit die Existenz eines $\sigma_0$ folgt und die Holomorphieaussagen aus der gleichmäßigen Konvergenz über den Satz von Weierstraß ersichtlich sind.
 	
-	Wir zeigen, dass die Reihe in jedem Gebiet
-	\[
+	Wir zeigen, dass die Reihe in jedem Gebiet (siehe \autoref{fig:winkelbereich})
+	\begin{equation}\label{eq:winkelbereich}
 		\abs{\Arg (s - s_0)} \leq \frac{\pi}{2} - \epsilon < \frac{\pi}{2}
-	\]
+	\end{equation}
 	gleichmäßig konvergiert.
 	Das ist stärker als die Aussage des Satzes, da jede kompakte Menge $K \subset \Set{s \in \CC \mid \Re(s) > \sigma_0}$ in einem solchen Gebiet liegt.
+	
+	\begin{figure}
+		\begin{center}
+			\includestandalone[scale=.8]{images/chapter6/winkelbereich}
+			\caption{Das Gebiet aus \eqref{eq:winkelbereich}}
+			\label{fig:winkelbereich}
+		\end{center}
+	\end{figure}
 \end{bewe}
