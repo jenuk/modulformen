@@ -1,0 +1,134 @@
+\begin{bewe}
+
+Wir führen die Bezeichnungen
+\[
+	A(N) = \sum_{n=1}^N a(n)\,, \qquad A(M,N) = \sum_{n=M}^n a(n)\,, \qquad A(M,M-1) = 0
+\]
+ein, die in diesem Paragraphen mehrmals benutzt werden. Ohne Einschränkung können wir $s_0 = 0$ voraussetzen (indem wir $s$ durch $s+s_0$ und $a(n)$ durch $a(n)e^{-\lambda_ns_0}$ ersetzen).
+Dann ist $\sum_{n=1}^\infty a(n)$ konvergent und es gibt zu vorgegebenen $\epsilon > 0$ ein $N_0$, so dass $\abs{A(M,N)} \leq \epsilon$ für alle $N_0 \leq M < N$.
+Dann gilt für $N > M \geq N_0$:
+\[
+	\sum_{n=M}^N a(n)e^{-\lambda_ns}
+	&= \sum_{n=M}^N (A(M,n) - A(M,n-1))e^{-\lambda_ns} \\
+	&= A(M,M)e^{-\lambda_Ms} - A(M,M) e^{-\lambda_{M+1}s} + A(M, M+1)e^{-\lambda_{M+1}s} - e^{-\lambda_{M+2}s} + \ldots + A(M,N-1) e^{-\lambda_{N-1}s} - A(M,N-1)e^{-\lambda_Ns} + A(M,N) e^{-\lambda_ns} \\
+	&= \sum_{n=M}^{N-1} A(M,n) (e^{-\lambda_ns} - e^{-\lambda_{n+1}s}) + A(M,N)e^{-\lambda_Ns}
+\]
+(dieses Verfahren wir auch als abelsche Summation bezeichnet).
+
+Es ist
+\[
+	\abs{e^{-\lambda s} - e^{-\lambda_{n+1}s}}
+	&= \abs{s \int_{\lambda_n}^{\lambda_{n+1}} e^{-sn} \opd n} \\
+	&\leq \abs s \int_{\lambda_n}^{\lambda_{n+1}} \abs{e^{-sn}} \opd n \\
+	&= \frac{\abs s}{\sigma} (e^{-\lambda \sigma} - e^{-\lambda_{n+1}\sigma}) \qquad (\sigma = \Re s) \,.
+\]
+
+Die Größe $\frac {\abs s}\sigma$ ist in den Bereichen $\abs{\Arg(s)} \leq \frac{\pi}{2} - \delta$ durch eine Konstante $C_\delta > 0$ beschränkt.
+Somit ist für $\sigma > 0$:
+\[
+	\abs{ \sum_{n=M}^N a(n) e^{-\lambda_ns} }
+	& \leq \sum_{n=m}^{N-1} \abs{A(M,n)} \abs{e^{-\lambda_n s} - e^{-\lambda_{n+1}s}} + \abs{A(M,N)} \abs{e^{-\lambda_Ns}} \\
+	&\leq C_\delta \epsilon \sum_{n=M}^{N-1} (e^{-\lambda_n\sigma} - e^{-\lambda_{n+1}\sigma}) + \epsilon e^{-\lambda_N \sigma} \\
+	&\leq C_\delta \epsilon e^{-\lambda_M\sigma} + \epsilon e^{-\lambda_N \sigma} \\
+	& \leq (C_\delta + 1)e^{-\lambda_{N_0}\sigma} \epsilon
+	\,,
+\]
+womit die gleichmäßige Konvergenz in diesem Bereich folgt.
+
+\end{bewe}
+
+Analog zur bedingten Konvergenzabszissen kann man (bei gewöhnlichen Dirichletreihen) die absoluten Konvergenzabszisse definieren als die bedingten Abszisse von
+\[
+	\sum_{n=1}^\infty \abs{a(n)} n^{-s}
+\]
+Wir bezeichnen $\sigma_a$ als die absoluten und $\sigma_c$ als die bedingten Konvergenzabszisse.
+
+\begin{satz}
+	Ist $F$ eine gewöhnliche Dirichletreihe mit $\sigma_c \in \RR$, so gilt
+	\[
+		\sigma_c \leq \sigma_a \leq \sigma_c + 1
+	\]
+\end{satz}
+
+\begin{bewe}
+	Übung!
+\end{bewe}
+
+\begin{beme}
+	Wie in der Theorie der Potenzreihen gibt es auch in der Theorie der Dirichletreihen eine Methode zur Berechnung der Konvergenzsabszisse.
+	Ist $\sum_{n=1}^\infty a(n)$ divergent, so folgt für $F(s) = \sum_{n=1}^\infty a(n) e^{-\lambda_n s}$ die Formel
+	\[
+		\sigma_c = \limsup_{n\to\infty} \frac{\log{A(n)}}{\lambda_n}
+		\,.
+	\]
+	
+	Es gibt einen noch viel wichtigeren Unterschied zwischen Dirichletreihen und den uns geläufigen Potenzreihen.
+	Bei den Potenzreihen kann man den Konvergenzradius nicht nur in Abhängigkeit der Koeffizienten, sondern auch durch das Verhalten der durch die Reihe dargestellte lokal analytische Funktion bestimmen, nämlich als Absolutbetrag des kleinsten singulären Punktes (ohne Einschränkung ist der Entwicklungspunkt $z_0 = 0$): stekkt die Reihe $\sum_{n=0}^\infty a(n)z^n$ eine Funktion dar, die such auf eine Kreisscheibe $\abs z < r$ holomorph fortsetzen lässt, so ist sie in diesem Bereich auch absolut konvergent.
+	
+	Für Dirichletreihen stimmt das nicht.
+	Beispielsweise hat die Funktion
+	\[
+		F(s) = 1 - \frac 1{2^s} + \frac 1{3^s} - \frac 1{4^s} + \ldots
+	\]
+	eine Forsetzung zu einer ganzen Funktion (wie wir noch sehen werden!), aber die Reihe konvergiert nur für Werte $s \in \CC$ mit $\Re s > 0$.
+	
+	Nur in Spezialfällen können wir auf die Existenz von singulären Punkten auf dem Rand der Konvergenzhalbebene schließen.
+\end{beme}
+
+\begin{satz}[Landau]
+	Sei $\sum_{n=1}^\infty a(n)n^{-s}$ eine gewöhnliche Dirichletreihe mit nicht-negativen Koeffizienten und Konvergenzsbsziss $\sigma_c$.
+	Dann hat die durch $F(s) \sum_{n=1}^\infty a(n)n^{-s}$ definierte Funktion in $s=\sigma_c$ einen singulären Punkt.
+\end{satz}
+\begin{bewe}
+	Ohne Einschränkung sei $\sigma_c = 0$.
+	Nehmen wir an, die Funktion $F(s)$ wäre in einer Umgebung $U_\epsilon(0)$ holomorph fortsetzbar. Dann würde sie um $s=1$ eine Taylorentwicklung haben mit Konvergenzradius $R > 1$, da kein Punkt in $\partial U_1(1)$ singulär ist.
+	Also wäre für geeignetes $\delta > 0$ die Reihe Reihe $\sum_{k=1}^\infty \frac{(-1-\delta)^{k}}{k!} F^{(k)}(1)$ konvergent und gleich $F(-\delta)$.
+	Nach \myref{Satz 1} ist
+	\[
+		\sum_{k=0}^\infty \frac{(-1-\delta)^k}{k!} F^{(k)}(1)
+		&= \sum_{k=0}^\infty \frac{(1+\delta)^k}{k!} \sum_{n=1}^\infty \frac{(\log n)^k a(n)
+		}{n} \qquad a(n) \geq 0 \\
+		&= \sum_{n=1}^\infty \frac{a(n)}{n}  \sum_{k=0}^\infty \frac{(\log n)^k (1+\delta)^k}{k!} \\
+		&= \sum_{n=1}^\infty \frac{a(n)}{n} e^{(1+\delta)\log(n)}
+		= \sum_{n=1}^\infty a(n)n^\delta
+		\,.
+	\]
+	Damit gilt $\sigma_c \geq -\delta < \sigma_c$. \blitz
+\end{bewe}
+
+\begin{satz}
+	Seien $\sum_{n=1}^\infty a(n)e^{-\lambda_ns}$ und $\sum_{n=1}^\infty b(n)n^{-\lambda_ns}$ zwei Dirichletreihen, die in einem Gebiet $U \subset \CC$ konvergieren und dort die selbe analytische Funktion darstellen.
+	Dann ist $a(n) = b(n)$ für alle $n\in\NN$.
+\end{satz}
+\begin{bewe}
+	Nehmen wir an, dies sei nicht der Fall.
+	Sei $m$ der kleinste Index mit $a(m) \not= b(m)$.
+	Dann gilt für $\sigma$ groß genug (Identitätssatz)
+	\[
+		0 &= e^{\lambda_m \sigma} ( \sum_{n=m}^\infty a(n) e^{-\lambda_n \sigma} - \sum_{n=m}^\infty b(n) e^{-\lambda_n \sigma} ) \\
+		&= a(m) - b(m) + \sum_{n=m+1}^\infty (a(n)-b(n)) e^{-(\lambda_n-\lambda_m)\sigma}
+	\]
+	In der Tat hat jedes Glied in der Reihe wegen $\lambda_n > \lambda_m$ den Limes 0 und die gleichmäßige Konvergenz impliziert, dass die Reihe für $\sigma\to\infty$ gegen 0 strebt, was $a(m) \not= b(m)$ widerspricht.
+\end{bewe}
+
+\section{Formale Eigenschaften von Dirichletreihen}
+
+Ab jetzt bezeichnen wir gewöhnliche Dirichletreihen als Dirichletreihen.
+Die Regeln für die Handhabung von Dirichletreihen sind anders als die bei Potenzreihen, daher wollen wir diese jetzt näher erläutern.
+
+Es ist klar, dass die Summe zweier Dirichletreihen die Reihe ist, deren allgemeiner Koeffizient die Summe der Koeffizienten der einzelnen Reihen ist.
+Aber wie bildet man ds Produkt?
+
+Seien
+\[
+	F(s) = \sum_{n=1}^\infty a(n)n^{-s}\,, \qquad G(s) = \sum_{n=1}^\infty b(n)n^{-s}
+\]
+zwei in einer offenen Menge $U \subset \CC$ durch absolut konvergente Dirichletreihen gegebene Funktionen, dann ist in $U$:
+\[
+	F(s) G(s)
+	&= \sum_{n=1}^\infty \sum_{m=1}^\infty a(n)b(m) n^{-s}m^{-s} \\
+	&= \sum_{n,m=1}^\infty a(n)b(m) (nm)^{-s} \\
+	&= \sum_{k=1}\underbrace{(\sum_{d|k} a(d)b(\frac{k}{d}))}_{=:c(k)} k^{-s}\,.
+\]
+Das heißt die additive Faltung $\sum_{n+m=k} a(n)b(m)$, die die Multiplikation von Potenzreihen beschreibt, wird durch die multiplikative Faltung $\sum_{d|k} a(d)b(\frac{k}{d})$ ersetzt.
+Diese Tatsache ist für große Bedeutung der Dirichletreihen in der Zahlentheorie verantwortlich.
