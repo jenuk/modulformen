@@ -1,0 +1,21 @@
+\section{Formale Eigenschaften von Dirichletreihen}
+
+Ab jetzt bezeichnen wir gewöhnliche Dirichletreihen als Dirichletreihen.
+Die Regeln für die Handhabung von Dirichletreihen sind anders als die bei Potenzreihen, daher wollen wir diese jetzt näher erläutern.
+
+Es ist klar, dass die Summe zweier Dirichletreihen die Reihe ist, deren allgemeiner Koeffizient die Summe der Koeffizienten der einzelnen Reihen ist.
+Aber wie bildet man das Produkt?
+
+Seien
+\[
+	F(s) = \sum_{n=1}^\infty a(n)n^{-s}\,, \qquad G(s) = \sum_{n=1}^\infty b(n)n^{-s}
+\]
+zwei in einer offenen Menge $U \subset \CC$ durch absolut konvergente Dirichletreihen gegebene Funktionen, dann ist in $U$:
+\[
+	F(s) G(s)
+	&= \sum_{n=1}^\infty \sum_{m=1}^\infty a(n)b(m) n^{-s}m^{-s} \\
+	&= \sum_{n,m=1}^\infty a(n)b(m) (nm)^{-s} \\
+	&= \sum_{k=1} \biggl(\underbrace{\sum_{d|k} a(d)b\Bigl(\frac{k}{d}\Bigr)}_{=:c(k)}\biggr) k^{-s}\,.
+\]
+Das heißt die additive Faltung $\sum_{n+m=k} a(n)b(m)$, die die Multiplikation von Potenzreihen beschreibt, wird durch die multiplikative Faltung $\sum_{d|k} a(d)b(\frac{k}{d})$ bei Dirichletreihen ersetzt.
+Diese Tatsache ist für große Bedeutung der Dirichletreihen in der Zahlentheorie verantwortlich.
