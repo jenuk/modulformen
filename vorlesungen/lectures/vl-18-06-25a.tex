@@ -1,55 +1,68 @@
-\emph{Fall 4}: $D > 0$ und keine Quadratzahl. Wir zeigen in diesem Fall
+\emph{Fall 4}: $D > 0$, aber keine Quadratzahl. Wir zeigen in diesem Fall
 \[
-	\int_{\F_g} R_g (z, t) \frac {\opd x \opd y}{y^2} + \int_{\F_g} R_g (z, -t) \frac {\opd x \opd y}{y^2} = 0
+	I(m,t) + I(m,-t) = \int_{\F_g} R_g (z, t) \frac {\opd x \opd y}{y^2} + \int_{\F_g} R_g (z, -t) \frac {\opd x \opd y}{y^2} = 0
 	\,.
 \]
-Sei hierfür $g(u, v) = \alpha u^2 + \beta uv + \gamma v^2$ eine quadratische Form mit Diskriminante $D > 0$ kein Quadrat und außerdem $W > W'$ die Lösungen der Gleichung $\alpha u^2 + \beta u + \gamma = 0$ (wegen $D > 0$ gibt es zwei verschiedene reelle Lösungen). Dann transformiert die Matrix
+Sei hierfür $g(u, v) = \alpha u^2 + \beta uv + \gamma v^2$ eine quadratische Form mit Diskriminante $D > 0$ kein Quadrat und seien außerdem $w > w'$ die Lösungen der Gleichung $\alpha u^2 + \beta u + \gamma = 0$ (wegen $D_g = D > 0$ gibt es zwei verschiedene reelle Lösungen). Dann transformiert die Matrix
 \[
-	M = (W - W')^{- \frac 12} \mymat*{W'}{-W}11 \in \GL_2(\RR)
+	M = (w - w')^{- \frac 12} \mymat*{w'}w11 \in \GL_2(\RR)
 \]
 $g$ in $Mg$ mit
 \[
 	M g(u, v) = \sqrt{D} uv
+	\,.
 \]
-denn ist $T = \sqrt{W-W'}$, so gilt
+In der Tat: Ist $T = \sqrt{w-w'}$, so gilt
 \begin{align*}
-	\mymat*{\frac {W'}T}{\frac 1T}{\frac WT}{\frac 1T} \mymat*{\alpha}{\frac \beta 2}{\frac \beta 2}{\gamma} \mymat*{\frac {W'}T}{\frac WT}{\frac 1T}{\frac 1T} 
-	&= \frac{1}{T^2} \mymat*{W' \alpha + \frac \beta 2}{\frac {W' \beta}2 + \gamma}{- W \alpha + \frac \beta 2}{\frac {W \beta}2 + \gamma} \mymat*{W'}W11 \\
-	&= \frac{1}{T^2} \mymat*{\alpha W'^2 + \frac {\beta W'}2 + \frac {\beta W'}2 + \gamma}{WW'\alpha + \frac \beta 2 w + \frac {w' \beta}2 + \gamma}{ww'\alpha + \frac {w'\beta}2 + \frac {w\beta}2 + \gamma}{\alpha w^2 + \frac {\beta w}2 + \frac {\beta w}2 + \gamma} \\
-	&= \frac{1}{T^2} \mymat* 0{\alpha \frac \gamma \alpha + \frac \beta 2 \left( - \frac \beta 2 \right) + \gamma}{\alpha \frac \gamma \alpha + \frac \beta 2 \left( - \frac \beta 2 \right) + \gamma}0
+	M^t \mymat*{\alpha}{\frac \beta 2}{\frac \beta 2}{\gamma} M 
+	&= \frac{1}{T^2} \mymat*{w'}1w1 \mymat*{\alpha}{\frac \beta 2}{\frac \beta 2}{\gamma} \mymat*{w'}w11 \\
+	&= \frac{1}{T^2} \mymat*{w' \alpha + \frac \beta 2}{\frac \beta 2 w' + \gamma}{w \alpha + \frac \beta 2}{\frac \beta 2 w + \gamma} \mymat*{w'}w11 \\
+	&= \frac{1}{T^2} \mymat*{\alpha w'^2 + \frac \beta 2 w' + \frac \beta 2 w' + \gamma}{\alpha ww' + \frac \beta 2 w + \frac \beta 2 w' + \gamma}{\alpha ww' + \frac \beta 2 w' + \frac \beta 2 w + \gamma}{\alpha w^2 + \frac \beta 2 w + \frac \beta 2 w + \gamma} \\
+	&= \frac{1}{T^2} \mymat*{\alpha w'^2 + \beta w' + \gamma}{\alpha ww' + \frac \beta 2 (w + w') + \gamma}{\alpha ww' + \frac \beta 2 (w' + w) + \gamma}{\alpha w^2 + \beta w + \gamma}
+	\,.
 \end{align*}
-Da nun 
-\[
-	\det \mymat* 0 {\frac {2\gamma - \frac {\beta^2}{2 \alpha}}{T^2}} {\frac {2\gamma - \frac {\beta^2}{2 \alpha}}{T^2}} 0 = - \frac D4
-\]
-folgt nach einer Rechnung $Mg = \sqrt{D} uv$.
+Wegen $\det M = \det M^t = \pm 1$ bleibt die Determinante der Matrix (und somit auch die Diskriminante der von der Matrix induzierten quadratischen Form) trotz Transformation unverändert. Da sowohl $w$ als auch $w'$ die Gleichung $\alpha u^2 + \beta u + \gamma = 0$ lösen, verschwinden beide Diagonaleinträge und die Form $Mg$ lässt sich schreiben als $Mg(u, v) = b uv$ für ein $b \in \RR$. Hieraus erhält man nach kurzer Rechnung wie behauptet $Mg(u, v) = \sqrt D uv$.
 
-Nach nichttrivialen Überlegungen (siehe Quelle) weiß man: Die Gruppe $\inv \gamma \Gamma_g \gamma$ ist zyklisch und kann durch $\mymat \epsilon 0 0 {\frac 1 \epsilon}$ erzeugt werden, wobei $\epsilon > 1$ die Fundamentaleinheit des Ganzheitsrings $R$ in $\QQ(\sqrt{D})$ (D kein Quadrat!). Daher können wir den Fundamentalbereich $F_g$ so wählen, dass $\inv \gamma \F_g$ ein Kreisring ist mit $y > 0$ und $r_0 \leq \abs{z} \leq \epsilon^2 r_0$. Es gilt somit
+Nach nichttrivialen Überlegungen weiß man: Die Gruppe $\inv M \Gamma_g M$ ist zyklisch und kann durch $\mymat \epsilon 0 0 {\frac 1 \epsilon}$ erzeugt werden, wobei $\epsilon > 1$ die Fundamentaleinheit des Ganzheitsrings $R$ in $\QQ(\sqrt{D})$ ist (hier geht auch ein, dass $D$ keine Quadratzahl ist, sonst wäre $\QQ(\sqrt{D}) = \QQ$). Daher können wir den Fundamentalbereich $\F_g$ so wählen, dass $\inv M \F_g$ ein Kreisring $\inv M \F_g = \Set {z \in \HH \mid r_0 \leq \abs{z} \leq \epsilon^2 r_0}$ ist. Es gilt somit
 \begin{align*}
-	\int_{\F_g} R_g (z, t) \frac {\opd x \opd y}{y^2} 
-	&= \int_{\F_g} R_{\gamma g} (\inv \gamma z, t) \frac {\opd x \opd y}{y^2} \\
-	&= \int_{\inv \gamma \F_g} R_{\gamma g} (z, t) \frac {\opd x \opd y}{y^2} && \gamma g = \sqrt{D} uv \\
-	&= \int_{y > 0, r_0 \leq \abs{z} \leq \epsilon^2 r_0} \left( \sqrt{D}x - ity \right)^{-u} y^{k-2} \opd x \opd y
+	I(m,t)
+	&= \int_{\F_g} R_g (z, t) \frac {\opd x \opd y}{y^2} \\
+	&= \int_{\F_g} R_{M g} (\inv M z, t) \frac {\opd x \opd y}{y^2} \\
+	&= \int_{\inv M \F_g} R_{M g} (z, t) \frac {\opd x \opd y}{y^2} && \Big| Mg(u,v) = \sqrt{D} uv \\
+	&= \int_{\substack{y > 0 \\ r_0 \leq \abs{z} \leq \epsilon^2 r_0}} \left( \sqrt{D}x - ity \right)^{-k} y^{k-2} \opd x \opd y
+	\,.
 \end{align*}
 
-Setze $z = x + iy$ udn $z = r e^{i \theta}$ in Polarkoordinaten, erhalte damit
+Erhalte nun mit Polarkoordinaten $z = x + iy = r e^{i \theta}$, dass
 \begin{align*}
+	I(m,t) 
 	&= \int_0^{\pi} \int_{r_0}^{r_0 \epsilon^2} \left( \sqrt{D} \cos \theta - it \sin \theta \right)^{-k} \left( \sin \theta \right)^{k-2} \frac {\opd r \opd \theta}r \\
 	&= \log (\epsilon^2) \int_0^\pi \left( \sqrt{D} \cos \theta - it \sin \theta \right)^{-k} \left( \sin \theta \right)^{k-2} \opd r \opd \theta
 \end{align*}
-
-Wir sind damit fertig, wenn wir
-\[
-	\int_{-\pi}^\pi \left( \sqrt{D} \cos \theta - it \sin \theta \right)^{-k} \left( \sin \theta \right)^{k-2} \opd r \opd \theta = 0
-\]
-zeigen können (die Summe beider Integrale für $+t$ und $-t$). Schreibe das Integral dafür um
+und wegen der Symmetrieeigenschaften von $\sin$ und $\cos$ analog
 \begin{align*}
-	& \int_{-\pi}^{\pi} \left( \sqrt D \frac {e^{i\theta} + e^{-i\theta}}2 - it \frac {e^{i\theta} - e^{-i\theta}}{2i} \right)^{-k} \left( \frac {e^{i\theta} - e^{-i\theta}}{2i} \right)^{k-2} \opd \theta \\
-	&\quad = \int_{-\pi}^{\pi} \left( \sqrt D i \frac {e^{i\theta} + e^{-i\theta}}{e^{i\theta} - e^{-i\theta}} - it \right)^{-k} e^{2i\theta} \frac{e^{2i\theta} - 1}{2i} \opd \theta \\
-	&\quad = \frac 1{2i} \int_\gamma \left( \sqrt D i \frac {z+i}{z-i} - it \right)^{-k} \left( \frac{z-1}{2i} \right)^{-2} \opd z
+	I(m,-t) 
+	&= \log (\epsilon^2) \int_0^\pi \left( \sqrt{D} \cos \theta + it \sin \theta \right)^{-k} \left( \sin \theta \right)^{k-2} \opd r \opd \theta \\
+	&= \log (\epsilon^2) \int_{-\pi}^0 \left( \sqrt{D} \cos \theta - it \sin \theta \right)^{-k} \left( \sin \theta \right)^{k-2} \opd r \opd \theta
+	\,.
 \end{align*}
-mit $\gamma \colon \left[ -\pi, \pi \right] \to \CC$ geschlossen mit $\gamma(t) = e^{2it}$. Wegen $k \geq 4$ und 
+
+Wir sind also fertig, wenn wir
 \[
-	\sqrt D i \frac{z+1}{z-1} - it = 0 \Leftrightarrow z = \frac {\frac t{\sqrt{D}} + 1}{\frac t{\sqrt{D}} - 1} > 1
+	I := \int_{-\pi}^\pi \left( \sqrt{D} \cos \theta - it \sin \theta \right)^{-k} \left( \sin \theta \right)^{k-2} \opd r \opd \theta = 0
 \]
-ist $H(z)$ holomorph in einem $U_{1 + \delta}(0)$ mit $\delta > 0$ und nach dem Residuensatz ist das Integral $0$. Damit folgt rückwirkend $\frac 12 \left( I(m,t) + I(m,-t) \right) = 0$ für $D = t^2 - 4m > 0$ kein Quadrat. Damit ist die Spurformel bewiesen.
+zeigen können. Schreibe hierfür das Integral um zum Kurvenintegral
+\begin{align*}
+	I
+	&= \int_{-\pi}^{\pi} \left( \sqrt D \frac {e^{i\theta} + e^{-i\theta}}2 - it \frac {e^{i\theta} - e^{-i\theta}}{2i} \right)^{-k} \left( \frac {e^{i\theta} - e^{-i\theta}}{2i} \right)^{k-2} \opd \theta \\
+	&= \int_{-\pi}^{\pi} \left( \sqrt D i \frac {e^{i\theta} + e^{-i\theta}}{e^{i\theta} - e^{-i\theta}} - it \right)^{-k} \left( \frac {e^{i\theta} - e^{-i\theta}}{2i} \right)^{-2} \opd \theta \\
+	&= \int_{-\pi}^{\pi} \left( \sqrt D i \frac {e^{2i\theta} + 1}{e^{2i\theta} - 1} - it \right)^{-k} \left( \frac {e^{2i\theta} - 1}{2i} \cdot e^{-i\theta} \right)^{-2} \opd \theta \\
+	&= \frac 1{2i} \int_{-\pi}^{\pi} \left( \sqrt D i \frac {e^{2i\theta} + 1}{e^{2i\theta} - 1} - it \right)^{-k} \left( \frac {e^{2i\theta} - 1}{2i} \right)^{-2} 2ie^{2i\theta} \opd \theta \\
+	&= \frac 1{2i} \int_{\mathcal C} \left( \sqrt D i \frac {z+1}{z-1} - it \right)^{-k} \left( \frac{z-1}{2i} \right)^{-2} \opd z
+\end{align*}
+mit $\mathcal C \colon \left[ -\pi, \pi \right] \to \CC, \theta \mapsto e^{2i\theta}$ geschlossen. Wegen $k \geq 4 > 2$ hebt der linke Faktor die Polstelle des rechten Faktors bei $z = 1$. Die Polstelle des linken Terms liegt bei
+\[
+	\sqrt D i \frac{z+1}{z-1} - it \overset != 0 \quad \Ra \quad z = \frac {\frac t{\sqrt{D}} + 1}{\frac t{\sqrt{D}} - 1} > 1
+	\,,
+\]
+sodass der Integrand für $\delta > 0$ klein genug auf der Kreisscheibe $U_{1 + \delta}(0) \supset \closure \EE$ holomorph ist. Nach dem Residuensatz ist das Integral entlang $\mathcal C = \partial \EE$ daher $0$. Damit folgt für $D = t^2 - 4m > 0$ kein Quadrat, dass tatsächlich $\frac 12 \left( I(m,t) + I(m,-t) \right) = 0$ gilt und die Spurformel ist bewiesen.
