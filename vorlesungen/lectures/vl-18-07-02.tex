@@ -1,0 +1,219 @@
+\begin{bsp-list}
+	\item Es sei $d(n)$ die Anzahl der Teiler von n.
+	Dann gilt für alle $s \in \CC$ mit $\Re s > 1$
+	\[
+		\sum_{n=1}^\infty \frac{d(n)}{n^s}
+		&= \sum_{n=1}^\infty \Bigl(\sum_{d|n} 1\cdot 1\Bigr) n^{-s} \\
+		&= \Bigl(\sum_{n=1}^\infty \frac{1}{n^s}\Bigr) \cdot \Bigl(\sum_{n=1}^\infty \frac{1}{n^s}\Bigr) \\
+		&= \zeta(s)^2
+		\,.
+	\]
+	
+	\item Allgemein gilt für $\sigma_k(n) = \sum_{d|n} d^k$ für $k \in \ZZ$, dann ist
+	\[
+		\sum_{n=1}^\infty \frac{\sigma_k(n)}{n} = \zeta(s) \cdot \zeta(s-k)\,.
+	\]
+\end{bsp-list}
+
+In beiden Beispielen haben die Koeffizienten die Eigenschaft multiplikativ zu sein.
+Eine \myemph{multiplikative Funktion} $f\colon \NN\ra \CC$ ist durch die Eigenschaft $f\not\equiv 0$ und $f(n \cdot m) = f(n) \cdot f(m)$ für alle $n$, $m$ mit $\ggt(n,m) = 1$ charakterisiert.
+Gilt dies sogar für alle $n$, $m \in \NN$, so nennen wir $f$ \myemph[multiplikative Funktion!streng]{streng multiplikativ} oder \myemph[multiplikative Funktion!vollständig multiplikativ]{vollständig multiplikativ}.
+
+Diese Eigenschaft wirkt sich wie folgt auf die entsprechenden Dirichletreihen aus: ist $f$ multiplikativ, so ist $f(1) = 1$ und ist $n = p_1^{r_1} \cdot \ldots \cdot p_k^{r_k}$, so gilt
+\[
+	f(n) = f(p_1^{r_1}) \cdot \ldots \cdot f(p_k^{r_k})\,.
+\]
+Es ist also im Bereich der absoluten Konvergenz von $F(s) = \sum_{n=1}^\infty \frac{n}{n^s}$:
+\[
+	F(s)
+	&= \sum_{0 \leq r_1, r_2, \ldots} f(2^{r_1} \cdot 3^{r_2} \cdot 5^{r_3} \ldots) \cdot (2^{r_1} \cdot 3^{r_2} \cdot 5^{r_3} \ldots)^{-s} \\
+	&= \sum_{r_1=0}^\infty \sum_{r_2=0}^\infty \ldots \sum_{r_j=0}^\infty \ldots \frac{f(2^{r_1}) \cdot f(3^{r_2}) \cdot \ldots \cdot f(p_j^{r_j}) \cdot \ldots }{(2^{r_1} \cdot 3^{r_2}  \cdot \ldots \cdot p_j^{r_j} \cdot \ldots)^s} \\
+	&= \prod_{p \in \PP} \sum_{r=1}^\infty \frac{f(p^r)}{p^{rs}}
+	\,,
+\]
+wobei sich das Produkt über alle Primzahlen erstreckt.
+Wir erhalten damit folgend
+
+\begin{satz}
+	Sei $f:\NN \ra \CC$ eine multiplikative Funktion und sei die Dirichletreihe
+	\[
+		F(s) = \sum_{n=1}^\infty \frac{f(n)}{n^s}
+	\]
+	absolut konvergent. Dann ist $F(s)$ gleich dem \myemph{Euler-Produkt}
+	\[
+		F(s) = \prod_{p \in \PP} \Bigl(1 + \frac{f(p)}{p^s} + \frac{f(p^2)}{p^{2s}} + \ldots \Bigr)
+	\]
+\end{satz}
+
+\begin{bsp-list}
+	\item Für $\zeta(s) $ sind die Koeffizienten alle gleich 1, es gilt also für $\Re s > 1$
+	\[
+		\zeta(s) = \sum_{p \in \PP} \Bigl(1 + \frac{1}{p^s} + \frac{1}{p^{2s} + \ldots}\Bigr)
+		= \prod_{p \in \PP} \frac{1}{1-p^{-s}}
+		\,.
+	\]
+	Diese von Euler entdeckte Formel ist der Grund für die große Rolle, die die Zetafunktion in der Zahlentheorie spielt.
+	
+	\item Man erhält 
+	\[
+		\sum_{n=1}^\infty \frac{d(n)}{n^s}
+		= \zeta(s)^2
+		&= \prod_{p \in \PP} (1-p^{-s})^{-2}
+		= \prod_{p \in \PP} (1 + 2p^{-s} + 3p^{-2s} + \ldots) \\
+		&= \prod_{p \in \PP} (1+ \frac{d(p)}{p^s} + \frac{d(p^2)}{p^{2s}} \ldots )
+	\]
+	
+	\item Für den Kehrwert $F(s) = \frac{1}{\zeta(s)}$ der Zetafunktion erhalten wir
+	\[
+		\frac{1}{\zeta(s)}
+		= \prod_{p \in \PP} (1-p^{-s}) = \sum_{n=1}^\infty \frac{\mu(n)}{n^s}\,,
+	\]
+	wobei
+	\[
+		\mu(n)
+		= \begin{cases}
+			(-1)^L & \text{wobei $L$ die Anzahl der verschiedenen Primteiler von $n$, falls $n$ quadratfrei,} \\
+			1 & \text{falls } n=1,\\
+			0 & \text{sonst.}
+		\end{cases}
+	\]
+	Diese Funktion heißt auch \myemph{Möbiussche $\mu$-Funktion}.
+	Über die Faltungsformel folgt die wichtige Eigenschaft
+	\[
+		\sum_{d | n} \mu(d)
+		= \begin{cases}
+			1  & \text{falls } n=1 \\
+			0 & \text{sonst}
+		\end{cases}
+		\,.
+	\]
+	Die Möbiussche $\mu$-Funktion ist für folgende Formel wichtig.
+\end{bsp-list}
+
+\begin{satz}
+	Seien $f$ und $g$ zwei Funktionen von $\NN$ nach $\CC$.
+	Ist für alle $n\in\NN$:
+	\[
+		f(n) = \sum_{d|n} g(d)
+		\,.
+	\]
+	so ist für alle $n \in \NN$
+	\[% *
+		g(n) = \sum_{d|n} f(d) \mu\Bigl(\frac{n}{d}\Bigr)
+		\,.
+	\]
+	
+	Stehen $f$ und $g$ in dieser Beziehung zueinander, so ist $f$ multiplikativ genau dann wenn $g$ multiplikativ ist.
+\end{satz}
+\begin{bewe}
+	Die Gleichungen 
+	\begin{align*}
+		f(1) &= g(1) \\
+		f(2) &= g(1) + g(2) \\
+		f(3) &= g(1) + g(3) \\
+		f(4) &= g(1) + g(2) + g(4) \\
+		&\ldots 
+	\end{align*}
+	lassen sich induktiv für $g$ lösen
+	\begin{align*}
+		g(1) &= f(1) \\
+		g(2) &= f(2) - f(1) \\
+		g(3) &= f(3) - f(1) \\
+		g(4) &= f(4) - f(2) \\
+		&\ldots 
+	\end{align*}
+	Es ist also klar, dass es eine solche Beziehung wie in \myref{*} unabhängig von $f$ und $g$ existieren muss.
+	Insbesondere genügt es die Umkehrformel für Folgen \myquote{langsamen Wachstums} zu beweisen.
+	Wir nehmen daher an, die Dirichletreihen
+	\[
+		F(s) = \sum_{n=1}^\infty \qquad \text{und} \qquad G(s) = \sum_{n=1}^\infty \frac{g(n)}{n^s}
+	\]
+	seien absolut konvergent.
+	Dann gilt wegen der Faltungsformel und $\frac{1}{\zeta(s)} = \sum_{n=1}^\infty \frac{\mu(n)}{n^s}$ für alle $n\in\NN$:
+	\[
+		f(n) = \sum_{d|n} g(d)
+		&\Rla F(s) = \Bigl(\sum_{n=1}^\infty n^{-s} \Bigr) \cdot \Bigl(\sum_{m=1}^\infty g(m) m^{-s}\Bigr) \\
+		&\Rla G(s) = \zeta(s)^{-1} F(s) = \sum_{n=1}^\infty \mu(n)n^{-s} \sum_{m=1}^\infty f(m) m^{-s} \\
+		&\Rla \myref{*}
+		\,.
+	\]
+	
+	Gelten nun diese Beziehung so folgt weiter
+	\[
+		g \text{ multiplikativ}
+		&\Rla G(s) \text{ besitzt Euler-Produkt} \\
+		&\Rla F(s) = \zeta(s)G(s) \text{ besitzt Euler-Produkt} \\
+		&\Rla f \text{ multiplikativ}
+	\] 
+\end{bewe}
+
+Als letztes Beispiel sei
+\[
+	r(n) = \# \Set{ (a,b) \in \ZZ^2 \mid a^2 + b^2 = n}
+\]
+die Anzahl der Darstellungen von $n$ als Summe zweier ganzer Quadrate.
+Dann ist die Funktion $\frac{1}{4}r(n)$ multiplikativ und die entsprechende Dirichletreihe ist für $\Re s > 1$
+\[
+	\sum_{n=1}^\infty \frac{1}{4} r(n) n^{-s}
+	= \zeta(s) \Bigl( 1 - \frac{1}{3^s} + \frac{1}{5^s} - \frac{1}{7^s} + \frac{1}{9^s} - \ldots \Bigr)
+\]
+
+Diese Beziehung führt mit 
+\[
+	\chi(n)
+	= \begin{cases}
+		1 & n \equiv 1 \mod 4 \\
+		-1 & n \equiv 3 \mod 4 \\
+		0 & \text{sonst}
+	\end{cases}
+\]
+zu der nicht-trivialen Beziehung
+\[
+	r(n) = 4\sum_{d|n} \chi(d)
+	\,.
+\]
+
+\section{Die Mellin-Transformation}
+
+\begin{erin}
+	Die Gammafunktion $\Gamma(s)$ ist definiert durch
+	\[
+		\Gamma(s) = \lim_{N\to\infty} \frac{(N-1)!N^s}{s(s+1) \ldots (s+N-1)}\,.
+	\]
+	Es gilt der folgende Satz
+	\begin{satz}
+		Die Funktion $\Gamma(s)$ ist in ganz $\CC\setminus-\NN_0$ holomorphe Funktion mit einfachen Polen in $s=0$, $-1$, $-2$, \ldots{}
+		Es gilt die Funktionalgleichung
+		\[
+			s\Gamma(s) = \Gamma(s+1) \qquad \forall s \in \CC\setminus-\NN_0\,.
+		\]
+		Weiter gilt $\Gamma(n) = (n-1)!$ für $n \in \NN$ und
+		\[
+			\res_{s=-n} \Gamma(s) = \frac{(-1)^n}{n!}
+			\qquad \forall n \in \NN_0\,.
+		\]
+	\end{satz}
+	\begin{bewe}
+		Siehe FT 2 oder Busam-Freitag FT 1.
+	\end{bewe}
+
+	Da $\Gamma(s) \not= 0$ für alle $s \in \CC$ ist $\frac{1}{\Gamma(s)}$ eine ganze Funktion und es gilt die Produktentwicklung
+	\[
+		\frac{1}{\Gamma(s)} = s e^{\gamma s} \prod_{j=1}^\infty \Bigl(1 + \frac{s}{j})e^{-\frac{s}{j}}
+	\]
+	wobei $\gamma = \lim_{N \to \infty} 1 + \frac{1}{2} + \ldots + \frac{1}{N} - \log(N)$.
+	
+	Eine der wichtigen Formeln für die Gammafunktion ist gegeben durch
+	\begin{satz}
+		Es gilt in jedem Winkelbereich $W_\delta = \Set{s \in \CC \mid -\pi + \delta < \Arg(s) < \pi - \delta}$
+		\[
+			\Gamma(s)
+			= \sqrt{2\pi} s^{s - \frac{1}{2}} e^{-s} e^{H(s)}
+		\]
+		wobei $H(s)$ eine in $\CC_-$ holomorphe Funktion ist mit der Eigenschaft
+		\[
+			\lim_{\substack{\abs s \to \infty \\ s \in W_\delta}} H(s) = 0\,.
+		\]
+	\end{satz}
+	Diese ist vor allem Dingen dafür geeignet den exponentiellen Abfall der Funktion $\Gamma(s)$ auf vertikalen Streifen $\sigma_1 < \Re s < \sigma_2$ beweisen.
+\end{erin}
