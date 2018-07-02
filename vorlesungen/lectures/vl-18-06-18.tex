@@ -1,18 +1,19 @@
 \begin{theorem}[Spurformel, Eichler-Selberg]
 	Sei $k \geq 4$ gerade und $m > 0$ beliebig. Dann gilt
 	\[
-		\Tr T(m) = -\frac{1}{2} \sum_{t=-\infty}^\infty P_k(t,m) H(4m-t^2) - \frac{1}{2} \sum_{d|m} \min\Bigl(d, \frac{m}{d}\Bigr)^{k-1}\,.
+		\Tr T(m) = -\frac{1}{2} \sum_{t=-\infty}^\infty P_k(t,m) H(4m-t^2) - \frac{1}{2} \sum_{d|m} \min\Bigl(d, \frac{m}{d}\Bigr)^{k-1}
+		\,.
 	\]
 \end{theorem}
 
 \begin{bewe}
-	Wir werden den Beweis im Folgenden skizzieren, jedoch stellenweise auf Sergo Lang: \glqq{}Introduction to modular forms\grqq{} verweisen. Für eine Einführung in die Theorie der quadratischen Formen, welche im Beweis eine wichtige Rolle spielt, verweisen wir auf D. Zagier: \glqq{}Quadratische Formen und Zetafunktionen\grqq{}. Natürlich ist dieses Hintergrundwissen nicht klausurrelevant.
+	Wir werden den Beweis im Folgenden skizzieren, jedoch stellenweise auf Serge Lang: \glqq{}Introduction to Modular Forms\grqq{} verweisen. Für eine Einführung in die Theorie der quadratischen Formen, welche im Beweis eine wichtige Rolle spielt, verweisen wir auf Don Zagier: \glqq{}Zetafunktionen und quadratische Körper\grqq{}. Natürlich ist dieses Hintergrundwissen nicht klausurrelevant.
 
-Im vorherigen Satz haben wir die Identität
+Im \myref{vorherigen Satz} haben wir die Identität
 \[
 	\Tr T(m) = C_k^{-1} m^{k-1} \int_{\F} \sum_{ad-bc = m} \frac{y^k}{\left(c \abs{z}^2 + d \conj z - az - b\right)^k} \frac{\opd x \opd y}{y^2}
 \]
-gezeigt. Die innere Summe ist hierbei invariant unter $\Gamma(1)$, da das Integral ansonsten nicht unabhängig von der Wahl des Fundamentalbereiches $\F$ wäre. Wir behaupten ($\ast$): Ersetzt man $z$ durch $\gamma z$ mit $\gamma \in \Gamma(1)$ in den Summanden, so ist dies äquivalent dazu, die Matrix $M = \abcd$ in der Summation durch $\gamma^{-1} M \gamma$ zu ersetzen. Denn: 
+gezeigt. Die innere Summe ist hierbei invariant unter $\Gamma(1)$, da das Integral ansonsten nicht unabhängig von der Wahl des Fundamentalbereiches $\F$ wäre. Genauer behaupten wir: Ersetzt man $z$ durch $\gamma z$ mit $\gamma \in \Gamma(1)$ in den Summanden, so ist dies äquivalent dazu, die Matrix $M = \abcd$ in der Summation durch $\gamma^{-1} M \gamma$ zu ersetzen. Denn: 
 
 Sei $\gamma = \mymat \alpha \beta \delta \epsilon \in \Gamma(1)$ und $M = \mymat abcd \in \M(m)$. Dann gilt
 \begin{align*}
@@ -29,8 +30,7 @@ Andererseits gilt
 	&\quad = \frac {\Im z} {\abs{z}^2 (c\alpha^2 + d \alpha \delta - a \alpha \delta - b \delta^2) + \conj z (c \alpha \beta + d \alpha \epsilon - a \beta \delta - b \delta \epsilon) + z (\ldots) + \ldots}
 	\,.
 \end{align*}
-Multipliziert man, wie im letzten Schritt angedeutet, den Nenner vollständig aus, sortiert die Summanden nach dem Auftreten von $z, \conj z$ und vergleicht abschließend mit $\gamma^{-1} M \gamma$, so ist die Behauptung ($\ast$) klar.
-
+Multipliziert man, wie im letzten Schritt angedeutet, den Nenner vollständig aus, sortiert die Summanden nach dem Auftreten von $z, \conj z$ und vergleicht abschließend die Koeffizienten mit den Einträgen von $\gamma^{-1} M \gamma$, so ist die Behauptung klar.
 
 Da die Matrizen $M$ und $\gamma^{-1} M \gamma$ nicht nur dieselbe Determinante, sondern auch dieselbe Spur haben (rechne nach und beachte $\alpha \epsilon - \beta \delta = 1$), lässt sich die Summe sogar nach der Spur der Matrizen in $\Gamma(1)$-invariante Teile der Form
 \[
@@ -47,75 +47,82 @@ Wir werden im Folgenden beweisen:
 	\frac 12 (I(m,t) + I(m, -t)) = \begin{cases}
 		- \frac 12 P_k(t,m) H(4m - t^2) &\text{, falls } t^2 - 4m < 0 \\
 	\frac{k-1}{24} m^{\frac {k-2}2} - \frac 14 m^{\frac {k-1}2} &\text{, falls } t^2 - 4m = 0 \\
-	- \frac 12 \left( \frac{\abs{t} - u}2 \right)&\text{, falls } t^2 - 4m = u^2, u \in \NN \\
+	- \frac 12 \left( \frac{\abs{t} - u}2 \right)^{k-1} &\text{, falls } t^2 - 4m = u^2, u \in \NN \\
 	0 &\text{, falls } t^2 - 4m > 0 \text{ kein Quadrat} \,.
 \end{cases}
 \]
-Wie man schnell sieht, impliziert dies die Aussage des Theorems, wenn man $\abs {\frac {t+u}2}$ und $\abs {\frac {t-u}2}$ wie $d$ bzw. $\frac md$ in der zweiten Summe behandelt.
-
-Für das Studium des Integrals $I(m,t)$ bemerken wir zunächst, dass gilt:
-
-\begin{lemm}
-Es sei $\M_t(m)$ die Menge der ganzzahligen Matrizen mit Determinante $m$ und Spur $t$ und sei $Q_D$ die Menge der binären quadratischen Formen mit Diskriminante $D = t^2 - 4m$. Dann ist:
+Wie man durch eine Rechnung einsieht, impliziert dies die Aussage des Theorems: Hierbei nutzt man aus, dass $H$ für negative Argumente verschwindet und $H(0) := - \frac 1{12}$ ist, um die linke Summe in der Behauptung von solchen $t$ mit $t^2 - 4m < 0$ auf alle $t \in \ZZ$ auszudehnen. Die rechte Summe kommt durch die Fälle $t^2 - 4m = u^2$ mit $u \in \NN$ zustande, denn: Es gilt
 \[
-	\M_t (m) \cong Q_D
+	m = \frac {t^2 - u^2}4 = \frac {t+u}2 \cdot \frac {t-u}2 = \abs{\frac {t+u}2} \cdot \abs{\frac {t-u}2}
+	\,,
 \]
-als Mengen!
+wobei $t, u$ wegen $t^2 - 4m = u^2$ entweder beide gerade oder beide ungerade sind. Damit sind die beiden Faktoren rechts immer ganzzahlig und wegen des Absolutbetrages positiv. Da über alle $t \in \ZZ$ summiert wird, trifft $\abs{\frac {t+u}2}$ irgendwann jeden Teiler $d$ von $m$. Gleichzeitig trifft $\abs{\frac {t-u}2}$ den Teiler $\frac md$. Und wie man sich leicht überzeugt, ist
+\[
+	\frac{\abs{t} - u}2 = \min \Biggl( \abs{\frac {t+u}2} ,\abs{\frac {t-u}2} \Biggr) = \min \Bigl( d, \frac md \Bigr)
+	\,.
+\]
+
+Wir müssen im Folgenden also \glqq{}nur\grqq{} noch das Integral $I(m, t)$ studieren. Dazu bemerken wir zunächst folgendes Lemma:
+
+\begin{lemm}\label{Mt(m)=QD}
+Es sei $\M_t(m)$ die Menge der ganzzahligen Matrizen mit Determinante $m$ und Spur $t$ und sei $Q_D$ die Menge der binären quadratischen Formen mit Diskriminante $D = t^2 - 4m$. Dann sind die beiden Mengen gleichmächtig.
 \end{lemm}
 
 \begin{bewe}
-Wir konstruieren die Bijektion durch
+Wir konstruieren eine konkrete Bijektion
 \[
-	\phi \colon \M_t (m) \to Q_D, \abcd \mapsto g(u, v) = cu^2 + (d-a)uv - bv^2
+	\phi \colon \M_t (m) \to Q_D, \; \abcd \mapsto g(u, v) = cu^2 + (d-a)uv - bv^2
+	\,.
 \]
-Dann gilt:
+Diese ist wegen 
 \[
-	D_g = (d-a)^2 + 4bc = d^2 + 2ad + a^2 - 4(ad-bc) = t^2 - 4m
+	D_g = (d-a)^2 + 4bc = d^2 - 2ad + a^2 + 4ad + 4 (bc-ad) = (d+a)^2 - 4(ad-bc) = t^2 - 4m
 \]
-Damit ist $\phi$ wohldefiniert. Betrachte nun mit
+wohldefiniert. Betrachte nun einen Kandidaten für die Umkehrabbildung
 \[
-	\phi^{-1} \colon Q_D \to \M_t (m), g(u, v) = \alpha u^2 + \beta uv + \gamma v^2 \mapsto \mymat {\frac 12 (t - \beta)} {-\gamma} \alpha {\frac 12(t + \beta)}
+	\phi^{-1} \colon Q_D \to \M_t (m), \; g(u, v) = \alpha u^2 + \beta uv + \gamma v^2 \mapsto \mymat* {\frac 12 (t - \beta)} {-\gamma} \alpha {\frac 12(t + \beta)}
+	\,.
 \]
-einen Kandidaten für die Umkehrabbildung. Beachte hierbei, dass $t$ genau dann ungerade ist, wenn $\beta$ ungerade ist, denn wir haben
+Für die Wohldefiniertheit dieser Abbildung rechnet man nach, dass die angegebene Matrix Determinante $\frac 14 (t^2 - \beta^2) + \alpha \gamma = \frac 14 (t^2 - D_g) = m$, Spur $t$ sowie ganzzahlige Einträge besitzt. Letzteres folgt aus $\alpha, \gamma, \beta, t$ ganzzahlig und
 \[
-	D_g = \beta^2 - 4\alpha \gamma = t^2 - 4m
+	D_g = t^2 - 4m = \beta^2 - 4\alpha \gamma \quad \Ra \quad t^2 \equiv \beta^2 \mod 2 \quad \Ra \quad t \equiv \beta \mod 2
+	\,.
 \]
-Es gilt zudem
+
+Wendet man nun auf $\abcd \in \M_t(m)$ die Abbildungen $\phi$ und $\inv \phi$ an, so erhält man mit $\alpha = c$, $\beta = d - a$ und $\gamma = -b$ nach Definition von $\phi$ sowie mit $t = a+d$ die Matrix
 \[
-	\det \mymat {\frac 12 (t - \beta)} {-\gamma} \alpha {\frac 12(t + \beta)} = \frac 14 (t^2 - \beta^2) + \gamma \alpha = \frac 14 t^2 - \frac 14 (\beta^2 - 4\gamma \alpha) = m
+	\mymat* {\frac 12 (t - \beta)} {-\gamma} \alpha {\frac 12(t + \beta)} = \mymat* {\frac 12 (a + d - (d-a))}bc{\frac 12(a + d + (d-a))} = \mymat* abcd
 \]
-Ist nun $\alpha = c$, $\beta = d - a$ und $\gamma = -b$, gilt mit $t = a+d$
-\[
-	\mymat {\frac 12(t-d+a)} bc {\frac 12(t+d-a)} = \abcd
-\]
-also $\phi^{-1} \circ \phi = id_{\M_t(m)}$. Analog lässt sich auch $\phi \circ \phi^{-1} = id_{Q_D}$ zeigen. Damit ist das Lemma bewiesen.
+und es folgt $\phi^{-1} \circ \phi = id_{\M_t(m)}$. Analog lässt sich auch $\phi \circ \phi^{-1} = id_{Q_D}$ zeigen. Damit ist das Lemma bewiesen.
 \end{bewe}
 
-Für jede Form $g(u, v) = \alpha u^2 + \beta uv + \gamma v^2$ und reelles $t$ definieren wir ($z = x + iy$)
+Für jede binäre quadratische Form $g(u, v) = \alpha u^2 + \beta uv + \gamma v^2$ und $z = x + iy \in \CC, t \in \RR$ beliebig definieren wir nun
 \[
-	R_g(z,t) = \frac {y^k} {\left( \alpha(x^2 + y^2) + \beta x + \gamma - ity \right)^k}
+	R_g(z,t) := \frac {y^k} {\left( \alpha(x^2 + y^2) + \beta x + \gamma - ity \right)^k}
+	\,.
 \]
-Beachte, dass $g$ von der Matrix $\abcd$ herrührt via obiger Bijektion durch $\alpha = c$, $\beta = d - a$ und $\gamma = -b$. Damit gilt
+Beachte, dass $g$ von der Matrix $\abcd$ herrührt via der Bijektion $\phi$ aus \autoref{Mt(m)=QD} durch $\alpha = c$, $\beta = d - a$ und $\gamma = -b$. Damit gilt
 \[
-	I(m, t) = C_k^{-1} m^{k-1} \int_\F \sum_{g, D_g = t^2 - 4m} R_g(z,t) \frac {\opd x \opd y}{y^2}
+	I(m, t) = C_k^{-1} m^{k-1} \int_\F \sum_{g, D_g = D} R_g(z,t) \frac {\opd x \opd y}{y^2}
+	\,,
 \]
-wobei sich die Summe über alle binären quadratischen Formen $g \in Q_D$, also mit Diskriminante $D_g = D = t^2 - 4m$, erstreckt.
+wobei sich die Summe über alle binären quadratischen Formen $g \in Q_D$, also mit Diskriminante $D_g = D := t^2 - 4m$, erstreckt.
 
 Ein beliebiges Element $\gamma \in \Gamma(1)$ liefert, angewendet auf $g$ durch
 \[
-	\gamma g := \left( (x,y) \mapsto g(\gamma \begin{pmatrix}x\\y\end{pmatrix}) \right)
+	\gamma g (u, v) := g \left( \gamma \begin{pmatrix}u\\v\end{pmatrix} \right)
+	\,,
 \]
-wieder eine quadratische Form. Es gilt zudem
+wieder eine quadratische Form $\gamma g$. Es gilt zudem $R_{\gamma g} (z, t) = R_g (\gamma z, t)$. Daher können wir für jede Diskriminante $D = t^2 - 4m \equiv 0, 1 \mod 4$ (Übungsaufgabe: alle Diskriminanten liegen in einer dieser beiden Restklassen) die Summe über alle quadratischen Formen mit dieser Diskrimante wie folgt aufteilen:
 \[
-	R_{\gamma g} (z, t) = R_g (\gamma z, t)
+	\sum_{g, D_g = D} R_g (z, t) = \sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}} \sum_{\gamma \in \modulo {\Gamma(1)} {\Gamma_g}} R_{\gamma g} (z,t) = \sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}} \sum_{\gamma \in \modulo {\Gamma(1)} {\Gamma_g}} R_g (\gamma z,t)
+	\,.
 \]
-Daher haben wir für jede Diskrimante $D \equiv 0, 1 \mod 4$ (Übungsaufgabe) die Gleichheit
+Hierbei erstreckt sich die erste Summe nur noch über ein Vertretersystem aller Klassen modulo $\Gamma(1)$ von binären quadratischen Formen $g$ mit Diskriminante $D_g = D$. Die zweite Summe erstreckt sich über alle Nebenklassen $\modulo {\Gamma(1)}{\Gamma_g}$, wobei $\Gamma_g$ die Fixgruppe von $g$ ist. 
+
+Für $D \neq 0$ gibt es nur endlich viele Klassen modulo $\Gamma(1)$, sodass die erste Summe endlich ist und wir schreiben können:
 \[
-	\sum_{g, D_g = D} R_g (z, t) = \sum_{g, D_g = D \mod \Gamma(1)} \sum_{\gamma \in \modulo {\Gamma(1)} {\Gamma_g}} R_{\gamma g} (z,t) = \sum_{g, D_g = D \mod \Gamma(1)} \sum_{\gamma \in \modulo {\Gamma(1)} {\Gamma_g}} R_g (\gamma z,t)
-\]
-wobei sich die erste Summe über ein Vertretersystem von Klassen (modulo $\Gamma(1)$) binärer quadratischer Formen mit Diskriminante $D$ erstreckt und die zweite Summe über alle Nebenklassen $\modulo {\Gamma(1)}{\Gamma_g}$ gebildet wird, wobei $\Gamma_g$ die Fixgruppe von $g$ ist. Für $D \neq 0$ ist die Klassenzahl endlich, also ist hier die erste Summe endlich. Wir erhalten somit für $D \neq 0$:
-\[
-	\int_\F \sum_{g, D_g = D} R_g(z,t) \frac{\opd x \opd y}{y^2} = \sum_{g, D_g = D \mod \Gamma(1)} \int_{\F_g} R_g (z,t) \frac{\opd x \opd y}{y^2}
+	\int_\F \sum_{g, D_g = D} R_g(z,t) \frac{\opd x \opd y}{y^2} = \sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}} \int_{\F_g} R_g (z,t) \frac{\opd x \opd y}{y^2}
 \]
 mit 
 \[
@@ -123,14 +130,15 @@ mit
 \]
 einem Fundamentalbereich für die Operation von $\Gamma_g$ auf $\HH$.
 
-Betrachten wir jetzt $D = 0$: Dann ist ein System von Repräsentanten gegeben durch $g_r(u,v) = rv^2$ für alle $r \in \ZZ$. Die Fixgruppe von $g_r$ ist dann gegeben durch
+Für $D = 0$ ist dagegen ein (unendliches) System von Repräsentanten gegeben durch die Formen $\Set {g_r(u,v) = rv^2 \mid r \in \ZZ }$. Die Fixgruppe eines solchen $g_r$ ist gegeben durch
 \[
-	\Gamma_{g_r} = \begin{cases} \Gamma(1), falls r = 0\\ \Gamma(1)_\infty, falls r \neq 0\end{cases}
+	\Gamma_{g_r} = \begin{cases} \Gamma(1) &\text{, falls } r = 0\\ \Gamma(1)_\infty &\text{, falls } r \neq 0 \,. \end{cases}
 \]
-Damit finden wir:
-\begin{align*}
-\int_\F \sum_{g, D_g = D} R_g(z,t) \frac{\opd x \opd y}{y^2} = \int_\F R_{g_0} (z,t) \frac{\opd x \opd y}{y^2} + \int_{\F_\infty} \sum_{r \neq 0} R_{g_r}(z,t) \frac{\opd x \opd y}{y^2}
-\end{align*}
-wobei $\F_\infty$ ein Fundamentalbereich von $\Gamma(1)_\infty$ auf $\HH$ ist, wie etwa der Streifen $\Set {z \in \HH \mid 0 < \Re (z) < 1}$.
+Damit finden wir
+\[
+	\int_\F \sum_{g, D_g = D} R_g(z,t) \frac{\opd x \opd y}{y^2} = \int_\F R_{g_0} (z,t) \frac{\opd x \opd y}{y^2} + \int_{\F_\infty} \sum_{\substack{r \in \ZZ \\ r \neq 0}} R_{g_r}(z,t) \frac{\opd x \opd y}{y^2}
+	\,,
+\]
+wobei $\F_\infty$ ein Fundamentalbereich für die Operation von $\Gamma(1)_\infty$ auf $\HH$ ist. Ein Beispiel hierfür ist der Vertikalstreifen $\Set {z \in \HH \mid 0 < \Re (z) < 1}$.
 
 \end{bewe}
