@@ -204,9 +204,9 @@ Dafür müssen wir etwas ausholen.
 	\]
 	durch
 	\begin{enumerate}
-		\item $H(n) = 0$ für $n > 0$,
+		\item $H(n) = 0$ für $n < 0$,
 		\item $H(0) = - \frac{1}{12}$,
-		\item $H(n)$ ist für $n > 0$ die Zahl der Äquivalenzklassen positiv definiter binärer ganzer quadratischen Formen mit Diskriminante $D = b^2-4ac = -n < 0$, wobei Klassen mit Repräsentanten der Form $d\cdot (X^2 + Y^2)$ respektive $e \cdot (X^2 + XY + Y)^2$ mit Vielfachheit $\frac{1}{2}$ beziehungsweise $\frac{1}{3}$ gezählt werden sollen.
+		\item $H(n)$ ist für $n > 0$ die Zahl der Äquivalenzklassen positiv definiter binärer ganzer quadratischen Formen mit Diskriminante $D = b^2-4ac = -n < 0$, wobei Klassen mit Repräsentanten der Form $d\cdot (X^2 + Y^2)$ respektive $e \cdot (X^2 + XY + Y^2)$ mit Vielfachheit $\frac{1}{2}$ beziehungsweise $\frac{1}{3}$ gezählt werden sollen.
 	\end{enumerate}
 	Man kann zeigen, dass $H(n)$ wohldefiniert ist.
 	Definiere zudem Polynome via
@@ -215,7 +215,8 @@ Dafür müssen wir etwas ausholen.
 	\]
 \end{defi}
 
-Mit diesen Werkzeugen gilt nun
+Mit diesen Werkzeugen gilt nun folgende arithmetische Spurformel:
+
 \begin{theorem}[Spurformel, Eichler-Selberg]
 	Sei $k \geq 4$ gerade und $m > 0$ beliebig. Dann gilt
 	\begin{equation}\label{eq:arithmetischeSpurformel}
@@ -274,7 +275,7 @@ Wie man durch eine Rechnung einsieht, impliziert dies die Aussage des Theorems: 
 	m = \frac {t^2 - u^2}4 = \frac {t+u}2 \cdot \frac {t-u}2 = \abs{\frac {t+u}2} \cdot \abs{\frac {t-u}2}
 	\,,
 \]
-wobei $t, u$ wegen $t^2 - 4m = u^2$ entweder beide gerade oder beide ungerade sind. Damit sind die beiden Faktoren rechts immer ganzzahlig und wegen des Absolutbetrages positiv. Da über alle $t \in \ZZ$ summiert wird, trifft $\abs{\frac {t+u}2}$ irgendwann jeden Teiler $d$ von $m$. Gleichzeitig trifft $\abs{\frac {t-u}2}$ den Teiler $\frac md$. Und wie man sich leicht überzeugt, ist
+wobei $t, u$ wegen $t^2 - 4m = u^2$ entweder beide gerade oder beide ungerade sind. Damit sind die beiden Faktoren rechts immer ganzzahlig und wegen des Absolutbetrages positiv. Da über alle $t \in \ZZ$ summiert wird, trifft $\abs{\frac {t+u}2}$ jeden Teiler $d$ von $m$. Gleichzeitig trifft $\abs{\frac {t-u}2}$ den Teiler $\frac md$. Und wie man sich leicht überzeugt, ist
 \[
 	\frac{\abs{t} - u}2 = \min \Biggl( \abs{\frac {t+u}2} ,\abs{\frac {t-u}2} \Biggr) = \min \Bigl( d, \frac md \Bigr)
 	\,.
@@ -283,7 +284,7 @@ wobei $t, u$ wegen $t^2 - 4m = u^2$ entweder beide gerade oder beide ungerade si
 Wir müssen im Folgenden also \glqq{}nur\grqq{} noch das Integral $I(m, t)$ studieren. Dazu bemerken wir zunächst folgendes Lemma:
 
 \begin{lemm}\label{Mt(m)=QD}
-Es sei $\M_t(m)$ die Menge der ganzzahligen Matrizen mit Determinante $m$ und Spur $t$ und sei $Q_D$ die Menge der binären quadratischen Formen mit Diskriminante $D = t^2 - 4m$. Dann sind die beiden Mengen gleichmächtig.
+Es seien $\M_t(m)$ die Menge der ganzzahligen Matrizen mit Determinante $m$ und Spur $t$ sowie $Q_D$ die Menge der binären quadratischen Formen mit Diskriminante $D = t^2 - 4m$. Dann sind die beiden Mengen gleichmächtig.
 \end{lemm}
 
 \begin{bewe}
@@ -293,9 +294,13 @@ Wir konstruieren eine konkrete Bijektion
 	\,.
 \]
 Diese ist wegen 
-\[
-	D_g = (d-a)^2 + 4bc = d^2 - 2ad + a^2 + 4ad + 4 (bc-ad) = (d+a)^2 - 4(ad-bc) = t^2 - 4m
-\]
+\begin{align*}
+	D_g 
+	&= (d-a)^2 + 4bc 
+	= d^2 - 2ad + a^2 + 4ad + 4 (bc-ad) \\
+	&= (d+a)^2 - 4(ad-bc) 
+	= t^2 - 4m
+\end{align*}
 wohldefiniert. Betrachte nun einen Kandidaten für die Umkehrabbildung
 \[
 	\phi^{-1} \colon Q_D \to \M_t (m), \; g(u, v) = \alpha u^2 + \beta uv + \gamma v^2 \mapsto \mymat* {\frac 12 (t - \beta)} {-\gamma} \alpha {\frac 12(t + \beta)}
@@ -331,7 +336,7 @@ Ein beliebiges Element $\gamma \in \Gamma(1)$ liefert, angewendet auf $g$ durch
 	\gamma g (u, v) := g \left( \gamma \begin{pmatrix}u\\v\end{pmatrix} \right)
 	\,,
 \]
-wieder eine quadratische Form $\gamma g$. Es gilt zudem $R_{\gamma g} (z, t) = R_g (\gamma z, t)$. Daher können wir für jede Diskriminante $D = t^2 - 4m$ die Summe über alle quadratischen Formen mit dieser Diskrimante wie folgt aufteilen:
+wieder eine quadratische Form $\gamma g$. Es gilt zudem $R_{\gamma g} (z, t) = R_g (\gamma z, t)$. Daher können wir für jede Diskriminante $D = t^2 - 4m \equiv 0,1 \mod 4$ (Übung!) die Summe über alle quadratischen Formen mit dieser Diskrimante wie folgt aufteilen:
 \[
 	\sum_{g, D_g = D} R_g (z, t) = \sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}} \sum_{\gamma \in \modulo {\Gamma(1)} {\Gamma_g}} R_{\gamma g} (z,t) = \sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}} \sum_{\gamma \in \modulo {\Gamma(1)} {\Gamma_g}} R_g (\gamma z,t)
 	\,.
@@ -354,7 +359,7 @@ Für $D = 0$ ist dagegen ein (unendliches) System von Repräsentanten gegeben du
 \]
 Damit finden wir
 \begin{equation}\label{eq:intFsumGforD=0}
-	\int_\F \sum_{g, D_g = D} R_g(z,t) \frac{\opd x \opd y}{y^2} = \int_\F R_{g_0} (z,t) \frac{\opd x \opd y}{y^2} + \int_{\F_\infty} \sum_{\substack{r \in \ZZ \\ r \neq 0}} R_{g_r}(z,t) \frac{\opd x \opd y}{y^2}
+	\int_\F \sum_{g, D_g = 0} R_g(z,t) \frac{\opd x \opd y}{y^2} = \int_\F R_{g_0} (z,t) \frac{\opd x \opd y}{y^2} + \int_{\F_\infty} \sum_{\substack{r \in \ZZ \\ r \neq 0}} R_{g_r}(z,t) \frac{\opd x \opd y}{y^2}
 	\,,
 \end{equation}
 wobei $\F_\infty$ ein Fundamentalbereich für die Operation von $\Gamma(1)_\infty$ auf $\HH$ ist. Ein Beispiel hierfür ist der Vertikalstreifen $\Set {z \in \HH \mid 0 < \Re (z) < 1}$.
@@ -394,28 +399,28 @@ Im letzten Schritt geht hierbei ein, dass $D_g = \beta^2 - 4 \alpha \gamma$, als
 \]
 schreiben:
 \[
-	\sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}} \int_{\F_g} R_g(z,t) \frac{\opd x \opd y}{y^2} = \sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}} \frac{1}{\abs{\Gamma_g}} I(D,t) = 2 H(-D) I(D,t)
+	\sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}} \int_{\F_g} R_g(z,t) \frac{\opd x \opd y}{y^2} = \sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}} \frac{1}{\abs{\Gamma_g}} I(D,t) = 2 H(-D) \cdot I(D,t)
 \]
 Die letzte Umformung liefert einen derart einfachen Term, da die Definition von $H$ wegen
 \[
 	\abs{\Gamma_g} = \begin{cases}
-	2 &\text{, falls } g \sim e(x^2 + y^2) \text{ für ein } e \in \ZZ \setminus \Set {0} \\
-	3 &\text{, falls } g \sim e(x^2 + xy + y^2) \text{ für ein } e \in \ZZ \setminus \Set {0}	\\
+	2 &\text{, falls } g \sim d\cdot (X^2 + Y^2) \text{ für ein } d \in \ZZ \setminus \Set {0} \\
+	3 &\text{, falls } g \sim e \cdot (X^2 + XY + Y^2) \text{ für ein } e \in \ZZ \setminus \Set {0}	\\
 	1 &\text{, sonst }
 	\end{cases}
 \]
 bereits den Vorfaktor $\frac 1{\abs{\Gamma_g}}$ beinhaltet. Der Faktor $2$ rührt von der Tatsache her, dass in der Definition von $H$ nur Klassen positiv definiter quadratischer Formen gezählt werden. Die obige Summe berücksichtigt jedoch Klassen aller Formen $g$ mit geeigneter Diskriminante $D_g = D$. Da alle diese Formen wegen $D_g = D < 0$ definit (also entweder positiv oder negativ definit) sind, besteht die Summe aus genau doppelt so vielen Summanden wie durch $H$ angegeben (zu jeder positiv definiten Form erhält man eine negativ definite Form gleicher Diskriminante durch Multiplikation mit $-1$ und umgekehrt).
 
-Nutzt man nun die für beliebiges $A \in \RR_{>0}$ gültige Formel
+Nutzt man nun die für beliebiges $A \in \CC_{-}$ gültige Formel
 \[
-	\int_{-\infty}^\infty (x^2 + A)^{-k} \opd x = \frac \pi{(k-1)!} \cdot \frac 12 \cdot \frac 32 \cdot \frac 52 \cdots (k-\frac 32) \cdot A^{\frac 12 -k}
+	\int_{-\infty}^\infty (x^2 + A)^{-k} \opd x = \frac \pi{(k-1)!} \cdot \frac 12 \cdot \frac 32 \cdot \frac 52 \cdots \left( k-\frac 32 \right) \cdot A^{\frac 12 -k}
 	\,,
 \]
-erhält man schließlich
+erhält man mit $A = y^2 - ity - \frac 14 D$ schließlich
 \begin{align*}
 	I(D, t) &= \int_\HH \frac{y^{k-2}}{\left( \abs{z}^2 - \frac 14 D - ity \right)^k} \opd x \opd y \\
 	&= \int_0^\infty y^{k-2} \int_{-\infty}^\infty (x^2 + y^2 - ity - \frac 14 D)^{-k} \opd x \opd y && \Big| \text{ siehe oben} \\
-	&= \frac \pi{(k-1)!} \cdot \frac 12 \cdot \frac 32 \cdot \frac 52 \cdots (k-\frac 32) \int_0^\infty (y^2 - ity - \frac 14 D)^{\frac 12 - k} y^{k-2} \opd y && \Big| \text{ Leibniz} \\
+	&= \frac \pi{(k-1)!} \cdot \frac 12 \cdot \frac 32 \cdot \frac 52 \cdots \left( k-\frac 32 \right) \int_0^\infty (y^2 - ity - \frac 14 D)^{\frac 12 - k} y^{k-2} \opd y && \Big| \text{ Leibniz} \\
 	&= \frac{\pi}{(k-1)!} \cdot \frac 12 \cdot \frac 1{i^{k-2}} \left( \! \frac {\opd}{\opd t} \right)^{\!\! k-2} \int_0^\infty (y^2 - ity - \frac 14D)^{-\frac 32} \opd y \\
 	&= \frac{\pi i^{k-2}}{2(k-1)!} \left( \! \frac {\opd}{\opd t} \right)^{\!\! k-2} \left[ \frac{4}{t^2 - D} \cdot \frac{y - \frac 12 it}{\sqrt{y^2 - ity - \frac 14 D}} \right]_0^\infty && \Big| \text{ nachrechnen!} \\
 	&= \frac{\pi i^{k-2}}{2(k-1)!} \left( \! \frac {\opd}{\opd t} \right)^{\!\! k-2} \left( \frac 4{\sqrt{\abs{D}}} \cdot  \frac 1{\sqrt{\abs{D}} - it} \right) \\
@@ -428,8 +433,8 @@ Zusammengefasst gilt also (unter Beachtung von $D = t^2 - 4m < 0$), dass
 	I(m, t) 
 	&= C_k^{-1} m^{k-1} \int_\F \sum_{g, D_g = D} R_g(z,t) \frac {\opd x \opd y}{y^2} \\
 	&\overset{\eqref{eq:intFsumGforDneq0}}= C_k^{-1} m^{k-1} \sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}} \int_{\F_g} R_g (z,t) \frac{\opd x \opd y}{y^2} \\
-	&= C_k^{-1} m^{k-1} 2 H(-D) I(D,t) \\
-	&= C_k^{-1} m^{k-1} 2 H (4m-t^2) \frac {2\pi}{k-1} \frac 1{\sqrt{4m-t^2}} \frac 1{\left( \sqrt{4m-t^2} - it \right)^{k-1}}
+	&= C_k^{-1} m^{k-1} \cdot 2 H(-D) \cdot I(D,t) \\
+	&= C_k^{-1} m^{k-1} \cdot 2 H (4m-t^2) \cdot \frac {2\pi}{k-1} \cdot \frac 1{\sqrt{4m-t^2}} \cdot \frac 1{\left( \sqrt{4m-t^2} - it \right)^{k-1}}
 	\,,
 \end{align*}
 was sich mit $\rho := \frac 12 ( t + i \sqrt{4m-t^2} )$ nach kurzer Rechnung vereinfachen lässt zu:
@@ -465,7 +470,7 @@ Daraus folgt in der Tat wie in \eqref{eq:meanI(m,t)} behauptet
 
 \emph{Fall 2:} $D = 0$. Wir benutzen hierfür die oben hergeleitete Formel \eqref{eq:intFsumGforD=0}
 \[
-	\int_\F \sum_{g, D_g = D} R_g(z,t) \frac{\opd x \opd y}{y^2} = \int_\F R_{g_0} (z,t) \frac{\opd x \opd y}{y^2} + \int_{\F_\infty} \sum_{\substack{r \in \ZZ \\ r \neq 0}} R_{g_r}(z,t) \frac{\opd x \opd y}{y^2}
+	\int_\F \sum_{g, D_g = 0} R_g(z,t) \frac{\opd x \opd y}{y^2} = \int_\F R_{g_0} (z,t) \frac{\opd x \opd y}{y^2} + \int_{\F_\infty} \sum_{\substack{r \in \ZZ \\ r \neq 0}} R_{g_r}(z,t) \frac{\opd x \opd y}{y^2}
 	\,.
 \]
 
@@ -480,10 +485,10 @@ Wegen $g_0(u,v) \equiv 0$ sind alle Parameter $\alpha, \beta, \gamma$ der quadra
 	\,.
 \end{align*}
 
-Für den zweiten Term finden wir mit $g_r(u,v) = rv^2$ und der Partialbruchzerlegung des Kotangens:
+Für den zweiten Term finden wir mit $g_r(u,v) = rv^2$, dass
 \begin{align*}
 	\int_{\F_\infty} \sum_{\substack{r \in \ZZ \\ r \neq 0}} R_{g_r}(z,t) \frac{\opd x \opd y}{y^2}
-	&= \int_0^\infty \int_0^1 y^{k-2} \sum_{\substack{r \in \ZZ \\ r \neq 0}} (r-ity)^{-k} \opd x \opd y \\
+	&= \int_0^\infty \int_0^1 y^{k-2} \sum_{\substack{r \in \ZZ \\ r \neq 0}} (r-ity)^{-k} \opd x \opd y && \Big| \text{ PBZ des } \cot \\
 	&= \frac{i^{k-2}}{(k-2)!} \left( \! \frac {\opd}{\opd t} \right)^{\!\! k-2} \int_0^\infty \frac 1{t^2y^2} - \frac {\pi^2}{\sinh^2(\pi ty)} \opd y \\
 	&= \frac{i^{k-2}}{(k-1)!} \left( \! \frac {\opd}{\opd t} \right)^{\!\! k-2} \frac \pi {\abs{t}} \\ 
 	&= (-1)^{\frac {k-2}{2}} \frac{\pi}{k-1} \abs{t}^{-k+1}
@@ -497,9 +502,10 @@ Für $t = \pm 2\sqrt m$ (da $D := t^2 - 4m = 0$) bekommen wir damit nach kurzer 
 	&= C_k^{-1} m^{k-1} \int_\F R_{g_0} (z,t) \frac{\opd x \opd y}{y^2} + C_k^{-1} m^{k-1} \int_{\F_\infty} \sum_{\substack{r \in \ZZ \\ r \neq 0}} R_{g_r}(z,t) \frac{\opd x \opd y}{y^2} \\
 	&= C_k^{-1} m^{k-1} (-1)^{\frac k2} \frac \pi{3t^k} + C_k^{-1} m^{k-1} (-1)^{\frac {k-2}{2}} \frac{\pi}{k-1} \abs{t}^{-k+1} \\
 	&= \frac {k-1}{24} m^{\frac {k-2}2} - \frac 14 m^{\frac {k-1}2}
+	\,.
 \end{align*}
 
-\emph{Fall 3:} $D = u^2$ mit $u \in \NN$. Wie im Fall $D < 0$ gibt es hier nur eine endliche Anzahl von Klassen mit Diskriminante $D$ und $\Gamma_g$ ist eine endliche Gruppe. Es folgt damit analog zu Fall 1
+\emph{Fall 3:} $D = u^2$ mit $u \in \NN$. Wie in Fall 1 ($D < 0$) gibt es hier nur eine endliche Anzahl von Klassen mit Diskriminante $D$ und $\Gamma_g$ ist eine endliche Gruppe. Es folgt damit ähnlich wie in Fall 1
 \[
 	\int_\F \sum_{g, D_g = D} R_g(z,t) \frac {\opd x \opd y}{y^2} = H_D \cdot I(D, t)
 \]
@@ -512,7 +518,7 @@ und (vergleiche Fall 1)
 	I(D, t) := \int_\HH \frac{y^{k-2}}{\left( \abs{z}^2 - \frac 14 D - ity \right)^k} \opd x \opd y
 	\,.
 \]
-Man kann nun zeigen, dass in Fall 3 alle $\Gamma_g$ trivial sind (d.h. $\abs{\Gamma_g} = 1$) und es darüber hinaus genau $u$ Klassen quadratischer Formen $g$ mit Diskriminante $D_g = u^2$ gibt. Hieraus folgt $H_D = u$. 
+Man kann nun zeigen, dass in Fall 3 alle Fixgruppen $\Gamma_g$ trivial sind (d.h. $\abs{\Gamma_g} = 1$) und es darüber hinaus genau $u$ Klassen quadratischer Formen $g$ mit Diskriminante $D_g = u^2$ gibt. Hieraus folgt $H_D = u$. 
 
 Analog zu Fall 1 können wir zudem wieder das Integral umformen zu
 \[
@@ -538,9 +544,17 @@ und somit nach kurzer Rechnung
 	\,.
 \end{align*}
 
-\emph{Fall 4}: $D > 0$, aber keine Quadratzahl. Wir zeigen in diesem Fall wie in \eqref{eq:meanI(m,t)} behauptet, dass
+\emph{Fall 4}: $D > 0$, aber keine Quadratzahl. Wir zeigen in diesem Fall wie in \eqref{eq:meanI(m,t)} behauptet, dass 
+\begin{align*}
+	\frac 12 \left( I(m,t) + I(m,-t) \right) 
+	&= \frac 12 C_k^{-1} m^{k-1} \cdot \left( \int_\F \sum_{g, D_g = D} R_g(z,t) \frac {\opd x \opd y}{y^2} + \int_\F \sum_{g, D_g = D} R_g(z,-t) \frac {\opd x \opd y}{y^2} \right) \\
+	& \overset{\eqref{eq:intFsumGforDneq0}}= \frac 12 C_k^{-1} m^{k-1} \cdot \sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}} \left( \int_{\F_g} R_g (z,t) \frac{\opd x \opd y}{y^2} + \int_{\F_g} R_g (z,-t) \frac{\opd x \opd y}{y^2} \right)
+	= 0
+	\,,
+\end{align*}
+indem wir für alle Formen $g$ mit $D_g = D$ zeigen, dass
 \[
-	I(m,t) + I(m,-t) = \int_{\F_g} R_g (z, t) \frac {\opd x \opd y}{y^2} + \int_{\F_g} R_g (z, -t) \frac {\opd x \opd y}{y^2} = 0
+	\int_{\F_g} R_g (z, t) \frac {\opd x \opd y}{y^2} + \int_{\F_g} R_g (z, -t) \frac {\opd x \opd y}{y^2} = 0
 	\,.
 \]
 Sei hierfür $g(u, v) = \alpha u^2 + \beta uv + \gamma v^2$ eine quadratische Form mit Diskriminante $D > 0$ kein Quadrat und seien außerdem $w > w'$ die Lösungen der Gleichung $\alpha u^2 + \beta u + \gamma = 0$ (wegen $D_g = D > 0$ gibt es zwei verschiedene reelle Lösungen). Dann transformiert die Matrix
@@ -556,17 +570,17 @@ In der Tat: Ist $T = \sqrt{w-w'}$, so gilt
 \begin{align*}
 	M^t \mymat*{\alpha}{\frac \beta 2}{\frac \beta 2}{\gamma} M 
 	&= \frac{1}{T^2} \mymat*{w'}1w1 \mymat*{\alpha}{\frac \beta 2}{\frac \beta 2}{\gamma} \mymat*{w'}w11 \\
-	&= \frac{1}{T^2} \mymat*{w' \alpha + \frac \beta 2}{\frac \beta 2 w' + \gamma}{w \alpha + \frac \beta 2}{\frac \beta 2 w + \gamma} \mymat*{w'}w11 \\
+	&= \frac{1}{T^2} \mymat*{\alpha w' + \frac \beta 2}{\frac \beta 2 w' + \gamma}{\alpha w + \frac \beta 2}{\frac \beta 2 w + \gamma} \mymat*{w'}w11 \\
 	&= \frac{1}{T^2} \mymat*{\alpha w'^2 + \frac \beta 2 w' + \frac \beta 2 w' + \gamma}{\alpha ww' + \frac \beta 2 w + \frac \beta 2 w' + \gamma}{\alpha ww' + \frac \beta 2 w' + \frac \beta 2 w + \gamma}{\alpha w^2 + \frac \beta 2 w + \frac \beta 2 w + \gamma} \\
 	&= \frac{1}{T^2} \mymat*{\alpha w'^2 + \beta w' + \gamma}{\alpha ww' + \frac \beta 2 (w + w') + \gamma}{\alpha ww' + \frac \beta 2 (w' + w) + \gamma}{\alpha w^2 + \beta w + \gamma}
 	\,.
 \end{align*}
 Wegen $\det M = \det M^t = \pm 1$ bleibt die Determinante der Matrix (und somit auch die Diskriminante der von der Matrix induzierten quadratischen Form) trotz Transformation unverändert. Da sowohl $w$ als auch $w'$ die Gleichung $\alpha u^2 + \beta u + \gamma = 0$ lösen, verschwinden beide Diagonaleinträge und die Form $Mg$ lässt sich schreiben als $Mg(u, v) = b uv$ für ein $b \in \RR$. Hieraus erhält man nach kurzer Rechnung wie behauptet $Mg(u, v) = \sqrt D uv$.
 
-Nach nichttrivialen Überlegungen weiß man: Die Gruppe $\inv M \Gamma_g M$ ist zyklisch und kann durch $\mymat \epsilon 0 0 {\frac 1 \epsilon}$ erzeugt werden, wobei $\epsilon > 1$ die Fundamentaleinheit des Ganzheitsrings $R$ in $\QQ(\sqrt{D})$ ist (hier geht auch ein, dass $D$ keine Quadratzahl ist, sonst wäre $\QQ(\sqrt{D}) = \QQ$). Daher können wir den Fundamentalbereich $\F_g$ so wählen, dass $\inv M \F_g$ ein Kreisring $\inv M \F_g = \Set {z \in \HH \mid r_0 \leq \abs{z} \leq \epsilon^2 r_0}$ ist. Es gilt somit
+Nach nichttrivialen Überlegungen weiß man: Die Gruppe $\inv M \Gamma_g M$ ist zyklisch und kann durch $\mymat \epsilon 0 0 {\frac 1 \epsilon}$ erzeugt werden, wobei $\epsilon > 1$ die Fundamentaleinheit des Ganzheitsrings $R$ in $\QQ(\sqrt{D})$ ist (hier geht auch ein, dass $D$ keine Quadratzahl ist, sonst wäre $\QQ(\sqrt{D}) = \QQ$). Daher können wir den Fundamentalbereich $\F_g$ so wählen, dass $\inv M \F_g$ ein Kreisring $\inv M \F_g = \Set {z \in \HH \mid r_0 \leq \abs{z} \leq \epsilon^2 r_0}$ in der oberen Halbebene ist. Es gilt somit
 \begin{align*}
-	I(m,t)
-	&= \int_{\F_g} R_g (z, t) \frac {\opd x \opd y}{y^2} \\
+	I_+
+	&:= \int_{\F_g} R_g (z, t) \frac {\opd x \opd y}{y^2} \\
 	&= \int_{\F_g} R_{M g} (\inv M z, t) \frac {\opd x \opd y}{y^2} \\
 	&= \int_{\inv M \F_g} R_{M g} (z, t) \frac {\opd x \opd y}{y^2} && \Big| Mg(u,v) = \sqrt{D} uv \\
 	&= \int_{\substack{y > 0 \\ r_0 \leq \abs{z} \leq \epsilon^2 r_0}} \left( \sqrt{D}x - ity \right)^{-k} y^{k-2} \opd x \opd y
@@ -575,21 +589,22 @@ Nach nichttrivialen Überlegungen weiß man: Die Gruppe $\inv M \Gamma_g M$ ist 
 
 Erhalte nun mit Polarkoordinaten $z = x + iy = r e^{i \theta}$, dass
 \begin{align*}
-	I(m,t) 
+	I_+
 	&= \int_0^{\pi} \int_{r_0}^{r_0 \epsilon^2} \left( \sqrt{D} \cos \theta - it \sin \theta \right)^{-k} \left( \sin \theta \right)^{k-2} \frac {\opd r \opd \theta}r \\
-	&= \log (\epsilon^2) \int_0^\pi \left( \sqrt{D} \cos \theta - it \sin \theta \right)^{-k} \left( \sin \theta \right)^{k-2} \opd r \opd \theta
+	&= \log (\epsilon^2) \int_0^\pi \left( \sqrt{D} \cos \theta - it \sin \theta \right)^{-k} \left( \sin \theta \right)^{k-2} \opd \theta
 \end{align*}
 und wegen der Symmetrieeigenschaften von $\sin$ und $\cos$ analog
 \begin{align*}
-	I(m,-t) 
-	&= \log (\epsilon^2) \int_0^\pi \left( \sqrt{D} \cos \theta + it \sin \theta \right)^{-k} \left( \sin \theta \right)^{k-2} \opd r \opd \theta \\
-	&= \log (\epsilon^2) \int_{-\pi}^0 \left( \sqrt{D} \cos \theta - it \sin \theta \right)^{-k} \left( \sin \theta \right)^{k-2} \opd r \opd \theta
+	I_-
+	&:= \int_{\F_g} R_g (z, -t) \frac {\opd x \opd y}{y^2} \\
+	&= \log (\epsilon^2) \int_0^\pi \left( \sqrt{D} \cos \theta + it \sin \theta \right)^{-k} \left( \sin \theta \right)^{k-2} \opd \theta \\
+	&= \log (\epsilon^2) \int_{-\pi}^0 \left( \sqrt{D} \cos \theta - it \sin \theta \right)^{-k} \left( \sin \theta \right)^{k-2} \opd \theta
 	\,.
 \end{align*}
 
 Wir sind also fertig, wenn wir
 \[
-	I := \int_{-\pi}^\pi \left( \sqrt{D} \cos \theta - it \sin \theta \right)^{-k} \left( \sin \theta \right)^{k-2} \opd r \opd \theta = 0
+	I := \frac {I_+ + I_-}{\log (\epsilon^2)} = \int_{-\pi}^\pi \left( \sqrt{D} \cos \theta - it \sin \theta \right)^{-k} \left( \sin \theta \right)^{k-2} \opd \theta = 0
 \]
 zeigen können. Schreibe hierfür das Integral um zum Kurvenintegral
 \begin{align*}
@@ -602,11 +617,11 @@ zeigen können. Schreibe hierfür das Integral um zum Kurvenintegral
 \end{align*}
 mit $\mathcal C \colon \left[ -\pi, \pi \right] \to \CC, \theta \mapsto e^{2i\theta}$ geschlossen. Wegen $k \geq 4 > 2$ hebt der linke Faktor die Polstelle des rechten Faktors bei $z = 1$. Die Polstelle des linken Terms liegt bei
 \[
-	\sqrt D i \frac{z+1}{z-1} - it \overset != 0 \quad \Ra \quad z = \frac {\frac t{\sqrt{D}} + 1}{\frac t{\sqrt{D}} - 1} > 1
+	\sqrt D i \frac{z+1}{z-1} - it \overset != 0 \quad \Ra \quad z \overset != \frac {\frac t{\sqrt{D}} + 1}{\frac t{\sqrt{D}} - 1} > 1
 	\,,
 \]
 sodass der Integrand für $\delta > 0$ klein genug auf der Kreisscheibe $U_{1 + \delta}(0) \supset \closure \EE$ holomorph ist. Nach dem Residuensatz ist das Integral entlang $\mathcal C = \partial \EE$ daher $0$. Damit folgt für $D = t^2 - 4m > 0$ kein Quadrat, dass tatsächlich $\frac 12 \left( I(m,t) + I(m,-t) \right) = 0$ gilt.
 
-Hiermit haben wir \eqref{eq:intFsumGforDneq0} vollständig verifiziert und damit die in \eqref{eq:arithmetischeSpurformel} behauptete arithmetische Spurformel bewiesen.
+Hiermit haben wir \eqref{eq:meanI(m,t)} vollständig verifiziert und damit die in \eqref{eq:arithmetischeSpurformel} behauptete arithmetische Spurformel bewiesen.
 
 \end{bewe}
