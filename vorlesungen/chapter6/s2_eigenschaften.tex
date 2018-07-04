@@ -19,3 +19,180 @@ zwei in einer offenen Menge $U \subset \CC$ durch absolut konvergente Dirichletr
 \]
 Das heißt die additive Faltung $\sum_{n+m=k} a(n)b(m)$, die die Multiplikation von Potenzreihen beschreibt, wird durch die multiplikative Faltung $\sum_{d|k} a(d)b(\frac{k}{d})$ bei Dirichletreihen ersetzt.
 Diese Tatsache ist für große Bedeutung der Dirichletreihen in der Zahlentheorie verantwortlich.
+
+\begin{bsp-list}
+	\item Es sei $d(n)$ die Anzahl der Teiler von n.
+	Dann gilt für alle $s \in \CC$ mit $\Re s > 1$
+	\[
+	\sum_{n=1}^\infty \frac{d(n)}{n^s}
+	&= \sum_{n=1}^\infty \Bigl(\sum_{d|n} 1\cdot 1\Bigr) n^{-s} \\
+	&= \Bigl(\sum_{n=1}^\infty \frac{1}{n^s}\Bigr) \cdot \Bigl(\sum_{n=1}^\infty \frac{1}{n^s}\Bigr) \\
+	&= \zeta(s)^2
+	\,.
+	\]
+	
+	\item Allgemein gilt für $\sigma_k(n) = \sum_{d|n} d^k$ für $k \in \ZZ$, dann ist
+	\[
+	\sum_{n=1}^\infty \frac{\sigma_k(n)}{n} = \zeta(s) \cdot \zeta(s-k)\,.
+	\]
+\end{bsp-list}
+
+In beiden Beispielen haben die Koeffizienten die Eigenschaft multiplikativ zu sein.
+Eine \myemph{multiplikative Funktion} $f\colon \NN\ra \CC$ ist durch die Eigenschaft $f\not\equiv 0$ und $f(n \cdot m) = f(n) \cdot f(m)$ für alle $n$, $m$ mit $\ggt(n,m) = 1$ charakterisiert.
+Gilt dies sogar für alle $n$, $m \in \NN$, so nennen wir $f$ \myemph[multiplikative Funktion!streng]{streng multiplikativ} oder \myemph[multiplikative Funktion!vollständig multiplikativ]{vollständig multiplikativ}.
+
+Diese Eigenschaft wirkt sich wie folgt auf die entsprechenden Dirichletreihen aus: ist $f$ multiplikativ, so ist $f(1) = 1$ und ist $n = p_1^{r_1} \cdot \ldots \cdot p_k^{r_k}$, so gilt
+\[
+f(n) = f(p_1^{r_1}) \cdot \ldots \cdot f(p_k^{r_k})\,.
+\]
+Es ist also im Bereich der absoluten Konvergenz von $F(s) = \sum_{n=1}^\infty \frac{f(n)}{n^s}$:
+\[
+F(s)
+&= \sum_{0 \leq r_1, r_2, \ldots} f(2^{r_1} \cdot 3^{r_2} \cdot 5^{r_3} \ldots) \cdot (2^{r_1} \cdot 3^{r_2} \cdot 5^{r_3} \ldots)^{-s} \\
+&= \sum_{r_1=0}^\infty \sum_{r_2=0}^\infty \ldots \sum_{r_j=0}^\infty \ldots \frac{f(2^{r_1}) \cdot f(3^{r_2}) \cdot \ldots \cdot f(p_j^{r_j}) \cdot \ldots }{(2^{r_1} \cdot 3^{r_2}  \cdot \ldots \cdot p_j^{r_j} \cdot \ldots)^s} \\
+&= \prod_{p \in \PP} \sum_{r=1}^\infty \frac{f(p^r)}{p^{rs}}
+\,,
+\]
+wobei sich das Produkt über alle Primzahlen erstreckt.
+Wir erhalten damit folgend
+
+\begin{satz}
+	Sei $f:\NN \ra \CC$ eine multiplikative Funktion und sei die Dirichletreihe
+	\[
+	F(s) = \sum_{n=1}^\infty \frac{f(n)}{n^s}
+	\]
+	absolut konvergent. Dann ist $F(s)$ gleich dem \myemph{Euler-Produkt}
+	\[
+	F(s) = \prod_{p \in \PP} \Bigl(1 + \frac{f(p)}{p^s} + \frac{f(p^2)}{p^{2s}} + \ldots \Bigr)
+	\]
+\end{satz}
+
+\begin{bsp-list}
+	\item Für $\zeta(s) $ sind die Koeffizienten alle gleich 1, es gilt also für $\Re s > 1$
+	\[
+	\zeta(s) = \prod_{p \in \PP} \Bigl(1 + \frac{1}{p^s} + \frac{1}{p^{2s}} + \ldots\Bigr)
+	= \prod_{p \in \PP} \frac{1}{1-p^{-s}}
+	\,.
+	\]
+	Diese von Euler entdeckte Formel ist der Grund für die große Rolle, die die Zetafunktion in der Zahlentheorie spielt.
+	
+	\item Man erhält 
+	\[
+	\sum_{n=1}^\infty \frac{d(n)}{n^s}
+	= \zeta(s)^2
+	&= \prod_{p \in \PP} (1-p^{-s})^{-2}
+	= \prod_{p \in \PP} \bigl(1 + 2p^{-s} + 3p^{-2s} + \ldots\bigr) \\
+	&= \prod_{p \in \PP} \Bigl(1+ \frac{d(p)}{p^s} + \frac{d(p^2)}{p^{2s}} + \ldots \Bigr)
+	\]
+	
+	\item Für den Kehrwert $F(s) = \frac{1}{\zeta(s)}$ der Zetafunktion erhalten wir
+	\[
+	\frac{1}{\zeta(s)}
+	= \prod_{p \in \PP} \bigl(1-p^{-s}\bigr) = \sum_{n=1}^\infty \frac{\mu(n)}{n^s}\,,
+	\]
+	wobei
+	\[
+	\mu(n)
+	= \begin{cases}
+	(-1)^L & \parbox[t]{.6\textwidth}{wobei $L$ die Anzahl der verschiedenen Primteiler von $n$, falls $n$ quadratfrei,} \\
+	1 & \text{falls } n=1,\\
+	0 & \text{sonst.}
+	\end{cases}
+	\]
+	Diese Funktion heißt auch \myemph{Möbiussche $\mu$-Funktion}.
+	Über die Faltungsformel folgt die wichtige Eigenschaft
+	\[
+	\sum_{d | n} \mu(d)
+	= \begin{cases}
+	1  & \text{falls } n=1 \\
+	0 & \text{sonst}
+	\end{cases}
+	\,.
+	\]
+	Die Möbiussche $\mu$-Funktion ist für folgende Formel wichtig.
+\end{bsp-list}
+
+\begin{satz}
+	Seien $f$ und $g$ zwei Funktionen von $\NN$ nach $\CC$.
+	Ist für alle $n\in\NN$:
+	\[
+	f(n) = \sum_{d|n} g(d)
+	\,.
+	\]
+	so ist für alle $n \in \NN$
+	\begin{equation}\label{eq:moebiusMuFaltung}
+	g(n) = \sum_{d|n} f(d) \mu\Bigl(\frac{n}{d}\Bigr)
+	\,.
+	\end{equation}
+	
+	Stehen $f$ und $g$ in dieser Beziehung zueinander, so ist $f$ multiplikativ genau dann wenn $g$ multiplikativ ist.
+\end{satz}
+\begin{bewe}
+	Die Gleichungen 
+	\begin{align*}
+	f(1) &= g(1) \\
+	f(2) &= g(1) + g(2) \\
+	f(3) &= g(1) + g(3) \\
+	f(4) &= g(1) + g(2) + g(4) \\
+	&\ldots 
+	\end{align*}
+	lassen sich induktiv für $g$ lösen
+	\begin{align*}
+	g(1) &= f(1) \\
+	g(2) &= f(2) - f(1) \\
+	g(3) &= f(3) - f(1) \\
+	g(4) &= f(4) - f(2) \\
+	&\ldots 
+	\end{align*}
+	Es ist also klar, dass es eine solche Beziehung wie in \eqref{eq:moebiusMuFaltung} unabhängig von $f$ und $g$ existieren muss.
+	Insbesondere genügt es die Umkehrformel für Folgen \myquote{langsamen Wachstums} zu beweisen.
+	Wir nehmen daher an, die Dirichletreihen
+	\[
+	F(s) = \sum_{n=1}^\infty \frac{f(n)}{n^s} \qquad \text{und} \qquad G(s) = \sum_{n=1}^\infty \frac{g(n)}{n^s}
+	\]
+	seien absolut konvergent.
+	Dann gilt wegen der Faltungsformel und $\frac{1}{\zeta(s)} = \sum_{n=1}^\infty \frac{\mu(n)}{n^s}$ für alle $n\in\NN$:
+	\[
+	f(n) = \sum_{d|n} g(d)
+	&\Rla F(s) = \Bigl(\sum_{n=1}^\infty n^{-s} \Bigr) \cdot \Bigl(\sum_{m=1}^\infty g(m) m^{-s}\Bigr) \\
+	&\Rla G(s) = \zeta(s)^{-1} F(s) = \sum_{n=1}^\infty \mu(n)n^{-s} \sum_{m=1}^\infty f(m) m^{-s} \\
+	&\Rla g(n) = \sum_{d|n} f(d) \mu\Bigl(\frac{n}{d}\Bigr)
+	\,.
+	\]
+	
+	Gelten nun diese Beziehung so folgt weiter
+	\[
+	g \text{ multiplikativ}
+	&\Rla G(s) \text{ besitzt Euler-Produkt} \\
+	&\Rla F(s) = \zeta(s)G(s) \text{ besitzt Euler-Produkt} \\
+	&\Rla f \text{ multiplikativ}
+	\,.
+	\] 
+\end{bewe}
+
+Als letztes Beispiel sei
+\[
+r(n) = \# \Set{ (a,b) \in \ZZ^2 \mid a^2 + b^2 = n}
+\]
+die Anzahl der Darstellungen von $n$ als Summe zweier ganzer Quadrate.
+Dann ist die Funktion $\frac{1}{4}r(n)$ multiplikativ und die entsprechende Dirichletreihe
+\[
+\sum_{n=1}^\infty \frac{1}{4} r(n) n^{-s}
+= \zeta(s) \Bigl( 1 - \frac{1}{3^s} + \frac{1}{5^s} - \frac{1}{7^s} + \frac{1}{9^s} - \ldots \Bigr)
+\]
+ist für $\Re s > 1$ absolut konvergent.
+
+Diese Beziehung führt mit 
+\[
+\chi(n)
+= \begin{cases}
+1 & n \equiv 1 \mod 4 \\
+-1 & n \equiv 3 \mod 4 \\
+0 & \text{sonst}
+\end{cases}
+\]
+zu der nicht-trivialen Beziehung
+\[
+r(n) = 4\sum_{d|n} \chi(d)
+\,.
+\]

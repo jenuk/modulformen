@@ -23,7 +23,7 @@ Diese Eigenschaft wirkt sich wie folgt auf die entsprechenden Dirichletreihen au
 \[
 	f(n) = f(p_1^{r_1}) \cdot \ldots \cdot f(p_k^{r_k})\,.
 \]
-Es ist also im Bereich der absoluten Konvergenz von $F(s) = \sum_{n=1}^\infty \frac{n}{n^s}$:
+Es ist also im Bereich der absoluten Konvergenz von $F(s) = \sum_{n=1}^\infty \frac{f(n)}{n^s}$:
 \[
 	F(s)
 	&= \sum_{0 \leq r_1, r_2, \ldots} f(2^{r_1} \cdot 3^{r_2} \cdot 5^{r_3} \ldots) \cdot (2^{r_1} \cdot 3^{r_2} \cdot 5^{r_3} \ldots)^{-s} \\
@@ -48,7 +48,7 @@ Wir erhalten damit folgend
 \begin{bsp-list}
 	\item Für $\zeta(s) $ sind die Koeffizienten alle gleich 1, es gilt also für $\Re s > 1$
 	\[
-		\zeta(s) = \sum_{p \in \PP} \Bigl(1 + \frac{1}{p^s} + \frac{1}{p^{2s} + \ldots}\Bigr)
+		\zeta(s) = \prod_{p \in \PP} \Bigl(1 + \frac{1}{p^s} + \frac{1}{p^{2s}} + \ldots\Bigr)
 		= \prod_{p \in \PP} \frac{1}{1-p^{-s}}
 		\,.
 	\]
@@ -59,14 +59,14 @@ Wir erhalten damit folgend
 		\sum_{n=1}^\infty \frac{d(n)}{n^s}
 		= \zeta(s)^2
 		&= \prod_{p \in \PP} (1-p^{-s})^{-2}
-		= \prod_{p \in \PP} (1 + 2p^{-s} + 3p^{-2s} + \ldots) \\
-		&= \prod_{p \in \PP} (1+ \frac{d(p)}{p^s} + \frac{d(p^2)}{p^{2s}} \ldots )
+		= \prod_{p \in \PP} \bigl(1 + 2p^{-s} + 3p^{-2s} + \ldots\bigr) \\
+		&= \prod_{p \in \PP} \Bigl(1+ \frac{d(p)}{p^s} + \frac{d(p^2)}{p^{2s}} + \ldots \Bigr)
 	\]
 	
 	\item Für den Kehrwert $F(s) = \frac{1}{\zeta(s)}$ der Zetafunktion erhalten wir
 	\[
 		\frac{1}{\zeta(s)}
-		= \prod_{p \in \PP} (1-p^{-s}) = \sum_{n=1}^\infty \frac{\mu(n)}{n^s}\,,
+		= \prod_{p \in \PP} \bigl(1-p^{-s}\bigr) = \sum_{n=1}^\infty \frac{\mu(n)}{n^s}\,,
 	\]
 	wobei
 	\[
@@ -98,10 +98,10 @@ Wir erhalten damit folgend
 		\,.
 	\]
 	so ist für alle $n \in \NN$
-	\[% *
+	\begin{equation}\label{eq:moebiusMuFaltung}
 		g(n) = \sum_{d|n} f(d) \mu\Bigl(\frac{n}{d}\Bigr)
 		\,.
-	\]
+	\end{equation}
 	
 	Stehen $f$ und $g$ in dieser Beziehung zueinander, so ist $f$ multiplikativ genau dann wenn $g$ multiplikativ ist.
 \end{satz}
@@ -122,11 +122,11 @@ Wir erhalten damit folgend
 		g(4) &= f(4) - f(2) \\
 		&\ldots 
 	\end{align*}
-	Es ist also klar, dass es eine solche Beziehung wie in \myref{*} unabhängig von $f$ und $g$ existieren muss.
+	Es ist also klar, dass es eine solche Beziehung wie in \eqref{eq:moebiusMuFaltung} unabhängig von $f$ und $g$ existieren muss.
 	Insbesondere genügt es die Umkehrformel für Folgen \myquote{langsamen Wachstums} zu beweisen.
 	Wir nehmen daher an, die Dirichletreihen
 	\[
-		F(s) = \sum_{n=1}^\infty \qquad \text{und} \qquad G(s) = \sum_{n=1}^\infty \frac{g(n)}{n^s}
+		F(s) = \sum_{n=1}^\infty \frac{f(n)}{n^s} \qquad \text{und} \qquad G(s) = \sum_{n=1}^\infty \frac{g(n)}{n^s}
 	\]
 	seien absolut konvergent.
 	Dann gilt wegen der Faltungsformel und $\frac{1}{\zeta(s)} = \sum_{n=1}^\infty \frac{\mu(n)}{n^s}$ für alle $n\in\NN$:
@@ -134,7 +134,7 @@ Wir erhalten damit folgend
 		f(n) = \sum_{d|n} g(d)
 		&\Rla F(s) = \Bigl(\sum_{n=1}^\infty n^{-s} \Bigr) \cdot \Bigl(\sum_{m=1}^\infty g(m) m^{-s}\Bigr) \\
 		&\Rla G(s) = \zeta(s)^{-1} F(s) = \sum_{n=1}^\infty \mu(n)n^{-s} \sum_{m=1}^\infty f(m) m^{-s} \\
-		&\Rla \myref{*}
+		&\Rla g(n) = \sum_{d|n} f(d) \mu\Bigl(\frac{n}{d}\Bigr)
 		\,.
 	\]
 	
@@ -144,6 +144,7 @@ Wir erhalten damit folgend
 		&\Rla G(s) \text{ besitzt Euler-Produkt} \\
 		&\Rla F(s) = \zeta(s)G(s) \text{ besitzt Euler-Produkt} \\
 		&\Rla f \text{ multiplikativ}
+		\,.
 	\] 
 \end{bewe}
 
@@ -152,11 +153,12 @@ Als letztes Beispiel sei
 	r(n) = \# \Set{ (a,b) \in \ZZ^2 \mid a^2 + b^2 = n}
 \]
 die Anzahl der Darstellungen von $n$ als Summe zweier ganzer Quadrate.
-Dann ist die Funktion $\frac{1}{4}r(n)$ multiplikativ und die entsprechende Dirichletreihe ist für $\Re s > 1$
+Dann ist die Funktion $\frac{1}{4}r(n)$ multiplikativ und die entsprechende Dirichletreihe
 \[
 	\sum_{n=1}^\infty \frac{1}{4} r(n) n^{-s}
 	= \zeta(s) \Bigl( 1 - \frac{1}{3^s} + \frac{1}{5^s} - \frac{1}{7^s} + \frac{1}{9^s} - \ldots \Bigr)
 \]
+ist für $\Re s > 1$ absolut konvergent.
 
 Diese Beziehung führt mit 
 \[
@@ -199,7 +201,7 @@ zu der nicht-trivialen Beziehung
 
 	Da $\Gamma(s) \not= 0$ für alle $s \in \CC$ ist $\frac{1}{\Gamma(s)}$ eine ganze Funktion und es gilt die Produktentwicklung
 	\[
-		\frac{1}{\Gamma(s)} = s e^{\gamma s} \prod_{j=1}^\infty \Bigl(1 + \frac{s}{j})e^{-\frac{s}{j}}
+		\frac{1}{\Gamma(s)} = s e^{\gamma s} \prod_{j=1}^\infty \Bigl(1 + \frac{s}{j}\Bigr)e^{-\frac{s}{j}}
 	\]
 	wobei $\gamma = \lim_{N \to \infty} 1 + \frac{1}{2} + \ldots + \frac{1}{N} - \log(N)$.
 	
@@ -208,7 +210,7 @@ zu der nicht-trivialen Beziehung
 		Es gilt in jedem Winkelbereich $W_\delta = \Set{s \in \CC \mid -\pi + \delta < \Arg(s) < \pi - \delta}$
 		\[
 			\Gamma(s)
-			= \sqrt{2\pi} s^{s - \frac{1}{2}} e^{-s} e^{H(s)}
+			= \sqrt{2\pi} \cdot s^{s - \frac{1}{2}} e^{-s} e^{H(s)}
 		\]
 		wobei $H(s)$ eine in $\CC_-$ holomorphe Funktion ist mit der Eigenschaft
 		\[
