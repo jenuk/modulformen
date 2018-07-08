@@ -1,18 +1,20 @@
-Eine für uns sehr wichtige Darstellung ist die Integraldarstellung von Euler:
+Eine für uns sehr wichtige Darstellung der Gammafunktion ist die Integraldarstellung von Euler:
 
 \begin{satz}
 Es gilt für alle $s \in \CC$ mit $\Re (s) > 0$:
-\[
+\begin{equation}\label{eq:GammaEulerIntegral}
 	\Gamma(s) = \int_0^\infty e^{-x} x^{s-1} \opd x
 	\,.
-\]
+\end{equation}
 \end{satz}
 
-Diese Formel ist aus FT 2 bekannt; zum Beweis nutzt man den Satz von Wielandt und partielle Integration zur Verifizierung der Funktionalgleichung.
+\begin{bewe}
+Siehe FT 2: Man verifiziert die Funktionalgleichung über partielle Integration und nutzt anschließend den Satz von Wielandt. 
+\end{bewe}
 
-Die enorme Bedeutung der Gammafunktion in der Zahlentheorie wird in ihrem Zusammenspiel mit Dirichletreihen deutlich.
+Die enorme Bedeutung der Gammafunktion in der Zahlentheorie wird in ihrem Zusammenspiel mit Dirichletreihen deutlich:
 
-\begin{satz}[Mellin-Transformation]
+\begin{satz}[Mellin-Transformation]\label{Mellin-Trafo}
 Es sei $F(s) = \sum_{n=1}^\infty \frac {a(n)}{n^s}$ eine Dirichletreihe, welche irgendwo konvergiert. Dann gilt für die zugehörige Potenzreihe $P(z) = \sum_{n=1}^\infty a(n) z^n$ und für alle $s \in \CC$ mit $\Re (s) > \max \Set {0, \sigma_a(F)}$:
 \[
 	F(s) = \frac 1{\Gamma(s)} \int_0^\infty P(e^{-x}) \underbrace{x^{s-1}}_{\text{Mellin-Kern}} \opd x
@@ -21,43 +23,50 @@ Es sei $F(s) = \sum_{n=1}^\infty \frac {a(n)}{n^s}$ eine Dirichletreihe, welche 
 \end{satz}
 
 \begin{bewe}
-Wir sehen über die Substitution $x = ny$ mit $n \in \NN$:
+Für beliebiges $n \in \NN$ machen wir in \eqref{eq:GammaEulerIntegral} die Substitution $x = ny$ und sehen, dass
 \[
 	\Gamma(s) = n^s \int_0^\infty e^{-ny} y^{s-1} \opd y
 	\,.
 \]
-Daraus folgt für alle $s \in \CC$ mit $\Re (s) > \max \Set {0, \sigma_a(F)}$:
-\[
-	F(s) = \frac 1{\Gamma(s)} \sum_{n=1}^\infty a(n) \int_0^\infty e^{-ny} y^{s-1} \opd y
+Daraus folgt für alle $s \in \CC$ mit $\Re (s) > \max \Set {0, \sigma_a(F)}$, dass
+\begin{align*}
+	F(s) = \sum_{n=1}^\infty \frac {a(n)}{n^s}
+	&= \sum_{n=1}^\infty \frac {a(n)}{\Gamma(s)} \int_0^\infty e^{-ny} y^{s-1} \opd y \\
+	&= \frac 1{\Gamma(s)} \sum_{n=1}^\infty \int_0^\infty a(n) e^{-ny} y^{s-1} \opd y \\
+	&\overset {(\ast)}= \frac 1{\Gamma(s)} \int_0^\infty y^{s-1} \sum_{n=1}^\infty a(n) e^{-ny} \opd y \\
+	&= \frac 1{\Gamma(s)} \int_0^\infty P(e^{-y}) y^{s-1} \opd y
 	\,.
-\]
-Da 
-\[
-	\sum_{n=1}^\infty \int_0^\infty \abs{a(n) e^{-ny} y^{s-1} } \opd y = \sum_{n=1}^\infty \abs{a(n)} \Gamma(\sigma) n^{-\sigma} \overset {\sigma > \max \Set {0, \sigma_a(F)}}< \infty
-	\,,
-\]
-können wir nach dem Satz von Lebesgue Summe und Integral vertauschen und erhalten die Behauptung.
+\end{align*}
+Die Vertauschung von Integral und Summe bei $(\ast)$ ist nach Satz von Lebesgue gerechtfertigt wegen $\sigma := \Re (s) > \max \Set {0, \sigma_a(F)}$ nach Voraussetzung und daher
+\begin{align*}
+	\sum_{n=1}^\infty \int_0^\infty \abs{a(n) e^{-ny} y^{s-1} } \opd y
+	&= \sum_{n=1}^\infty \abs{a(n)} \int_0^\infty e^{-ny} y^{\sigma-1} \opd y && \big| \; \sigma > 0 \\
+	&= \sum_{n=1}^\infty \abs{a(n)} n^{-\sigma} \Gamma(\sigma) \\
+	&= \Gamma(\sigma) \sum_{n=1}^\infty \abs{\frac {a(n)}{n^{\sigma}}} && \big| \; \sigma > \sigma_a(F) \\
+	&< \infty
+	\,.
+\end{align*}
 \end{bewe}
 
 \begin{bsp-list}
-\item Für $F(s) = \zeta(s)$ erhalten wir für $s \in \CC$ mit $\Re (s) > 1$:
-\[
+\item Ist $F(s) = \zeta(s)$, so erhalten wir für $s \in \CC$ mit $\Re (s) > 1$:
+\begin{equation}\label{eq:ZetaMellinInt}
 	F(s) = \zeta(s) = \frac 1{\Gamma(s)} \int_0^\infty \frac {x^{s-1}}{e^x - 1} \opd x
 	\,.
-\]
-\item Ist $G(s) = 1 - \frac 1{2^s} + \frac 1{3^s} - \frac 1{4^s} \pm \ldots = (1 - 2^{1-s}) \zeta(s)$, so gilt sogar für alle $s \in \CC$ mit $\Re (s) > 0$:
+\end{equation}
+\item Ist $G(s) = 1 - \frac 1{2^s} + \frac 1{3^s} - \frac 1{4^s} \pm \ldots = (1 - 2^{1-s}) \zeta(s)$, so gilt sogar für alle $s \in \CC$ mit $\Re (s) > 0$ (folgt nicht vollständig aus \autoref{Mellin-Trafo}, lässt sich aber beweisen):
 \[
 	G(s) = \frac 1{\Gamma(s)} \int_0^\infty \frac {x^{s-1}}{e^x + 1} \opd x
 	\,.
 \]
 \end{bsp-list}
 
-Zum Schluss beweisen wir noch eine nützliche Darstellung von $\log \Gamma(s+1)$ in Form der expliziten Taylor-Entwicklung im Bereich $\abs{s} < 1$: 
+Zum Schluss beweisen wir noch eine nützliche Darstellung von $\Log \Gamma(s+1)$ in Form der expliziten Taylor-Entwicklung im Bereich $\abs{s} < 1$: 
 
 \begin{satz}
 Es gilt für alle $s \in U_1(0)$:
 \[
-	\log \Gamma(s+1) = - \gamma s + \sum_{n=2}^\infty (-1)^n \frac {\zeta(n)}n s^n
+	\Log \Gamma(s+1) = - \gamma s + \sum_{n=2}^\infty (-1)^n \frac {\zeta(n)}n s^n
 	\,.
 \]
 \end{satz}
@@ -69,39 +78,35 @@ Es gilt
 \]
 und somit folgt durch Logarithmieren:
 \begin{align*}
-	\log \Gamma(s+1) 
-	&= \lim_{N \to \infty} \left[ s \log N - \sum_{n=1}^{N-1} \log(1 + \frac sn) \right] \\
+	\Log \Gamma(s+1) 
+	&= \lim_{N \to \infty} \left[ s \Log N - \sum_{n=1}^{N-1} \Log \left( 1 + \frac sn \right) \right] \\
 	&= \lim_{N \to \infty} \left[ s \log N - \sum_{n=1}^{N-1} \left( \frac sn - \frac {s^2}{2n^2} + \frac {s^3}{3n^3} \mp \ldots \right) \right] \\
-	&= \lim_{N \to \infty} \left[ s \left( \log N - \left( 1 + \frac 12 + \frac 13 + \ldots + \frac 1{N-1} \right) \right) \right. \\
+	&= \lim_{N \to \infty} \Bigg[ s \left( \log N - \left( 1 + \frac 12 + \frac 13 + \ldots + \frac 1{N-1} \right) \right) \\
 	&\qquad\qquad + \frac {s^2}2 \left( 1 + \frac 1{2^2} + \frac 1{3^2} + \ldots + \frac 1{(N-1)^2} \right) \\
 	&\qquad\qquad - \frac {s^3}3 \left( 1 + \frac 1{2^3} + \frac 1{3^3} + \ldots + \frac 1{(N-1)^3} \right) \\
-	&\qquad\qquad \left. \pm \ldots \right] \\
-	&= -s\gamma + \frac {\zeta(2)}2 s^2 - \frac {\zeta(3)}3 s^3 \pm \ldots
+	&\qquad\qquad \pm \ldots \, \Bigg] \\
+	&= - \gamma s + \frac {\zeta(2)}2 s^2 - \frac {\zeta(3)}3 s^3 \pm \ldots
+	\,.
 \end{align*}
-Da die Folgen $a_r(N) = \sum_{n=1}^N \frac 1{n^r}$ für $r \geq 2$ gleichmäßig gegen die Werte $\zeta(r)$ konvergieren, ist Vertauschung von Limes und Summation im letzten Schritt erlaubt.
+Da die Folgen $a_r(N) = \sum_{n=1}^N \frac 1{n^r}$ für $r \geq 2$ und $N \to \infty$ gleichmäßig gegen die Grenzwerte $\zeta(r)$ konvergieren, ist die Vertauschung von Limes und Summation ($\pm \ldots$) im letzten Schritt erlaubt.
 \end{bewe}
-
-
 
 \subsection{Die Riemannsche Zetafunktion}
 
 Die einfachste und wichtigste Dirichletreihe ist die Riemannsche Zetafunktion
 \[
-	\zeta(s) = \sum_{n=1}^\infty \frac 1{n^s}, \quad \Re(s) > 1
-	\,.
+	\zeta(s) 
+	:= \sum_{n=1}^\infty \frac 1{n^s}
+	= \prod_{p \in \PP} \frac 1{1 - p^{-s}}
+	= \frac 1{\Gamma(s)} \int_0^\infty \frac {x^{s-1}}{e^x - 1} \opd x
+	\,,
 \]
-Wir haben bereits die Darstellungen 
-\[
-	\zeta(s) = \prod_{p \in \PP} \frac 1{1 - p^{-s}}, \quad \Re(s) > 1
-\]
-und
-\[
-	\zeta(s) = \frac 1{\Gamma(s)} \int_0^\infty \frac {x^{s-1}}{e^x - 1} \opd x, \quad \Re(s) > 1
-\]
-kennengelernt. Die wichtigsten bisher bewiesenen Eigenschaften der Zetafunktion sind im folgenden Satz zusammengefasst:
+wobei alle drei Darstellungen nur für $s \in \CC$ mit $\Re(s) > 1$ gültig sind. Die wichtigsten bisher bewiesenen Eigenschaften der Zetafunktion sind im folgenden Satz zusammengefasst:
 
 \begin{satz}
-Die auf $\Set {z \in \CC \mid \Re(s) > 1}$ durch $\zeta(s) := \sum_{n=1}^\infty \frac 1{n^s}$ definierte Funktion $\zeta$ besitzt eine meromorphe Fortsetzung in die komplexe Zahlenebene $\CC$ mit einem einfachen Pol an der Stelle $s = 1$ mit Residuum $1$. Dies ist die einzige Polstelle von $\zeta (s)$. Die Werte der Zetafunktion bei nichtpositiven ganzen Zahlen sind rational, genauer:
+Die auf $\Set {z \in \CC \mid \Re(s) > 1}$ durch $\zeta(s) := \sum_{n=1}^\infty \frac 1{n^s}$ definierte Funktion $\zeta$ besitzt eine meromorphe Fortsetzung in die komplexe Zahlenebene $\CC$ mit einem einfachen Pol an der Stelle $s = 1$ mit Residuum $1$. Dies ist zugleich ihre einzige Polstelle. 
+
+Die Werte der Zetafunktion bei nichtpositiven ganzen Zahlen sind rational, genauer:
 \begin{align*}
 	\zeta(0) &= - \frac 12 \\
 	\zeta(-2n) &= 0 && \forall \, n \in \NN \\
@@ -110,9 +115,11 @@ Die auf $\Set {z \in \CC \mid \Re(s) > 1}$ durch $\zeta(s) := \sum_{n=1}^\infty 
 \end{align*}
 wobei die rationalen Zahlen $B_2 = \frac 16$, $B_4 = - \frac 1{30}$, \ldots die durch
 \[
-	\frac t{e^t - 1} = \sum_{k=0}^\infty \frac {B_k}{k!} t^k, \quad \abs{t} < 2\pi
+	\frac t{e^t - 1} = \sum_{k=0}^\infty \frac {B_k}{k!} t^k \quad \text{ für } t \in U_{2\pi}(0)
 \]
-definierten \myemph{Bernoulli-Zahlen} sind. Die Werte der Zetafunktion an positiven geraden Stellen sind durch
+definierten \myemph{Bernoulli-Zahlen} sind. 
+
+Die Werte der Zetafunktion bei positiven geraden Zahlen sind durch
 \[
 	\zeta(2n) = \frac {(-1)^{n-1} 2^{2n-1} B_{2n}}{(2n)!} \pi^{2n}, \quad n \in \NN
 \]
@@ -120,79 +127,70 @@ gegeben.
 \end{satz}
 
 \begin{bewe}
-Wir gehen von der bereits bewiesenen Integraldarstellung 
+Wir entwickeln zunächst
 \[
-	\zeta(s) = \frac 1{\Gamma(s)} \int_0^\infty \frac {x^{s-1}}{e^x - 1} \opd x, \quad \Re(s) > 1
+	\frac t{e^t - 1} = \frac t{t + \frac{t^2}{2!} + \frac {t^3}{3!} + \ldots} = 1 - \frac t2 + \frac {t^2}{12} - \frac {t^4}{720} \pm \ldots
 \]
-aus. Wir entwickeln 
-\[
-	\frac t{e^t - 1} = \frac t{t + \frac{t^2}{2!} + \frac {t^3}{3!} + \ldots} = 1 - \frac t2 + \frac {t^2}{12} - \frac {t^4}{720} + \ldots
-\]
-und definieren $B_n$ als $n!$ mal den Koeffizienten von $t^n$ auf der rechten Seite. Aus
+und definieren $B_n$ als das $n!$-fache des Koeffizienten von $t^n$ auf der rechten Seite. Aus
 \[
 	\frac t{e^t - 1} - \frac {-t}{e^{-t} - 1} = -t
 \]
-folgt, dass abgesehen von $B_1 = - \frac 12$ alle $B_n$ mit $n$ ungerade verschwinden. Sei jetzt $n > 0$ fest und
+folgt, dass abgesehen von $B_1 = - \frac 12$ alle $B_n$ mit $n$ ungerade verschwinden. Setze nun für beliebiges $n \in \NN$
 \[
-	f_n(t) = \sum_{k=0}^n (-1)^k \frac {B_k}{k!} t^k = 1 + \frac t2 + \frac {B_2}{2!}t^2 + \ldots + \frac {B_n}{n!}t^n + \ldots
+	f_n(t) := \sum_{k=0}^n (-1)^k \frac {B_k}{k!} t^k = 1 + \frac t2 + \frac {B_2}{2!}t^2 + \ldots + \frac {B_n}{n!}t^n
 \]
-(beachte, dass $(-1)^n B_n = B_n$ für $n > 1$). Dann ist für $\sigma > 1$:
+unter Beachtung von $(-1)^k B_k = B_k$ für $k > 1$ wegen $B_k = 0 = - B_k$ für ungerade $k > 1$. 
+
+Dann gilt für alle $s \in \CC$ mit $\sigma := \Re(s) > 1$ und für $n \in \NN$ beliebig:
 \begin{align*}
 	\Gamma(s) \zeta(s) 
+	&\overset{\eqref{eq:ZetaMellinInt}}= \int_0^\infty \frac {t^{s-1}}{e^t - 1} \opd t \\
 	&= \int_0^\infty \frac {te^t}{e^t - 1} e^{-t} t^{s-2} \opd t \\
-	&= \int_0^\infty \left( \frac {te^t}{e^t - 1} - f_n(t) \right) e^{-t} t^{s-2} \opd t + \int_0^\infty f_n(t) e^{-t} t^{s-2} \opd t \\
-	&= I_1(s) + I_2(s)
+	&= \underbrace{\int_0^\infty \left( \frac {te^t}{e^t - 1} - f_n(t) \right) e^{-t} t^{s-2} \opd t}_{=: I_1(s)} + \underbrace{\int_0^\infty f_n(t) e^{-t} t^{s-2} \opd t}_{=: I_2(s)}
 	\,,
 \end{align*}
-wobei wir mit $I_1(s)$ und $I_2(s)$ die beiden Integrale bezeichnen. Die Funktion ${te^t}{e^t - 1}$ ist lokal um $t = 0$ holomorph und hat dort die Taylorentwicklung
+Die Funktion $t \mapsto \frac {te^t}{e^t - 1}$ ist lokal um $t = 0$ holomorph und hat dort die Taylorentwicklung
 \[
-	{te^t}{e^t - 1} = {-te^t}{e^{-t} - 1} = \sum_{k=0}^\infty \frac {(-1)^k}{k!} B_k t^k
+	\frac {te^t}{e^t - 1} = \frac {-t}{e^{-t} - 1} = \sum_{k=0}^\infty \frac {B_k}{k!} (-t)^k = \sum_{k=0}^\infty (-1)^k \frac {B_k}{k!} t^k = f_\infty(t)
+	\,,
 \]
-und somit 
+sodass für $t \to 0$
 \[
-	{te^t}{e^t - 1} - f_n(t) = \mathcal O (t^{n+1})
+	\frac {te^t}{e^t - 1} - f_n(t) = \mathcal O (t^{n+1})
 \]
-für $t \to 0$. Es folgt daraus, dass das Integral $I_1(s)$ konvergiert für alle $s$ mit $\sigma > -n$ (da der Integrand für $t \to 0$ in $\mathcal O (t^{n+\sigma-1})$ ist und für $t \to \infty$ exponentiell abklingt), also stellt $I_1(s)$ in den Bereichen $\sigma > -n$ eine holomorphe Funktion dar. 
+gilt. Somit ist der Integrand von $I_1(s)$ für $t \to 0$ in $\mathcal O (t^{n+\sigma-1})$ und fällt für $t \to \infty$ ohnehin exponentiell ab. Fixiere nun ein $n \in \NN$ und betrachte die Halbebene $\HH_{-n} := \Set {s \in \CC \mid \sigma := \Re(s) > -n}$. Dort stellt das Integral wegen $n+\sigma-1 < -1$ somit eine holomorphe Funktion dar.
 
-Das zweite Integral ist nur für $\sigma > 1$ konvergent, berechnet sich aber elementar aber zu
+Das zweite Integral ist zwar nur für $\sigma > 1$ konvergent, lässt sich aber elementar berechnen zu
 \begin{align*}
 	I_2(s) 
 	&= \int_0^\infty f_n(t) e^{-t} t^{s-2} \opd t \\
-	&= \int_0^\infty \left( 1 + \frac t2 + \frac {B_2}{2!}t^2 + \ldots + \frac {B_n}{n!}t^n + \ldots \right) e^{-t} t^{s-2} \opd t \\
+	&= \int_0^\infty \left( 1 + \frac t2 + \frac {B_2}{2!}t^2 + \ldots + \frac {B_n}{n!}t^n \right) e^{-t} t^{s-2} \opd t \\
 	&= \Gamma(s-1) + \frac 12 \Gamma(s) + \sum_{k=2}^n \frac {B_k}{k!} \Gamma(s+k-1)
 	\,.
 \end{align*}
-Das ist 
-\end{bewe}
 
-Das ist eine in der ganzen komplexen Ebene meromorphe Funktion und, da $n$ beliebig gewählt werden kann, folgt, dass $\zeta (s)$ eine in ganz $\CC$ meromorphe Fortsetzung besitzt.
+Da dies eine auf ganz $\CC$ meromorphe Funktion ist, folgt wegen $n \in \NN$ beliebig, dass $\zeta (s)$ eine in ganz $\CC$ meromorphe Fortsetzung besitzt. Genauer erhalten wir durch Einsetzen der Integrale $I_1(s)$ und $I_2(s)$ sowie durch Ausnutzen der Funktionalgleichung von $\Gamma(s)$, dass insgesamt gilt:
+\begin{align*}
+	\zeta(s) 
+	&= \frac 1{\Gamma(s)} \left( I_1(s) + I_2(s) \right) \\
+	&= \frac {I_1(s)}{\Gamma(s)} + \frac 1{\Gamma(s)} \left( \Gamma(s-1) + \frac 12 \Gamma(s) + \sum_{k=2}^n \frac {B_k}{k!} \Gamma(s+k-1) \right) \\
+	&= \frac {I_1(s)}{\Gamma(s)} + \frac 1{s-1} + \frac 12 + \sum_{k=2}^n \frac{B_k}{k!} s(s+1)(s+2)\ldots(s+k-2)
+\end{align*}
+Da $I_1(s)$ für $n \in \NN$ beliebig auf $\HH_{-n}$ holomorph und $\Gamma$ zudem nullstellenfrei ist, zeigt diese Formel zugleich, dass $\zeta(s) - \frac 1{s-1}$ auf ganz $\CC$ holomorph ist. Somit ist auch der zweite Teil der Behauptung bewiesen und nur die konkreten Werte der Zetafunktion verbleiben noch zu zeigen.
 
-Setzen wir dies für $I_1(s) + I_2(s)$ ein und benutzen die Funktionalgleichung von $\Gamma(s)$, erhalten wir insgesamt
-\[
-	\zeta(s) = \frac 1{s-1} + \frac 12 + \sum_{k=2}^n \frac{B_k}{k!} s(s+1)(s+2)\ldots(s+k-2) + \frac 1{\Gamma(s)}I_1(s)
-	\,,
-\]
-wobei $I_1(s)$ für $\sigma > -n$ holomorph ist. Da zudem $\Gamma(s)$ nullstellenfrei, also $\frac 1{\Gamma(s)}$ ganz ist, zeigt diese Formel, dass $\zeta(s) - \frac 1{s-1}$ in $\sigma > -n$ holomorph ist und da $n$ beliebig war, folgt der zweite Teil der Behauptung.
-
-Sei jetzt $s \in (-n,0]$ eine ganze Zahl, dann ist $\frac 1{\Gamma(s)} I_1(s)$ wegen des Pols von $\Gamma(s)$ an dieser Stelle gleich Null, und somit ist
-\[
-	\zeta(s) = \frac 1{s-1} + \frac 12 + \frac s{12} - \frac {s(s+1)(s+2)}{720} + \frac {s(s+1)(s+2)(s+3)(s+4)}{30240} - \ldots + \frac {B_n}{n!}s(s+1)\ldots(s+n-2)
+Sei dazu $s \in \ZZ$ mit $-n < s \leq 0$, dann ist $\frac {I_1(s)}{\Gamma(s)}$ wegen des Pols von $\Gamma(s)$ an dieser Stelle gleich Null und es folgt
+\begin{align*}
+	\zeta(s) 
+	&= \frac 1{s-1} + \frac 12 + \sum_{k=2}^n \frac{B_k}{k!} s(s+1)(s+2)\ldots(s+k-2) \\
+	&= \frac 1{s-1} + \frac 12 + \frac s{12} - \frac {s(s+1)(s+2)}{720} + \frac {s(s+1)(s+2)(s+3)(s+4)}{30240} \mp \ldots
 	\,.
-\]
+\end{align*}
 Dies zeigt, dass 
 \begin{align*}
-	\zeta(0) &= \frac 1{-1} + \frac 12 = - \frac 12 \\
-	\zeta(-1) &= \frac 1{-2} + \frac 12 - \frac 1{12} = -\frac 1{12} \\
-	\zeta(-2) &= \frac 1{-3} + \frac 12 - \frac 16 = 0 \\
-	\zeta(-3) &= \frac 1{-4} + \frac 12 - \frac 14 + \frac 1{120} = \frac 1{120}
+	\zeta(0) &= \frac 1{-1} + \frac 12 = - \frac 12 \,, \\
+	\zeta(-1) &= \frac 1{-2} + \frac 12 - \frac 1{12} = -\frac 1{12} \,, \\
+	\zeta(-2) &= \frac 1{-3} + \frac 12 - \frac 16 = 0 \,, \\
+	\zeta(-3) &= \frac 1{-4} + \frac 12 - \frac 14 + \frac 1{120} = \frac 1{120} \,.
 \end{align*}
 
-
-
-
-
-
-
-
-
-
+\end{bewe}
