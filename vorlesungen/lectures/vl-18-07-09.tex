@@ -1,0 +1,173 @@
+Es ist klar, dass man dieses Verfahren für beliebig große $n$ fortsetzen könnte, um $\zeta(-n)$ zu berechnen. Aus dem erarbeiteten Ausdruck 
+\[
+	\zeta(s)
+	= \frac 1{s-1} + \frac 12 + \frac s{12} - \frac {s(s+1)(s+2)}{720} + \frac {s(s+1)(s+2)(s+3)(s+4)}{30240} \mp \ldots
+\]
+erhält man für $s = -k$ den Ausdruck
+\begin{align*}
+	\zeta(-k)
+	&= \frac 1{-k-1} + \frac 12 + \sum_{r=2}^n \frac {B_r}{r!} (-k)(-k+1) \ldots (-k+r-2) && \text{ mit }n > k\text{ beliebig} \\
+	&= - \frac 1{k+1} + \frac 12 + \sum_{r=2}^{k+1} (-1)^{r-1} \frac {B_r}{r!} \frac {k!}{(k+1-r)!} \\
+	&= - \frac 1{k+1} \sum_{r=0}^{k+1} \binom {k+1}r B_r
+	\,.
+\end{align*}
+Die Bernoulli-Zahlen erfüllen nun die Beziehung
+\[
+	\sum_{r=0}^n \binom nr B_r = (-1)^n B_n
+	\,,
+\]
+denn
+\begin{align*}
+	\sum_{n=0}^\infty \left( \sum_{r=0}^n \binom nr B_r \right) \frac {t^n}{n!}
+	&= \sum_{r=0}^\infty \sum_{k=0}^\infty \frac {B_r t^{r+k}}{r!k!} \\
+	&= \left( \sum_{r=0}^\infty \frac {B_r}{r!} t^r \right) \left( \sum_{k=0}^\infty \frac {t^k}{k!} \right) \\
+	&= \frac t{e^t - 1} \cdot e^t \\
+	&= \frac {-t}{e^{-t} - 1} \\
+	&= \sum_{k=0}^\infty (-1)^n \frac {B_n}{n!} t^n
+	\,.
+\end{align*}
+Damit ergibt sich
+\[
+	\zeta(-k) = - \frac 1{k+1} \sum_{r=0}^{k+1} \binom {k+1}r B_r = - \frac {B_{k+1}}{k+1}
+	\,.
+\]
+Es verbleibt noch, die Behauptung für die Werte $\zeta(2n), n \in \NN$ zu beweisen. Wir erhalten
+\begin{align*}
+	\sum_{n=1}^\infty (-1)^{n-1} 2^{2n-1} \pi^{2n} \frac {B_{2n}}{(2n)!} s^{2n}
+	&= - \frac 12 \left[ \frac {2\pi is}{e^{2\pi is} - 1} - 1 + \frac {2\pi is}2 \right] \\
+	&= \frac 12 - \frac {\pi is}2 \cdot \frac {e^{\pi is} + e^{-\pi is}}{e^{\pi is} - e^{-\pi is}} \\
+	&= \frac 12 \left( 1 - \frac {\pi s}{\tan \pi s} \right) \\
+	&= \frac s2 \frac {\opd}{\opd s} \log \frac {\pi s}{\sin \pi s}
+\end{align*}
+Erinnerung: Es gilt (Eulerscher Ergänzungssatz)
+\[
+	\Gamma(1-s) \Gamma(s) = \frac \pi{\sin \pi s}
+\]
+und somit mit Satz 5 aus obigem Abschnitt
+\begin{align*}
+	\sum_{n=1}^\infty (-1)^{n-1} 2^{2n-1} \pi^{2n} \frac {B_{2n}}{(2n)!} s^{2n}
+	&= \frac s2 \frac {\opd}{\opd s} \log (\Gamma(1+s) \Gamma(1-s)) \\
+	&= \frac s2 \frac {\opd}{\opd s} \left[ \zeta(2)s^2 + \frac {\zeta(4)}2 s^4 \pm \ldots \right] \\
+	&= \sum_{n=1}^\infty \zeta(2n) s^{2n}
+\end{align*}
+Damit folgt die Behauptung über Koeffizientenvergleich.
+
+Die Tatsache, dass die WErte von $\zeta(2n)$ und $\zeta(1-2n)$ dieselben Bernoulli-Zahlen enthalten, lässt denken, dass es vielleicht überhaupt eine Beziehung gibt. Dies in der Tat der Fall!
+
+Es gilt für alle $s \in \CC \setminus \Set {0,1}$ mit $\xi(s) := \pi^{- \frac s2} \Gamma( \frac s2 ) \zeta(s)$:
+\begin{equation}\label{eq:Xi-Beziehung}
+	\xi(1-s) = \xi(s)
+	\,.
+\end{equation}
+Diese Relation wurde zuerst von Euler vermutet und von Riemann bewiesen.
+
+Für $\sigma > 1$ ist die rechte Seite von \eqref{Xi-Beziehung} von $0$ verschieden (Eulerprodukt!). Es folgt dann aus \myref{Satz 1}, dass die einzigen Nullstellen für $\sigma < 0$ von $\zeta(s)$ die sogenannten trivialen Nullstellen $s \in -2 \NN$ sind. Man kann zeigen, dass $\zeta(s)$ auf den Geraden $\Re(s) = 0$ und $\Re(s) = 1$ keine Nullstellen besitzt. Es folgt also, dass die einzigen \glqq{}nicht-trivialen\grqq{} Nullstellen von $\zeta(s)$ im sogenannten \glqq{}kritischen Streifen\grqq{} $0 \leq \sigma \leq 1$ liegen können. Die ersten haben die Form:
+\begin{align*}
+	\frac 12 &\pm 14,134725\ldots i \\
+	\frac 12 &\pm 21,022040\ldots i \\
+	\frac 12 &\pm 25,010852\ldots i
+\end{align*}
+Es wird vermutet, dass alle (es gibt unendlich viele!) diese Nullstellen den Realteil $\frac 12$ (\myemph{Riemann-Vermutung}).
+
+\subsection{Heckesche L-Reihen}
+
+Einer Modulform $f(z) = \sum_{n=0}^\infty a(n) q^n \in M_k$ ordnet man die L-Reihe
+\[
+	L(f,s) = \sum_{n=1}^\infty a(n)n^{-s}
+\]
+zu. Nach Hecke impliziert das Transformationsverhalten von $f$ \glqq{}gute\grqq{} analytische Eigenschaften für $L(f,s)$. Zum Beispiel meromorphe Fortsetzung nach $\CC$, Funktionalgleichung, \ldots. Der Übergang von $f$ zu $L(f,s)$ erfolgt mittels Mellin-Transformation.
+
+Konvention: Sei $k \geq 4$ stets gerade. 
+
+\begin{defi}
+Sei $f \in M_k$. Dann heißt die oben definierte Reihe $L(f,s)$ \myemph{Heckesche L-Reihe} zu $f$. 
+\end{defi}
+
+\begin{satz}
+Sei $f = \sum_{n=0}^\infty a(n) q^n \in M_k$. Dann gilt
+\begin{enumerate}
+\item $a(n) = \mathcal O(n^{k-1})$.
+\item Ist $f \in S_k$, so gilt sogar $a(n) = \mathcal O(n^{\frac k2})$.
+\end{enumerate}
+\end{satz}
+
+\begin{bewe}
+Wegen $M_k = \CC E_k \oplus S_k$ und
+\[
+	G_k = 2 \zeta(k) + \frac {2(2\pi i)^k}{(k-1)!} \sum_{n=1}^\infty \sigma_{k-1}(n) q^n
+\]
+folgt die Aussage (i) mit (ii) und
+\[
+	\sigma_{k-1}(n) = \sum_{d|n} d^{k-1} = n^{k-1} \sum_{d|n} \left( \frac dn \right)^{k-1} \leq n^{k-1} \sum_{l=1}^\infty \frac 1{l^{k-1}} = \mathcal O(n^{k-1})
+	\,.
+\]
+Wir müssen also nur noch (ii) zeigen. Sei dazu $f \in S_k$. Nach Definition ist
+\[
+	a(n) = \int_{ci}^{ci + 1} f(z) e^{-2\pi inz} \opd z
+\]
+mit $c \in \RR_{>0}$. Man schreibe $f(z) = y^{- \frac k2} y^{\frac k2} f(z)$. Wie schon früher gezeigt, ist $y^{\frac k2} f(z)$ auf ganz $\HH$ beschränkt. Es folgt somit
+\[
+	a(n) = \int_{ci}^{ci + 1} y^{-\frac k2} g(z) e^{-2\pi inz} \opd z = \int_0^1 c^{- \frac k2} g(t+ic) e^{2\pi nc} e^{-2 int} \opd t
+\]
+Es folgt $\abs{a(n)} \leq c^{- \frac k2} e^{2\pi nc} k'$, wobei $k' > 0$ nicht mehr von $n$ abhängt. Man wähle $c = \frac 1n$ und folgere $\abs{a(n)} = \mathcal O(n^{\frac k2})$. Damit ist alles gezeigt.
+\end{bewe}
+
+\begin{koro}
+Sei $f \in M_k$. Dann gilt $\sigma_a (L(f,s)) \leq k$ und ist zudem $f \in S_k$, so gilt sogar $\sigma_a (L(f,s)) \leq \frac k2 + 1$. Die Funktion $L(f,s)$ ist in der Halbebene $\Re(s) > \sigma_c (L(f,s))$ holomorph.
+\end{koro}
+
+\begin{satz}[Hecke]
+Sei $f = \sum_{n=0}^\infty a(n) q^n \in M_k$. Man setze für $\sigma = \Re(s) > k$
+\[
+	L^*(f,s) := (2\pi)^{-s} \Gamma(s) L(f,s)
+\]
+Dann gilt: Die Funktion 
+\[
+	L^*(f,s) - \frac {a(0)}s + \frac {(-1)^{\frac k2} a(0)}{k-s}
+\]
+hat eine holomorphe Fortsetzung auf ganz $\CC$, ist beschränkt in jedem Vertikalstreifen $\nu_1 \leq \Re(s) \leq \nu_2$ und es gilt die Funktionalgleichung
+\[
+	L^*(f,k-s) = (-1)^{\frac k2} L*(f,s)
+	\,.
+\]
+\end{satz}
+Ist $f \in S_k$, so ist $L^*(f,s)$ dann sogar eine ganze Funktion.
+
+\begin{bewe}
+Nach der Mellin-Transformation und \myref{Satz 1} gilt für $s \in \CC$ mit $\Re(s) > k$:
+\[
+	L^*(f,s) = \int_0^\infty \left( f(iy) - a(0) \right) y^{s-1} \opd y =: I(s)
+	\,.
+\]
+Wie man schnell sieht, ist $I(s)$ für $\Re(s) > k$ holomorph. Schreibe 
+\[
+	I(s) = \underbrace{\int_0^1 \left( f(iy) - a(0) \right) y^{s-1} \opd y}_{=: I_1(s)} + \underbrace{\int_1^\infty \left( f(iy) - a(0) \right) y^{s-1} \opd y}_{=: I_2(s)}
+	\,.
+\]
+Leicht zu sehen: $I_2(s)$ ist für alle $s \in \CC$ konvergent und damit eine ganze Funktion, außerdem beschränkt auf jedem Vertikalstreifen.
+
+Studium von $I_1(s)$: Es gilt
+\[
+	I_1(s) = - a(0) \int_0^1 y^{s-1} + \int_0^1 f(iy) y^{s-1} \opd y
+	\,.
+\]
+Nun gilt:
+\[
+	\int_0^1 y^{s-1} \opd y = \left[ \frac {y^s}s \right]_0^1 = \frac 1s
+\]
+Im zweitem Term substituiere $y$ durch $1y$ und es folgt
+\begin{align*}
+	\int_0^1 f(iy) y^{s-1} \opd y
+	&= \int_\infty^1 y^{-s+1} f \left( \frac 1y \right) \opd \left( \frac 1y \right) \\
+	&= \int_1^\infty f \left( \frac iy \right) y^{-s-1} \opd y \\
+	&= \int_1^\infty \left( (iy)^k f(iy) \right) y^{-s-1} \opd y \\
+	&= (-1)^{\frac k2} \int_1^\infty \left( f(iy) - a(0) + a(0) \right) y^{k-s-1} \opd y \\
+	&= (-1)^{\frac k2} \left( I_2(k-s) + a(0) \int_1^\infty y^{k-s-1} \opd y \right) \\
+	&= (-1)^{\frac k2} \left( I_2(k-s) - \frac {a(0)}{k-s} \right)
+\end{align*}
+Insgesamt:
+\begin{align*}
+	L^*(f,s) + \frac {a(0)}s + \frac {(-1)^{\frac k2} a(0)}{k-s} = I_1(s) + I_2(s) + \frac {a(0)}s + \frac {(-1)^{\frac k2} a(0)}{k-s} = (-1)^{\frac k2} I_2(k-s)
+\end{align*}
+Da $a(0) = 0$ für $f \in S_k$ folgt damit die Behauptung.
+\end{bewe}
