@@ -152,7 +152,7 @@ f | T(n) := n^{\frac k2 - 1} \sum_{M \in \linksmodulo{\Gamma(1)}{\mathcal M (n)}
 \item Durch $T(n)$ wird eine lineare Abbildung $M_k \to M_k$ definiert. Diese lässt $S_k$ invariant (gemeint ist: Spitzenformen werden auf Spitzenformen geschickt). Man nennt $T(n)$ den $n$-ten \myemph{Hecke-Operator}.
 \item Ist $f = \sum_{m \geq 0} a(m) q^m \in M_k$, so gilt
 \[
-f | T(n) = n^{\frac k2 - 1} \sum_{m \geq 0} \left( \sum_{d | (m,n)} d^{k-1} a\left(\frac{mn}{d^2}\right) \right) q^m
+f | T(n) = \sum_{m \geq 0} \left( \sum_{d | (m,n)} d^{k-1} a\left(\frac{mn}{d^2}\right) \right) q^m
 \,.
 \]
 
@@ -254,7 +254,7 @@ f|T(n)
 	\]
 	dann gilt
 	\[
-	a(b_1' - b_2') \equiv d(b_2 - b_1) \mod dd'
+	a(b_1' - b_2') \equiv d'(b_2 - b_1) \mod dd'
 	\,.
 	\]
 	Dies impliziert $a(b_1'- b_2') \equiv 0 \mod d'$. Aber $\ggt(a, d') = 1$, denn $a|m$ und $d'|n$ und $\ggt(m, n) = 1$ nach Voraussetzung.
@@ -343,7 +343,7 @@ f|T(n)
 	\end{align*}
 	Wendet man dieses Argument nun induktiv auf $T(m')T(n')$ und weitere gemeinsame Primteiler an, so kann man davon ausgehen, dass $m', n'$ nach endlich vielen Iterationen teilerfremd sind. Dann kann man mit i) und Schritt 3 schreiben
 	\[
-	T(m)T(n) = \biggl(\sum_{d \vert (m',n')} d^{k-1} T\Bigl(\frac {m'n'}{d^2}\Bigr)\biggr) \biggl(\sum_{t \vert (p^r, p^s)} t^{k-1} T(\frac{p^rp^s}{t^2}) \biggr)
+	T(m)T(n) = \biggl(\sum_{d \vert (m',n')} d^{k-1} T\Bigl(\frac {m'n'}{d^2}\Bigr)\biggr) \biggl(\sum_{t \vert (p^r, p^s)} t^{k-1} T\Bigl(\frac{p^rp^s}{t^2}\Bigr) \biggr)
 	\,,
 	\]
 	was sich nach erneuter Anwendung von i) vereinfacht zu
