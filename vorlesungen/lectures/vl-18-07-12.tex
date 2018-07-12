@@ -1,0 +1,206 @@
+\begin{bsp-list}
+	\item Sei $f = 1 - \frac{2k}{B_k} \sum_{m=1}^\infty \sigma_{k-1}(m)q^m$ die normierte Eisensteinreihe in $M_k$.
+	Es ist
+	\[
+		\sum_{m=1}^\infty \frac{\sigma_{k-1}(m)}{m^s}
+		= \zeta(s) \zeta(s-k+1)
+		\,.
+	\]
+	Es folgt, dass $(\zeta(s)\zeta(s-k+1))^*$ die vervollsändigte Heckesche L-Reihe $L^*(E_k,s)$ ist und $(-1)^{\frac{k}{2}}$ invariant unter $s \mapsto k-s$.
+	
+	\item $f = \Delta \in S_{12}$.
+	Dann hat $L^*(\Delta, s) = (2\pi)^{-s} \Gamma(s)L(\Delta, s)$ eine holomorphe Fortsetzung auf $\CC$ und ist invariant unter $s \mapsto 12-s$.
+	
+	\emph{Kuriose Anwendung}:
+	Sei $f = \sum_{n \geq 1} a(n)q^n \in S_k$ und seien fast alle $a(n)$ gleich 0.
+	Dann ist $f = 0$.
+	\begin{bewe}
+		Die Funktion $L^*(f, s) = (s\pi)^{-s} \Gamma(s) L(f, s)$ ist holomorph in $\CC$.
+		Also folgt $L(f,s) = 0$ für $s = 0$, $-1$, $-2$, \ldots
+		
+		Nach Voraussetzung
+		\[
+			&\phantom{\Rla}\qquad f = \sum_{n=1}^N a(n) q^n \\
+			&\Ra \qquad L(f,s) = \sum_{n=1}^N a(n) n^{-s} \\
+			&\Ra \qquad L(f, -\nu) = \sum_{n=1}^N a(n) n^\nu = 0 \qquad \forall \nu = 0, 1, 2, \ldots \\
+			&\Ra \qquad \begin{pmatrix}
+			1 & 1 \ldots & 1 \\
+			\ldots \\
+			1^{N-1} & \ldots & & N^{N-1}
+			\end{pmatrix}
+			\begin{pmatrix}
+				a(1) \\
+				\vdots \\
+				a(N)
+			\end{pmatrix}
+			= 0 \\
+			&\Ra a = 0 \\
+			&\Ra f \equiv 0
+			\,.
+		\]
+	\end{bewe}
+\end{bsp-list}
+
+
+\section{Der Heckesche Umkehrsatz}
+
+\myref{Satz 2} In \myref{Abschnitt 5} hat Umkehrung:
+
+\begin{satz}[Hecke]
+	Seien $k \in 2\NN$, $\alpha > 0$ gegeben.
+	Sei $(a(n))_{n\in\NN_0}$ eine Folge komlexer Zahlen mit $a(n) = \mathcal{O}(n^\alpha)$.
+	Sei
+	\[
+		L(s) = \sum_{n=1}^\infty \frac{a(n)}{n^s}
+		\qquad (\sigma > \alpha +1)
+	\]
+	Sei $L^*(s) = (2\pi)^{-s} \Gamma(s) L(s)$ und $L^*(s) + \frac{a(0)}{s} + \frac{(-1)^{\frac{k}{2}} a(0)}{k-s}$ besitzen holomorphe Fortsetzung nach $\CC$ und $L^*$ erfülle die Funktionalgleichung
+	\[
+		L^*(k-s) = (-1)^{\frac{k}{2}L^*(s)}\,.
+	\]
+	
+	Ist zudem $L^*(s) + \frac{a(0)}{s} + \frac{(-1)^{\frac{k}{2}} a(0)}{k-s}$ beschränkt in jedem Vertikalstreifen $\nu_1 \leq Re(s) \leq \nu_2$, so gilt $\sum_{n=0}^\infty a(n)q^n \in M_k$.
+\end{satz}
+
+\begin{bewe}
+	Nutze zuerst
+	\begin{satz}[Mellinscher Umkehrsatz]
+		Sei $x \in \CC$ mit $\Re(x) > 0$ und $c > 0$ eine reele Zahl.
+		Dann gilt
+		\[
+			e^{-x}
+			= \frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} \Gamma(s)x^{-s} \opd s
+			\,.
+		\]
+	\end{satz}
+	\begin{bewe}
+		Betrachte das Kurvenintegral über das Rechteck mit den Ecken $c+iT$, $-\frac{1}{2}-N+iT$, $-\frac{1}{2}-N-iT$, $c-iT$ mit $T > 0$ reell und $N > 0$ ganz, beide groß.
+		
+		Die horizontalen Integrale verschwinden für $T \to \infty$ (das folgt aus der Sterlingformel) und das linke vertikale Integral für $N \to \infty$ (das folgt aus der Funktionalgleichung von $\Gamma(s)$).
+		Damit folgt aus dem Residuensatz
+		\[
+			\frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} \Gamma(s)x^{-s} \opd s
+			= \lim_{N \to \infty} \sum_{j=0}^N \frac{(-1)^j}{j!} x^j = e^{-x}\,.
+		\]
+	\end{bewe}
+
+	Außerdem brauchen wir noch
+	\begin{lemm}[Phragmen-Lindelöf]
+		Für zwei reelle Zahlen $\nu_1 < \nu_2$ setze $F = \Set{s \in \CC\mid \nu_1 \leq \Re(s) \leq \nu_2}$.
+		Sei $\phi$ eine holomorphe Funktion auf einer offenen Menge $U \supseteq F$, welche
+		\[
+			\abs{\phi(s)} = \mathcal{O}(e^{\abs{\tau}^\delta})
+			\qquad (\abs \tau \to \infty)\quad s= \sigma + i\tau
+		\]
+		gleichmäßig auf $F$ mit einem $\delta > 0$.
+		
+		Gibt es dann eine reelle Zahl $B$ mit
+		\[
+			\abs{\phi(s)} = \mathcal{O}(\abs{\tau}^b) \qquad \text{auf } \partial F
+		\]
+		so folgt bereits
+		\[
+			\abs{\phi(s)} = \mathcal{O}(\abs{\tau}^b)
+		\]
+		gleichmäßig in $F$.
+	\end{lemm}
+	\begin{bewe}
+		Nach Vorausetzung existiert ein $L > 0$ so, dass $\abs{\phi(s)} \leq L e^{\abs \tau ^\delta}$ in $F$.
+		
+		Betrachte zunächst den Fall $b=0$.
+		Dann gibt es eine Konstante $M > 0$ so, dass $\abs{\phi(s)} \leq M$ in $\partial F$.
+		Sei $m$ eine positive ganze Zahl mit $m \equiv 2 \mod 4$.
+		Setze $s = \sigma +i\tau$.
+		Da $\Re(s^m) = \Re((\sigma + i\tau)^m) $ ein Polynom in $\sigma$ und $\tau$ ist und der nächste höchste Term von $\tau$ durch $-\tau^m$ gegeben ist, haben wir
+		\[
+			\Re(s^m) = -\tau^m + \mathcal{O} (\abs{\tau}^{m-1})\,,
+		\]
+		gleichmäßig auf $F$.
+		Es folgt, dass $\Re(s^m)$ eine obere Grenze $N$ in $F$ besitzt.
+		Indem wir $m > \delta$ wählen, erhalten wir für $\epsilon > 0$
+		\[
+			\abs{\phi(s)e^{\epsilon s^m}} \leq Me^{\epsilon N}
+			\qquad \text{auf } \partial F
+		\]
+		und damit
+		\[
+			\abs{\phi(s) e^{\epsilon s^m}}
+			= \mathcal{O} ( e^{\abs{\tau}^\delta - \epsilon\abs{tau}^m + K\abs\tau^{m-1}})
+			\xto{\abs\tau \to \infty} 0
+		\]
+		gleichmäßig auf $F$.
+		Nach dem Maximumsprinzip folgt damit 
+		\[
+			\abs{\phi(s)e^{\epsilon s^m}}
+			\leq M^{\epsilon N}
+			\qquad (s\in F)
+			\,.
+		\]
+		Da $\epsilon$ unabhängig von $M$ und $N$ bekommen wir mit $\epsilon \to 0$ $\abs{\phi(s)} \leq M$.
+		Also $\abs{\phi(s)} = \mathcal{O}(\abs\tau^0)$ in $F$.
+		
+		Nehmen wir jetzt $b \not= 0$ an.
+		Wir definieren eine lokal um $F$ holomorphe Hilfsfunktion $\psi(s) = (s-\nu_1 +1)^b = e^{b\log(s-\nu_1+1)}$ mit dem Hauptzweig des Logarithmus.
+		Da nun
+		\[
+			\Re(\log(s-\nu_1 + 1))
+			= \log\abs{s-\nu_1+1}
+		\]
+		haben wir gleichmäßig auf $F$
+		\[
+			\abs{\psi(s)} = \abs{s - \nu_1 + 1}^b \sim \abs\tau^b \qquad (\abs\tau \to \infty)
+		\]
+		Setze $\phi_1(s) = \frac{\phi(s)}{\psi(s)}$.
+		Dann erfüllt $\phi_1(s)$ die gleichen Voraussetzungen wie $\phi$ mit $b=0$ und ist damit beschränkt in $F$.
+		Es folgt $\abs{\phi(s)} = \mathcal{O}(\abs\tau^b)$ in $F$.
+	\end{bewe}
+
+	Betrachte für $c > \alpha + 1$ das Integral
+	\[
+		I(x)
+		= \frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} L^*(s)x^{-s} \opd s
+		\,.
+	\]
+	Nach Voraussetzung ist $L^*(s)$ (bis auf die vernachlässigbaren Terme $\frac{a(0)}{s} + \frac{(-1)^{\frac{k}{2}} a(0)}{k-s}$) beschränkt auf jedem Vertikalstreifen $\nu_1 \leq \Re(s) \leq \nu_2$.
+	Nach der Sterlingformel gilt nun aber
+	\[
+		L^*(s) = \mathcal{O} (\abs\tau^{-M}) \qquad \text{für } \abs\tau \to \infty
+	\]
+	auf jeder Geraden $\Re (s) = \sigma_1 > \alpha+1$ und $\Re(s) = \sigma_2 < k- \alpha -1$ wegen der Funktionalgleichung.
+	Betrachte nun die Funktion
+	\[
+		\frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} L^*(s)x^{-s}\opd s
+	\]
+	Dann gilt
+	\[
+		f(iy) - a(0)
+		= \frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} L^*(s)y^{-s}\opd s
+	\]
+	nach dem \myref{Umkehrsatz von Mellin}.
+	Man verschiebe den Integrationsweg nach links auf die Gerade $k-c < 0$ (wähle $c > k$).
+	Auf diese Weise erhält man Beträge von Residuen der Polstellen bei $s=0$ und $s=k$ als $-a(0)$ beziehungsweise $(-1)^{\frac{k}{2}} a(0)y^{-k}$.
+	Betrachte dafür für $T > 0$ reell das Kurvenintegral über das Rechteck mit Ecken $c +iT$, $c-iT$, $k-c+iT$, $k-c-iT$.
+	Nach dem Prinzip von Phragmen-Lindelöf folgt, dass die Integrale über die horizontalen Streifen für $T \to \infty$ verschwinden.
+	Damit folgt
+	\[
+		-a(0) + a(0)(-1)^{\frac{k}{2}} y^{-k}
+		= \frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} L^*(s) y^{-s} \opd s - \frac{1}{2\pi i} \int_{k-c-i\infty}^{k-c+i\infty} L^*(s)y^{-s} \opd s\,.
+	\]
+	Durch Substitution $s \mapsto k-s$ in das zweite Integral erhält man
+	\[
+		-\frac{1}{2\pi i} \int_{k-c-i\infty}^{k-c+i\infty} L^*(s) y^{-s} \opd s
+		&= -\frac{1}{2\pi i} \int_{c+i\infty}^{c+i\infty} L^*(k-s) y^{s-k} \opd (k-s) \\
+		&= - (-1)^{\frac{k}{2}}y^{-k} \frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} L^*(s) y^s \opd s
+		\,.
+	\]
+	Damit folgt
+	\[
+		-a(0) + (-1)^{\frac{k}{2}} a(0) y^{-k}
+		= f(iy) - a(0) - (-1)^{\frac{k}{2}}y^{-k} (f(\frac{1}{y}) - a(0))
+	\]
+	Damit erhalten wir
+	\[
+		0 = f(iy) - (iy)^k f(\frac{1}{y})
+	\]
+	Also $f \in M_k$.
+\end{bewe}
