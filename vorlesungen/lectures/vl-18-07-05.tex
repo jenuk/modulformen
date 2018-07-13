@@ -158,7 +158,7 @@ sodass für $t \to 0$
 \[
 	\frac {te^t}{e^t - 1} - f_n(t) = \mathcal O (t^{n+1})
 \]
-gilt. Somit ist der Integrand von $I_1(s)$ für $t \to 0$ in $\mathcal O (t^{n+\sigma-1})$ und fällt für $t \to \infty$ ohnehin exponentiell ab. Fixiere nun ein $n \in \NN$ und betrachte die Halbebene $\HH_{-n} := \Set {s \in \CC \mid \sigma := \Re(s) > -n}$. Dort stellt das Integral wegen $n+\sigma-1 < -1$ somit eine holomorphe Funktion dar.
+gilt. Somit ist der Integrand von $I_1(s)$ für $t \to 0$ in $\mathcal O (t^{n+\sigma-1})$ und fällt für $t \to \infty$ ohnehin exponentiell ab. Fixiere nun ein $n \in \NN$ und betrachte die Halbebene $\HH_{-n} := \Set {s \in \CC \mid \sigma := \Re(s) > -n}$. Dort stellt das Integral wegen $n+\sigma-1 > -1$ somit eine holomorphe Funktion dar.
 
 Das zweite Integral ist zwar nur für $\sigma > 1$ konvergent, lässt sich aber elementar berechnen zu
 \begin{align*}
@@ -175,6 +175,7 @@ Da dies eine auf ganz $\CC$ meromorphe Funktion ist, folgt wegen $n \in \NN$ bel
 	&= \frac 1{\Gamma(s)} \left( I_1(s) + I_2(s) \right) \\
 	&= \frac {I_1(s)}{\Gamma(s)} + \frac 1{\Gamma(s)} \left( \Gamma(s-1) + \frac 12 \Gamma(s) + \sum_{k=2}^n \frac {B_k}{k!} \Gamma(s+k-1) \right) \\
 	&= \frac {I_1(s)}{\Gamma(s)} + \frac 1{s-1} + \frac 12 + \sum_{k=2}^n \frac{B_k}{k!} s(s+1)(s+2)\ldots(s+k-2)
+	\,.
 \end{align*}
 Da $I_1(s)$ für $n \in \NN$ beliebig auf $\HH_{-n}$ holomorph und $\Gamma$ zudem nullstellenfrei ist, zeigt diese Formel zugleich, dass $\zeta(s) - \frac 1{s-1}$ auf ganz $\CC$ holomorph ist. Somit ist auch der zweite Teil der Behauptung bewiesen und nur die konkreten Werte der Zetafunktion verbleiben noch zu zeigen.
 

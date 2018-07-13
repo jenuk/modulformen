@@ -85,20 +85,24 @@ Es ist bekannt, dass $\zeta$ unendlich viele nicht-triviale Nullstellen besitzt.
 
 \subsection{Heckesche L-Reihen}
 
-Einer Modulform $f(z) = \sum_{n=0}^\infty a(n) q^n \in M_k$ ordnet man die L-Reihe
+Einer Modulform $f = \sum_{n=0}^\infty a(n) q^n \in M_k$ ordnet man die L-Reihe
 \[
-	L(f,s) = \sum_{n=1}^\infty a(n)n^{-s}
+	L(f,s) := \sum_{n=1}^\infty a(n)n^{-s}
 \]
-zu. Nach Hecke impliziert das Transformationsverhalten von $f$ \glqq{}gute\grqq{} analytische Eigenschaften für $L(f,s)$. Zum Beispiel meromorphe Fortsetzung nach $\CC$, Funktionalgleichung, \ldots. Der Übergang von $f$ zu $L(f,s)$ erfolgt mittels Mellin-Transformation.
+zu. Nach Hecke impliziert das Transformationsverhalten von $f$ \glqq{}gute\grqq{} analytische Eigenschaften für $L(f,s)$, wie zum Beispiel die Existenz einer meromorphen Fortsetzung nach $\CC$ oder die Gültigkeit einer Funktionalgleichung. Der Übergang von $f$ zu $L(f,s)$ erfolgt mittels Mellin-Transformation.
 
-Konvention: Sei $k \geq 4$ stets gerade. 
+Konvention: Sei im Folgenden $k \geq 4$ stets gerade. 
 
 \begin{defi}
-Sei $f \in M_k$. Dann heißt die oben definierte Reihe $L(f,s)$ \myemph{Heckesche L-Reihe} zu $f$. 
+Sei $f = \sum_{n=0}^\infty a(n) q^n \in M_k$. Dann heißt die Reihe 
+\[
+	L(f,s) := \sum_{n=1}^\infty a(n)n^{-s}
+\]
+die \myemph{Heckesche L-Reihe} zu $f$. 
 \end{defi}
 
 \begin{satz}
-Sei $f = \sum_{n=0}^\infty a(n) q^n \in M_k$. Dann gilt
+Sei $f = \sum_{n=0}^\infty a(n) q^n \in M_k$. Dann gilt:
 \begin{enumerate}
 \item $a(n) = \mathcal O(n^{k-1})$.
 \item Ist $f \in S_k$, so gilt sogar $a(n) = \mathcal O(n^{\frac k2})$.
@@ -108,80 +112,100 @@ Sei $f = \sum_{n=0}^\infty a(n) q^n \in M_k$. Dann gilt
 \begin{bewe}
 Wegen $M_k = \CC E_k \oplus S_k$ und
 \[
-	G_k = 2 \zeta(k) + \frac {2(2\pi i)^k}{(k-1)!} \sum_{n=1}^\infty \sigma_{k-1}(n) q^n
+	E_k \propto G_k = 2 \zeta(k) + \frac {2(2\pi i)^k}{(k-1)!} \sum_{n=1}^\infty \sigma_{k-1}(n) q^n
 \]
 folgt die Aussage (i) mit (ii) und
 \[
-	\sigma_{k-1}(n) = \sum_{d|n} d^{k-1} = n^{k-1} \sum_{d|n} \left( \frac dn \right)^{k-1} \leq n^{k-1} \sum_{l=1}^\infty \frac 1{l^{k-1}} = \mathcal O(n^{k-1})
+	\sigma_{k-1}(n) := \sum_{d|n} d^{k-1} = n^{k-1} \sum_{d|n} \left( \frac dn \right)^{k-1} \leq n^{k-1} \underbrace{\sum_{l=1}^\infty \frac 1{l^{k-1}}}_{< \infty} = \mathcal O(n^{k-1})
 	\,.
 \]
 Wir müssen also nur noch (ii) zeigen. Sei dazu $f \in S_k$. Nach Definition ist
 \[
 	a(n) = \int_{ci}^{ci + 1} f(z) e^{-2\pi inz} \opd z
 \]
-mit $c \in \RR_{>0}$. Man schreibe $f(z) = y^{- \frac k2} y^{\frac k2} f(z)$. Wie schon früher gezeigt, ist $y^{\frac k2} f(z)$ auf ganz $\HH$ beschränkt. Es folgt somit
+mit $c \in \RR_{>0}$ beliebig. Man schreibe $f(z) = y^{- \frac k2} y^{\frac k2} f(z)$. Wie schon früher gezeigt, ist $g(z) := y^{\frac k2} f(z)$ auf ganz $\HH$ beschränkt. Es folgt somit
 \[
 	a(n) = \int_{ci}^{ci + 1} y^{-\frac k2} g(z) e^{-2\pi inz} \opd z = \int_0^1 c^{- \frac k2} g(t+ic) e^{2\pi nc} e^{-2 int} \opd t
 \]
-Es folgt $\abs{a(n)} \leq c^{- \frac k2} e^{2\pi nc} k'$, wobei $k' > 0$ nicht mehr von $n$ abhängt. Man wähle $c = \frac 1n$ und folgere $\abs{a(n)} = \mathcal O(n^{\frac k2})$. Damit ist alles gezeigt.
+und damit $\abs{a(n)} \leq c^{- \frac k2} e^{2\pi nc} M$, wobei $M > 0$ nicht mehr von $n$ abhängt. Man wähle $c = \frac 1n$ und folgere $\abs{a(n)} = \mathcal O(n^{\frac k2})$. Damit ist alles gezeigt.
 \end{bewe}
 
 \begin{koro}
-Sei $f \in M_k$. Dann gilt $\sigma_a (L(f,s)) \leq k$ und ist zudem $f \in S_k$, so gilt sogar $\sigma_a (L(f,s)) \leq \frac k2 + 1$. Die Funktion $L(f,s)$ ist in der Halbebene $\Re(s) > \sigma_c (L(f,s))$ holomorph.
+Sei $f \in M_k$. Dann gilt $\sigma_a (L(f,s)) \leq k$. Ist zudem $f \in S_k$, so gilt sogar $\sigma_a (L(f,s)) \leq \frac k2 + 1$. Die Funktion $s \mapsto L(f,s)$ ist in der Halbebene $\Re(s) > \sigma_c (L(f,s))$ holomorph.
 \end{koro}
 
 \begin{satz}[Hecke]
-Sei $f = \sum_{n=0}^\infty a(n) q^n \in M_k$. Man setze für $\sigma = \Re(s) > k$
+Sei $f = \sum_{n=0}^\infty a(n) q^n \in M_k$. Setzt man für $\Re(s) > k$
 \[
 	L^*(f,s) := (2\pi)^{-s} \Gamma(s) L(f,s)
+	\,,
 \]
-Dann gilt: Die Funktion 
+dann gilt: Die Funktion 
 \[
-	L^*(f,s) - \frac {a(0)}s + \frac {(-1)^{\frac k2} a(0)}{k-s}
+	s \mapsto L^*(f,s) - \frac {a(0)}s + \frac {(-1)^{\frac k2} a(0)}{k-s}
 \]
-hat eine holomorphe Fortsetzung auf ganz $\CC$, ist beschränkt in jedem Vertikalstreifen $\nu_1 \leq \Re(s) \leq \nu_2$ und es gilt die Funktionalgleichung
+hat eine holomorphe Fortsetzung auf ganz $\CC$, ist beschränkt in jedem Vertikalstreifen $\Set {s \in \CC \mid \nu_1 \leq \Re(s) \leq \nu_2}$ und erfüllt die Funktionalgleichung
 \[
-	L^*(f,k-s) = (-1)^{\frac k2} L*(f,s)
+	L^*(f,k-s) = (-1)^{\frac k2} L^*(f,s)
 	\,.
 \]
+Ist $f \in S_k$, so ist $a(0) = 0$ und daher sogar $s \mapsto L^*(f,s)$ selbst bereits eine ganze Funktion.
 \end{satz}
-Ist $f \in S_k$, so ist $L^*(f,s)$ dann sogar eine ganze Funktion.
 
 \begin{bewe}
-Nach der Mellin-Transformation und \myref{Satz 1} gilt für $s \in \CC$ mit $\Re(s) > k$:
+Nach \myref{Mellin-Trafo} (Mellin-Transformation) ist
 \[
-	L^*(f,s) = \int_0^\infty \left( f(iy) - a(0) \right) y^{s-1} \opd y =: I(s)
+	L(f,s) 
+	= \frac 1{\Gamma(s)} \int_0^\infty \sum_{n=1}^\infty a(n) (e^{-x})^n x^{s-1} \opd x
+	= \frac 1{\Gamma(s)} \int_0^\infty \Bigg( \underbrace{\sum_{n=0}^\infty a(n) e^{-nx}}_{= f(ix)} - a(0) \Bigg) x^{s-1} \opd x
+	\,,
+\]
+sodass nach Substitution $x \mapsto y := 2\pi x$ für alle $s \in \CC$ mit $\Re(s) > k$ gilt:
+\begin{align*}
+	L^*(f,s) 
+	&= (2\pi)^{-s} \Gamma(s) L(f,s) \\
+	&= \int_0^\infty \left( f(iy) - a(0) \right) y^{s-1} \opd y \\
+	&= \underbrace{\int_0^1 \left( f(iy) - a(0) \right) y^{s-1} \opd y}_{=: I_1(s)} + \underbrace{\int_1^\infty \left( f(iy) - a(0) \right) y^{s-1} \opd y}_{=: I_2(s)}
+	\,.
+\end{align*}
+Wie man schnell sieht, ist $L^*(f,s)$ für $\Re(s) > k$ holomorph. Darüber hinaus sieht man schnell ein, dass $I_2(s)$ für alle $s \in \CC$ konvergent (also eine ganze Funktion) und außerdem auf jedem Vertikalstreifen beschränkt ist. Es verbleibt somit nur noch das Studium von
+\[
+	I_1(s) = - a(0) \int_0^1 y^{s-1} \opd y + \int_0^1 f(iy) y^{s-1} \opd y
 	\,.
 \]
-Wie man schnell sieht, ist $I(s)$ für $\Re(s) > k$ holomorph. Schreibe 
-\[
-	I(s) = \underbrace{\int_0^1 \left( f(iy) - a(0) \right) y^{s-1} \opd y}_{=: I_1(s)} + \underbrace{\int_1^\infty \left( f(iy) - a(0) \right) y^{s-1} \opd y}_{=: I_2(s)}
-	\,.
-\]
-Leicht zu sehen: $I_2(s)$ ist für alle $s \in \CC$ konvergent und damit eine ganze Funktion, außerdem beschränkt auf jedem Vertikalstreifen.
-
-Studium von $I_1(s)$: Es gilt
-\[
-	I_1(s) = - a(0) \int_0^1 y^{s-1} + \int_0^1 f(iy) y^{s-1} \opd y
-	\,.
-\]
-Nun gilt:
+Nun gilt für den ersten Summanden
 \[
 	\int_0^1 y^{s-1} \opd y = \left[ \frac {y^s}s \right]_0^1 = \frac 1s
 \]
-Im zweitem Term substituiere $y$ durch $1y$ und es folgt
+und für den zweiten Summanden nach Substitution $y \mapsto \inv y$ mit $\opd (\inv y) = -y^{-2} \opd y$:
 \begin{align*}
 	\int_0^1 f(iy) y^{s-1} \opd y
-	&= \int_\infty^1 y^{-s+1} f \left( \frac 1y \right) \opd \left( \frac 1y \right) \\
-	&= \int_1^\infty f \left( \frac iy \right) y^{-s-1} \opd y \\
-	&= \int_1^\infty \left( (iy)^k f(iy) \right) y^{-s-1} \opd y \\
-	&= (-1)^{\frac k2} \int_1^\infty \left( f(iy) - a(0) + a(0) \right) y^{k-s-1} \opd y \\
-	&= (-1)^{\frac k2} \left( I_2(k-s) + a(0) \int_1^\infty y^{k-s-1} \opd y \right) \\
+	&= \int_\infty^1 f(i \inv y) y^{-s+1} \opd (\inv y) \\
+	&= \int_1^\infty f \big( S \circ (iy) \big) y^{-s-1} \opd y \qquad \qquad \qquad \qquad \Big| \; f \in M_k \\
+	&= \int_1^\infty (iy)^k f(iy) y^{-s-1} \opd y \\
+	&= (-1)^{\frac k2} \int_1^\infty f(iy) y^{k-s-1} \opd y \\
+	&= (-1)^{\frac k2} \left( \int_1^\infty \left( f(iy) - a(0) \right) y^{k-s-1} \opd y + a(0) \int_1^\infty y^{k-s-1} \opd y \right) \\
 	&= (-1)^{\frac k2} \left( I_2(k-s) - \frac {a(0)}{k-s} \right)
+	\,.
 \end{align*}
-Insgesamt:
-\begin{align*}
-	L^*(f,s) + \frac {a(0)}s + \frac {(-1)^{\frac k2} a(0)}{k-s} = I_1(s) + I_2(s) + \frac {a(0)}s + \frac {(-1)^{\frac k2} a(0)}{k-s} = (-1)^{\frac k2} I_2(k-s)
-\end{align*}
-Da $a(0) = 0$ für $f \in S_k$ folgt damit die Behauptung.
+
+Insgesamt erhalten wir also
+\begin{align}
+	\label{L*-SummeGanz}
+	\notag{}
+	L^*(f,s) + \frac {a(0)}s + \frac {(-1)^{\frac k2} a(0)}{k-s}
+	&= I_1(s) + I_2(s) + \frac {a(0)}s + \frac {(-1)^{\frac k2} a(0)}{k-s} \\
+	&= I_2(s) + (-1)^{\frac k2} I_2(k-s)
+	\,.	
+\end{align}
+Da $I_2(s)$ ganz und auf jedem Vertikalstreifen beschränkt ist, müssen wir nur noch die Funktionalgleichung nachrechnen. Hierzu ersetzen wir in \eqref{L*-SummeGanz} das $s$ durch $k-s$ und beobachten ($k$ gerade):
+\[
+	L^*(f,k-s) + \frac {a(0)}{k-s} + \frac {(-1)^{\frac k2} a(0)}s
+	&\overset{\eqref{L*-SummeGanz}}= I_2(k-s) + (-1)^{\frac k2} I_2(s) \\
+	&= (-1)^{\frac k2} \left( (-1)^{\frac k2} I_2(k-s) + I_2(s) \right) \\
+	&\overset{\eqref{L*-SummeGanz}}= (-1)^{\frac k2} \left( L^*(f,s) + \frac {a(0)}s + \frac {(-1)^{\frac k2} a(0)}{k-s} \right) \\
+	&= (-1)^{\frac k2} L^*(f,s) + \frac {(-1)^{\frac k2} a(0)}s + \frac {a(0)}{k-s}
+	\,,
+\]
+was nach Subtraktion von $\frac {a(0)}{k-s} + \frac {(-1)^{\frac k2} a(0)}s$ genau die Behauptung ergibt.
 \end{bewe}
