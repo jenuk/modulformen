@@ -372,7 +372,7 @@ und damit $\abs{a(n)} \leq c^{- \frac k2} e^{2\pi nc} M$, wobei $M > 0$ nicht me
 Sei $f \in M_k$. Dann gilt $\sigma_a (L(f,s)) \leq k$. Ist zudem $f \in S_k$, so gilt sogar $\sigma_a (L(f,s)) \leq \frac k2 + 1$. Die Funktion $s \mapsto L(f,s)$ ist in der Halbebene $\Re(s) > \sigma_c (L(f,s))$ holomorph.
 \end{koro}
 
-\begin{satz}[Hecke]
+\begin{satz}[Hecke]\label{satz:hecke}
 Sei $f = \sum_{n=0}^\infty a(n) q^n \in M_k$. Setzt man für $\Re(s) > k$
 \[
 	L^*(f,s) := (2\pi)^{-s} \Gamma(s) L(f,s)
@@ -447,3 +447,47 @@ Da $I_2(s)$ ganz und auf jedem Vertikalstreifen beschränkt ist, müssen wir nur
 \]
 was nach Subtraktion von $\frac {a(0)}{k-s} + \frac {(-1)^{\frac k2} a(0)}s$ genau die Behauptung ergibt.
 \end{bewe}
+
+
+\begin{bsp-list}
+	\item Sei $f = 1 - \frac{2k}{B_k} \sum_{m=1}^\infty \sigma_{k-1}(m)q^m$ die normierte Eisensteinreihe in $M_k$.
+	Es ist
+	\[
+	\sum_{m=1}^\infty \frac{\sigma_{k-1}(m)}{m^s}
+	= \zeta(s) \zeta(s-k+1)
+	\,.
+	\]
+	Es folgt, dass $(\zeta(s)\zeta(s-k+1))^*$ die vervollsändigte Heckesche L-Reihe $L^*(E_k,s)$ ist und $(-1)^{\frac{k}{2}}$ invariant unter $s \mapsto k-s$.
+	
+	\item $f = \Delta \in S_{12}$.
+	Dann hat $L^*(\Delta, s) = (2\pi)^{-s} \Gamma(s)L(\Delta, s)$ eine holomorphe Fortsetzung auf $\CC$ und ist invariant unter $s \mapsto 12-s$.
+	
+	\emph{Kuriose Anwendung}:
+	Sei $f = \sum_{n \geq 1} a(n)q^n \in S_k$ und seien fast alle $a(n)$ gleich 0.
+	Dann ist $f = 0$.
+	\begin{bewe}
+		Die Funktion $L^*(f, s) = (s\pi)^{-s} \Gamma(s) L(f, s)$ ist holomorph in $\CC$.
+		Also folgt $L(f,s) = 0$ für $s = 0$, $-1$, $-2$, \ldots
+		
+		Nach Voraussetzung
+		\[
+		&\phantom{\Rla}\qquad f = \sum_{n=1}^N a(n) q^n \\
+		&\Ra \qquad L(f,s) = \sum_{n=1}^N a(n) n^{-s} \\
+		&\Ra \qquad L(f, -\nu) = \sum_{n=1}^N a(n) n^\nu = 0 \qquad \forall \nu = 0, 1, 2, \ldots \\
+		&\Ra \qquad \begin{pmatrix}
+		1 & 1 &\ldots & 1 \\
+		\vdots & \vdots & \ddots & \vdots \\
+		1^{N-1} & 2^{N-1} & \ldots & & N^{N-1}
+		\end{pmatrix}
+		\begin{pmatrix}
+		a(1) \\
+		\vdots \\
+		a(N)
+		\end{pmatrix}
+		= 0 \\
+		&\Ra a = 0 \\
+		&\Ra f \equiv 0
+		\,.
+		\]
+	\end{bewe}
+\end{bsp-list}
