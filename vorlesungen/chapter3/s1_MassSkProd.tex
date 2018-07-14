@@ -91,7 +91,7 @@ wobei $\mathcal F$ ein Fundamentalbereich ist.
 	Nach (iii) gilt $M \circ \F_1 \cap N \circ \F_1 = \emptyset$ für $M \not= \pm N$.
 	Wegen $\closure{\F_1} = \F_1 \cup \partial\F_1$ und da $\partial F_1$ eine Nullmenge, folgt, dass
 	\[
-	M \circ \closure{\F_1} \cap N\circ\closure{\F_2} \text{ eine Nullmenge für } M\not=\pm N
+	M \circ \closure{\F_1} \cap N\circ\closure{\F_1} \text{ eine Nullmenge für } M\not=\pm N
 	\,,
 	\]
 	denn
@@ -154,7 +154,7 @@ wobei $\mathcal F$ ein Fundamentalbereich ist.
 	Integral ist reellwertig und hat damit den Wert
 	\[
 	\int_{\frac{2\pi}{3}}^{\frac{\pi}{3}} \frac{i(\cos t + i\sin t)}{\sin t} \opd t
-	= \int_{\frac{2\pi}{3}}^{\frac{\pi}{3}} \Re\Bigl(\frac{i\cos t - \sin t)}{\sin t}\Bigr) \opd t
+	= \int_{\frac{2\pi}{3}}^{\frac{\pi}{3}} \Re\Bigl(\frac{i\cos t - \sin t}{\sin t}\Bigr) \opd t
 	= \int_{\frac{2\pi}{3}}^{\frac{\pi}{3}} (-1)\opd t
 	= \frac{2\pi}{3} - \frac{\pi}{3} = \frac{\pi}{3}
 	\,.
@@ -189,16 +189,16 @@ wobei $\mathcal F$ ein Fundamentalbereich ist.
 	Dann gilt
 	\begin{align*}
 	\abs{g(z)} = y^{\frac{k}{2}} \abs{f(z)}
-	&= y^{\frac{k}{2}} \abs{e^{2\pi z} \sum_{n\geq 1} a(n) e^{2\pi i(n-1)z} } \\
+	&= y^{\frac{k}{2}} \abs{e^{2\pi iz} \sum_{n\geq 1} a(n) e^{2\pi i(n-1)z} } \\
 	&\leq y^{\frac{k}{2}} e^{-2\pi y} \left( \sum_{n\geq 1} \abs{a(n)} e^{-2\pi (n-1)y} \right) \\
-	&= y^{\frac{k}{2}} e^{-2\pi y} e^{2\pi c} \left( \sum_{n\geq1} \abs{a(n)} e^{-2\pi nc} \right) \\
+	&\leq y^{\frac{k}{2}} e^{-2\pi y} e^{2\pi c} \left( \sum_{n\geq1} \abs{a(n)} e^{-2\pi nc} \right) \\
 	&= \frac{y^{\frac{k}{2}}}{e^{2\pi y}} \cdot K
 	\xto{y\to\infty} 0
 	\end{align*}
 \end{bewe-list}
 
 \begin{defi}
-	Für $f$, $g \in M_k$ derart, dass $fg \in S_{2k}$, setze
+	Für $f$, $g \in M_k$ derart, dass $fg \in S_{2k}$, definieren wir das \myemph{Petersson-Skalarprodukt} durch
 	\begin{equation}\label{eq:skalarprodukt}
 	\scalarprd fg := \int_{\closure\F} f(z) \conj{g(z)} y^k \opd w
 	\,,
