@@ -4,7 +4,10 @@ Dies ist ein nicht offizielles Skript der Vorlesung Modulformen 1 aus dem Sommer
 Das Skript wurde von Patrick und mir in der Vorlesung mitgeschrieben.
 Deshalb kann es Fehler enthalten und ich übernehme keine Garantie für Richtigkeit.
 
-Bei Fehlern, kannst du mir gerne schreiben oder ein Issue eröffnen.
+## Fehler _(Neu)_
+Es gibt jetzt eine Liste kürzlich korrgiert Fehler unter [hier](https://github.com/jenuk/modulformen/blob/master/korrekturen.md).
+
+Wenn du Fehler findest, schreib mit bitte (Email steht am Anfang des Skriptes) oder eröffne ein neues Issue.
 
 ## Kompilieren
 
