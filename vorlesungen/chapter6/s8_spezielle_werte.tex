@@ -1,0 +1,49 @@
+\section{Spezielle Werte von L-Funktionen}
+
+\begin{erin}
+	Es sei $f \in S_k$ normalisierte Hecke-Eigenform. Dann ist
+	\[
+		L^*(f, s) = (2\pi)^{-s} \Gamma(s) L(f, s)
+	\]
+	eine ganze Funktion und $(-1)^{k/2}$-invariant unter $s \mapsto k - s$. Ferner gilt 
+	\[
+		L(f,s) = \prod_{p \in \PP} \bigl(1 - a(p)p^{-s} + p^{k-1-2s}\bigr)^{-1}.
+	\]
+\end{erin}
+
+
+\begin{defi}
+	Eine ganze Zahl $s_0$ heißt \myemph{kritisch} bezüglich $L(f,s)$, falls $1 \leq s_0 \leq k-1$. Idee: $s_0$ ist genau dann kritisch, falls es weder Pol von $\Gamma(s)$ noch von $\Gamma(k-s)$.
+\end{defi}
+
+Es gibt folgende Philosophie von Deligne: sei 
+\[
+	L(s) = \sum_{n=1}^\infty a(n)n^{-s}
+\]
+eine \glqq{}motivierte\grqq{} Dirichletreihe (d.\,h. $L$ kommt von einem natürlichen mathematischen Objekt wie einer Varietät, einer Modulform, einer Galois-Darstellung, einem Zahlkörper, \ldots). Man setzt voraus, dass $L$ ein Euler-Produkt besitzt und sich zu einer ganzen Funktion fortsetzen lässt (oder zumindest meromorph mit endlich vielen Polstellen) und ihre Vervollständigung $L^*(s) = \gamma(s)L(s)$ (mit einem Gamma-Faktor $\gamma(s)$) eine Funktionalgleichung $L^*(k - s) = \epsilon L^*(s)$ erfüllt mit $k > 0$ und $\epsilon \in \{\pm1\}$. Ist $s_0$ kritisch, so ist es weder Pol von $\gamma(s)$ noch $\gamma(k-s)$. Dann soll seine geschlossene Formel gelten:
+\[
+	L^*(s_0) = B(s_0) \Omega
+\]
+mit $B(s_0) \in \closure{\QQ}$ und $\Omega$ \glqq{}im Wesentlichen unabhängig von $s_0$\grqq{} (\glqq Periode\grqq).
+
+\begin{bsp}
+	$\zeta(s)$. Dann sind genau die positiven geraden und die negativen ungeraden Zahlen kritisch.
+\end{bsp}
+
+\begin{satz}[Eichler-Shimura]
+	Sei $f \in S_k$ eine Hecke-Eigenform.
+	Dann existieren $\omega_+, \omega_- \in \RR_+$ derart, dass die Werte $L^*(f, s_0)/\omega_+$ für $s_0$ kritisch und ungerade und $L^*(f, s_0)/\omega_-$ für $s_0$ kritisch und gerade, algebraisch sind. Man kann $f$ so normalisieren dass
+	\[
+		\omega_+ \omega_- = \scalarprd ff\,.
+	\]
+\end{satz}
+
+\begin{bsp}
+	Ist $f = \Delta \in S_{12}$, so gilt
+	\begin{align*}
+		L^*(\Delta, 1) &= L^*(\Delta, 11) = \frac{192}{691} \omega_+, \\
+		L^*(\Delta, 3) &= L^*(\Delta, \phantom{11}\makebox[0pt][r]{9}) = \frac{16}{135} \omega_+, \\
+		L^*(\Delta, 5) &= L^*(\Delta, \phantom{11}\makebox[0pt][r]{7}) = \frac{8}{105} \omega_+.
+	\end{align*}
+	Ähnlich für $\omega_-$.
+\end{bsp}
