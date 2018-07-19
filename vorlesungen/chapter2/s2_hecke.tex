@@ -166,8 +166,8 @@ f | T(n) = \sum_{m \geq 0} \left( \sum_{d | (m,n)} d^{k-1} a\left(\frac{mn}{d^2}
 \begin{bsp}
 Sei $n = p$ prim. Dann ist
 \begin{align*}
-f | T(p) &= p^{\frac k2 - 1} \sum_{m \geq 0} \left( \sum_{d | (m,p)} d^{k-1} a\left(\frac{mp}{d^2}\right) \right) q^m\\
-&= p^{\frac k2 - 1} \sum_{m \geq 0} \Bigl( a(mp) + p^{k-1} a\Bigl( \frac mp\Bigr) \Bigr) q^m
+f | T(p) &= \sum_{m \geq 0} \left( \sum_{d | (m,p)} d^{k-1} a\left(\frac{mp}{d^2}\right) \right) q^m\\
+&= \sum_{m \geq 0} \Bigl( a(mp) + p^{k-1} a\Bigl( \frac mp\Bigr) \Bigr) q^m
 \,,
 \end{align*}
 wobei $a\left(\frac mp\right) := 0$ für $p \!\! \not | \, m$, denn

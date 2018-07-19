@@ -5,6 +5,11 @@ Im Beweis von Satz 2.9, Schritt 2 fehlte bei der behaupteten Formel für die zwe
 
 Im Beweis zu Beispiel 3.6 waren Argument (z statt t) und Urbild ("leq"- statt "geq"-Zeichen) nicht richtig.
 
+# 18-07-18
+In 2.8 auch den Faktor n^{k/2-1} gestrichen, wie in 2.7.
+
+Die SL_2(Z) besteht natürlich aus Matrizen mit Einträgen in Z und nicht in R (Seite 1).
+
 # 18-07-14
 In Beweis von Satz 3.5 stand "MF_1 \cap NF_2 ist eine Nullmenge" statt "MF_1 \cap NF_1 ist eine Nullmenge".
 

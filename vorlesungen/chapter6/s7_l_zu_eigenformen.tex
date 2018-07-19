@@ -1,0 +1,20 @@
+\section{L-Reihen zu Hecke Eigenformen}
+
+\begin{satz}
+	Sei $f(z) = \sum_{n=0}^\infty a(n)q^n \in M_k$ Eigenform aller $T(n)$ und $f|T(n) = \lambda(n)f$. Dann hat $L(f, s)$ ein Euler-Produkt der Gestalt 
+	\[
+		L(f,s) = a(1) \prod_{p \in \PP} \bigl(1 - \lambda(p)p^{-s} + p^{k-1-2s}\bigr)^{-1}\,.
+	\]
+	Die rechte Seite konvergiert unbedingt für $\sigma > k$ bzw. $\sigma > \frac{k}{2} + 1$ falls $f \in S_k$.
+\end{satz}
+
+
+\begin{bewe}
+	Schon gezeigt: $a(n) = \lambda(n)a(1)$ für alle $n \geq 1$. Ferner $T(m)T(n) = T(mn)$ für $(m,n) = 1$. Also ist $\lambda(n)$ multiplikativ! Daher gilt die Formel 
+	\[L(f,s) = a(1)\sum_{n=1}^\infty \lambda(n)n^{-s} = a(1) \prod_{p \in \PP} \sum_{r=0}^\infty \lambda(p^r)p^{-rs}.\]
+	Behauptung: 
+	\[
+		\Bigl(1 - \lambda(p)X + p^{k-1}X^2\Bigr) \sum_{r=0}^\infty \lambda(p^r) X^r = 1.
+	\]
+	Das folgt unmittelbar aus der Formel $\lambda(p^r) - \lambda(p)\lambda(p^{r-1}) + p^{k-1}\lambda(p^{r-2}) = 0$ für alle $r \geq 2$ und Koeffizientenvergleich. Die Behauptung folgt mit $X = p^{-s}$.
+\end{bewe}

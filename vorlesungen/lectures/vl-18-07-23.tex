@@ -1,0 +1,114 @@
+Allgemeiner gilt sogar
+
+\begin{satz}\label{satz:Lreihe-quasiMf}
+	Seien $k > 0$, $\lambda >0$ reelle Zahlen und $C \in \CC^\times$. Sei $a(n)$ eine Folge sodass $a(n) = \mathcal O(n^\alpha)$ für ein $\alpha > 0$. Sei
+	\begin{align*}
+		L(s) &= \sum_{n=1}^\infty a(n)n^{-s}\,,\\
+		L^*(s) &= \left( \frac{2\pi}{\lambda}\right)^{-s} \Gamma(s) L(s)\,,\\
+		f(z) &= \sum_{n=1}^\infty a(n)e^{2\pi i nz/\lambda}\,.
+	\end{align*}
+	Dann sind äquivalent: 
+	\begin{enumerate}
+		\item $f(-1/z) = C (z/i)^{k} f(z)$ für alle $z \in \HH$.
+		\item $L^*(s) + \frac{a(0)}{s} + \frac{Ca(0)}{k - s}$ hat holomorphe Fortsetzung, ist beschränkt in $\nu_1 \leq \Re(s) \leq \nu_2$ und es gilt 
+		\[L^*(k - s) = C L^*(s).\]
+	\end{enumerate}
+\end{satz}
+
+
+\begin{bsp}
+	Theta-Transformationsformel: $A \in M_m(\RR)$, $A = A^t$, $A > 0$, setze
+	\[
+		\theta_A(z) = \sum_{g \in \ZZ^m} e^{\pi i A[g] z}, \qquad z \in \HH\,.
+	\]
+	Dann gilt 
+	\[
+		\theta_{A^{-1}}(-1/z) = \sqrt{\det A} (z / i)^{m/2} \theta_A(z)\,.
+	\]
+	Ist speziell $m=1$ und $A = 1$, so folgt 
+	\[
+		\theta_1(z) = 1 + 2\sum_{n=1}^\infty e^{\pi i n^2 z}\,.
+	\]
+	Sei $f = \frac12 \theta_1$. Dann gilt
+	\[
+		f(-1/z) = (z/i)^{1/2} f(z).
+	\]
+	Man wende nun \autoref{satz:Lreihe-quasiMf} auf $f$ mit den Parametern $k = \frac12$, $\lambda = 2$ und $C = 1$, also $a(0) = \frac12$. Dann
+	\[
+		L(s) = \sum_{n=1}^\infty (n^{2})^{-s} = \zeta(2s).
+	\]
+	Es folgt $\pi^{-s} \Gamma(s)\zeta(2s) + \frac{1}{2s} + \frac{1}{1-2s}$ hat holomorphe Fortsetzung auf $\CC$, ist beschränkt auf Vertikalstreifen $\nu_1 \leq \Re(s) \leq \nu_2$ und es gilt die Funktionalgleichung unter $s \mapsto \frac12 - s$. Hieraus erhält man die schon bekannten analytischen Eigenschaften von $\zeta(s)$, üblicherweise formuliert wie folgt: $\pi^{-s}\Gamma(s)\zeta(2s)$ hat holomorphe Fortsetzung auf $\CC \setminus \{0,1\}$, einfache Pole in $s= 0$ und $s=1$ und ist invariant  unter $s \mapsto 1 - s$.
+\end{bsp} 
+
+
+\section{L-Reihen zu Hecke Eigenformen}
+
+\begin{satz}
+	Sei $f(z) = \sum_{n=0}^\infty a(n)q^n \in M_k$ Eigenform aller $T(n)$ und $f|T(n) = \lambda(n)f$. Dann hat $L(f, s)$ ein Euler-Produkt der Gestalt 
+	\[
+		L(f,s) = a(1) \prod_{p \in \PP} \bigl(1 - \lambda(p)p^{-s} + p^{k-1-2s}\bigr)^{-1}\,.
+	\]
+	Die rechte Seite konvergiert unbedingt für $\sigma > k$ bzw. $\sigma > \frac{k}{2} + 1$ falls $f \in S_k$.
+\end{satz}
+
+
+\begin{bewe}
+	Schon gezeigt: $a(n) = \lambda(n)a(1)$ für alle $n \geq 1$. Ferner $T(m)T(n) = T(mn)$ für $(m,n) = 1$. Also ist $\lambda(n)$ multiplikativ! Daher gilt die Formel 
+	\[L(f,s) = a(1)\sum_{n=1}^\infty \lambda(n)n^{-s} = a(1) \prod_{p \in \PP} \sum_{r=0}^\infty \lambda(p^r)p^{-rs}.\]
+	Behauptung: 
+	\[
+		\Bigl(1 - \lambda(p)X + p^{k-1}X^2\Bigr) \sum_{r=0}^\infty \lambda(p^r) X^r = 1.
+	\]
+	Das folgt unmittelbar aus der Formel $\lambda(p^r) - \lambda(p)\lambda(p^{r-1}) + p^{k-1}\lambda(p^{r-2}) = 0$ für alle $r \geq 2$ und Koeffizientenvergleich. Die Behauptung folgt mit $X = p^{-s}$.
+\end{bewe}
+
+
+\section{Spezielle Werte von L-Funktionen}
+
+\begin{erin}
+	Es sei $f \in S_k$ normalisierte Hecke-Eigenform. Dann ist
+	\[
+		L^*(f, s) = (2\pi)^{-s} \Gamma(s) L(f, s)
+	\]
+	eine ganze Funktion und $(-1)^{k/2}$-invariant unter $s \mapsto k - s$. Ferner gilt 
+	\[
+		L(f,s) = \prod_{p \in \PP} \bigl(1 - a(p)p^{-s} + p^{k-1-2s}\bigr)^{-1}.
+	\]
+\end{erin}
+
+
+\begin{defi}
+	Eine ganze Zahl $s_0$ heißt \myemph{kritisch} bezüglich $L(f,s)$, falls $1 \leq s_0 \leq k-1$. Idee: $s_0$ ist genau dann kritisch, falls es weder Pol von $\Gamma(s)$ noch von $\Gamma(k-s)$.
+\end{defi}
+
+Es gibt folgende Philosophie von Deligne: sei 
+\[
+	L(s) = \sum_{n=1}^\infty a(n)n^{-s}
+\]
+eine \glqq{}motivierte\grqq{} Dirichletreihe (d.\,h. $L$ kommt von einem natürlichen mathematischen Objekt wie einer Varietät, einer Modulform, einer Galois-Darstellung, einem Zahlkörper, \ldots). Man setzt voraus, dass $L$ ein Euler-Produkt besitzt und sich zu einer ganzen Funktion fortsetzen lässt (oder zumindest meromorph mit endlich vielen Polstellen) und ihre Vervollständigung $L^*(s) = \gamma(s)L(s)$ (mit einem Gamma-Faktor $\gamma(s)$) eine Funktionalgleichung $L^*(k - s) = \epsilon L^*(s)$ erfüllt mit $k > 0$ und $\epsilon \in \{\pm1\}$. Ist $s_0$ kritisch, so ist es weder Pol von $\gamma(s)$ noch $\gamma(k-s)$. Dann soll seine geschlossene Formel gelten:
+\[
+	L^*(s_0) = B(s_0) \Omega
+\]
+mit $B(s_0) \in \closure{\QQ}$ und $\Omega$ \glqq{}im Wesentlichen unabhängig von $s_0$\grqq{} (\glqq Periode\grqq).
+
+\begin{bsp}
+	$\zeta(s)$. Dann sind genau die positiven geraden und die negativen ungeraden Zahlen kritisch.
+\end{bsp}
+
+\begin{satz}[Eichler-Shimura]
+	Sei $f \in S_k$ eine Hecke-Eigenform.
+	Dann existieren $\omega_+, \omega_- \in \RR_+$ derart, dass die Werte $L^*(f, s_0)/\omega_+$ für $s_0$ kritisch und ungerade und $L^*(f, s_0)/\omega_-$ für $s_0$ kritisch und gerade, algebraisch sind. Man kann $f$ so normalisieren dass
+	\[
+		\omega_+ \omega_- = \scalarprd ff\,.
+	\]
+\end{satz}
+
+\begin{bsp}
+	Ist $f = \Delta \in S_{12}$, so gilt
+	\begin{align*}
+		L^*(\Delta, 1) &= L^*(\Delta, 11) = \frac{192}{691} \omega_+, \\
+		L^*(\Delta, 3) &= L^*(\Delta, \phantom{11}\makebox[0pt][r]{9}) = \frac{16}{135} \omega_+, \\
+		L^*(\Delta, 5) &= L^*(\Delta, \phantom{11}\makebox[0pt][r]{7}) = \frac{8}{105} \omega_+.
+	\end{align*}
+	Ähnlich für $\omega_-$.
+\end{bsp}
