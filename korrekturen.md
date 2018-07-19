@@ -1,3 +1,10 @@
+# 18-07-19
+Im Beweis von Satz 2.7, ii) stand an zwei Stellen "m > 0" statt "m \geq 0" sowie einmal n statt N.
+
+Im Beweis von Satz 2.9, Schritt 2 fehlte bei der behaupteten Formel für die zweite Summe im Exponenten von "(p^{nu+1})^{k/2}" die -1. Am Ende dieses Schrittes stand "f|_k T(...)" statt "f|T(...)". Bei Schritt 3 geht die Induktion über nu.
+
+Im Beweis zu Beispiel 3.6 waren Argument (z statt t) und Urbild ("leq"- statt "geq"-Zeichen) nicht richtig.
+
 # 18-07-14
 In Beweis von Satz 3.5 stand "MF_1 \cap NF_2 ist eine Nullmenge" statt "MF_1 \cap NF_1 ist eine Nullmenge".
 

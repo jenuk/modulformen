@@ -1,7 +1,7 @@
 \section[Die Modulinvariante \texorpdfstring{$j$}{j}]{Die Modulinvariante {\boldmath $j$}}
 
 \begin{defi}
-Sei $j := \frac{E_4^3}{\Delta}$.
+Sei $j := \frac{E_4^3}{\Delta}$ die \myemph{Modulinvariante}.
 \end{defi}
 
 \begin{satz-list}\label{satz:j_eigenschaften}
@@ -21,7 +21,7 @@ Sei $j := \frac{E_4^3}{\Delta}$.
 	\item Sei $\lambda \in \CC$. Dann ist zu zeigen, dass die Modulfunktion $j_\lambda := j - \lambda$ vom Gewicht Null eine modulo $\SL_2(\ZZ)$ eindeutig bestimmte Nullstelle hat.
 	Man wendet auf $j_\lambda$ die Valenzformel an!
 	Es gilt $\ord_z j_\lambda \geq 0$ für alle $z\in\HH$ und $\ord_\infty j_\lambda = -1$.
-	Da $k = 0$ folgt mit der Valenzformel
+	Da $k = 0$, folgt mit der Valenzformel
 	\[
 	-1 + n + \frac{n'}{2} + \frac{n''}{3} = 0
 	\]
@@ -29,6 +29,7 @@ Sei $j := \frac{E_4^3}{\Delta}$.
 	Also
 	\begin{equation}\label{eq:basicj_valenzformel}
 	n + \frac{n'}{2} + \frac{n''}{3} = 1
+	\,.
 	\end{equation}
 	Man prüft nach: die einzigen Lösungen $(n,n',n'') \in \NN_0^3$ von \eqref{eq:basicj_valenzformel} sind $(1,0,0)$, $(0,2,0)$ und $(0,0,3)$.
 	Dies impliziert die Behauptung.
@@ -92,8 +93,8 @@ Sei $j := \frac{E_4^3}{\Delta}$.
 \end{bewe-list}
 
 \begin{beme-list}
-	\item Der Quotient $\linksmodulo{\Gamma(1)}{\HH}$ besitzt in natürlicher Weise die Struktur einer Riemannschen Fläche isomorph zu $S^2 \setminus\Set{\text{Punkt}}$ indem man die Ränder in $\closure{\F_1}$ identifiziert.
-	Fügt man den Punkt $\infty$ hinzu, so erhält an $\closure{\linksmodulo{\Gamma(1)}{\HH}} := \linksmodulo{\Gamma(1)}{\HH} \cup \Set{\infty} \cong S^2$ (die Sphäre in $\RR^3$).
+	\item Der Quotient $\linksmodulo{\Gamma(1)}{\HH}$ besitzt in natürlicher Weise die Struktur einer Riemannschen Fläche isomorph zu $S^2 \setminus\Set{\text{Punkt}}$, indem man die Ränder in $\closure{\F_1}$ identifiziert.
+	Fügt man den Punkt $\infty$ hinzu, so erhält man $\closure{\linksmodulo{\Gamma(1)}{\HH}} := \linksmodulo{\Gamma(1)}{\HH} \cup \Set{\infty} \cong S^2$ (die Sphäre in $\RR^3$).
 	\autoref{satz:j_eigenschaften} (iii) besagt dann, dass $j$ ein Isomorphismus von $\closure{\linksmodulo{\Gamma(1)}{\HH}} \cong S^2 \cong \mathds P^1(\CC) = \CC \cup \infty$ ist.
 	\autoref{satz:charakterisierung_modulfunktion_0} entspricht dann der Tatsache, dass die einzigen meromorphen Funktionen auf $S^2$ die rationalen Funktionen sind.
 	
@@ -113,10 +114,10 @@ Sei $j := \frac{E_4^3}{\Delta}$.
 	\end{align*}
 	Also hat die $j$-Funktion eine Fourierentwicklung in $q$, wobei die Koeffizienten positive ganzen Zahlen sind.
 	
-	\item Man zeigt leicht: $\frac{1}{\prod_{n\geq1} (1-q^n)} = 1 + \sum_{n\geq1} p(n)q^n$ wobei $p(n)$ die Anzahl der Partionen von $n$ ist, d.\,h. die Anzahl der Zerlegungen von $n$ als Summe positiver, ganzer Zahlen (Beispielsweise $p(4) = 5$, denn $4 = 3 + 1 = 2 + 2 = 2 + 1 + 1 = 1 + 1 + 1 + 1$).
-	Man sagt: die erzeugende Reihe von $p(n)$ wird durch $\frac{1}{\prod_{m\geq1} (1-q^n)}$ gegeben.
+	\item Man zeigt leicht: $\frac{1}{\prod_{n\geq1} (1-q^n)} = 1 + \sum_{n\geq1} p(n)q^n$ wobei $p(n)$ die Anzahl der Partionen von $n$ ist, d.\,h. die Anzahl der Zerlegungen von $n$ als Summe positiver, ganzer Zahlen (beispielsweise $p(4) = 5$, denn $4 = 3 + 1 = 2 + 2 = 2 + 1 + 1 = 1 + 1 + 1 + 1$).
+	Man sagt: Die erzeugende Reihe von $p(n)$ wird durch $\frac{1}{\prod_{n\geq1} (1-q^n)}$ gegeben.
 	
-	\emph{Beachte} $1 + \sum_{n\geq1} p(n)q^n = \frac{e^{\pi i\frac{z}{12}}}{\eta(z)}$ wobei $\eta(z) = e^{\pi i\frac{z}{12}} \prod_{n\geq1} (1-q^n)$ die sogenannte \myemph{Dedekindische $\eta$-Funktion} ist.
+	\emph{Beachte} $1 + \sum_{n\geq1} p(n)q^n = \frac{e^{\pi i\frac{z}{12}}}{\eta(z)}$ wobei $\eta(z) = e^{\pi i\frac{z}{12}} \prod_{n\geq1} (1-q^n)$ die sogenannte \myemph{Dedekindsche $\eta$-Funktion} ist.
 	Beachte $\eta^{24} = \Delta$.
 	$\eta$ sollte also eine Modulform vom Gewicht $\frac{1}{2}$ sein.
 	Mit Hilfe der Theorie der Modulformen kann man zeigen $p(n) \sim \frac{1}{4\sqrt 3 n} \cdot e^{\pi \sqrt{\frac{3}{2}n}}$ für $n\to\infty$ (hier $a(n) \sim b(n)$ genau dann, wenn $\lim_{n\to\infty} \frac{a(n)}{b(n)} = 1$).

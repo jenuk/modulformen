@@ -5,12 +5,12 @@ Die Hecke-Operatoren $T(n)$ für $n \in \NN$ erzeugen eine kommutative $\CC$-Alg
 \end{satz}
 
 \begin{bewe}
-Die Kommutativität folgt direkt aus \autoref{TmTn}. Wir zeigen noch, dass für beliebiges $n \in \NN$ der Hecke-Operator $T(n)$ durch Hecke-Operatoren der Form $T(p)$ mit $p$ prim darstellbar ist. Sei dazu $n = \prod_{i=1}^{r} p_i^{\alpha_i}$ die Primzahlzerlegung von $n$, dann ist nach \autoref{TmTn}, i)
+Die Kommutativität folgt direkt aus \autoref{TmTn}. Wir zeigen noch, dass für beliebiges $n \in \NN$ der Hecke-Operator $T(n)$ durch Hecke-Operatoren der Form $T(p)$ mit $p$ prim darstellbar ist. Sei dazu $n = \prod_{i=1}^{r} p_i^{\alpha_i}$ die Primfaktorzerlegung von $n$, dann ist nach \autoref{TmTn}, i)
 \[
 T(n) = \prod_{i=1}^{r} T(p_i^{\alpha_i})
 \,.
 \]
-Ferner gilt nach \autoref{TmTn}, ii)
+Ferner gilt nach \autoref{TmTn}, ii) für $\nu \geq 1$
 \[
 T(p) T(p^\nu) = T(p^{\nu+1}) + p^{k-1} T(p^{k-1})
 \,,
@@ -49,7 +49,7 @@ sowie für $\nu \geq 1$ und $p$ prim
 \begin{bewe-list}
 \item Nach \autoref{TnEndoMk}, ii) gilt
 \[
-\lambda(n) f = f | T(n) = \sum_{m \geq 0} \Bigl( \sum_{d \vert (m,n)} d^{k-1} a\bigl( \frac {mn}{d^2} \bigr) \Bigr) q^m
+\lambda(n) f = f | T(n) = \sum_{m \geq 0} \Bigl( \sum_{d \vert (m,n)} d^{k-1} a\Bigl( \frac {mn}{d^2} \Bigr) \Bigr) q^m
 \,.
 \]
 Koeffizientenvergleich bei $q^1$ liefert sofort $\lambda (n) \cdot a(1) = a(n)$.
@@ -77,7 +77,7 @@ E_k = 1 - \frac{2k}{B_k} \sum_{n \geq 1} \sigma_{k-1} (n) q^n \quad \text{ mit }
 \]
 eine Hecke-Eigenform ist mit $E_k | T(n) = \sigma_{k-1}(n) E_k$ für alle $n \geq 1$.
 
-In der Tat: Der konstante Term von $E_k | T(n)$ ist gleich $\sigma_{k-1}(n)$, siehe \ref{TnEndoMk}. Die höheren Terme ergeben sich nach demselben Satz als 
+In der Tat: Der konstante Term von $E_k | T(n)$ ist gleich $\sigma_{k-1}(n)$, siehe \autoref{TnEndoMk}. Die höheren Terme ergeben sich nach demselben Satz als 
 \[
 - \frac{2k}{B_k} \sum_{d \vert (m,n)} d^{k-1} \sigma_{k-1} \left(\frac{mn}{d^2}\right) = - \frac{2k}{B_k} \sigma_{k-1}(m) \sigma_{k-1}(n)
 \]

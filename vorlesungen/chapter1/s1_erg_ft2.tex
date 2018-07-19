@@ -90,6 +90,7 @@ Nach Funktionentheorie 1 hat dann $F$ eine Laurententwicklung
 	F(q) = \sum_{n \geq n_0} a_n q^n
 	\qquad \text{für }
 	0 < \abs q < \abs{q_0}
+	\,,
 \]
 wobei $n_0 \in \ZZ$ fest.
 Damit erhalten wir also
@@ -97,15 +98,16 @@ Damit erhalten wir also
 	f(z) = \sum_{n \geq n_0} a_n e^{2\pi i nz}
 	\qquad \text{für }
 	 0 < y_0 < y
+	 \,.
 \]
 
 \begin{defi}
 	Ein solches $f$ heißt \myemph{Modulform} falls $f$ auf $\HH$ und in $\infty$ holomorph ist (letzteres bedeutet, dass $F$ in $q=0$ hebbar ist, also $f(z) = \sum_{n \geq 0} a_n e^{2\pi inz}$ für alle $z\in\HH$).
-	Eine Modulform heißt Spitzenform, falls $a_0 = 0$.
+	Eine Modulform heißt \myemph{Spitzenform}, falls $a_0 = 0$.
 \end{defi}
 
 \begin{beme}
-	Die Fourierkoeffizienten $a_n$ sind im Allgemeinen wichtige und interessante Größen (z.\,B. Darstellungsanzahlen von natürlichen ahlen durch quadratische Formen, etwa $r_4(n) = \#\Set{(x,y,z,w) \in \ZZ^4 \mid n = x^2+y^2+z^2+w^2}$ oder die Anzahl von Punkten auf elliptischen Kurven über $\FF_p$).
+	Die Fourierkoeffizienten $a_n$ sind im Allgemeinen wichtige und interessante Größen (z.\,B. Darstellungsanzahlen von natürlichen Zahlen durch quadratische Formen, etwa $r_4(n) = \#\Set{(x,y,z,w) \in \ZZ^4 \mid n = x^2+y^2+z^2+w^2}$ oder die Anzahl von Punkten auf elliptischen Kurven über $\FF_p$).
 \end{beme}
 
 \begin{defi}
@@ -130,6 +132,7 @@ Es folgt:
 	hat und zusätzlich gilt
 	\[
 		f\Bigl(-\frac{1}{z}\Bigr) = z^k f(z)
+		\,.
 	\]
 \end{enumerate}
 
@@ -192,6 +195,7 @@ Es folgt:
 	Damit folgt
 	\[
 		E_k = 1 - \frac{2k}{B_k} \sum_{n \geq 1} \sigma_{k-1}(n)q^n
+		\,,
 	\]
 	wobei alle $B_k$ rationale Zahlen sind. Speziell gilt 
 	\begin{align*}
@@ -221,14 +225,14 @@ Es folgt:
 	Zum Nachweis reduziert man auf den Fall, dass $f$ außer in $z = \rho, - \conj{\rho}, i$ keine Null- oder Polstellen auf $\partial \closure{F_1}$ hat und berechnet
 	\[
 	\frac{1}{2\pi i} \int_{\mathcal C} \frac{f'(z)}{f(z)} \opd z
-	\,.
+	\,,
 	\]
-	Wobei die Kurve $\mathcal C$ wie in \autoref{fig:valenzformelweg} gewählt ist.
+	wobei die Kurve $\mathcal C$ wie in \autoref{fig:valenzformelweg} gewählt ist.
 	
 	\begin{figure}
 		\begin{center}
 			\includestandalone[scale=.7]{images/chapter1/valenzformelweg}
-			\caption{Die Kurve $\mathcal C$ wobei $A$ und $E$ so gewählt sind, dass $\mathcal C$ alle Null- und Polstellen enthält.}
+			\caption{Die Kurve $\mathcal C$, wobei $A$ und $E$ so gewählt sind, dass $\mathcal C$ alle Null- und Polstellen (außer eventuell $i, \rho$) einschließt.}
 			\label{fig:valenzformelweg}
 		\end{center}
 	\end{figure}
@@ -239,7 +243,7 @@ Es folgt:
 	\[
 	\Delta (z) = \frac{1}{1728} \left( E_4^3(z) - E_6^2(z) \right)
 	\]
-	die \myemph{Diskriminantenfunktion}. Dann ist $\Delta$ eine Spitzenform vom Gewicht $k = 12$ mit $\Delta(z) \neq 0 \, \forall z \in \HH$ und $\ord_\infty \Delta = 1$, d.\,h. $\Delta = q + \ldots$
+	die \myemph{Diskriminantenfunktion}. Dann ist $\Delta$ eine Spitzenform vom Gewicht $k = 12$ mit $\Delta(z) \neq 0 \, \forall z \in \HH$ und $\ord_\infty \Delta = 1$, d.\,h. $\Delta = q + \ldots$.
 \end{defi}
 
 \begin{beme}
@@ -247,7 +251,7 @@ Es folgt:
 	
 	\begin{bsp-list}
 		\item Schreibe $\Delta(z) = \sum_{n \geq 1} \tau (n) q^n$, dann heißt $n \mapsto \tau (n)$ \myemph{Ramanujan-Funktion}. Es gilt: $\tau (n) \in \ZZ$ für alle $n \geq 1$. Ferner lässt sich zeigen, dass $\tau (n) \equiv \sigma_{11}(n) \mod 691$, mithilfe von $B_{12} = - \frac{691}{2730}$.
-		\item Vermutung: $\tau (n) \neq 0$ für alle $n \geq 1$ (Lehner)
+		\item Vermutung: $\tau (n) \neq 0$ für alle $n \geq 1$ (Lehner).
 	\end{bsp-list}
 	
 \end{beme}
@@ -277,6 +281,7 @@ Sei $M_k$ der $\CC$-Vektorraum der Modulformen vom Gewicht $k \in \ZZ$ und $S_k 
 	\floor{\frac k{12}} & \text{ falls } k \equiv 2 \mod 12\\
 	1 + \floor{\frac k{12}} & \text{ falls } k \not \equiv 2 \mod 12
 	\end{cases}
+	\,.
 	\]
 \end{satz}
 
@@ -295,7 +300,8 @@ Sei $M_k$ der $\CC$-Vektorraum der Modulformen vom Gewicht $k \in \ZZ$ und $S_k 
 	Sei $k \geq 0$ gerade. Dann bilden $E_4^\alpha E_6^\beta$ mit $4\alpha + 6\beta = k$ eine Basis von $M_k$, insbesondere gilt also
 	\[
 	M_k = \bigoplus_{\substack{\alpha, \beta \geq 0\\ 4\alpha + 6\beta = k}} \CC E_4^\alpha E_6^\beta
-	\].
+	\,.
+	\]
 \end{satz}
 
 \begin{bewe}
@@ -304,9 +310,11 @@ Sei $M_k$ der $\CC$-Vektorraum der Modulformen vom Gewicht $k \in \ZZ$ und $S_k 
 	Sei nun $f \in M_k$ beliebig mit konstantem Term $a_0$. Dann ist $f - a_0 \cdot g \in S_k$. Nach Satz \ref{M_k1}, iv) gilt daher $f - a_0 \cdot g = \Delta \cdot h$ mit $h \in M_{k-12}$. Nach Induktionsvoraussetzung ist $h$ eine Linearkombination von Monomen $E_4^\gamma E_6^\delta$ mit $4 \gamma + 6 \delta = k - 12$. Aber $\Delta = \frac{1}{1728} (E_4^3 - E_6^2)$ und daher ist $f - a_0 \cdot g$ Linearkombination von Monomen $E_4^{\gamma + 3}E_6^{\delta}$ und $E_4^{\gamma}E_6^{\delta + 2}$. Wegen
 	\[
 	4(\gamma + 3) + 6 \delta = k - 12 + 12 = k
+	\,,
 	\]
 	\[
 	4 \gamma + 6 (\delta + 2) = k - 12 + 12 = k
+	\,,
 	\]
 	ist also auch $f$ als Linearkombination von Monomen der behaupteten Form schreibbar. Somit erzeugen die Monome tatsächlich $M_k$.
 	
@@ -327,7 +335,7 @@ Sei $M_k$ der $\CC$-Vektorraum der Modulformen vom Gewicht $k \in \ZZ$ und $S_k 
 	E_4(z) = 1 + 240 \sum_{n \geq 1} \sigma_3 (n) e^{2\pi i n z} \quad \Ra \quad E_4 (i) = 1 + 240 \sum_{n \geq 1} \sigma_3 (n) e^{-2 \pi n}
 	\,.
 	\] 
-	Da alle Summanden positiv sind, folgt $E_4(i) \neq 0$ und somit $\frac{E_6^2(i)}{E_4^3(i)} = 0$. Dies impliziert jedoch da $\frac{E_6^2}{E_4^3}$ konstant ist bereits $E_6 \equiv 0$. \blitz
+	Da alle Summanden positiv sind, folgt $E_4(i) \neq 0$ und somit $\frac{E_6^2(i)}{E_4^3(i)} = 0$. Dies impliziert jedoch, da $\frac{E_6^2}{E_4^3}$ konstant ist, bereits $E_6 \equiv 0$. \blitz
 	
 	\emph{Fall 2:} Sei $k \equiv 2 \mod 4$, dann sind alle $\beta$ ungerade. Analoges Vorgehen zum ersten Fall liefert ebenfalls einen Widerspruch.
 	
