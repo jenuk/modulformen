@@ -1,7 +1,27 @@
+# 18-07-22
+Abschnitt 4.1.2, am Anfang "g_n(m) = .../(4pi n)^(k-2) * ..." statt "g_n(m) = .../(2pi n)^(k-2)" und der Summe sollte der zweite Fourierkoeffizient a_nu(n) nicht a_nu(m) sein.
+
+Bsp 6.8 ii) "\sum .../n^s" statt "\sum .../n"
+
+Bsp 6.23: L^* hat als Vorfaktor (2pi)^(-s) statt (s * pi)^(-s)
+
+Satz 6.24: L^* gehört nicht den Exponenten
+
+Beweis von Satz 6.3: in der abelschen Summation ist die letzte Potenz von e ist -lambda_N * s nicht -lambda_n * s.
+In der folgenden Rechnung fehlt am Ende der Index eines lambdas, das ist ein n.
+
+Beweis Satz 6.22: zu Beginn ist die makierte Funktion im Integral f(ix/2pi) nicht f(ix)
+
+Beweis von 4.11: in der vorletzten Formel, muss d^(-k) statt d^(-n) stehen und die Summe läuft auch über b mod d.
+
+Beweis 5.1: Die zweite Integration in (5.6) muss über gamma nach F und nicht über den Rand von F gehen.
+Das Bild der h_j liegt in C, nicht in H.
+In der Fallunterscheidung (Anfang Seite 49) fehlte der Faktor a_m^mu
+
 # 18-07-19
 Im Beweis von Satz 2.7, ii) stand an zwei Stellen "m > 0" statt "m \geq 0" sowie einmal n statt N.
 
-Im Beweis von Satz 2.9, Schritt 2 fehlte bei der behaupteten Formel für die zweite Summe im Exponenten von "(p^{nu+1})^{k/2}" die -1. Am Ende dieses Schrittes stand "f|_k T(...)" statt "f|T(...)". Bei Schritt 3 geht die Induktion über nu.
+Im Beweis von Satz 2.9, Schritt 2 fehlte bei der behaupteten Formel für die zweite Summe im Exponenten von "(p^{nu+1})^{k/2}" die -1. Am Ende dieses Schrittes stand "f|\_k T(...)" statt "f|T(...)". Bei Schritt 3 geht die Induktion über nu.
 
 Im Beweis zu Beispiel 3.6 waren Argument (z statt t) und Urbild ("leq"- statt "geq"-Zeichen) nicht richtig.
 

@@ -63,7 +63,7 @@ folgt $h_m(-, z') \in S_k$ und $h_m(z, -) \in S_k$ aus Symmetriegründen.
 	\begin{enumerate}
 		\item Die Funktion $C_k^{-1} m^{k-1} h_m(z,z')$ ist ein Kern für den Operator $T(m)\colon S_k \ra S_k$, das heißt:
 		\begin{equation}\label{eq:faltung_hm}%\tag{3}
-		(f * h_m)(z') = C_km^{-k+1} (T(m)f)(z')
+		(f * h_m)(z') = C_km^{-k+1} (f|T(m))(z')
 		\end{equation}
 		\item Es gilt die Identität 
 		\begin{equation}%\tag{4}
@@ -91,7 +91,7 @@ folgt $h_m(-, z') \in S_k$ und $h_m(z, -) \in S_k$ aus Symmetriegründen.
 	\begin{equation}\label{eq:faltung_h1}%\tag{6}
 	\begin{split}
 	(f * h_1)(z') &= \int_\F \sum_{\gamma \in \Gamma(1)} (-z' + \gamma \conj z)^{-k} f(\gamma z) \Im(\gamma z)^k \frac{\opd x \opd y}{y^2} \\
-	&= \sum_{\gamma \in \Gamma} \int_{\partial \F} (-z' + \conj z)^{-k} f(z) y^{k-2} \opd x \opd y \\
+	&= \sum_{\gamma \in \Gamma} \int_{\gamma \circ \F} (-z' + \conj z)^{-k} f(z) y^{k-2} \opd x \opd y \\
 	&= 2 \int_0^\infty \int_{-\infty}^\infty (x-iy - z')^{-k} f(x+iy) y^{k-2} \opd x \opd y
 	\end{split}
 	\end{equation}
@@ -115,21 +115,21 @@ folgt $h_m(-, z') \in S_k$ und $h_m(z, -) \in S_k$ aus Symmetriegründen.
 	Für den allgemeinen Fall beachte
 	\[
 	\begin{split}
-	T(m)h_1(z,z')
-	&= T(m) \sum_{\gamma\in\Gamma(1)} (z'+z)^{-k} |_{k,z} \gamma \\
+	h_1(z,z')|T(m)
+	&= \biggl(\sum_{\gamma\in\Gamma(1)} (z'+z)^{-k} |_{k,z} \gamma\biggr)\Big|T(m) \\
 	&= m^{k-1} \sum_{\substack{M \in \linksmodulo{\Gamma(1)}{\M(m)}\\ \gamma \in \Gamma(1)}} (z'+z)^{-k} |_{k,z} \gamma M \\
 	&= m^{k-1} \sum_{R \in \M(m)} (z'+z)^{-k}|_{k,z} R \\
-	&= m^{k-1} h_m
+	&= m^{k-1} h_m(z,z')
 	\end{split}
 	\]
 	Damit folgt (i).
 	
-	Für (ii) beachte, dass wir $h_m$ schreiben können mit $z_1$, \ldots, $z_r$ paarweise verschieden und $z_\nu \not\equiv i, \rho \mod \Gamma(1)$ als
+	Für (ii) beachte, dass wir $h_m$ schreiben können als
 	\[
 	h_m(z,z') = \sum_{i,j=1}^r c_{ij}f_i(z)f_j(z)
 	\]
-	Denn wir können $h_m(z, z') = h_1(z) f_1(z') + \ldots + h_r(z) f_r(z')$, da $f_1$, \ldots, $f_r$ eine Basis der Spitzenformen sind, mit Funktionen $h_j\colon \HH \ra \HH$.
-	Diese sind auch Spitzenformen, denn die Matrix in
+	Denn wir können $h_m(z, z') = h_1(z) f_1(z') + \ldots + h_r(z) f_r(z')$ schreiben, da $f_1$, \ldots, $f_r$ eine Basis der Spitzenformen sind, mit Funktionen $h_j\colon \HH \ra \CC$.
+	Diese sind auch Spitzenformen, denn mit $z_1$, \ldots, $z_r$ paarweise verschieden und $z_\nu \not\equiv i, \rho \mod \Gamma(1)$ ist die Matrix in
 	\[
 	\begin{pmatrix}
 	h_1(z,z_1) \\
@@ -148,7 +148,7 @@ folgt $h_m(-, z') \in S_k$ und $h_m(z, -) \in S_k$ aus Symmetriegründen.
 	h_r(z)
 	\end{pmatrix}
 	\]
-	ist invertierbar, sonst würden $\alpha_1$, \ldots, $\alpha_r \in \CC$ existieren, so dass $\alpha_1 f_1 + \ldots + \alpha_r f_r = 0$ ist und dies steht im Widerspruch dazu, dass die $f_j$ eine Basis bilden.
+	invertierbar, sonst würden $\alpha_1$, \ldots, $\alpha_r \in \CC$, nicht alle Null, existieren, so dass $\alpha_1 f_1 + \ldots + \alpha_r f_r \equiv 0$ ist und dies steht im Widerspruch dazu, dass die $f_j$ eine Basis bilden.
 	Somit sind die $h_j$ Linearkombination von Spitzenformen und somit selbst Spitzenformen und als Linearkombination von den $f_j$ darstellbar.
 	
 	Wende nun \eqref{eq:faltungskern} auf die Funktion $f = f_\mu$ mit $1 \leq \mu \leq r$, an:
@@ -160,12 +160,12 @@ folgt $h_m(-, z') \in S_k$ und $h_m(z, -) \in S_k$ aus Symmetriegründen.
 	\stackrel{\text{(i)}}{=} C_km^{1-k} a_m^\mu f_\mu(z')
 	\end{split}
 	\]
-	Da $f_1$, \ldots $f_r$ eine Basis, folgt
+	Da $f_1$, \ldots, $f_r$ eine Basis, folgt
 	\[
 	c_{\mu j} =
 	\begin{cases}
 	0 & \text{falls } j \not= \mu \\
-	C_k m^{1-k} \scalarprd{f_\mu}{f_\mu}^{-1} & \text{falls } j = \mu
+	C_k m^{1-k} \scalarprd{f_\mu}{f_\mu}^{-1} \cdot a_m^\mu & \text{falls } j = \mu
 	\end{cases}
 	\]
 	Damit folgt (ii).
@@ -174,7 +174,7 @@ folgt $h_m(-, z') \in S_k$ und $h_m(z, -) \in S_k$ aus Symmetriegründen.
 	\[\begin{split}
 	C_k^{-1} m^{k-1} \int_\F h_m(z, -\conj{z}) y^{k-2}\opd x \opd y
 	&= \int_\F \sum_{i=1}^r a_m^i \frac{f_i(z)f_i(-\conj z)}{\scalarprd{f_i}{f_i}} y^{k-2} \opd x \opd y \\
-	&= \sum_{i=1}^r a_mî \int_F \frac{f_i(z) \conj{f_i(z)}}{\scalarprd{f_i}{f_i}} y ^{k-2} \opd x \opd y \\
+	&= \sum_{i=1}^r a_m^i\int_\F \frac{f_i(z) \conj{f_i(z)}}{\scalarprd{f_i}{f_i}} y ^{k-2} \opd x \opd y \\
 	&= \sum_{i=1}^r a_m^i = \Tr T(m)
 	\end{split}
 	\]

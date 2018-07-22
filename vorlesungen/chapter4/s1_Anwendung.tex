@@ -233,7 +233,7 @@ P_n = \frac{(k-2)!}{(4\pi n)^{k-1}} \sum_{\nu = 0}^g \frac{\conj{a_\nu(n)}f_\nu}
 wenn $f_\nu = \sum_{m\geq 1} a_\nu(m) q^m$.
 Nimmt man auf beiden Seiten den $m$-ten Fourier-Koeffizieten so erhält man
 \[
-g_n(m) = \frac{(k-2)!}{(2\pi n)^{k-1}} \sum_{\nu=1}^g \frac{a_\nu(m) \conj{a_\nu(m)}}{\scalarprd{f_\nu}{f_\nu}}
+g_n(m) = \frac{(k-2)!}{(4\pi n)^{k-1}} \sum_{\nu=1}^g \frac{a_\nu(m) \conj{a_\nu(n)}}{\scalarprd{f_\nu}{f_\nu}}
 \]
 Damit folgt
 \[
@@ -353,7 +353,7 @@ Es gilt nun
 \]
 Die innere Summe ist gleich 
 \[
-	\sum_{d|n} n^{\frac k2} d^{-n} e^{2\pi im \left( \frac {n}{d^2} z + \frac bd \right)} = n^{\frac k2} \sum_{d | (m,n)} d^{1-k} e^{2\pi i \frac {mn}{d^2} z}
+	\sum_{\substack{d|n \\ b\bmod b}} n^{\frac k2} d^{-k} e^{2\pi im \left( \frac {n}{d^2} z + \frac bd \right)} = n^{\frac k2} \sum_{d | (m,n)} d^{1-k} e^{2\pi i \frac {mn}{d^2} z}
 	\,,
 \]
 wegen 
@@ -367,7 +367,7 @@ Hieraus folgt die Behauptung.
 \begin{satz}\label{T(n)herm}
 Die Operatoren $T(n), n \in \NN$ eingeschränkt auf $S_k$ sind hermitesch bezüglich des Petersson-Skalarproduktes, d.h.
 \[
-	\scalarprd {f|T(n)}g = \scalarprd f{g|T(n)} \qquad \forall f,g, \in S_k
+	\scalarprd {f|T(n)}g = \scalarprd f{g|T(n)} \qquad \forall f,g \in S_k
 	\,.
 \]
 \end{satz}

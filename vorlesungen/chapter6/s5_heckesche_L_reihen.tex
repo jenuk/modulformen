@@ -72,7 +72,7 @@ Nach \autoref{Mellin-Trafo} (Mellin-Transformation) ist
 \[
 	L(f,s) 
 	= \frac 1{\Gamma(s)} \int_0^\infty \sum_{n=1}^\infty a(n) (e^{-x})^n x^{s-1} \opd x
-	= \frac 1{\Gamma(s)} \int_0^\infty \Bigg( \underbrace{\sum_{n=0}^\infty a(n) e^{-nx}}_{= f(ix)} - a(0) \Bigg) x^{s-1} \opd x
+	= \frac 1{\Gamma(s)} \int_0^\infty \Bigg( \underbrace{\sum_{n=0}^\infty a(n) e^{-nx}}_{= f\bigl(\frac{ix}{2\pi}\bigr)} - a(0) \Bigg) x^{s-1} \opd x
 	\,,
 \]
 sodass nach Substitution $x \mapsto y := 2\pi x$ für alle $s \in \CC$ mit $\Re(s) > k$ gilt:
@@ -134,7 +134,7 @@ was nach Subtraktion von $\frac {a(0)}{k-s} + \frac {(-1)^{\frac k2} a(0)}s$ gen
 	= \zeta(s) \zeta(s-k+1)
 	\,.
 	\]
-	Es folgt, dass $(\zeta(s)\zeta(s-k+1))^*$ die vervollsändigte Heckesche L-Reihe $L^*(E_k,s)$ ist und $(-1)^{\frac{k}{2}}$ invariant unter $s \mapsto k-s$.
+	Es folgt, dass $(\zeta(s)\zeta(s-k+1))^*$ die vervollständigte Heckesche L-Reihe $L^*(E_k,s)$ ist und $(-1)^{\frac{k}{2}}$ invariant unter $s \mapsto k-s$.
 	
 	\item $f = \Delta \in S_{12}$.
 	Dann hat $L^*(\Delta, s) = (2\pi)^{-s} \Gamma(s)L(\Delta, s)$ eine holomorphe Fortsetzung auf $\CC$ und ist invariant unter $s \mapsto 12-s$.
@@ -143,7 +143,7 @@ was nach Subtraktion von $\frac {a(0)}{k-s} + \frac {(-1)^{\frac k2} a(0)}s$ gen
 	Sei $f = \sum_{n \geq 1} a(n)q^n \in S_k$ und seien fast alle $a(n)$ gleich 0.
 	Dann ist $f = 0$.
 	\begin{bewe}
-		Die Funktion $L^*(f, s) = (s\pi)^{-s} \Gamma(s) L(f, s)$ ist holomorph in $\CC$.
+		Die Funktion $L^*(f, s) = (2\pi)^{-s} \Gamma(s) L(f, s)$ ist holomorph in $\CC$.
 		Also folgt $L(f,s) = 0$ für $s = 0$, $-1$, $-2$, \ldots
 		
 		Nach Voraussetzung

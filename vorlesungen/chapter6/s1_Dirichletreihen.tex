@@ -71,7 +71,7 @@
 	\[
 	\sum_{n=M}^N a(n)e^{-\lambda_ns}
 	&= \sum_{n=M}^N \bigl(A(M,n) - A(M,n-1)\bigr)e^{-\lambda_ns} \\
-	&= A(M,M)e^{-\lambda_Ms} - A(M,M) e^{-\lambda_{M+1}s} + A(M, M+1)e^{-\lambda_{M+1}s} \\ &\qquad + \ldots + A(M,N-1) e^{-\lambda_{N-1}s} - A(M,N-1)e^{-\lambda_Ns} + A(M,N) e^{-\lambda_ns} \\
+	&= A(M,M)e^{-\lambda_Ms} - A(M,M) e^{-\lambda_{M+1}s} + A(M, M+1)e^{-\lambda_{M+1}s} \\ &\qquad + \ldots + A(M,N-1) e^{-\lambda_{N-1}s} - A(M,N-1)e^{-\lambda_Ns} + A(M,N) e^{-\lambda_Ns} \\
 	&= \sum_{n=M}^{N-1} A(M,n) \bigl(e^{-\lambda_ns} - e^{-\lambda_{n+1}s}\bigr) + A(M,N)e^{-\lambda_Ns}\,.
 	\]
 	
@@ -80,7 +80,7 @@
 	\abs{e^{-\lambda s} - e^{-\lambda_{n+1}s}}
 	&= \abs{s \int_{\lambda_n}^{\lambda_{n+1}} e^{-sn} \opd n} \\
 	&\leq \abs s \int_{\lambda_n}^{\lambda_{n+1}} \abs{e^{-sn}} \opd n \\
-	&= \frac{\abs s}{\sigma} \bigl(e^{-\lambda \sigma} - e^{-\lambda_{n+1}\sigma}\bigr) \qquad (\sigma = \Re s) \,.
+	&= \frac{\abs s}{\sigma} \bigl(e^{-\lambda_n \sigma} - e^{-\lambda_{n+1}\sigma}\bigr) \qquad (\sigma = \Re s) \,.
 	\]
 	
 	Die Größe $\frac {\abs s}\sigma$ ist in den Bereichen $\abs{\Arg(s)} \leq \frac{\pi}{2} - \delta$ durch eine Konstante $C_\delta > 0$ beschränkt.
@@ -102,7 +102,7 @@ Analog zur bedingten Konvergenzabszissen kann man (bei gewöhnlichen Dirichletre
 \sum_{n=1}^\infty \abs{a(n)} n^{-s}
 \,.
 \]
-Wir bezeichnen $\sigma_a$ als die absoluten und $\sigma_c$ als die bedingten Konvergenzabszisse.
+Wir bezeichnen $\sigma_a$ als die \myemph[Konvergenzsabszisse!absolute Konvergenzabsizee]{absoluten} und $\sigma_c$ als die \myemph[Konvergenzsabszisse!bedingten Konvergenzabsizee]{bedingten Konvergenzabszisse}.
 
 \begin{satz}
 	Ist $F$ eine gewöhnliche Dirichletreihe mit $\sigma_c \in \RR$, so gilt
@@ -124,7 +124,7 @@ Wir bezeichnen $\sigma_a$ als die absoluten und $\sigma_c$ als die bedingten Kon
 	\]
 	
 	Es gibt einen noch viel wichtigeren Unterschied zwischen Dirichletreihen und den uns geläufigen Potenzreihen.
-	Bei den Potenzreihen kann man den Konvergenzradius nicht nur in Abhängigkeit der Koeffizienten, sondern auch durch das Verhalten der durch die Reihe dargestellte lokal analytische Funktion bestimmen, nämlich als kleinster Absolutbetrag der singulären Punkte (ohne Einschränkung ist der Entwicklungspunkt $z_0 = 0$): stellt die Reihe $\sum_{n=0}^\infty a(n)z^n$ eine Funktion dar, die such auf eine Kreisscheibe $\abs z < r$ holomorph fortsetzen lässt, so ist sie in diesem Bereich auch absolut konvergent.
+	Bei den Potenzreihen kann man den Konvergenzradius nicht nur in Abhängigkeit der Koeffizienten, sondern auch durch das Verhalten der durch die Reihe dargestellte lokal analytische Funktion bestimmen, nämlich als kleinster Absolutbetrag der singulären Punkte (ohne Einschränkung ist der Entwicklungspunkt $z_0 = 0$): stellt die Reihe $\sum_{n=0}^\infty a(n)z^n$ eine Funktion dar, die sich auf eine Kreisscheibe $\abs z < r$ holomorph fortsetzen lässt, so ist sie in diesem Bereich auch absolut konvergent.
 	
 	Für Dirichletreihen stimmt das nicht.
 	Beispielsweise hat die Funktion
@@ -137,14 +137,13 @@ Wir bezeichnen $\sigma_a$ als die absoluten und $\sigma_c$ als die bedingten Kon
 \end{beme}
 
 \begin{satz}[Landau]
-	Sei $\sum_{n=1}^\infty a(n)n^{-s}$ eine gewöhnliche Dirichletreihe mit nicht-negativen Koeffizienten und Konvergenzabsziss $\sigma_c$.
+	Sei $\sum_{n=1}^\infty a(n)n^{-s}$ eine gewöhnliche Dirichletreihe mit nicht-negativen Koeffizienten und Konvergenzabszisse $\sigma_c$.
 	Dann hat die durch $F(s) = \sum_{n=1}^\infty a(n)n^{-s}$ definierte Funktion in $s=\sigma_c$ einen singulären Punkt.
 \end{satz}
 \begin{bewe}
 	Ohne Einschränkung sei $\sigma_c = 0$.
 	Nehmen wir an, die Funktion $F(s)$ wäre in einer Umgebung $U_\epsilon(0)$ holomorph fortsetzbar. Dann würde sie um $s=1$ eine Taylorentwicklung haben mit Konvergenzradius $R > 1$, da kein Punkt in $\partial U_1(1)$ singulär ist.
-	Also wäre für geeignetes $\delta > 0$ die Reihe Reihe $\sum_{k=1}^\infty \frac{(-1-\delta)^{k}}{k!} F^{(k)}(1)$ konvergent und gleich $F(-\delta)$.
-	Nach \autoref{satz:konvergenzDirichletreihen} ist
+	Also wäre für geeignetes $\delta > 0$ die Reihe $\sum_{k=1}^\infty \frac{(-1-\delta)^{k}}{k!} F^{(k)}(1)$ konvergent und gleich $F(-\delta)$, denn nach \autoref{satz:konvergenzDirichletreihen} ist
 	\[
 	\sum_{k=0}^\infty \frac{(-1-\delta)^k}{k!} F^{(k)}(1)
 	&\stackrel{\phantom{a(n) \geq 0}}{=} \sum_{k=0}^\infty \frac{(1+\delta)^k}{k!} \sum_{n=1}^\infty \frac{(\log n)^k a(n)
