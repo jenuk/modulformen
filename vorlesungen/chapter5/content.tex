@@ -40,8 +40,9 @@ Offenbar gilt ebenso
 \[
 h_m(z,z') = \sum_{ad-bc=m} (cz+d)^{-k} \Bigl(z' + \frac{az+b}{cz+d}\Bigr)^{-k}
 = \sum_{M \in \mathcal{M}(m)} (z'+z)^{-k}|_{k,z} M
+\,.
 \]
-Man zeigt schnell wegen $k \geq 4$, dass die Reihe auf kompakten Teilmengen $K \subset \HH \times \HH$ absolut und gleichmäßig konvergiert und dort in beiden Variablen holomorphe Funktionen darstellt.
+Man zeigt schnell wegen $k \geq 4$, dass die Reihe auf kompakten Teilmengen $K \subset \HH \times \HH$ absolut und gleichmäßig konvergiert und dort in beiden Variablen eine holomorphe Funktion darstellt.
 Da $\mathcal{M}(m) \xto{\sim} \mathcal{M}(m)$, $M \mapsto ML$ mit $L \in \SL_2(\ZZ)$,
 folgt $h(z,z')|_{k,z} L = h(z, z')$.
 
@@ -51,27 +52,30 @@ Da weiter
 = \sum_{M \in \M(m)} \lim_{z \to i\infty} (z'+z)^{-k}|_{k,z} M
 = 0\,,
 \end{align*}
-folgt $h_m(-, z') \in S_k$ und $h_m(z, -) \in S_k$ aus Symmetriegründen.
+folgt $h_m(\cdot, z') \in S_k$ und $h_m(z, \cdot) \in S_k$ aus Symmetriegründen.
 
 
 \begin{satz}\label{analytischeSpurformel}
 	Sei
 	\begin{equation}%\tag{2}
-	C_k = \frac{(-1)^{\frac{k}{2}} \pi}{2^{(k-3)}(k-1)}\,.
+	C_k = \frac{(-1)^{\frac{k}{2}} \pi}{2^{k-3}(k-1)}\,.
 	\end{equation}
 	Dann gilt
 	\begin{enumerate}
-		\item Die Funktion $C_k^{-1} m^{k-1} h_m(z,z')$ ist ein Kern für den Operator $T(m)\colon S_k \ra S_k$, das heißt:
+		\item Die Funktion $C_k^{-1} m^{k-1} h_m(z,z')$ ist ein Kern für den Operator $T(m)\colon S_k \ra S_k$, das heißt
 		\begin{equation}\label{eq:faltung_hm}%\tag{3}
 		(f * h_m)(z') = C_km^{-k+1} (f|T(m))(z')
+		\,.
 		\end{equation}
 		\item Es gilt die Identität 
 		\begin{equation}%\tag{4}
 		C_k^{-1} m^{k-1} h_m(z,z') = \sum_{i=1}^r a_m^i \frac{f_i(z) \cdot f_i(z')}{\scalarprd{f_i}{f_i}}
+		\,.
 		\end{equation}
 		\item Die Spur $\Tr T(m)$ ist gegeben durch
 		\begin{equation}%\tag{5}
 		\Tr T(m) = C_k^{-1} m^{k-1} \int_\F h_m(z, -\conj z) y^{k-2} \opd x \opd y
+		\,.
 		\end{equation}
 	\end{enumerate}
 \end{satz}
@@ -91,7 +95,7 @@ folgt $h_m(-, z') \in S_k$ und $h_m(z, -) \in S_k$ aus Symmetriegründen.
 	\begin{equation}\label{eq:faltung_h1}%\tag{6}
 	\begin{split}
 	(f * h_1)(z') &= \int_\F \sum_{\gamma \in \Gamma(1)} (-z' + \gamma \conj z)^{-k} f(\gamma z) \Im(\gamma z)^k \frac{\opd x \opd y}{y^2} \\
-	&= \sum_{\gamma \in \Gamma} \int_{\gamma \circ \F} (-z' + \conj z)^{-k} f(z) y^{k-2} \opd x \opd y \\
+	&= \sum_{\gamma \in \Gamma(1)} \int_{\gamma \circ \F} (-z' + \conj z)^{-k} f(z) y^{k-2} \opd x \opd y \\
 	&= 2 \int_0^\infty \int_{-\infty}^\infty (x-iy - z')^{-k} f(x+iy) y^{k-2} \opd x \opd y
 	\end{split}
 	\end{equation}
@@ -126,13 +130,18 @@ folgt $h_m(-, z') \in S_k$ und $h_m(z, -) \in S_k$ aus Symmetriegründen.
 	
 	Für (ii) beachte, dass wir $h_m$ schreiben können als
 	\[
-	h_m(z,z') = \sum_{i,j=1}^r c_{ij}f_i(z)f_j(z)
+	h_m(z,z') = \sum_{i,j=1}^r c_{ij}f_i(z)f_j(z')
+	\,,
 	\]
-	Denn wir können $h_m(z, z') = h_1(z) f_1(z') + \ldots + h_r(z) f_r(z')$ schreiben, da $f_1$, \ldots, $f_r$ eine Basis der Spitzenformen sind, mit Funktionen $h_j\colon \HH \ra \CC$.
-	Diese sind auch Spitzenformen, denn mit $z_1$, \ldots, $z_r$ paarweise verschieden und $z_\nu \not\equiv i, \rho \mod \Gamma(1)$ ist die Matrix in
+	denn: Da $f_1$, \ldots, $f_r$ Basis der Spitzenformen, können wir 
+	\[
+	h_m(z, z') = g_1(z) f_1(z') + \ldots + g_r(z) f_r(z')
+	\]
+	mit Funktionen $g_j \colon \HH \ra \CC$ schreiben. 
+	Diese sind auch Spitzenformen, denn für $z_1$, \ldots, $z_r$ paarweise inäquivalent unter $\Gamma(1)$ und $z_\nu \not\equiv i, \rho \mod \Gamma(1)$ ist die Matrix in
 	\[
 	\begin{pmatrix}
-	h_1(z,z_1) \\
+	h_m(z,z_1) \\
 	\vdots \\
 	h_m(z,z_r)
 	\end{pmatrix}
@@ -143,32 +152,35 @@ folgt $h_m(-, z') \in S_k$ und $h_m(z, -) \in S_k$ aus Symmetriegründen.
 	\end{pmatrix}
 	\cdot 
 	\begin{pmatrix}
-	h_1(z) \\
+	g_1(z) \\
 	\vdots \\
-	h_r(z)
+	g_r(z)
 	\end{pmatrix}
 	\]
-	invertierbar, sonst würden $\alpha_1$, \ldots, $\alpha_r \in \CC$, nicht alle Null, existieren, so dass $\alpha_1 f_1 + \ldots + \alpha_r f_r \equiv 0$ ist und dies steht im Widerspruch dazu, dass die $f_j$ eine Basis bilden.
-	Somit sind die $h_j$ Linearkombination von Spitzenformen und somit selbst Spitzenformen und als Linearkombination von den $f_j$ darstellbar.
+	invertierbar, sonst würden nichttriviale $\alpha_1$, \ldots, $\alpha_r \in \CC$ existieren, sodass die Funktion $\alpha_1 f_1 + \ldots + \alpha_r f_r$ die $r$ Nullstellen $z_1, \ldots, z_r$ besäße. Da es zudem eine Spitzenform ist, könnte man über die Valenzformel bereits $\alpha_1 f_1 + \ldots + \alpha_r f_r \equiv 0$ folgern, was im Widerspruch dazu steht, dass die $f_j$ eine Basis bilden.
+	Somit sind die $g_j$ als Linearkombination von Spitzenformen selbst Spitzenformen und daher als Linearkombination der $f_i$ darstellbar.
 	
 	Wende nun \eqref{eq:faltungskern} auf die Funktion $f = f_\mu$ mit $1 \leq \mu \leq r$, an:
-	\[\begin{split}
+	\[
+	\begin{split}
 	(f_\mu * h_m)(z')
-	&= \int_\F f_\mu(z) \sum_{i,j}^r \conj{c_{ij} f_i(z) f_j(-\conj{z'})} y^{k-2} \opd x \opd y \\
-	&= \sum_{i,j}^r \conj{c_{ij}} f_j(z') \int_\F f_\mu(z) \conj{f_i(z)} \opd x \opd y \\
+	&= \int_\F f_\mu(z) \sum_{i,j=1}^r \conj{c_{ij} f_i(z) f_j(-\conj{z'})} y^{k-2} \opd x \opd y \\
+	&= \sum_{i,j=1}^r \conj{c_{ij}} f_j(z') \int_\F f_\mu(z) \conj{f_i(z)} y^{k-2} \opd x \opd y \\
 	&= \sum_{j=1}^r \conj{c_{\mu j}} f_j(z') \scalarprd{f_\mu}{f_\mu}
 	\stackrel{\text{(i)}}{=} C_km^{1-k} a_m^\mu f_\mu(z')
 	\end{split}
+	\,.
 	\]
-	Da $f_1$, \ldots, $f_r$ eine Basis, folgt
+	Da $f_1$, \ldots $f_r$ eine Basis ist, folgt
 	\[
 	c_{\mu j} =
 	\begin{cases}
-	0 & \text{falls } j \not= \mu \\
-	C_k m^{1-k} \scalarprd{f_\mu}{f_\mu}^{-1} \cdot a_m^\mu & \text{falls } j = \mu
+	0 & , \text{ falls } j \not= \mu \\
+	C_k m^{1-k} a_\m^mu \scalarprd{f_\mu}{f_\mu}^{-1} & , \text{ falls } j = \mu
 	\end{cases}
+	\,.
 	\]
-	Damit folgt (ii).
+	und damit (ii).
 	
 	Für (iii) beachte
 	\[\begin{split}
@@ -177,6 +189,7 @@ folgt $h_m(-, z') \in S_k$ und $h_m(z, -) \in S_k$ aus Symmetriegründen.
 	&= \sum_{i=1}^r a_m^i\int_\F \frac{f_i(z) \conj{f_i(z)}}{\scalarprd{f_i}{f_i}} y ^{k-2} \opd x \opd y \\
 	&= \sum_{i=1}^r a_m^i = \Tr T(m)
 	\end{split}
+	\,.
 	\]
 \end{bewe}
 
@@ -195,7 +208,7 @@ Dafür müssen wir etwas ausholen.
 	
 	Wir bezeichnen $D = b^2 - 4ac$ als die \myemph[quadratische Form!Diskriminante einer quadratischen Form]{Diskriminante} von $q$.
 	
-	Zwei quadratische Formen $q$ und $q'$ heißen äquivalent, falls es eine Matrix $U \in \SL_2(\ZZ)$ gibt mit $Q' = U^t Q U$, man kann zeigen, dass $Q$ eine Klasseninvariante ist.
+	Zwei quadratische Formen $q$ und $q'$ heißen äquivalent, falls es eine Matrix $U \in \SL_2(\ZZ)$ gibt mit $Q' = U^t Q U$. Man kann zeigen, dass die Diskriminante eine Klasseninvariante ist.
 	Die Rückrichtung ist im Allgemeinen falsch.
 	
 	Definiere eine Abbildung

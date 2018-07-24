@@ -9,7 +9,6 @@ Es gilt $P_0 = E_k$, wie man durch Vergleich mit \autoref{Ek_per_Gamma(1)infty} 
 \item Es gilt 
 \[
 	\scalarprd {f}{P_n} = \frac{(k-2)!}{(4\pi n)^{k-1}} a_f(n)
-	\,.
 \]
 für alle $f \in S_k$ mit $f = \sum_{m\geq 1} a_f(m) q^m$.
 \end{satz-list}
@@ -29,20 +28,16 @@ sodass die Reihe der Absolutbeträge nach \autoref{Ek_per_Gamma(1)infty} durch d
 Zeige noch $P_n \in S_k$ für $n \geq 1$. Schreibe zunächst
 \[
 	P_n(z) = \frac 12 \sum_{M \in \linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}} (e^n |_k M)(z)
-	\,,
 \]
 mit $e^n(z) := e^{2 \pi inz}$ und beachte, dass $e^n |_k M = e^n$ für $M \in \Gamma(1)_\infty$. Hierbei ist wie in \autoref{Ek_per_Gamma(1)infty} 
 \[
 	\Gamma(1)_\infty := \Set{M \in \SL_2(\ZZ) \mid M = \mymat ab0d}
 	\,.
 \]	
-Für $P_n \in S_k$ müssen wir zeigen, dass $P_n |_k M = P_n$ für alle $M \in \SL_2(\ZZ)$ und zudem in $z = i \infty$ verschwindet. Wie im Fall der Eisensteinreihen ist hierfür zu zeigen, dass 
+Für $P_n \in S_k$ müssen wir zeigen, dass $P_n |_k N = P_n$ für alle $N \in \SL_2(\ZZ)$ (klar, da auch $MN$ ein Vertretersystem für $\linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}$ bildet) und zudem in $z = i \infty$ verschwindet. Wie im Fall der Eisensteinreihen ist hierfür zu zeigen, dass 
 \[
 	\lim_{z \to i\infty} P_n(z) = 0
-	\,,
-\]
-also
-\[
+	\text{ also }
 	\lim_{\nu \to \infty} P_n(z_\nu) = 0
 \]
 für jede Folge von $z_\nu \in \HH$ mit $z_\nu \to i\infty$. Wegen gleichmäßiger Konvergenz gilt
@@ -70,7 +65,7 @@ Man stelle sich hierzu vor, dass $\HH$ als disjunkte Vereinigung von Bildern des
 Es gilt weiter für beliebiges $f \in S_k$ mit Darstellung $f(z) = \sum_{m \geq 1} a(m)q^m$, wie üblich $q = \exp(2\pi iz)$ und $z = x + iy$, dass
 \begin{align*}
 	\scalarprd {f}{P_n} &= \int_0^\infty \int_{-\frac 12}^{\frac 12} \sum_{m \geq 1} a(m) e^{2 \pi imx}e^{-2\pi my}e^{-2\pi inx}e^{-2\pi ny}y^{k-2} \opd x \opd y\\
-	&= \int_0^\infty \int_{-\frac 12}^{\frac 12} \sum_{m \geq 1} a(m) e^{2 \pi i(m-n)x}e^{-2\pi (n+m)y}y^{k-2} \opd x \opd y\,.
+	&= \int_0^\infty \int_{-\frac 12}^{\frac 12} \sum_{m \geq 1} a(m) e^{2 \pi i(m-n)x}e^{-2\pi (m+n)y}y^{k-2} \opd x \opd y\,.
 \end{align*}
 Wegen 
 \[
@@ -78,7 +73,7 @@ Wegen
 \]
 für beliebiges $r \in \ZZ$ folgt
 \begin{align*}
-	\scalarprd {f}{P_n} &= \int_0^\infty \sum_{m \geq 1} a(m) \delta_{m,n} e^{-2\pi (n+m)y}y^{k-2} \opd y \\
+	\scalarprd {f}{P_n} &= \int_0^\infty \sum_{m \geq 1} a(m) \delta_{m,n} e^{-2\pi (m+n)y}y^{k-2} \opd y \\
 	&= a(n) \int_0^\infty e^{-4\pi ny} y^{k-2} \opd y \\
 	&= a(n) \frac{1}{(4\pi n)^{k-1}} \underbrace{\int_0^\infty e^{-y} y^{k-2} \opd y}_{= \Gamma(k-1)} \\
 	&= a(n) \frac{(k-2)!}{(4\pi n)^{k-1}}
@@ -139,7 +134,7 @@ Die rechte Seite entsteht aus der linken, indem man für festes $c \geq 1$ und e
 und die obige Darstellung folgt durch Ausklammern von $c$ und $a$. Im Folgenden schreiben wir wieder $d$ und $b$ statt $d'$ und $b'$.
 
 \begin{lemm}
-Sei $A = \mymat abcd \in \SL_2(\RR)$ mit $c > 0$. Sei $\gamma > 0$ beliebig (insbesondere nicht unbedingt ganzzahlig). Dann gilt
+Sei $A = \mymat abcd \in \SL_2(\RR)$ mit $c > 0$. Sei $\gamma > 0$ beliebig (insbesondere nicht unbedingt ganzzahlig). Dann gilt für alle $z \in \HH$
 \[
 	\sum_{\nu \in \ZZ} (c(z + \nu) +d)^{-k} e^{2\pi i\gamma \frac{a(z+\nu)+b}{c(z+\nu)+d}} 
 	= 
@@ -174,28 +169,31 @@ sowie die rechte Seite zu
 Die linke Seite von \eqref{eq:fourierreihePn} konvergiert gleichmäßig absolut auf kompakten Mengen in $\HH$ und hat den Limes 0 für $q\to \infty$ (gleicher Beweis wie in \autoref{<f,Pn>}).
 Sie hat daher eine Fourierentwicklung $\sum_{m\geq 1} c(m) q^m$ mit
 \[
-c(m) = \int_{ic}^{ic+1} \biggl( \sum_{\nu \in \ZZ} (z+\nu)^{-k} e^{-2\pi \gamma \frac{1}{z+\nu}} \biggr) e^{-2\pi imz} \opd z
+c(m) = \int_{ic}^{ic+1} \biggl( \sum_{\nu \in \ZZ} (z+\nu)^{-k} e^{-2\pi i \gamma \frac{1}{z+\nu}} \biggr) e^{-2\pi imz} \opd z
 \stackrel{z \mapsto is}{=} -i^{-k+1} \int_{c-i \infty}^{c + i\infty} s^{-k} e^{-2\pi \frac{\gamma}{s}} e^{2\pi ms} \opd s
+\,.
 \]
 Es gilt nach \myquote{Abramowitz-Stegun}, Seite 1026, Formel 29.3.80:
 \[
 \frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} s^{-k} e^{-\frac{\alpha}{s}} e^{ts} \opd s = \Bigl(\frac{t}{\alpha}\Bigr)^{\frac{k-1}{2}} J_{k-1}(2\sqrt{\alpha t})
+\,.
 \]
 
 Setzt man $\alpha = 2\pi \gamma$, $t = 2\pi m$, so folgt
 \[
-c(m) = -i^{-k+1} \cdot 2\pi i \Bigl( \frac{2\pi m}{2\pi \gamma}\Bigr)^{\frac{k-1}{2}} J_{k-1} (2\sqrt{2\pi \gamma - 2 \pi m}) = (-1)^{\frac{k}{2}} \cdot 2\pi \Bigl(\frac{m}{\gamma}\Bigr)^{\frac{k-1}{2}} J_{k-1} (2\pi \sqrt{m\gamma})
+c(m) = -i^{-k+1} \cdot 2\pi i \Bigl( \frac{2\pi m}{2\pi \gamma}\Bigr)^{\frac{k-1}{2}} J_{k-1} (2\sqrt{2\pi \gamma \cdot 2 \pi m}) = (-1)^{\frac{k}{2}} \cdot 2\pi \Bigl(\frac{m}{\gamma}\Bigr)^{\frac{k-1}{2}} J_{k-1} (4\pi \sqrt{m\gamma})
 \]
 wie behauptet.
 
 
 \end{bewe}
 
-Nach dem Lemma folgt nun
+Nach dem Lemma folgt nun mit $\gamma = $, dass
 \[
-P_n(z) = e^{2\pi nz} + \sum_{c\geq1} \sum_{\substack{d \bmod c\\ \ggt(d,c) = 1}} \frac{2\pi (-1)^{\frac{k}{2}}}{c} \sum_{m\geq 1} \Bigl(\frac{m}{n}\Bigr)^{\frac{k-1}{2}} J_{m-1} \Bigl(\frac{4\pi \sqrt{mn}}{c}\Bigr) \cdot e^{\frac{2\pi i}{c}(na+md)} e^{2\pi imz}
+P_n(z) = e^{2\pi nz} + \sum_{c\geq1} \sum_{\substack{d \bmod c\\ \ggt(d,c) = 1}} \frac{2\pi (-1)^{\frac{k}{2}}}{c} \sum_{m\geq 1} \Bigl(\frac{m}{n}\Bigr)^{\frac{k-1}{2}} J_{k-1} \Bigl(\frac{4\pi \sqrt{mn}}{c}\Bigr) \cdot e^{\frac{2\pi i}{c}(na+md)} e^{2\pi imz}
+\,.
 \]
-und die Behauptung folgt nach Vertauschung der Summation über c und m (absolute Konvergenz). Beachte $ad \equiv 1 \mod c$.
+Die Behauptung folgt hieraus nach Vertauschung der Summationen über $c$ und $m$ (absolute Konvergenz) unter Beachtung von $ad = 1 + bc \equiv 1 \mod c$.
 
 \end{bewe}
 
@@ -205,18 +203,16 @@ und die Behauptung folgt nach Vertauschung der Summation über c und m (absolute
 Sei $\Delta(z) = \sum_{n \geq 1} \tau(n) q^n \in S_{12}$ ($\tau(1) = 1$, $\tau(2) = -24, \ldots $).
 Dann gilt
 \begin{align*}
-\tau(n) \not= 0
-&\Rla P_{n,12} \not= 0 \\
-&\Rla g_n(n) \not= 0
+\tau(n) \not= 0 &\Rla P_{n,12} \not= 0 \Rla &\Rla g_n(n) \not= 0
+\,,
 \end{align*}
 wobei $g_n(n)$ der $n$-te Fourier-Koeffizient von $P_{n,12}$ ist (siehe \autoref{satz:Pn_Fourier}).
 \end{satz}
 \begin{bewe}
 Es gilt $P_n = c_n \cdot \Delta$ mit $c_n \in \CC$.
 Durch Vergleich des ersten Fourier-Koeffizienten folgt $c_n \in \RR$.
-Aus $\scalarprd{\Delta}{P_n} \sim \tau(n)$ (siehe \autoref{<f,Pn>} (ii)) folgt $c_n \scalarprd \Delta \Delta \sim \tau(n)$, also gilt $\tau(n) = 0$ genau dann, wenn $c_n = 0$. Aber $c_n = 0$ genau dann, wenn $P_n \equiv 0$ genau dann, wenn $g_n(n) \sim \scalarprd{P_n}{P_n} = 0$.
+Aus $\scalarprd{\Delta}{P_n} \sim \tau(n)$\footnote{Hier meint $\sim$ die Proportionalität: $x \sim y \Rla x = ky$ für $k$ konstant.} (siehe \autoref{<f,Pn>} (ii)) folgt $c_n \scalarprd \Delta \Delta \sim \tau(n)$, also gilt $\tau(n) = 0$ genau dann, wenn $c_n = 0$. Aber $c_n = 0$ genau dann, wenn $P_n \equiv 0$, und dies gilt genau dann, wenn $g_n(n) \sim \scalarprd{P_n}{P_n} = 0$.
 Hieraus folgt die Behauptung.
-Wobei $x \sim y \Rla x = ky$.
 \end{bewe}
 
 \begin{beme}
@@ -226,26 +222,31 @@ Es wird vermutet, dass $\tau(n) \not= 0$ für alle $n\in\NN$ (Lehmer).
 \subsection[Die Peterssonschen Formeln]{Die Peterssonschen Formeln und Abschätzungen für Fourier-Koeffizienten}
 
 Sei $\Set{f_1, f_2, \ldots f_g}$ irgendeine orthogonale Basis von $S_k$ (nach dem Gram-Schmidt-Verfahren kann man z.\,B. jedes $f\in S_k\setminus\{0\}$ zu irgendeiner orthogonalen Basis $\Set{f, \ldots, f_g}$ ergänzen).
-Dann gilt nach \autoref{<f,Pn>} (ii) für jedes $n\in\NN$:
+Dann gilt nach \autoref{<f,Pn>} (ii) für jedes $n\in\NN$
 \[
-P_n = \frac{(k-2)!}{(4\pi n)^{k-1}} \sum_{\nu = 0}^g \frac{\conj{a_\nu(n)}f_\nu}{\scalarprd{f_\nu}{f_\nu}}
+P_n = \frac{(k-2)!}{(4\pi n)^{k-1}} \sum_{\nu=1}^g \frac{\conj{a_\nu(n)}}{\scalarprd{f_\nu}{f_\nu}} f_\nu
+\,,
 \]
 wenn $f_\nu = \sum_{m\geq 1} a_\nu(m) q^m$.
-Nimmt man auf beiden Seiten den $m$-ten Fourier-Koeffizieten so erhält man
+Nimmt man auf beiden Seiten den $m$-ten Fourier-Koeffizienten, so erhält man
 \[
 g_n(m) = \frac{(k-2)!}{(4\pi n)^{k-1}} \sum_{\nu=1}^g \frac{a_\nu(m) \conj{a_\nu(n)}}{\scalarprd{f_\nu}{f_\nu}}
+\,.
 \]
 Damit folgt
 \[
 g_n(n) = \frac{(k-2)!}{(4\pi n)^{k-1}} \sum_{\nu = 1}^g \frac{\abs{a_\nu(n)}^2}{\scalarprd{f_\nu}{f_\nu}}
+\,.
 \]
 Speziell ist
 \[
-\abs{a_\nu(n)}^2 \leq \norm{f}^2 \frac{(4\pi n)^{k-1}}{(k-2)!} g_n(n)
+\abs{a_\nu(n)}^2 \leq \norm{f_\nu}^2 \frac{(4\pi n)^{k-1}}{(k-2)!} g_n(n)
+\,.
 \]
-Für $g_n(n)$ substituiert man aus \autoref{satz:Pn_Fourier} explizite Formeln. Benutzt man $J_n(x) = \mathcal{O}(\min \{x^{-\frac{1}{2}}, x^n\})$ (einfach) und $k(n,n,c) = \mathcal{O}_\epsilon( (n,c)^{\frac{1}{2}}c^{\frac{1}{2}+\epsilon})$ (Weilsche Abschätzung, tiefliegend) so erhält man nach einigen Rechnungen
+Für $g_n(n)$ substituiert man aus \autoref{satz:Pn_Fourier} explizite Formeln. Benutzt man $J_n(x) = \mathcal{O}(\min \{x^{-\frac{1}{2}}, x^n\})$ (einfach) und $K(n,n,c) = \mathcal{O}_\epsilon( (n,c)^{\frac{1}{2}}c^{\frac{1}{2}+\epsilon})$ (Weilsche Abschätzung, tiefliegend), so erhält man nach einigen Rechnungen
 \[
 g_n(n) = \mathcal{O} (n^{\frac{1}{2}+\epsilon})
+\,,
 \]
 also folgt
 \[
@@ -258,16 +259,13 @@ Sei $f \in S_k$. Dann gilt $a(n) = \mathcal{O}_\epsilon (n^{\frac{k}{2}-\frac{1}
 \end{satz}
 
 \begin{beme-list}
-\item Man kann leicht zeigen, dass $a(n) \ll_f n^{\frac{k}{2}}$ (siehe später)
-\item Mit der Theorie der L-Reihen zu Modulformen kann man
-\[
-a(n) \ll_{f,\epsilon} n^{\frac{k}{2} - \frac{1}{4} + \epsilon}
-\]
-zeigen
-\item Nach Deligne (sehr tiefliegend) gilt sogar $a(n) \ll_{f,\epsilon} n^{\frac{k}{2}-\frac{1}{2}+\epsilon}$, $\epsilon > 0$ (Ramanujan-Petersson-Vermutung).
-Dies ist bestmöglich, denn nach Rankin gilt
+\item Man kann leicht zeigen, dass $a(n) \ll_f n^{\frac{k}{2}}$ (siehe \autoref{Fourierkoeff-Abschätzungen}).
+\item Mit der Theorie der L-Reihen zu Modulformen kann man $a(n) \ll_{f,\epsilon} n^{\frac{k}{2} - \frac{1}{4} + \epsilon}$ für alle $\epsilon > 0$ zeigen.
+\item Nach Deligne (sehr tiefliegend) gilt sogar $a(n) \ll_{f,\epsilon} n^{\frac{k}{2}-\frac{1}{2}+\epsilon}$ für alle $\epsilon > 0$ (Ramanujan-Petersson-Vermutung). 
+Diese Abschätzung ist bereits bestmöglich, denn nach Rankin gilt
 \[
 \limsup_{n\to\infty} \frac{\abs{a_f(n)}^2}{n^{k-1}} = \infty
+\,.
 \]
 %	\[
 %		y^2 = x^3 + ax + b \mod p
@@ -279,7 +277,7 @@ Dies ist bestmöglich, denn nach Rankin gilt
 
 \begin{satz}\label{Hecke(Pm)}
 Sei $P_m$ für $m \in \NN$ die $m$-te Poincaré-Reihe in $S_k$.
-Dann
+Dann ist
 \[
 	P_m | T(n) = \sum_{d | (m,n)} \Bigl( \frac{n}{d} \Bigr)^{k-1} P_{\frac{mn}{d^2}}
 \,.
@@ -299,7 +297,7 @@ Es gilt
 Wir behaupten nun, dass die Menge 
 \begin{equation*}
 \begin{split}
-\{\,MN \mid &N = \mymat ab0d\colon ad=n, d>0,\ b \bmod d, \\ &M = \mymat \alpha\beta\gamma\delta\colon (\gamma, \delta) \in \ZZ^2\colon \ggt(\gamma, \delta) = 1 \text{ und } (\alpha, \beta) \in \ZZ^2 \text{ fixiert s.\,d. } \alpha\delta - \beta\gamma = 1\,\}
+\{\,NM \mid &N = \mymat ab0d\colon ad=n, d>0,\ b \bmod d, \\ &M = \mymat \alpha\beta\gamma\delta\colon (\gamma, \delta) \in \ZZ^2\colon \ggt(\gamma, \delta) = 1 \text{ und } (\alpha, \beta) \in \ZZ^2 \text{ fixiert s.\,d. } \alpha\delta - \beta\gamma = 1\,\}
 \end{split}
 \end{equation*}
 ein Vertretersystem für $\linksmodulo{\Gamma(1)_\infty}{\mathcal{M}(n)}$ ist.
@@ -313,15 +311,18 @@ mit $\nu \in \ZZ$ und $N$, $N'$ und $M$, $M'$ wie oben.
 Daraus folgt
 \[
 N'^{-1} \mymat 1\nu01 N = M'M^{-1}
+\,,
 \]
 also
 \[
 \mymat*{\frac{d'}{d}}{\frac{d'b-b'd+\nu d'd}{n}}{0}{\frac{d}{d'}}
 = M' M^{-1}
+\,.
 \]
 Da $M'M^{-1}$ Komponenten in $\ZZ$ hat, folgt $\frac{d}{d'}$, $\frac{d'}{d} \in \ZZ$, also $d = \pm d'$, also $d = d'$ und $a' = a$ und somit 
 \[
 M'M^{-1} \in \Gamma(1)_\infty
+\,,
 \]
 d.\,h. $M' = M$, da Vertretersystem modulo $\Gamma(1)_\infty$.
 Dann folgt aber $\mymat 1\nu01 N = N'$, bzw. $b' = b + \nu d$, also $b = b'$ und damit $N' = N$. Die Matrizen in der oben angegebenen Menge sind also tatsächlich inäquivalent modulo $\Gamma(1)_\infty$. 

@@ -1,4 +1,16 @@
-# 18-07-23
+# 18-07-24
+Im Beweis von Lemma 4.6 wurde behauptet, dass die linke Seite von Gleichung (4.1) für q gegen unendlich verschwindet. Dies gilt aber entweder für z gegen i*unendlich oder q gegen 0. Außerdem fehlte bei der Berechnung der Fourierkoeffizienten "c(m) = \int_{ic}^{ic+1} ..." im ersten Exponentialterm ein i. Im abschließenden Satz des Beweises von 4.6 stand unter der Wurzel ein Minus statt eines Mal und in der letzten Klammer eine 2 statt einer 4.
+
+In der letzten Formel des Beweises von Satz 4.5 stand J_m-1 statt J_k-1.
+
+Zu Beginn von Abschnitt 4.1.2 begann die Summe in der ersten Zeile bei nu = 0. In der Formel für |a_nu(n)|^2 fehlte der Index nu bei f.
+
+Im Beweis von Satz 4.11 stand als Vertretersystem für \Gamma(1)_\infty modulo \M(n) die Menge {MN | ...}, gerechnet wird jedoch mit {NM | ...}.
+
+Im Beweis von Satz 5.1, ii) fehlte in der Darstellung von h_m als Linearkombination der f_i(z)*f_j(z') der Strich bei f_j(z'). In der Gleichung mit der invertierbaren Matrix stand links h_1 statt h_m. Außerdem die einargumentigen Funktionen h_j(z) zu g_j(z) geändert, um Verwechslungen mit h_m(z,z') zu verhindern. Beim Abschluss des Beweises fehlte einmal ein Term y^k-2 im Integral.
+
+In Definition (5.2) ist die Diskriminante die Klassenvariante, nicht die induzierende Matrix.
+
 In der letzten Zeile direkt über Satz 6.9 muss die Summe bei r=0 beginnen, nicht bei r=1.
 
 In der letzten Zeile des Beweises von Satz 6.20 stand am Ende e^(-2int) statt e^(-2pi*int).
@@ -20,8 +32,8 @@ Beweis Satz 6.22: zu Beginn ist die makierte Funktion im Integral f(ix/2pi) nich
 Beweis von 4.11: in der vorletzten Formel, muss d^(-k) statt d^(-n) stehen und die Summe läuft auch über b mod d.
 
 Beweis 5.1: Die zweite Integration in (5.6) muss über gamma nach F und nicht über den Rand von F gehen.
-Das Bild der h_j liegt in C, nicht in H.
-In der Fallunterscheidung (Anfang Seite 49) fehlte der Faktor a_m^mu
+Das Bild der h_j (neu: g_j) liegt in C, nicht in H.
+In der Fallunterscheidung (Anfang Seite 49) fehlte der Faktor a_m^mu.
 
 # 18-07-19
 Im Beweis von Satz 2.7, ii) stand an zwei Stellen "m > 0" statt "m \geq 0" sowie einmal n statt N.
