@@ -24,7 +24,7 @@
 
 \begin{bewe}
 	Wir benötigen zum Beweis zwei weitere Sätze. Zunächst: 
-	\begin{satz}[Mellinscher Umkehrsatz]
+	\begin{satz}[Mellinscher Umkehrsatz]\label{Mellin-Umkehrsatz}
 		Sei $x \in \CC$ mit $\Re(x) > 0$ und $c > 0$ eine reelle Zahl.
 		Dann gilt
 		\[
@@ -129,7 +129,7 @@
 		f(iy) - a(0)
 		= \frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} L^*(s)y^{-s}\opd s
 	\]
-	nach \autoref{Mellin-Trafo}.
+	nach \autoref{Mellin-Umkehrsatz}.
 	Man verschiebe den Integrationsweg nach links auf die Gerade $k-c < 0$ (wähle $c > k$).
 	Auf diese Weise erhält man Beträge von Residuen der Polstellen bei $s=0$ und $s=k$ als $-a(0)$ beziehungsweise $(-1)^{\frac{k}{2}} a(0)y^{-k}$.
 	Betrachte dafür für $T > 0$ reell das Kurvenintegral über das Rechteck mit Ecken $c +iT$, $c-iT$, $k-c+iT$, $k-c-iT$.
@@ -149,23 +149,23 @@
 	Damit folgt
 	\[
 		-a(0) + (-1)^{\frac{k}{2}} a(0) y^{-k}
-		= f(iy) - a(0) - (-1)^{\frac{k}{2}}y^{-k} \biggl(f\Bigl(\frac{1}{y}\Bigr) - a(0)\biggl)
+		= f(iy) - a(0) - (-1)^{\frac{k}{2}}y^{-k} \biggl(f\Bigl(\frac{i}{y}\Bigr) - a(0)\biggl)
 	\]
 	Damit erhalten wir
 	\[
-		0 = f(iy) - (iy)^k f\Bigl(\frac{1}{y}\Bigr)
+		0 = f(iy) - (iy)^k f\Bigl(\frac{i}{y}\Bigr)
 	\]
 	Also $f \in M_k$.
 \end{bewe}
 
-Allgemeiner gilt sogar
+Allgemeiner gilt sogar Folgendes:
 
 \begin{satz}\label{satz:Lreihe-quasiMf}
 	Seien $k > 0$, $\lambda >0$ reelle Zahlen und $C \in \CC^\times$. Sei $a(n)$ eine Folge sodass $a(n) = \mathcal O(n^\alpha)$ für ein $\alpha > 0$. Sei
 	\begin{align*}
 	L(s) &= \sum_{n=1}^\infty a(n)n^{-s}\,,\\
 	L^*(s) &= \left( \frac{2\pi}{\lambda}\right)^{-s} \Gamma(s) L(s)\,,\\
-	f(z) &= \sum_{n=0}^\infty a(n)e^{2\pi i nz/\lambda}\,.
+	f(z) &= \sum_{n=1}^\infty a(n)e^{2\pi i nz/\lambda}\,.
 	\end{align*}
 	Dann sind äquivalent: 
 	\begin{enumerate}
@@ -197,5 +197,5 @@ Allgemeiner gilt sogar
 	\[
 	L(s) = \sum_{n=1}^\infty (n^{2})^{-s} = \zeta(2s).
 	\]
-	Es folgt $\pi^{-s} \Gamma(s)\zeta(2s) + \frac{1}{2s} + \frac{1}{1-2s}$ hat holomorphe Fortsetzung auf $\CC$, ist beschränkt auf Vertikalstreifen $\nu_1 \leq \Re(s) \leq \nu_2$ und es gilt die Funktionalgleichung unter $s \mapsto \frac12 - s$. Hieraus erhält man die schon bekannten analytischen Eigenschaften von $\zeta(s)$, üblicherweise formuliert wie folgt: $\pi^{-s}\Gamma(s)\zeta(2s)$ hat holomorphe Fortsetzung auf $\CC \setminus \{0,\frac 12\}$, einfache Pole in $s= 0$ und $s=\frac 12$ und ist invariant  unter $s \mapsto 1 - s$.
+	Es folgt $\pi^{-s} \Gamma(s)\zeta(2s) + \frac{1}{2s} + \frac{1}{1-2s}$ hat holomorphe Fortsetzung auf $\CC$, ist beschränkt auf Vertikalstreifen $\nu_1 \leq \Re(s) \leq \nu_2$ und es gilt die Funktionalgleichung unter $s \mapsto \frac12 - s$. Hieraus erhält man die schon bekannten analytischen Eigenschaften von $\zeta(s)$, üblicherweise formuliert wie folgt: $\pi^{- \frac s2}\Gamma(\frac s2)\zeta(s)$ hat holomorphe Fortsetzung auf $\CC \setminus \Set {0,1}$, einfache Pole in $s=0$ und $s=1$ und ist invariant  unter $s \mapsto 1 - s$.
 \end{bsp} 

@@ -209,8 +209,8 @@ Dann gilt
 wobei $g_n(n)$ der $n$-te Fourier-Koeffizient von $P_{n,12}$ ist (siehe \autoref{satz:Pn_Fourier}).
 \end{satz}
 \begin{bewe}
-Es gilt $P_n = c_n \cdot \Delta$ mit $c_n \in \CC$.
-Durch Vergleich des ersten Fourier-Koeffizienten folgt $c_n \in \RR$.
+Es gilt $P_n = c_n \cdot \Delta$ mit $c_n \in \CC \setminus \Set {0}$.
+(Man kann zudem zeigen, dass $c_n \in \RR$, dies benötigen wir im Folgenden jedoch nicht.)
 Aus $\scalarprd{\Delta}{P_n} \sim \tau(n)$\footnote{Hier meint $\sim$ die Proportionalität: $x \sim y \Rla x = ky$ für $k$ konstant.} (siehe \autoref{<f,Pn>} (ii)) folgt $c_n \scalarprd \Delta \Delta \sim \tau(n)$, also gilt $\tau(n) = 0$ genau dann, wenn $c_n = 0$. Aber $c_n = 0$ genau dann, wenn $P_n \equiv 0$, und dies gilt genau dann, wenn $g_n(n) \sim \scalarprd{P_n}{P_n} = 0$.
 Hieraus folgt die Behauptung.
 \end{bewe}
@@ -245,12 +245,12 @@ Speziell ist
 \]
 Für $g_n(n)$ substituiert man aus \autoref{satz:Pn_Fourier} explizite Formeln. Benutzt man $J_n(x) = \mathcal{O}(\min \{x^{-\frac{1}{2}}, x^n\})$ (einfach) und $K(n,n,c) = \mathcal{O}_\epsilon( (n,c)^{\frac{1}{2}}c^{\frac{1}{2}+\epsilon})$ (Weilsche Abschätzung, tiefliegend), so erhält man nach einigen Rechnungen
 \[
-g_n(n) = \mathcal{O} (n^{\frac{1}{2}+\epsilon})
+g_n(n) = \mathcal{O}_\epsilon (n^{\frac{1}{2} + \epsilon})
 \,,
 \]
 also folgt
 \[
-a_\nu(n) = \mathcal{O}_\epsilon(n^{\frac{k}{2}-\frac{1}{4} + \epsilon} )
+a_\nu(n) = \mathcal{O}_\epsilon (n^{\frac{k}{2}-\frac{1}{4} + \epsilon} )
 \,.
 \]
 

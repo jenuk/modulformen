@@ -168,10 +168,11 @@ folgt $h_m(\cdot, z') \in S_k$ und $h_m(z, \cdot) \in S_k$ aus Symmetriegründen
 	&= \sum_{i,j=1}^r \conj{c_{ij}} f_j(z') \int_\F f_\mu(z) \conj{f_i(z)} y^{k-2} \opd x \opd y \\
 	&= \sum_{j=1}^r \conj{c_{\mu j}} f_j(z') \scalarprd{f_\mu}{f_\mu}
 	\stackrel{\text{(i)}}{=} C_km^{1-k} a_m^\mu f_\mu(z')
-	\end{split}
 	\,.
+	\end{split}
 	\]
-	Da $f_1$, \ldots $f_r$ eine Basis ist, folgt
+	Hierbei geht unter Anderem ein, dass alle Fourierkoeffizienten von $f_j$ reell sind, da es sich um eine normalisierte Hecke-Eigenform handelt.
+	Da $f_1$, \ldots $f_r$ zudem eine Basis ist, folgt
 	\[
 	c_{\mu j} =
 	\begin{cases}
@@ -188,8 +189,8 @@ folgt $h_m(\cdot, z') \in S_k$ und $h_m(z, \cdot) \in S_k$ aus Symmetriegründen
 	&= \int_\F \sum_{i=1}^r a_m^i \frac{f_i(z)f_i(-\conj z)}{\scalarprd{f_i}{f_i}} y^{k-2} \opd x \opd y \\
 	&= \sum_{i=1}^r a_m^i\int_\F \frac{f_i(z) \conj{f_i(z)}}{\scalarprd{f_i}{f_i}} y ^{k-2} \opd x \opd y \\
 	&= \sum_{i=1}^r a_m^i = \Tr T(m)
-	\end{split}
 	\,.
+	\end{split}
 	\]
 \end{bewe}
 

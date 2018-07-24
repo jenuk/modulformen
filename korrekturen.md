@@ -15,6 +15,18 @@ In der letzten Zeile direkt über Satz 6.9 muss die Summe bei r=0 beginnen, nich
 
 In der letzten Zeile des Beweises von Satz 6.20 stand am Ende e^(-2int) statt e^(-2pi*int).
 
+In Abschnitt 4.1.2 ist g_n(n) in O_epsilon(n^(1/2 + epsilon)), nicht in O(n^(1/2 + epsilon)).
+
+Im Beweis von Satz 6.24 (Hecke-Umkehrsatz) wurde irrtümlich die Mellin-Transformation (Satz 6.15) statt des Mellin-Umkehrsatzes (Satz 6.25) referenziert. Außerdem stand am Ende zweimal 1/y statt i/y im Argument von f.
+
+In Beispiel 6.23, i) ist zeta(s)*zeta(s-k+1) natürlich nur bis auf die Konstante -2k/B_k gleich L(E_k, s). Die Funktionalgleichung gilt selbstverständlich trotzdem.
+
+In Satz 6.7 stand in der Voraussetzung als zweite Dirichletreihe sum(b(n)(n^lambda_n * s). Die Basis ist natürlich e, nicht n.
+
+Am Ende von Abschnitt 6.6 die Funktionalgleichung sowie die Polstellen von zeta korrigiert (Johann, 24.7.18).
+
+In Satz 6.27, Zeile 3 begann die Summe bei n=0 statt n=1 (u.A. Johann, 24.7.18).
+
 # 18-07-22
 Abschnitt 4.1.2, am Anfang "g_n(m) = .../(4pi n)^(k-2) * ..." statt "g_n(m) = .../(2pi n)^(k-2)" und der Summe sollte der zweite Fourierkoeffizient a_nu(n) nicht a_nu(m) sein.
 
