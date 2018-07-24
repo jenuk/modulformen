@@ -1,25 +1,29 @@
 \section{Der Heckesche Umkehrsatz}
 
-\autoref{satz:hecke} hat Umkehrung:
+\autoref{satz:hecke} hat eine Umkehrung:
 
 \begin{satz}[Hecke]
-	Seien $k \in 2\NN$, $\alpha > 0$ gegeben.
+	Seien $k \in 2\NN$ und $\alpha > 0$ gegeben.
 	Sei $(a(n))_{n\in\NN_0}$ eine Folge komplexer Zahlen mit $a(n) = \mathcal{O}(n^\alpha)$.
 	Sei
 	\[
 		L(s) = \sum_{n=1}^\infty \frac{a(n)}{n^s}
 		\qquad (\sigma > \alpha +1)
 	\]
-	Sei $L^*(s) = (2\pi)^{-s} \Gamma(s) L(s)$ und $L^*(s) + \frac{a(0)}{s} + \frac{(-1)^{\frac{k}{2}} a(0)}{k-s}$ besitze holomorphe Fortsetzung nach $\CC$ und $L^*$ erfülle die Funktionalgleichung
+	und die Funktion $L^*(s) = (2\pi)^{-s} \Gamma(s) L(s)$ erfülle die Funktionalgleichung
 	\[
-		L^*(k-s) = (-1)^{\frac{k}{2}}L^*(s)\,.
+		L^*(k-s) = (-1)^{\frac{k}{2}}L^*(s)
+		\,.
 	\]
-	
-	Ist zudem $L^*(s) + \frac{a(0)}{s} + \frac{(-1)^{\frac{k}{2}} a(0)}{k-s}$ beschränkt in jedem Vertikalstreifen $\nu_1 \leq Re(s) \leq \nu_2$, so gilt $f(z) = \sum_{n=0}^\infty a(n)q^n \in M_k$.
+	Die Funktion 
+	\[
+	s \mapsto L^*(s) + \frac{a(0)}{s} + \frac{(-1)^{\frac{k}{2}} a(0)}{k-s}
+	\]
+	besitze eine holomorphe Fortsetzung nach $\CC$ und sei zudem in jedem Vertikalstreifen $\nu_1 \leq Re(s) \leq \nu_2$ beschränkt. Dann gilt $f(z) = \sum_{n=0}^\infty a(n)q^n \in M_k$.
 \end{satz}
 
 \begin{bewe}
-	Nutze zuerst
+	Wir benötigen zum Beweis zwei weitere Sätze. Zunächst: 
 	\begin{satz}[Mellinscher Umkehrsatz]
 		Sei $x \in \CC$ mit $\Re(x) > 0$ und $c > 0$ eine reelle Zahl.
 		Dann gilt
@@ -32,7 +36,7 @@
 	\begin{bewe}
 		Betrachte das Kurvenintegral über das Rechteck mit den Ecken $c+iT$, $-\frac{1}{2}-N+iT$, $-\frac{1}{2}-N-iT$, $c-iT$ mit $T > 0$ reell und $N > 0$ ganz, beide groß.
 		
-		Die horizontalen Integrale verschwinden für $T \to \infty$ (das folgt aus der Sterlingformel) und das linke vertikale Integral für $N \to \infty$ (das folgt aus der Funktionalgleichung von $\Gamma(s)$).
+		Die horizontalen Integrale verschwinden für $T \to \infty$ (das folgt aus der Stirlingformel, siehe \autoref{Stirling}) und das linke vertikale Integral für $N \to \infty$ (das folgt aus der Funktionalgleichung von $\Gamma(s)$).
 		Damit folgt aus dem Residuensatz
 		\[
 			\frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} \Gamma(s)x^{-s} \opd s
@@ -40,39 +44,31 @@
 		\]
 	\end{bewe}
 
-	Außerdem brauchen wir noch
+	Darüber hinaus brauchen wir noch:
 	\begin{lemm}[Phragmen-Lindelöf]
 		Für zwei reelle Zahlen $\nu_1 < \nu_2$ setze $F = \Set{s \in \CC\mid \nu_1 \leq \Re(s) \leq \nu_2}$.
-		Sei $\phi$ eine holomorphe Funktion auf einer offenen Menge $U \supseteq F$, welche
+		Sei $\phi$ eine holomorphe Funktion auf einer offenen Menge $U \supseteq F$, welche für $s = \sigma + i\tau$
 		\[
 			\abs{\phi(s)} = \mathcal{O}(e^{\abs{\tau}^\delta})
-			\qquad (\abs \tau \to \infty)\quad s= \sigma + i\tau
+			\qquad (\abs \tau \to \infty)
 		\]
 		gleichmäßig auf $F$ mit einem $\delta > 0$ erfüllt.
 		
-		Gibt es dann eine reelle Zahl $b$ mit
-		\[
-			\abs{\phi(s)} = \mathcal{O}(\abs{\tau}^b) \qquad \text{auf } \partial F
-		\]
-		so folgt bereits
-		\[
-			\abs{\phi(s)} = \mathcal{O}(\abs{\tau}^b)
-		\]
-		gleichmäßig in $F$.
+		Gibt es dann eine reelle Zahl $b$ mit $\abs{\phi(s)} = \mathcal{O}(\abs{\tau}^b)$ auf $\partial F$, so folgt bereits $\abs{\phi(s)} = \mathcal{O}(\abs{\tau}^b)$ gleichmäßig auf $F$.
 	\end{lemm}
 	\begin{bewe}
-		Nach Vorausetzung existiert ein $L > 0$ so, dass $\abs{\phi(s)} \leq L e^{\abs \tau ^\delta}$ in $F$.
+		Nach Vorausetzung existiert ein $L > 0$, sodass $\abs{\phi(s)} \leq L e^{\abs \tau ^\delta}$ auf $F$.
 		
 		Betrachte zunächst den Fall $b=0$.
-		Dann gibt es eine Konstante $M > 0$ so, dass $\abs{\phi(s)} \leq M$ in $\partial F$.
+		Dann gibt es eine Konstante $M > 0$, sodass $\abs{\phi(s)} \leq M$ auf $\partial F$.
 		Sei $m$ eine positive ganze Zahl mit $m \equiv 2 \mod 4$.
 		Setze $s = \sigma +i\tau$.
-		Da $\Re(s^m) = \Re((\sigma + i\tau)^m) $ ein Polynom in $\sigma$ und $\tau$ ist und der nächste höchste Term von $\tau$ durch $-\tau^m$ gegeben ist, haben wir
+		Da $\Re(s^m) = \Re((\sigma + i\tau)^m) $ ein Polynom in $\sigma$ und $\tau$ ist, dessen höchste Potenz von $\tau$ durch $-\tau^m$ gegeben ist, haben wir
 		\[
-			\Re(s^m) = -\tau^m + \mathcal{O} (\abs{\tau}^{m-1})\,,
+			\Re(s^m) = -\tau^m + \mathcal{O} (\abs{\tau}^{m-1})
 		\]
 		gleichmäßig auf $F$.
-		Es folgt, dass $\Re(s^m)$ eine obere Grenze $N$ in $F$ besitzt.
+		Es folgt, dass $\Re(s^m)$ eine obere Grenze $N$ auf $F$ besitzt.
 		Indem wir $m > \delta$ wählen, erhalten wir für $\epsilon > 0$
 		\[
 			\abs{\phi(s)e^{\epsilon s^m}} \leq Me^{\epsilon N}
@@ -85,31 +81,31 @@
 			\xto{\abs\tau \to \infty} 0
 		\]
 		gleichmäßig auf $F$.
-		Nach dem Maximumsprinzip folgt damit 
+		Nach dem Maximumsprinzip folgt damit bereits
 		\[
 			\abs{\phi(s)e^{\epsilon s^m}}
 			\leq Me^{\epsilon N}
-			\qquad (s\in F)
-			\,.
 		\]
-		Da $\epsilon$ unabhängig von $M$ und $N$ bekommen wir mit $\epsilon \to 0$ $\abs{\phi(s)} \leq M$.
-		Also $\abs{\phi(s)} = \mathcal{O}(\abs\tau^0)$ in $F$.
+		auf $\F$.
+		Da $\epsilon$ unabhängig von $M$ und $N$ ist, bekommen wir mit $\epsilon \to 0$ wie behauptet $\abs{\phi(s)} \leq M$, also $\abs{\phi(s)} = \mathcal{O}(\abs\tau^0)$, auf $F$.
 		\medskip
 		
 		Nehmen wir jetzt $b \not= 0$ an.
-		Wir definieren eine lokal um $F$ holomorphe Hilfsfunktion $\psi(s) = (s-\nu_1 +1)^b = e^{b\log(s-\nu_1+1)}$ mit dem Hauptzweig des Logarithmus.
+		Wir definieren eine lokal um $F$ holomorphe Hilfsfunktion $\psi(s) := (s-\nu_1 +1)^b = e^{b\Log(s-\nu_1+1)}$ mit $\Log$ dem Hauptzweig des komplexen Logarithmus.
 		Da nun
 		\[
-			\Re(\log(s-\nu_1 + 1))
+			\Re(\Log(s-\nu_1 + 1))
 			= \log\abs{s-\nu_1+1}
+			\,,
 		\]
 		haben wir gleichmäßig auf $F$
 		\[
 			\abs{\psi(s)} = \abs{s - \nu_1 + 1}^b \sim \abs\tau^b \qquad (\abs\tau \to \infty)
+			\,.
 		\]
 		Setze $\phi_1(s) = \frac{\phi(s)}{\psi(s)}$.
-		Dann erfüllt $\phi_1(s)$ die gleichen Voraussetzungen wie $\phi$ mit $b=0$ und ist damit beschränkt in $F$.
-		Es folgt $\abs{\phi(s)} = \mathcal{O}(\abs\tau^b)$ in $F$.
+		Dann erfüllt $\phi_1$ die Voraussetzungen des Satzes mit $b=0$ und ist damit wie gerade gezeigt beschränkt auf $F$.
+		Es folgt $\abs{\phi(s)} = \mathcal{O}(\abs\tau^b)$ auf $F$.
 	\end{bewe}
 
 	Betrachte für $c > \alpha + 1$ das Integral

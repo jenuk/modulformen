@@ -1,3 +1,8 @@
+# 18-07-23
+In der letzten Zeile direkt über Satz 6.9 muss die Summe bei r=0 beginnen, nicht bei r=1.
+
+In der letzten Zeile des Beweises von Satz 6.20 stand am Ende e^(-2int) statt e^(-2pi*int).
+
 # 18-07-22
 Abschnitt 4.1.2, am Anfang "g_n(m) = .../(4pi n)^(k-2) * ..." statt "g_n(m) = .../(2pi n)^(k-2)" und der Summe sollte der zweite Fourierkoeffizient a_nu(n) nicht a_nu(m) sein.
 

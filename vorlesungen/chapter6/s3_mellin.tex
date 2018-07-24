@@ -5,9 +5,9 @@
 	\[
 		\Gamma(s) = \lim_{N\to\infty} \frac{(N-1)!N^s}{s(s+1) \ldots (s+N-1)}\,.
 	\]
-	Es gilt der folgende Satz
+	Es gilt der folgende Satz:
 	\begin{satz}
-		Die Funktion $\Gamma(s)$ ist in ganz $\CC\setminus-\NN_0$ holomorphe Funktion mit einfachen Polen in $s=0$, $-1$, $-2$, \ldots{}
+		Die Funktion $\Gamma(s)$ ist eine in ganz $\CC\setminus-\NN_0$ holomorphe Funktion mit einfachen Polen in $s=0$, $-1$, $-2$, \ldots{}.
 		Es gilt die Funktionalgleichung
 		\[
 			s\Gamma(s) = \Gamma(s+1) \qquad \forall s \in \CC\setminus-\NN_0\,.
@@ -22,25 +22,28 @@
 		Siehe FT 2 oder Busam-Freitag FT 1.
 	\end{bewe}
 
-	Da $\Gamma(s) \not= 0$ für alle $s \in \CC$ ist $\frac{1}{\Gamma(s)}$ eine ganze Funktion und es gilt die Produktentwicklung
+	Da $\Gamma(s) \not= 0$ für alle $s \in \CC$, ist $\frac{1}{\Gamma(s)}$ eine ganze Funktion und es gilt die Produktentwicklung
 	\[
 		\frac{1}{\Gamma(s)} = s e^{\gamma s} \prod_{j=1}^\infty \Bigl(1 + \frac{s}{j}\Bigr)e^{-\frac{s}{j}}
+		\,,
 	\]
-	wobei $\gamma = \lim_{N \to \infty} 1 + \frac{1}{2} + \ldots + \frac{1}{N} - \log(N)$.
+	wobei $\gamma = \lim_{N \to \infty} 1 + \frac{1}{2} + \ldots + \frac{1}{N} - \log(N)$ die Euler-Mascheroni-Konstante ist.
 	
-	Eine der wichtigen Formeln für die Gammafunktion ist gegeben durch
-	\begin{satz}
+	Eine der wichtigen Formeln für die Gammafunktion ist gegeben durch:
+	\begin{satz}[Stirling-Formel]\label{Stirling}
 		Es gilt in jedem Winkelbereich $W_\delta = \Set{s \in \CC \mid -\pi + \delta < \Arg(s) < \pi - \delta}$
 		\[
 			\Gamma(s)
 			= \sqrt{2\pi} \cdot s^{s - \frac{1}{2}} e^{-s} e^{H(s)}
+			\,,
 		\]
 		wobei $H(s)$ eine in $\CC_-$ holomorphe Funktion ist mit der Eigenschaft
 		\[
-			\lim_{\substack{\abs s \to \infty \\ s \in W_\delta}} H(s) = 0\,.
+			\lim_{\substack{\abs s \to \infty \\ s \in W_\delta}} H(s) = 0
+			\,.
 		\]
 	\end{satz}
-	Diese ist vor allem Dingen dafür geeignet den exponentiellen Abfall der Funktion $\Gamma(s)$ auf vertikalen Streifen $\sigma_1 < \Re s < \sigma_2$ beweisen.
+	Diese ist vor allem Dingen dafür geeignet, den exponentiellen Abfall der Funktion $\Gamma(s)$ auf vertikalen Streifen $\sigma_1 < \Re s < \sigma_2$ zu beweisen.
 \end{erin}
 
 Eine für uns sehr wichtige Darstellung der Gammafunktion ist die Integraldarstellung von Euler:
@@ -109,7 +112,7 @@ Die Vertauschung von Integral und Summe bei $(\ast)$ ist nach Satz von Lebesgue 
 Zum Schluss beweisen wir noch eine nützliche Darstellung von $\Log \Gamma(s+1)$ in Form der expliziten Taylor-Entwicklung im Bereich $\abs{s} < 1$: 
 
 \begin{satz}\label{LogGamma(s+1)}
-Es gilt für alle $s \in U_1(0)$:
+Es gilt für alle $s \in \EE := U_1(0)$:
 \[
 	\Log \Gamma(s+1) = - \gamma s + \sum_{n=2}^\infty (-1)^n \frac {\zeta(n)}n s^n
 	\,.

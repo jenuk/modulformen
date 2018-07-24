@@ -12,7 +12,7 @@
 \end{defi}
 
 \begin{beme-list}
-	\item $\lambda_n = n$ ist naheliegend führt aber mit $z = e^{-s}$ zur Theorie der Potenzreihen, die wir schon ausgiebig in der Funktionentheorie I studiert haben.
+	\item $\lambda_n = n$ ist naheliegend führt aber mit $z = e^{-s}$ zur Theorie der Potenzreihen, die wir schon ausgiebig in der Funktionentheorie 1 studiert haben.
 	
 	\item $\lambda_n = \log (n)$: Mit dieser Wahl lässt sich die obere Reihe \myquote{schöner} schreiben als
 	\begin{equation}\label{eq:gewDirichtletreihe}
@@ -24,14 +24,14 @@
 	
 	\item Im Gegensatz zu Potenzreihen weisen Dirichletreihen ein anderes Konvergenzverhalten auf als das \myquote{auf Kreisscheiben} auf.
 	Während also für eine Potenzreihe $f(z) = \sum_{n=0}^\infty a(n) z^n$ stets ein $0 \leq R \leq \infty$ existiert, so dass $f$ für $z \in \CC$ mit $\abs z < R$ konvergiert und für $\abs z > R$ divergiert, \myquote{konvergieren Dirichletreihen auf Halbebenen statt Kreisscheiben}.
-	Dies präzisiert der nächste Satz
+	Dies präzisiert der nächste Satz.
 \end{beme-list}
 
 \begin{satz}\label{satz:konvergenzDirichletreihen}
 	Es sei $F(s) := \sum_{n=1}^\infty a(n) e^{-\lambda_n s}$ eine Dirichletreihe wie in \autoref{def:dirichletreihe} definiert.
-	Ist diese für ein $s = s_0$ konvergent, so konvergiert sie auch für alle $Re(s) > \sigma_0\ (= \Re(s_0))$ und gleichmäßig auf Kompakten Mengen.
+	Ist diese für ein $s = s_0$ konvergent, so konvergiert sie auch für alle $\Re(s) > \sigma_0\ (= \Re(s_0))$ und gleichmäßig auf kompakten Mengen.
 	
-	Somit existiert eine reelle Zahl $\sigma_0$, so dass die Reihe für alle $s$ mit $\Re s > \sigma_0$ konvergiert und für alle $\Re(s) < \sigma_0$ divergiert (falls überall konvergent, setze $\sigma_0 = -\infty$, falls überall divergent setze $\sigma_0 = \infty$).
+	Somit existiert eine reelle Zahl $\sigma_0$, sodass die Reihe für alle $s$ mit $\Re s > \sigma_0$ konvergiert und für alle $\Re(s) < \sigma_0$ divergiert (falls überall konvergent, setze $\sigma_0 = -\infty$, falls überall divergent setze $\sigma_0 = \infty$).
 	
 	Die in dem Gebiet $\Set{s \in \CC \mid \Re(s) > \sigma_0}$ durch $F(s)$ definierte Funktion ist dort holomorph, die Ableitungen sind gegeben durch
 	\[
@@ -67,7 +67,7 @@
 	\]
 	ein, die in diesem Paragraphen mehrmals benutzt werden. Ohne Einschränkung können wir $s_0 = 0$ voraussetzen (indem wir $s$ durch $s+s_0$ und $a(n)$ durch $a(n)e^{-\lambda_ns_0}$ ersetzen).
 	Dann ist $\sum_{n=1}^\infty a(n)$ konvergent und es gibt zu vorgegebenen $\epsilon > 0$ ein $N_0$, so dass $\abs{A(M,N)} \leq \epsilon$ für alle $N_0 \leq M < N$.
-	Dann gilt für $N > M \geq N_0$:\footnote{dieses Verfahren wir auch als abelsche Summation bezeichnet}
+	Dann gilt für $N > M \geq N_0$:\footnote{Dieses Verfahren wird auch als abelsche Summation bezeichnet.}
 	\[
 	\sum_{n=M}^N a(n)e^{-\lambda_ns}
 	&= \sum_{n=M}^N \bigl(A(M,n) - A(M,n-1)\bigr)e^{-\lambda_ns} \\
@@ -97,17 +97,18 @@
 
 \end{bewe}
 
-Analog zur bedingten Konvergenzabszissen kann man (bei gewöhnlichen Dirichletreihen) die absoluten Konvergenzabszisse definieren als die bedingten Abszisse von
+Analog zur bedingten Konvergenzabszisse kann man (bei gewöhnlichen Dirichletreihen) die absolute Konvergenzabszisse definieren als die bedingte Konvergenzabszisse von
 \[
 \sum_{n=1}^\infty \abs{a(n)} n^{-s}
 \,.
 \]
-Wir bezeichnen $\sigma_a$ als die \myemph[Konvergenzsabszisse!absolute Konvergenzabsizee]{absoluten} und $\sigma_c$ als die \myemph[Konvergenzsabszisse!bedingten Konvergenzabsizee]{bedingten Konvergenzabszisse}.
+Wir bezeichnen $\sigma_a$ als die \myemph[Konvergenzsabszisse!absolute Konvergenzabszisse]{absolute} und $\sigma_c$ als die \myemph[Konvergenzsabszisse!bedingte Konvergenzabszisse]{bedingte Konvergenzabszisse}.
 
 \begin{satz}
 	Ist $F$ eine gewöhnliche Dirichletreihe mit $\sigma_c \in \RR$, so gilt
 	\[
 		\sigma_c \leq \sigma_a \leq \sigma_c + 1
+		\,.
 	\]
 \end{satz}
 
@@ -133,7 +134,7 @@ Wir bezeichnen $\sigma_a$ als die \myemph[Konvergenzsabszisse!absolute Konvergen
 	\]
 	eine Forsetzung zu einer ganzen Funktion (wie wir noch sehen werden!), aber die Reihe konvergiert nur für Werte $s \in \CC$ mit $\Re s > 0$.
 	
-	Nur in Spezialfällen können wir auf die Existenz von singulären Punkten auf dem Rand der Konvergenzhalbebene schließen.
+	Nur in Spezialfällen können wir auf die Existenz von singulären Punkten auf dem Rand der Konvergenzhalbebene schließen, wie der folgende Satz zeigt.
 \end{beme}
 
 \begin{satz}[Landau]
@@ -153,11 +154,11 @@ Wir bezeichnen $\sigma_a$ als die \myemph[Konvergenzsabszisse!absolute Konvergen
 	= \sum_{n=1}^\infty a(n)n^\delta
 	\,.
 	\]
-	Damit gilt $\sigma_c \leq -\delta < \sigma_c$. \blitz
+	Damit gilt $\sigma_c \leq -\delta < 0 = \sigma_c$. \blitz
 \end{bewe}
 
 \begin{satz}
-	Seien $\sum_{n=1}^\infty a(n)e^{-\lambda_ns}$ und $\sum_{n=1}^\infty b(n)n^{-\lambda_ns}$ zwei Dirichletreihen, die in einem Gebiet $U \subset \CC$ konvergieren und dort die selbe analytische Funktion darstellen.
+	Seien $\sum_{n=1}^\infty a(n)e^{-\lambda_ns}$ und $\sum_{n=1}^\infty b(n)n^{-\lambda_ns}$ zwei Dirichletreihen, die in einem Gebiet $U \subset \CC$ konvergieren und dort dieselbe analytische Funktion darstellen.
 	Dann ist $a(n) = b(n)$ für alle $n\in\NN$.
 \end{satz}
 \begin{bewe}
@@ -167,6 +168,7 @@ Wir bezeichnen $\sigma_a$ als die \myemph[Konvergenzsabszisse!absolute Konvergen
 	\[
 	0 &= e^{\lambda_m \sigma} \biggl( \sum_{n=m}^\infty a(n) e^{-\lambda_n \sigma} - \sum_{n=m}^\infty b(n) e^{-\lambda_n \sigma} \biggl) \\
 	&= a(m) - b(m) + \sum_{n=m+1}^\infty \bigl(a(n)-b(n)\bigr) e^{-(\lambda_n-\lambda_m)\sigma}
+	\,.
 	\]
 	In der Tat hat jedes Glied in der Reihe wegen $\lambda_n > \lambda_m$ den Limes 0 und die gleichmäßige Konvergenz impliziert, dass die Reihe für $\sigma\to\infty$ gegen 0 strebt, was $a(m) \not= b(m)$ widerspricht.
 \end{bewe}

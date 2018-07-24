@@ -40,7 +40,7 @@ Wir müssen also nur noch (ii) zeigen. Sei dazu $f \in S_k$. Nach Definition ist
 \]
 mit $c \in \RR_{>0}$ beliebig. Man schreibe $f(z) = y^{- \frac k2} y^{\frac k2} f(z)$. Wie schon früher gezeigt, ist $g(z) := y^{\frac k2} f(z)$ auf ganz $\HH$ beschränkt. Es folgt somit
 \[
-	a(n) = \int_{ci}^{ci + 1} y^{-\frac k2} g(z) e^{-2\pi inz} \opd z = \int_0^1 c^{- \frac k2} g(t+ic) e^{2\pi nc} e^{-2 int} \opd t
+	a(n) = \int_{ci}^{ci + 1} y^{-\frac k2} g(z) e^{-2\pi inz} \opd z = \int_0^1 c^{- \frac k2} g(t+ic) e^{2\pi nc} e^{-2\pi int} \opd t
 \]
 und damit $\abs{a(n)} \leq c^{- \frac k2} e^{2\pi nc} M$, wobei $M > 0$ nicht mehr von $n$ abhängt. Man wähle $c = \frac 1n$ und folgere $\abs{a(n)} = \mathcal O(n^{\frac k2})$. Damit ist alles gezeigt.
 \end{bewe}
@@ -59,7 +59,7 @@ dann gilt: Die Funktion
 \[
 	s \mapsto L^*(f,s) - \frac {a(0)}s + \frac {(-1)^{\frac k2} a(0)}{k-s}
 \]
-hat eine holomorphe Fortsetzung auf ganz $\CC$, ist beschränkt in jedem Vertikalstreifen $\Set {s \in \CC \mid \nu_1 \leq \Re(s) \leq \nu_2}$ und erfüllt die Funktionalgleichung
+hat eine holomorphe Fortsetzung auf ganz $\CC$, ist beschränkt in jedem Vertikalstreifen $\Set {s \in \CC \mid \nu_1 \leq \Re(s) \leq \nu_2}$ und $L^*$ erfüllt die Funktionalgleichung
 \[
 	L^*(f,k-s) = (-1)^{\frac k2} L^*(f,s)
 	\,.
@@ -134,17 +134,18 @@ was nach Subtraktion von $\frac {a(0)}{k-s} + \frac {(-1)^{\frac k2} a(0)}s$ gen
 	= \zeta(s) \zeta(s-k+1)
 	\,.
 	\]
-	Es folgt, dass $(\zeta(s)\zeta(s-k+1))^*$ die vervollständigte Heckesche L-Reihe $L^*(E_k,s)$ ist und $(-1)^{\frac{k}{2}}$ invariant unter $s \mapsto k-s$.
+	Es folgt, dass $(\zeta(s)\zeta(s-k+1))^*$ (bis auf eine Konstante $- \frac{2k}{B_k}$) die vervollständigte Heckesche L-Reihe $L^*(E_k,s)$ ist und $(-1)^{\frac{k}{2}}$ invariant unter $s \mapsto k-s$.
 	
 	\item $f = \Delta \in S_{12}$.
 	Dann hat $L^*(\Delta, s) = (2\pi)^{-s} \Gamma(s)L(\Delta, s)$ eine holomorphe Fortsetzung auf $\CC$ und ist invariant unter $s \mapsto 12-s$.
-	
+\end{bsp-list}
+
 	\emph{Kuriose Anwendung}:
 	Sei $f = \sum_{n \geq 1} a(n)q^n \in S_k$ und seien fast alle $a(n)$ gleich 0.
-	Dann ist $f = 0$.
+	Dann ist $f \equiv 0$.
 	\begin{bewe}
 		Die Funktion $L^*(f, s) = (2\pi)^{-s} \Gamma(s) L(f, s)$ ist holomorph in $\CC$.
-		Also folgt $L(f,s) = 0$ für $s = 0$, $-1$, $-2$, \ldots
+		Also folgt $L(f,s) = 0$ für $s = 0$, $-1$, $-2$, \ldots{}.
 		
 		Nach Voraussetzung
 		\[
@@ -167,4 +168,3 @@ was nach Subtraktion von $\frac {a(0)}{k-s} + \frac {(-1)^{\frac k2} a(0)}s$ gen
 		\,.
 		\]
 	\end{bewe}
-\end{bsp-list}

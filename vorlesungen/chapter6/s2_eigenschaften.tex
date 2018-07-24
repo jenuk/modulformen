@@ -21,7 +21,7 @@ Das heißt die additive Faltung $\sum_{n+m=k} a(n)b(m)$, die die Multiplikation 
 Diese Tatsache ist für große Bedeutung der Dirichletreihen in der Zahlentheorie verantwortlich.
 
 \begin{bsp-list}
-	\item Es sei $d(n)$ die Anzahl der Teiler von n.
+	\item Es sei $d(n)$ die Anzahl der Teiler von $n$.
 	Dann gilt für alle $s \in \CC$ mit $\Re s > 1$
 	\[
 	\sum_{n=1}^\infty \frac{d(n)}{n^s}
@@ -31,7 +31,7 @@ Diese Tatsache ist für große Bedeutung der Dirichletreihen in der Zahlentheori
 	\,.
 	\]
 	
-	\item Allgemein gilt für $\sigma_k(n) = \sum_{d|n} d^k$ für $k \in \ZZ$, dann ist
+	\item Allgemein gilt für $\sigma_k(n) = \sum_{d|n} d^k$ für $k \in \ZZ$, deshalb ist
 	\[
 	\sum_{n=1}^\infty \frac{\sigma_k(n)}{n} = \zeta(s) \cdot \zeta(s-k)\,.
 	\]
@@ -50,11 +50,11 @@ Es ist also im Bereich der absoluten Konvergenz von $F(s) = \sum_{n=1}^\infty \f
 F(s)
 &= \sum_{0 \leq r_1, r_2, \ldots} f(2^{r_1} \cdot 3^{r_2} \cdot 5^{r_3} \ldots) \cdot (2^{r_1} \cdot 3^{r_2} \cdot 5^{r_3} \ldots)^{-s} \\
 &= \sum_{r_1=0}^\infty \sum_{r_2=0}^\infty \ldots \sum_{r_j=0}^\infty \ldots \frac{f(2^{r_1}) \cdot f(3^{r_2}) \cdot \ldots \cdot f(p_j^{r_j}) \cdot \ldots }{(2^{r_1} \cdot 3^{r_2}  \cdot \ldots \cdot p_j^{r_j} \cdot \ldots)^s} \\
-&= \prod_{p \in \PP} \sum_{r=1}^\infty \frac{f(p^r)}{p^{rs}}
+&= \prod_{p \in \PP} \sum_{r=0}^\infty \frac{f(p^r)}{p^{rs}}
 \,,
 \]
 wobei sich das Produkt über alle Primzahlen erstreckt.
-Wir erhalten damit folgend
+Der folgende Satz präzisiert diese Aussage.
 
 \begin{satz}
 	Sei $f:\NN \ra \CC$ eine multiplikative Funktion und sei die Dirichletreihe
@@ -64,6 +64,7 @@ Wir erhalten damit folgend
 	absolut konvergent. Dann ist $F(s)$ gleich dem \myemph{Euler-Produkt}
 	\[
 	F(s) = \prod_{p \in \PP} \Bigl(1 + \frac{f(p)}{p^s} + \frac{f(p^2)}{p^{2s}} + \ldots \Bigr)
+	\,.
 	\]
 \end{satz}
 
@@ -83,12 +84,14 @@ Wir erhalten damit folgend
 	&= \prod_{p \in \PP} (1-p^{-s})^{-2}
 	= \prod_{p \in \PP} \bigl(1 + 2p^{-s} + 3p^{-2s} + \ldots\bigr) \\
 	&= \prod_{p \in \PP} \Bigl(1+ \frac{d(p)}{p^s} + \frac{d(p^2)}{p^{2s}} + \ldots \Bigr)
+	\,.
 	\]
 	
 	\item Für den Kehrwert $F(s) = \frac{1}{\zeta(s)}$ der Zetafunktion erhalten wir
 	\[
 	\frac{1}{\zeta(s)}
-	= \prod_{p \in \PP} \bigl(1-p^{-s}\bigr) = \sum_{n=1}^\infty \frac{\mu(n)}{n^s}\,,
+	= \prod_{p \in \PP} \bigl(1-p^{-s}\bigr) = \sum_{n=1}^\infty \frac{\mu(n)}{n^s}
+	\,,
 	\]
 	wobei
 	\[
@@ -114,10 +117,10 @@ Wir erhalten damit folgend
 
 \begin{satz}
 	Seien $f$ und $g$ zwei Funktionen von $\NN$ nach $\CC$.
-	Ist für alle $n\in\NN$:
+	Ist für alle $n\in\NN$
 	\[
 	f(n) = \sum_{d|n} g(d)
-	\,.
+	\,,
 	\]
 	so ist für alle $n \in \NN$
 	\begin{equation}\label{eq:moebiusMuFaltung}
@@ -125,7 +128,7 @@ Wir erhalten damit folgend
 	\,.
 	\end{equation}
 	
-	Stehen $f$ und $g$ in dieser Beziehung zueinander, so ist $f$ multiplikativ genau dann wenn $g$ multiplikativ ist.
+	Stehen $f$ und $g$ in dieser Beziehung zueinander, so ist $f$ multiplikativ genau dann, wenn auch $g$ multiplikativ ist.
 \end{satz}
 \begin{bewe}
 	Die Gleichungen 
@@ -143,9 +146,10 @@ Wir erhalten damit folgend
 	g(3) &= f(3) - f(1) \\
 	g(4) &= f(4) - f(2) \\
 	&\ldots 
+	\,.
 	\end{align*}
 	Es ist also klar, dass es eine solche Beziehung wie in \eqref{eq:moebiusMuFaltung} unabhängig von $f$ und $g$ existieren muss.
-	Insbesondere genügt es die Umkehrformel für Folgen \myquote{langsamen Wachstums} zu beweisen.
+	Insbesondere genügt es, die Umkehrformel für Folgen \myquote{langsamen Wachstums} zu beweisen.
 	Wir nehmen daher an, die Dirichletreihen
 	\[
 	F(s) = \sum_{n=1}^\infty \frac{f(n)}{n^s} \qquad \text{und} \qquad G(s) = \sum_{n=1}^\infty \frac{g(n)}{n^s}
@@ -160,7 +164,7 @@ Wir erhalten damit folgend
 	\,.
 	\]
 	
-	Gelten nun diese Beziehung so folgt weiter
+	Gelten nun diese Beziehung, so folgt weiter
 	\[
 	g \text{ multiplikativ}
 	&\Rla G(s) \text{ besitzt Euler-Produkt} \\
@@ -180,9 +184,7 @@ Dann ist die Funktion $\frac{1}{4}r(n)$ multiplikativ und die entsprechende Diri
 \sum_{n=1}^\infty \frac{1}{4} r(n) n^{-s}
 = \zeta(s) \Bigl( 1 - \frac{1}{3^s} + \frac{1}{5^s} - \frac{1}{7^s} + \frac{1}{9^s} - \ldots \Bigr)
 \]
-ist für $\Re s > 1$ absolut konvergent.
-
-Diese Beziehung führt mit 
+ist für $\Re s > 1$ absolut konvergent. Dies führt mit 
 \[
 \chi(n)
 = \begin{cases}
