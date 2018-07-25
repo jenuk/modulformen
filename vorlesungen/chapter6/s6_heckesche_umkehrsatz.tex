@@ -152,41 +152,46 @@
 Allgemeiner gilt sogar Folgendes:
 
 \begin{satz}\label{satz:Lreihe-quasiMf}
-	Seien $k > 0$, $\lambda >0$ reelle Zahlen und $C \in \CC^\times$. Sei $a(n)$ eine Folge sodass $a(n) = \mathcal O(n^\alpha)$ für ein $\alpha > 0$. Sei
+	Seien $k > 0$, $\lambda >0$ reelle Zahlen und $C \in \CC^\times$. Sei $a(n)$ eine Folge, sodass $a(n) = \mathcal O(n^\alpha)$ für ein $\alpha > 0$. Seien
 	\begin{align*}
-	L(s) &= \sum_{n=1}^\infty a(n)n^{-s}\,,\\
-	L^*(s) &= \left( \frac{2\pi}{\lambda}\right)^{-s} \Gamma(s) L(s)\,,\\
-	f(z) &= \sum_{n=0}^\infty a(n)e^{2\pi i nz/\lambda}\,.
+	L(s) &= \sum_{n=1}^\infty a(n)n^{-s} \,,\\
+	L^*(s) &= \left( \frac{2\pi}{\lambda}\right)^{-s} \Gamma(s) L(s) \,,\\
+	f(z) &= \sum_{n=0}^\infty a(n)e^{2\pi i nz/\lambda} \,.
 	\end{align*}
 	Dann sind äquivalent: 
 	\begin{enumerate}
 		\item $f(-1/z) = C (z/i)^{k} f(z)$ für alle $z \in \HH$.
-		\item $L^*(s) + \frac{a(0)}{s} + \frac{Ca(0)}{k - s}$ hat holomorphe Fortsetzung, ist beschränkt in $\nu_1 \leq \Re(s) \leq \nu_2$ und es gilt 
-		\[L^*(k - s) = C L^*(s).\]
+		\item $L^*(s) + \frac{a(0)}{s} + \frac{Ca(0)}{k - s}$ hat eine holomorphe Fortsetzung auf $\CC$, ist beschränkt auf Vertikalstreifen der Form $\nu_1 \leq \Re(s) \leq \nu_2$ und es gilt 
+		\[L^*(k - s) = C \cdot L^*(s)\,.\]
 	\end{enumerate}
 \end{satz}
 
 
 \begin{bsp}
-	Theta-Transformationsformel: $A \in M_m(\RR)$, $A = A^t$, $A > 0$, setze
+	Theta-Transformationsformel: Für $A \in M_m(\RR)$, $A = A^t$, $A > 0$ setze
 	\[
-	\theta_A(z) = \sum_{g \in \ZZ^m} e^{\pi i A[g] z}, \qquad z \in \HH\,.
+	\theta_A(z) = \sum_{g \in \ZZ^m} e^{\pi i A[g] z}, \qquad z \in \HH
+	\,,
 	\]
-	Dann gilt 
+	dann gilt
 	\[
-	\theta_{A^{-1}}(-1/z) = \sqrt{\det A} (z / i)^{m/2} \theta_A(z)\,.
+	\theta_{A^{-1}}(-1/z) = \sqrt{\det A} (z / i)^{m/2} \theta_A(z)
+	\,.
 	\]
-	Ist speziell $m=1$ und $A = 1$, so folgt 
+	Ist speziell $m = 1$ und $A = 1 \in \RR^{1 \times 1} = \RR$, so folgt 
 	\[
-	\theta_1(z) = 1 + 2\sum_{n=1}^\infty e^{\pi i n^2 z}\,.
+	\theta_1(z) = 1 + 2\sum_{n=1}^\infty e^{\pi i n^2 z}
+	\,.
 	\]
-	Sei $f = \frac12 \theta_1$. Dann gilt
+	Sei nun $f = \frac12 \theta_1$. Dann gilt mit der Theta-Transformationsformel von oben
 	\[
-	f(-1/z) = (z/i)^{1/2} f(z).
+	f(-1/z) = (z/i)^{1/2} f(z)
+	\,.
 	\]
-	Man wende nun \autoref{satz:Lreihe-quasiMf} auf $f$ mit den Parametern $k = \frac12$, $\lambda = 2$ und $C = 1$, also $a(0) = \frac12$. Dann
+	Man wende nun \autoref{satz:Lreihe-quasiMf} auf $f$ an mit den Parametern $k = \frac12$, $\lambda = 2$ und $C = 1$, also $a(0) = \frac12$. Dann gilt
 	\[
-	L(s) = \sum_{n=1}^\infty (n^{2})^{-s} = \zeta(2s).
+	L(s) = \sum_{n=1}^\infty (n^{2})^{-s} = \zeta(2s)
+	\,.
 	\]
-	Es folgt $\pi^{-s} \Gamma(s)\zeta(2s) + \frac{1}{2s} + \frac{1}{1-2s}$ hat holomorphe Fortsetzung auf $\CC$, ist beschränkt auf Vertikalstreifen $\nu_1 \leq \Re(s) \leq \nu_2$ und es gilt die Funktionalgleichung unter $s \mapsto \frac12 - s$. Hieraus erhält man die schon bekannten analytischen Eigenschaften von $\zeta(s)$, üblicherweise formuliert wie folgt: $\pi^{- \frac s2}\Gamma(\frac s2)\zeta(s)$ hat holomorphe Fortsetzung auf $\CC \setminus \Set {0,1}$, einfache Pole in $s=0$ und $s=1$ und ist invariant  unter $s \mapsto 1 - s$.
+	Es folgt: Die Funktion $\pi^{-s} \Gamma(s)\zeta(2s) + \frac{1}{2s} + \frac{1}{1-2s}$ hat eine holomorphe Fortsetzung auf $\CC$, ist beschränkt auf Vertikalstreifen $\nu_1 \leq \Re(s) \leq \nu_2$ und es gilt die Funktionalgleichung ($L^*$ ist invariant unter $s \mapsto \frac 12 - s$). Hieraus erhält man die schon bekannten analytischen Eigenschaften von $\zeta(s)$, üblicherweise nach Übergang $s \mapsto \frac s2$ formuliert wie folgt: $\pi^{- \frac s2}\Gamma(\frac s2)\zeta(s)$ hat eine holomorphe Fortsetzung auf $\CC \setminus \Set {0,1}$, einfache Pole in $s=0$ und $s=1$ und ist invariant unter $s \mapsto 1 - s$.
 \end{bsp} 
