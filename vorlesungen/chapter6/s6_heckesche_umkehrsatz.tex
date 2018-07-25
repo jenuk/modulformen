@@ -45,7 +45,7 @@
 	\end{bewe}
 
 	Darüber hinaus brauchen wir noch:
-	\begin{lemm}[Phragmen-Lindelöf]
+	\begin{lemm}[Phragmen-Lindelöf]\label{Phragmen-Lindeloef}
 		Für zwei reelle Zahlen $\nu_1 < \nu_2$ setze $F = \Set{s \in \CC\mid \nu_1 \leq \Re(s) \leq \nu_2}$.
 		Sei $\phi$ eine holomorphe Funktion auf einer offenen Menge $U \supseteq F$, welche für $s = \sigma + i\tau$
 		\[
@@ -86,7 +86,7 @@
 			\abs{\phi(s)e^{\epsilon s^m}}
 			\leq Me^{\epsilon N}
 		\]
-		auf $\F$.
+		auf $F$.
 		Da $\epsilon$ unabhängig von $M$ und $N$ ist, bekommen wir mit $\epsilon \to 0$ wie behauptet $\abs{\phi(s)} \leq M$, also $\abs{\phi(s)} = \mathcal{O}(\abs\tau^0)$, auf $F$.
 		\medskip
 		
@@ -104,45 +104,35 @@
 			\,.
 		\]
 		Setze $\phi_1(s) = \frac{\phi(s)}{\psi(s)}$.
-		Dann erfüllt $\phi_1$ die Voraussetzungen des Satzes mit $b=0$ und ist damit wie gerade gezeigt beschränkt auf $F$.
-		Es folgt $\abs{\phi(s)} = \mathcal{O}(\abs\tau^b)$ auf $F$.
+		Dann erfüllt $\phi_1$ die Voraussetzungen des Satzes mit $b=0$ und ist damit wie gerade gezeigt gleichmäßig beschränkt auf $F$.
+		Es folgt $\abs{\phi(s)} = \mathcal{O}(\abs\tau^b)$ gleichmäßig auf $F$.
 	\end{bewe}
 
-	Betrachte für $c > \alpha + 1$ das Integral
-	\[
-		I(s)
-		= \frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} L^*(s)x^{-s} \opd s
-		\,.
-	\]
 	Nach Voraussetzung ist $L^*(s)$ (bis auf die vernachlässigbaren Terme $\frac{a(0)}{s} + \frac{(-1)^{\frac{k}{2}} a(0)}{k-s}$) beschränkt auf jedem Vertikalstreifen $\nu_1 \leq \Re(s) \leq \nu_2$.
-	Nach der Sterlingformel gilt nun aber
+	Nach der Stirlingformel gilt nun
 	\[
 		L^*(s) = \mathcal{O} (\abs\tau^{-M}) \qquad \text{für } \abs\tau \to \infty
 	\]
-	auf jeder Geraden $\Re (s) = \sigma_1 > \alpha+1$ und $\Re(s) = \sigma_2 < k- \alpha -1$ wegen der Funktionalgleichung.
-	Betrachte nun die Funktion
+	auf jeder Geraden $\Re (s) = \sigma_1 > \alpha+1$ und wegen der Funktionalgleichung genauso auf jeder Geraden $\Re(s) = \sigma_2 < k- \alpha -1$.
+	Betrachte für $c > \max \Set {\alpha + 1, k}$ und $y > 0$ beliebig das Integral
 	\[
-		\frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} L^*(s)x^{-s}\opd s
+		\frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} L^*(s)y^{-s} \opd s
+		= f(iy) - a(0)
 	\]
-	Dann gilt
-	\[
-		f(iy) - a(0)
-		= \frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} L^*(s)y^{-s}\opd s
-	\]
-	nach \autoref{Mellin-Umkehrsatz}.
-	Man verschiebe den Integrationsweg nach links auf die Gerade $k-c < 0$ (wähle $c > k$).
-	Auf diese Weise erhält man Beträge von Residuen der Polstellen bei $s=0$ und $s=k$ als $-a(0)$ beziehungsweise $(-1)^{\frac{k}{2}} a(0)y^{-k}$.
-	Betrachte dafür für $T > 0$ reell das Kurvenintegral über das Rechteck mit Ecken $c +iT$, $c-iT$, $k-c+iT$, $k-c-iT$.
-	Nach dem Prinzip von Phragmen-Lindelöf folgt, dass die Integrale über die horizontalen Streifen für $T \to \infty$ verschwinden.
-	Damit folgt
+	nach dem Mellinschen Umkehrsatz (\autoref{Mellin-Umkehrsatz}):
+	Man verschiebe den Integrationsweg nach links auf die Gerade $\Re (s) = k-c < 0$.
+	Auf diese Weise erhält man Beiträge von Residuen der Polstellen von $L^*(s)y^{-s}$ bei $s=0$ und $s=k$ als $-a(0)$ beziehungsweise $(-1)^{\frac{k}{2}} a(0)y^{-k}$.
+	Betrachte nun für $T > 0$ reell das Kurvenintegral über das Rechteck mit Ecken $c +iT$, $c-iT$, $k-c+iT$, $k-c-iT$.
+	Nach dem Prinzip von Phragmen-Lindelöf (\autoref{Phragmen-Lindeloef}) folgt dann, dass die Integrale über die horizontalen Streifen für $T \to \infty$ verschwinden, also verbleibt nur noch
 	\[
 		-a(0) + a(0)(-1)^{\frac{k}{2}} y^{-k}
-		= \frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} L^*(s) y^{-s} \opd s - \frac{1}{2\pi i} \int_{k-c-i\infty}^{k-c+i\infty} L^*(s)y^{-s} \opd s\,.
+		= \frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} L^*(s) y^{-s} \opd s - \frac{1}{2\pi i} \int_{k-c-i\infty}^{k-c+i\infty} L^*(s)y^{-s} \opd s
+		\,.
 	\]
 	Durch Substitution $s \mapsto k-s$ in das zweite Integral erhält man
 	\[
 		-\frac{1}{2\pi i} \int_{k-c-i\infty}^{k-c+i\infty} L^*(s) y^{-s} \opd s
-		&= -\frac{1}{2\pi i} \int_{c+i\infty}^{c+i\infty} L^*(k-s) y^{s-k} \opd (k-s) \\
+		&= -\frac{1}{2\pi i} \int_{c+i\infty}^{c-i\infty} L^*(k-s) y^{s-k} \opd (k-s) \\
 		&= - (-1)^{\frac{k}{2}}y^{-k} \frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} L^*(s) y^s \opd s
 		\,.
 	\]
@@ -151,11 +141,12 @@
 		-a(0) + (-1)^{\frac{k}{2}} a(0) y^{-k}
 		= f(iy) - a(0) - (-1)^{\frac{k}{2}}y^{-k} \biggl(f\Bigl(\frac{i}{y}\Bigr) - a(0)\biggl)
 	\]
-	Damit erhalten wir
+	und somit
 	\[
 		0 = f(iy) - (iy)^k f\Bigl(\frac{i}{y}\Bigr)
+		\,.
 	\]
-	Also $f \in M_k$.
+	Also gilt wie behauptet $f \in M_k$.
 \end{bewe}
 
 Allgemeiner gilt sogar Folgendes:

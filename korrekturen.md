@@ -1,3 +1,8 @@
+# 18-07-25
+Im Beweis des Heckeschen Umkehrsatzes stand für das Integral entlang der Geraden k-c nach Substitution zweimal die gleiche Grenze; die obere Grenze muss jedoch c-i\infty sein.
+
+In Satz 6.27, Zeile 3 wurde die untere Grenze der Summe von n=0 auf n=1 korrigiert. Das ergibt aber keinen Sinn, da (ii) im Anschluss eine Aussage über a(0) macht.
+
 # 18-07-24
 Satz 6.22 (Hecke): Die Funktion L^* + a(0)/s + (-1)^(k/2)a(0)/(k-s) hat eine holomorphe Fortsetzung, nicht L^* - a(0)/s + (-1)^(k/2)a(0)/(k-s)
 
