@@ -10,6 +10,18 @@
 \fancyhead[ELH]{\textbf{\nouppercase\leftmark}}
 \fancyhead[ER, OL]{}
 
+\usepackage{titlesec}
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
+\titleformat{\chapter}[display]
+{\bfseries\Large}
+{\filleft\scshape{\chaptertitlename} \Huge\thechapter}
+{4ex}
+{\titlerule
+	\vspace{2ex}%
+	\filright}
+[\vspace{2ex}%
+\titlerule]
+
 \makeatletter
 \renewcommand{\maketitle}{
 \begin{titlepage}
