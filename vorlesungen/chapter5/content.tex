@@ -39,7 +39,7 @@ dabei erstreckt sich die Summe über alle ganzzahligen Matrizen $\abcd$ mit Dete
 Offenbar gilt ebenso
 \[
 h_m(z,z') = \sum_{ad-bc=m} (cz+d)^{-k} \Bigl(z' + \frac{az+b}{cz+d}\Bigr)^{-k}
-= \sum_{M \in \mathcal{M}(m)} (z'+z)^{-k}|_{k,z} M
+= m^{- \frac k2} \sum_{M \in \mathcal{M}(m)} (z'+z)^{-k}|_{k,z} M
 \,.
 \]
 Man zeigt schnell wegen $k \geq 4$, dass die Reihe auf kompakten Teilmengen $K \subset \HH \times \HH$ absolut und gleichmäßig konvergiert und dort in beiden Variablen eine holomorphe Funktion darstellt.
@@ -85,8 +85,9 @@ folgt $h_m(\cdot, z') \in S_k$ und $h_m(z, \cdot) \in S_k$ aus Symmetriegründen
 	Falls $\gamma = \abcd \in \SL_2(\ZZ)$, dann gilt
 	\[
 	(c\conj z + d)^{-k} f(z) y^k = f(\gamma z) \cdot \Im (\gamma z)^k
+	\,.
 	\]
-	Aus der Definition von $h_m$ erhalten wir demnach
+	Aus der Definition von $h_m$ erhalten wir also
 	\[
 	f(z)\conj{h_1(z, z')} y^k
 	= \sum_{\gamma \in \Gamma(1)} \bigl(\conj{z'} + \gamma \conj z\bigr)^{-k} f(\gamma z) \Im(\gamma z)^k
@@ -97,15 +98,17 @@ folgt $h_m(\cdot, z') \in S_k$ und $h_m(z, \cdot) \in S_k$ aus Symmetriegründen
 	(f * h_1)(z') &= \int_\F \sum_{\gamma \in \Gamma(1)} (-z' + \gamma \conj z)^{-k} f(\gamma z) \Im(\gamma z)^k \frac{\opd x \opd y}{y^2} \\
 	&= \sum_{\gamma \in \Gamma(1)} \int_{\gamma \circ \F} (-z' + \conj z)^{-k} f(z) y^{k-2} \opd x \opd y \\
 	&= 2 \int_0^\infty \int_{-\infty}^\infty (x-iy - z')^{-k} f(x+iy) y^{k-2} \opd x \opd y
+	\,.
 	\end{split}
 	\end{equation}
 	Nach Cauchy's Formel (und da $f$ Spitzenform) gilt
 	\[
 	\int_{-\infty}^\infty (x-iy - z')^{-k} f(x+iy) \opd x
 	= \frac{2\pi i}{(k-1)!} f^{(k-1)} (2iy + z')
+	\,.
 	\]
 	
-	Daraus folgt, dass die rechte Seite von \eqref{eq:faltung_h1} wie folgt umgeformt werden kann
+	Daraus folgt, dass die rechte Seite von \eqref{eq:faltung_h1} wie folgt umgeformt werden kann:
 	\begin{equation*}
 	\begin{split}
 	(f * h_1)(z') &= \frac{4\pi i}{(k-1)!} \int_0^\infty y^{k-2} f^{(k-1)} (2iy + z') \opd y \\
@@ -113,6 +116,7 @@ folgt $h_m(\cdot, z') \in S_k$ und $h_m(z, \cdot) \in S_k$ aus Symmetriegründen
 	&= \frac{4\pi i}{(k-1)!} \frac{1}{(2i)^{k-2}} \frac{\opd^{k-2}}{\opd t^{k-2}} \int_0^\infty f'(2i ty + z') \opd y \Big|_{t=1} \\
 	&= \frac{4\pi i}{(k-1)!} \frac{1}{(2i)^{k-2}} \frac{\opd^{k-2}}{\opd t^{k-2}} \Bigl( 0 - \frac{f(z')}{2it}\Bigr) \Big|_{t=1} \\
 	&= C_k f(z')
+	\,.
 	\end{split}
 	\end{equation*}
 	Das beweist \eqref{eq:faltung_hm} im Fall $m=1$.
@@ -120,10 +124,11 @@ folgt $h_m(\cdot, z') \in S_k$ und $h_m(z, \cdot) \in S_k$ aus Symmetriegründen
 	\[
 	\begin{split}
 	h_1(z,z')|T(m)
-	&= \biggl(\sum_{\gamma\in\Gamma(1)} (z'+z)^{-k} |_{k,z} \gamma\biggr)\Big|T(m) \\
-	&= m^{k-1} \sum_{\substack{M \in \linksmodulo{\Gamma(1)}{\M(m)}\\ \gamma \in \Gamma(1)}} (z'+z)^{-k} |_{k,z} \gamma M \\
-	&= m^{k-1} \sum_{R \in \M(m)} (z'+z)^{-k}|_{k,z} R \\
+	&= 1^{- \frac k2} \biggl(\sum_{\gamma\in\Gamma(1)} (z'+z)^{-k} |_{k,z} \gamma\biggr)\Big|T(m) \\
+	&= m^{\frac k2 - 1} \sum_{\substack{M \in \linksmodulo{\Gamma(1)}{\M(m)}\\ \gamma \in \Gamma(1)}} (z'+z)^{-k} |_{k,z} \gamma M \\
+	&= m^{\frac k2 - 1} \sum_{R \in \M(m)} (z'+z)^{-k}|_{k,z} R \\
 	&= m^{k-1} h_m(z,z')
+	\,.
 	\end{split}
 	\]
 	Damit folgt (i).

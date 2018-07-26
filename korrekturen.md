@@ -1,3 +1,6 @@
+# 18-07-26
+Am Anfang von Kapitel 5 fehlte in der Darstellung von h_m(z,z') als Summe über Matrizen in \M(m) der Vorfaktor m^(-k/2), denn der Petersson-Strichoperator für \M(m) beinhaltet einen Faktor m^(k/2), welcher in h_m(z,z') nicht vorkommen soll. Dementsprechend ändern sich im Beweis von Satz 5.1, i) bei der Verallgemeinerung von m=1 auf beliebiges m die Vorfaktoren. Diese waren bisher falsch, auch wenn das Ergebnis stimmte.
+
 # 18-07-25
 Im Beweis von Beispiel 3.6: die obere Kurve wurde in der falschen Richtung durchlaufen.
 
