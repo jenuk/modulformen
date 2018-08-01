@@ -1,19 +1,19 @@
 all: script clean
 
 script:
-	pdflatex script.tex
-	makeindex script.idx
-	pdflatex script.tex
-	pdflatex script.tex
+	pdflatex modulformen.tex
+	makeindex modulformen.idx
+	pdflatex modulformen.tex
+	pdflatex modulformen.tex
 
 silent:
-	pdflatex -interaction=batchmode script.tex
+	pdflatex -interaction=batchmode modulformen.tex
 	makeindex script.idx
-	pdflatex -interaction=batchmode script.tex
-	pdflatex -interaction=batchmode script.tex
+	pdflatex -interaction=batchmode modulformen.tex
+	pdflatex -interaction=batchmode modulformen.tex
 
 once:
-	pdflatex -interaction=batchmode script.tex
+	pdflatex -interaction=batchmode modulformen.tex
 
 clean:
 	rm -f *.aux
