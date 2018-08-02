@@ -25,27 +25,28 @@
 \makeatletter
 \renewcommand{\maketitle}{
 \begin{titlepage}
-\vspace*{2cm}
-
-\begin{center}
-\rule{12cm}{1.5pt}
-\vspace{0.5cm}
-
-{\Huge\bfseries \@title}
-
-\vspace{.6cm}
-
-{\LARGE \@date
-
-\@author}
-\vspace{1cm}
-\rule{12cm}{1.5pt}
-
-\vspace{6cm}
-{\LARGE Vorlesungsmitschrieb von \\[0.1\baselineskip] Patrick Arras \\[0.05\baselineskip] Jonas Müller \\[\baselineskip]
-Heidelberg, den \today}
-
-\end{center}
+\begin{minipage}{\textwidth}
+	\begin{center}
+		\rule{12cm}{1.5pt}
+		\vspace{0.5cm}
+		
+		{\Huge\bfseries \@title}
+		
+		\vspace{.6cm}
+		
+		{\LARGE \@date
+			
+			\@author}
+		\vspace{1cm}
+		\rule{12cm}{1.5pt}
+		
+		\includegraphics{images/comic}
+		
+		\vspace{1cm}
+		{\LARGE Vorlesungsmitschrieb von \\[0.1\baselineskip] Patrick Arras \\[0.05\baselineskip] Jonas Müller \\[\baselineskip]
+			Heidelberg, den \today}
+	\end{center}
+\end{minipage}
 \end{titlepage}
 }
 \makeatother
