@@ -8,7 +8,7 @@ script:
 
 silent:
 	pdflatex -interaction=batchmode modulformen.tex
-	makeindex script.idx
+	makeindex modulformen.idx
 	pdflatex -interaction=batchmode modulformen.tex
 	pdflatex -interaction=batchmode modulformen.tex
 
