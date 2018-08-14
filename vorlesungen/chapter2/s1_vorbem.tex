@@ -61,14 +61,14 @@ woraus wegen $(cz+d)^{-k} = j(M, z)^{-k}$ die Behauptung folgt.
 \item $\mathcal M \cdot \Gamma(1) \subset \mathcal M$,
 \item $\mathcal M$ zerfällt in endlich viele disjunkte Rechtsnebenklassen, d.h.
 \[
-\mathcal M = \dot{\bigcup_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}}} \Gamma(1) \cdot M
+\mathcal M = \smashoperator{\bigcup_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}}^{\boldsymbol{\cdot}}} \, \Gamma(1) \cdot M
 \,,
 \]
 wobei die Vereinigung disjunkt und endlich ist. 
 \end{enumerate}
 Für eine Modulform $f \in M_k$ setze dann
 \[
-f | T_{\mathcal M} := \sum_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}} f|_k M
+f | T_{\mathcal M} := \smashoperator{\sum_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}}} f|_k M
 \,.
 \]
 Dann ist $f | T_{\mathcal M}$ wohldefiniert, denn jede Rechtsnebenklasse $\Gamma (1) \cdot M \in \linksmodulo{\Gamma(1)}{\mathcal M}$ besteht aus Vertretern der Form $N M$ mit $N \in \Gamma (1)$ und es gilt
@@ -80,12 +80,12 @@ wegen Lemma \ref{LemmaGL2+R}, ii) und $f |_k N = f$ für beliebiges $N \in \Gamm
 
 \emph{Ferner:} Sei eine Matrix $N \in \Gamma(1)$ gegeben. Dann ist 
 \[
-(f | T_{\mathcal M}) |_k N = \sum_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}} f |_k M N = \sum_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}} f |_k M = f | T_{\mathcal M}
+(f | T_{\mathcal M}) |_k N = \smashoperator{\sum_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}}} f |_k M N = \smashoperator{\sum_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}}} f |_k M = f | T_{\mathcal M}
 \,,
 \]
 denn mit $M$ durchläuft auch $MN$ ein Vertretersystem der Rechtsnebenklassen. (Begründung: Sind zwei Matrizen $M_1, M_2 \in \mathcal M$ nicht äquivalent unter Linksmultiplikation mit $\Gamma(1)$, so gilt dies trivialerweise auch für $M_1N, M_2N$. Auch ist
 \[
-\mathcal M N = \Bigl( \dot{\bigcup_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}}} \Gamma(1) \cdot M \Bigr) N = \dot{\bigcup_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}}} \Gamma(1) \cdot M N = \mathcal M
+\mathcal M N = \Bigl( \smashoperator[r]{\bigcup_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}}^{\boldsymbol{\cdot}}} \, \Gamma(1) \cdot M \Bigr) N = \smashoperator{\bigcup_{M \in \linksmodulo{\Gamma(1)}{\mathcal M}}^{\boldsymbol{\cdot}}} \, \Gamma(1) \cdot M N = \mathcal M
 \,,
 \]
 denn nach Voraussetzung gilt sowohl $\mathcal M N \subset \mathcal M$ als auch $\mathcal M = \mathcal M \inv{N}N \subset \mathcal M N$.)

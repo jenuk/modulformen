@@ -91,7 +91,7 @@ also dass $\abs f$ über $\closure{\F_1}$ integrierbar ist (dies impliziert, das
 \begin{bewe}
 	Nach Eigenschaft (ii) eines Fundamentalbereichs gilt (mit $\Gamma(1)' = \modulo{\Gamma(1)}{\pm E}$)
 	\[
-	\HH = \bigcup_{M \in \Gamma(1)'} M^{-1} \circ \closure{\F_1} = \bigcup_{M \in \Gamma(1)'} M \circ \closure{\F_2}
+	\HH = \smashoperator{\bigcup_{M \in \Gamma(1)'}} \, M^{-1} \circ \closure{\F_1} = \smashoperator{\bigcup_{M \in \Gamma(1)'}} \, M \circ \closure{\F_2}
 	\,.
 	\]
 	
@@ -113,17 +113,17 @@ also dass $\abs f$ über $\closure{\F_1}$ integrierbar ist (dies impliziert, das
 	Es gilt
 	\[
 	\int\limits_{\closure{\F_1}} f \opd w
-	= \int\limits_{\HH \cap \closure{\F_1}} f \opd w
-	= \int\limits_{\bigcup\limits_{M \in \Gamma(1)'} \!\!\!\!\!\! M \circ \closure{\F_2} \cap \closure{\F_1}} f \opd w
+	= \smashoperator{\int\limits_{\HH \cap \closure{\F_1}}} f \opd w
+	= \smashoperator{\int\limits_{\bigcup\limits_{M \in \Gamma(1)'} \!\!\!\!\!\! M \circ \closure{\F_2} \cap \closure{\F_1}}} f \opd w
 	\,,
 	\]
 	wobei zu beachten ist, dass es sich um eine abzählbare Vereinigung von meßbaren Mengen handelt. Da die paarweisen Durchschnitte jeweils Maß Null haben, gilt die abzählbare Additivität des Integrals:
 	\begin{align*}
 	\int\limits_{\closure{\F_1}} f \opd w
-	&= \sum_{M \in \Gamma(1)'} \int\limits_{M\circ \closure{\F_2} \cap \closure{\F_1}} f \opd w
-	= \sum_{M \in \Gamma(1)'} \ \int\limits_{\closure{\F_2} \cap M^{-1} \circ \closure{\F_1}} f(M \circ z) \opd w(M \circ z) \\
-	&= \sum_{M \in \Gamma(1)'}\ \int\limits_{\closure{\F_2} \cap M^{-1} \circ \closure{\F_1}} f \opd w
-	= \ldots = \int_{\closure{\F_2}} f\opd w
+	&= \smashoperator[l]{\sum_{M \in \Gamma(1)'}} \, \smashoperator[r]{\int\limits_{M\circ \closure{\F_2} \cap \closure{\F_1}}} f \opd w
+	= \smashoperator[l]{\sum_{M \in \Gamma(1)'}} \, \smashoperator[r]{\int\limits_{\closure{\F_2} \cap M^{-1} \circ \closure{\F_1}}} f(M \circ z) \opd w(M \circ z) \\
+	&= \smashoperator[l]{\sum_{M \in \Gamma(1)'}} \, \smashoperator[r]{\int\limits_{\closure{\F_2} \cap M^{-1} \circ \closure{\F_1}}} f \opd w
+	= \ldots = \int\limits_{\closure{\F_2}} f\opd w
 	\,.
 	\end{align*}
 \end{bewe}

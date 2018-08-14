@@ -31,7 +31,7 @@
 	
 	Eine der wichtigen Formeln für die Gammafunktion ist gegeben durch:
 	\begin{satz}[Stirling-Formel]\label{Stirling}
-		Es gilt in jedem Winkelbereich $W_\delta = \Set{s \in \CC \mid -\pi + \delta < \Arg(s) < \pi - \delta}$
+		Es gilt in jedem beliebigen Winkelbereich $W_\delta$ der Form $W_\delta = \Set{s \in \CC \mid -\pi + \delta < \Arg(s) < \pi - \delta}$ für ein $\delta > 0$, dass
 		\[
 			\Gamma(s)
 			= \sqrt{2\pi} \cdot s^{s - \frac{1}{2}} e^{-s} e^{H(s)}
@@ -88,9 +88,9 @@ Daraus folgt für alle $s \in \CC$ mit $\Re (s) > \max \Set {0, \sigma_a(F)}$, d
 Die Vertauschung von Integral und Summe bei $(\ast)$ ist nach Satz von Lebesgue gerechtfertigt wegen $\sigma := \Re (s) > \max \Set {0, \sigma_a(F)}$ nach Voraussetzung und daher
 \begin{align*}
 	\sum_{n=1}^\infty \int_0^\infty \abs{a(n) e^{-ny} y^{s-1} } \opd y
-	&= \sum_{n=1}^\infty \abs{a(n)} \int_0^\infty e^{-ny} y^{\sigma-1} \opd y && \big| \; \sigma > 0 \\
-	&= \sum_{n=1}^\infty \abs{a(n)} n^{-\sigma} \Gamma(\sigma) \\
-	&= \Gamma(\sigma) \sum_{n=1}^\infty \abs{\frac {a(n)}{n^{\sigma}}} && \big| \; \sigma > \sigma_a(F) \\
+	&= \sum_{n=1}^\infty \, \abs{a(n)} \int_0^\infty e^{-ny} y^{\sigma-1} \opd y && \big| \; \sigma > 0 \\
+	&= \sum_{n=1}^\infty \, \abs{a(n)} n^{-\sigma} \Gamma(\sigma) \\
+	&= \Gamma(\sigma) \sum_{n=1}^\infty \, \abs{\frac {a(n)}{n^{\sigma}}} && \big| \; \sigma > \sigma_a(F) \\
 	&< \infty
 	\,.
 \end{align*}

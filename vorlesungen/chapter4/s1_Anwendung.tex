@@ -20,14 +20,14 @@ für alle $f \in S_k$ mit $f = \sum_{m\geq 1} a_f(m) q^m$.
 \]
 und daher 
 \[
-	\sum_{\substack{(c,d)\in\ZZ^2 \\ \ggt(c,d) = 1 \\ ad-bc = 1}} \abs{cz+d}^{-k} \cdot \abs{e^{2\pi i n \frac{az+b}{cz+d}}} \leq \sum_{\substack{(c,d)\in\ZZ^2 \\ \ggt(c,d) = 1 \\ ad-bc = 1}} \abs{cz+d}^{-k}
+	\smashoperator{\sum_{\substack{(c,d)\in\ZZ^2 \\ \ggt(c,d) = 1 \\ ad-bc = 1}}} \, \abs{cz+d}^{-k} \cdot \abs{e^{2\pi i n \frac{az+b}{cz+d}}} \leq \smashoperator{\sum_{\substack{(c,d)\in\ZZ^2 \\ \ggt(c,d) = 1 \\ ad-bc = 1}}} \, \abs{cz+d}^{-k}
 	\,,
 \]
 sodass die Reihe der Absolutbeträge nach \autoref{Ek_per_Gamma(1)infty} durch die Eisensteinreihe von Gewicht $k$ majorisiert wird. Letztere konvergiert nach FT~2 auf Kompakta in $\HH$ gleichmäßig absolut.
 
 Zeige noch $P_n \in S_k$ für $n \geq 1$. Schreibe zunächst
 \[
-	P_n(z) = \frac 12 \sum_{M \in \linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}} (e^n |_k M)(z)
+	P_n(z) = \frac 12 \smashoperator[r]{\sum_{M \in \linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}}} \, (e^n |_k M)(z)
 \]
 mit $e^n(z) := e^{2 \pi inz}$ und beachte, dass $e^n |_k M = e^n$ für $M \in \Gamma(1)_\infty$. Hierbei ist wie in \autoref{Ek_per_Gamma(1)infty} 
 \[
@@ -53,7 +53,7 @@ Damit ist alles gezeigt.
 
 \item Unter Benutzung der Darstellung
 \[
-	P_n(z) = \frac 12 \sum_{M \in \linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}} (e^n |_k M)(z)
+	P_n(z) = \frac 12 \smashoperator[r]{\sum_{M \in \linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}}} \, (e^n |_k M)(z)
 \]
 zeigt man mit dem gleichen \glqq{}Konvolutionstrick\grqq{} wie im Beweis von \autoref{CharEk}, dass
 \[
@@ -101,7 +101,7 @@ mit
 \]
 Hierbei ist die Kloosterman-Summe $K$ definiert als
 \[
-	K(m,n,c) := \sum_{\substack{d (\operatorname{mod} c) \\ (c,d)=1}} e^{2\pi i \frac{md + n\bar{d}}{c}}
+	K(m,n,c) := \smashoperator{\sum_{\substack{d (\operatorname{mod} c) \\ (c,d)=1}}} e^{2\pi i \frac{md + n\bar{d}}{c}}
 	\,,
 \]
 wobei $\bar d \in \ZZ$ mit $\bar d d \equiv 1 \mod c$ ist, und die Besselfunktion $J_{k-1}$ definiert als
@@ -114,7 +114,7 @@ wobei $\bar d \in \ZZ$ mit $\bar d d \equiv 1 \mod c$ ist, und die Besselfunktio
 \begin{bewe}
 Nach Definition ist 
 \[
-	P_n(z) = \frac 12 \sum_{\substack{(c,d)\in\ZZ^2 \\ \ggt(c,d) = 1 \\ ad-bc = 1}} (cz+d)^{-k} e^{2\pi in \frac{az+b}{cz+d}}
+	P_n(z) = \frac 12 \smashoperator[r]{\sum_{\substack{(c,d)\in\ZZ^2 \\ \ggt(c,d) = 1 \\ ad-bc = 1}}} \, (cz+d)^{-k} e^{2\pi in \frac{az+b}{cz+d}}
 	\,.
 \]
 Ist $c = 0$, so folgt aus $\ggt(c,d) = 1$ bereits $d = a = \pm 1$ und unabhängig von $b \in \ZZ$ ergibt sich zweimal der Term
@@ -124,7 +124,7 @@ Ist $c = 0$, so folgt aus $\ggt(c,d) = 1$ bereits $d = a = \pm 1$ und unabhängi
 \]
 zusammengenommen also $e^{2 \pi inz}$. Die übrigen Terme ergeben den Beitrag 
 \[
-	\sum_{\substack{c \geq 1, d \in \ZZ \\ \ggt(c,d) = 1 \\ ad-bc = 1}} (cz+d)^{-k} e^{2 \pi i n \frac{az+b}{cz+d}} = \sum_{c \geq 1} \sum_{\substack{d' (\operatorname{mod} c) \\ \ggt(c,d') = 1 \\ ad'-b'c = 1}} \sum_{\nu \in \ZZ} (c(z + \nu) +d')^{-k} e^{2\pi in \frac{a(z+\nu)+b'}{c(z+\nu)+d'}}
+	\smashoperator{\sum_{\substack{c \geq 1, d \in \ZZ \\ \ggt(c,d) = 1 \\ ad-bc = 1}}} \, (cz+d)^{-k} e^{2 \pi i n \frac{az+b}{cz+d}} = \sum_{c \geq 1} \sum_{\substack{d' (\operatorname{mod} c) \\ \ggt(c,d') = 1 \\ ad'-b'c = 1}} \sum_{\nu \in \ZZ} \, (c(z + \nu) +d')^{-k} e^{2\pi in \frac{a(z+\nu)+b'}{c(z+\nu)+d'}}
 	\,.
 \]
 Die rechte Seite entsteht aus der linken, indem man für festes $c \geq 1$ und ein festes Vertretersystem $d' (\operatorname{mod} c)$ jedes $d \in \ZZ$ mit $\ggt(c,d) = 1$ in der Form $d = d' + c\nu$ mit $v \in \ZZ$ und $d'$ im vorgegebenen Vertretersystem schreibt. Schreibt man zudem mit geeignetem $b' \in \ZZ$ auch $b = b' + a\nu$, so wird die Bedingung $ad - bc = 1$ zu
@@ -169,7 +169,7 @@ sowie die rechte Seite zu
 Die linke Seite von \eqref{eq:fourierreihePn} konvergiert gleichmäßig absolut auf kompakten Mengen in $\HH$ und hat den Limes 0 für $q\to \infty$ (gleicher Beweis wie in \autoref{<f,Pn>}).
 Sie hat daher eine Fourierentwicklung $\sum_{m\geq 1} c(m) q^m$ mit
 \[
-c(m) = \int_{ic}^{ic+1} \biggl( \sum_{\nu \in \ZZ} (z+\nu)^{-k} e^{-2\pi i \gamma \frac{1}{z+\nu}} \biggr) e^{-2\pi imz} \opd z
+c(m) = \int_{ic}^{ic+1} \left( \sum_{\nu \in \ZZ} (z+\nu)^{-k} e^{-2\pi i \gamma \frac{1}{z+\nu}} \right) e^{-2\pi imz} \opd z
 \stackrel{z \mapsto is}{=} -i^{-k+1} \int_{c-i \infty}^{c + i\infty} s^{-k} e^{-2\pi \frac{\gamma}{s}} e^{2\pi ms} \opd s
 \,.
 \]
@@ -190,7 +190,7 @@ wie behauptet.
 
 Nach dem Lemma folgt nun mit $\gamma = $, dass
 \[
-P_n(z) = e^{2\pi nz} + \sum_{c\geq1} \sum_{\substack{d \bmod c\\ \ggt(d,c) = 1}} \frac{2\pi (-1)^{\frac{k}{2}}}{c} \sum_{m\geq 1} \Bigl(\frac{m}{n}\Bigr)^{\frac{k-1}{2}} J_{k-1} \Bigl(\frac{4\pi \sqrt{mn}}{c}\Bigr) \cdot e^{\frac{2\pi i}{c}(na+md)} e^{2\pi imz}
+P_n(z) = e^{2\pi nz} + \sum_{c\geq1} \smashoperator[r]{\sum_{\substack{d \bmod c\\ \ggt(d,c) = 1}}} \frac{2\pi (-1)^{\frac{k}{2}}}{c} \sum_{m\geq 1} \Bigl(\frac{m}{n}\Bigr)^{\frac{k-1}{2}} J_{k-1} \Bigl(\frac{4\pi \sqrt{mn}}{c}\Bigr) \cdot e^{\frac{2\pi i}{c}(na+md)} e^{2\pi imz}
 \,.
 \]
 Die Behauptung folgt hieraus nach Vertauschung der Summationen über $c$ und $m$ (absolute Konvergenz) unter Beachtung von $ad = 1 + bc \equiv 1 \mod c$.
@@ -286,13 +286,13 @@ Dann ist
 \begin{bewe}
 Nach Definition ist
 \[
-P_m = \frac{1}{2} \sum_{M\in \linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}} e^m |_k M
+P_m = \frac{1}{2} \smashoperator[r]{\sum_{M\in \linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}}} e^m |_k M
 \]
 unabhängig vom Vertretersystem von $\linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}$.
 Es gilt
 \[
-2 P_m | T(n) = n^{\frac{k}{2}-1} \sum_{\substack{M \in \linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}\\ N \in \linksmodulo{\Gamma(1)}{\mathcal{M}(n)}}} e^m|_k MN
-= n^{\frac{k}{2}-1} \sum_{R \in \linksmodulo{\Gamma(1)_\infty}{\mathcal{M}(n)}} e^m|R
+2 P_m | T(n) = n^{\frac{k}{2}-1} \smashoperator{\sum_{\substack{M \in \linksmodulo{\Gamma(1)_\infty}{\Gamma(1)}\\ N \in \linksmodulo{\Gamma(1)}{\mathcal{M}(n)}}}} e^m|_k MN
+= n^{\frac{k}{2}-1} \smashoperator{\sum_{R \in \linksmodulo{\Gamma(1)_\infty}{\mathcal{M}(n)}}} e^m|R
 \]
 Wir behaupten nun, dass die Menge 
 \begin{equation*}
@@ -349,16 +349,16 @@ mit $\tilde b \in \ZZ, ad = n$. Indem man gegebenenfalls mit $-E$ multipliziert,
 
 Es gilt nun
 \[
-	2 P_m | T(n) = n^{\frac k2 - 1} \sum_{M \in \linksmodulo {\Gamma(1)_\infty}{\Gamma(1)}} \left( \sum_{\substack{ad = n, d > 0 \\ b (\operatorname{mod} d)}} e^m |_k \mymat* ab0d \right) |_k M
+	2 P_m | T(n) = n^{\frac k2 - 1} \smashoperator[l]{\sum_{M \in \linksmodulo {\Gamma(1)_\infty}{\Gamma(1)}}} \left( \smashoperator[r]{\sum_{\substack{ad = n, d > 0 \\ b (\operatorname{mod} d)}}} e^m |_k \mymat* ab0d \right) |_k M
 	\,.
 \]
 Die innere Summe ist gleich 
 \[
-	\sum_{\substack{d|n \\ b (\operatorname{mod} d)}} n^{\frac k2} d^{-k} e^{2\pi im \left( \frac {n}{d^2} z + \frac bd \right)} = n^{\frac k2} \sum_{d | (m,n)} d^{1-k} e^{2\pi i \frac {mn}{d^2} z}
+	\smashoperator{\sum_{\substack{d|n \\ b (\operatorname{mod} d)}}} n^{\frac k2} d^{-k} e^{2\pi im \left( \frac {n}{d^2} z + \frac bd \right)} = n^{\frac k2} \sum_{d | (m,n)} d^{1-k} e^{2\pi i \frac {mn}{d^2} z}
 \]
 wegen 
 \[
-	\sum_{b (\operatorname{mod} d)} e^{2\pi i \frac bd m} = \begin{cases} d, &d|m \\ 0, &\text{sonst}\end{cases}
+	\smashoperator{\sum_{b (\operatorname{mod} d)}} e^{2\pi i \frac bd m} = \begin{cases} d, &d|m \\ 0, &\text{sonst}\end{cases}
 	\,.
 \]
 Hieraus folgt die Behauptung.

@@ -32,14 +32,14 @@ T(m)f_i &= a_m^if_i \\
 
 Für $m \geq 1$ definieren wir
 \[
-h_m(z, z') = \sum_{ad-bc=m} (czz' + dz' + az + b)^{-k}
+h_m(z, z') = \smashoperator{\sum_{ad-bc=m}} \, (czz' + dz' + az + b)^{-k}
 \,,
 \]
 dabei erstreckt sich die Summe über alle ganzzahligen Matrizen $\abcd$ mit Determinante $m$.
 Offenbar gilt ebenso
 \[
-h_m(z,z') = \sum_{ad-bc=m} (cz+d)^{-k} \Bigl(z' + \frac{az+b}{cz+d}\Bigr)^{-k}
-= m^{- \frac k2} \sum_{M \in \mathcal{M}(m)} (z'+z)^{-k}|_{k,z} M
+h_m(z,z') = \smashoperator{\sum_{ad-bc=m}} \, (cz+d)^{-k} \Bigl(z' + \frac{az+b}{cz+d}\Bigr)^{-k}
+= m^{- \frac k2} \smashoperator{\sum_{M \in \mathcal{M}(m)}} \, (z'+z)^{-k}|_{k,z} M
 \,.
 \]
 Man zeigt schnell wegen $k \geq 4$, dass die Reihe auf kompakten Teilmengen $K \subset \HH \times \HH$ absolut und gleichmäßig konvergiert und dort in beiden Variablen eine holomorphe Funktion darstellt.
@@ -48,8 +48,8 @@ folgt $h(z,z')|_{k,z} L = h(z, z')$.
 
 Da weiter
 \begin{align*}
-\lim_{z \to i\infty} \sum_{M \in \M(m)} (z+z')^{-k}|_{k,z} M
-= \sum_{M \in \M(m)} \lim_{z \to i\infty} (z'+z)^{-k}|_{k,z} M
+\lim_{z \to i\infty} \smashoperator[r]{\sum_{M \in \M(m)}} \, (z+z')^{-k}|_{k,z} M
+= \smashoperator[l]{\sum_{M \in \M(m)}} \lim_{z \to i\infty} (z'+z)^{-k}|_{k,z} M
 = 0\,,
 \end{align*}
 folgt $h_m(\cdot, z') \in S_k$ und $h_m(z, \cdot) \in S_k$ aus Symmetriegründen.
@@ -125,8 +125,8 @@ folgt $h_m(\cdot, z') \in S_k$ und $h_m(z, \cdot) \in S_k$ aus Symmetriegründen
 	\begin{split}
 	h_1(z,z')|T(m)
 	&= 1^{- \frac k2} \biggl(\sum_{\gamma\in\Gamma(1)} (z'+z)^{-k} |_{k,z} \gamma\biggr)\Big|T(m) \\
-	&= m^{\frac k2 - 1} \sum_{\substack{M \in \linksmodulo{\Gamma(1)}{\M(m)}\\ \gamma \in \Gamma(1)}} (z'+z)^{-k} |_{k,z} \gamma M \\
-	&= m^{\frac k2 - 1} \sum_{R \in \M(m)} (z'+z)^{-k}|_{k,z} R \\
+	&= m^{\frac k2 - 1} \smashoperator{\sum_{\substack{M \in \linksmodulo{\Gamma(1)}{\M(m)}\\ \gamma \in \Gamma(1)}}} \, (z'+z)^{-k} |_{k,z} \gamma M \\
+	&= m^{\frac k2 - 1} \smashoperator{\sum_{R \in \M(m)}} \, (z'+z)^{-k}|_{k,z} R \\
 	&= m^{k-1} h_m(z,z')
 	\,.
 	\end{split}
@@ -345,7 +345,7 @@ Für jede binäre quadratische Form $g(u, v) = \alpha u^2 + \beta uv + \gamma v^
 \]
 Beachte, dass $g$ von der Matrix $\abcd$ herrührt via der Bijektion $\phi$ aus \autoref{Mt(m)=QD} durch $\alpha = c$, $\beta = d - a$ und $\gamma = -b$. Damit gilt
 \[
-	I(m, t) = C_k^{-1} m^{k-1} \int_\F \sum_{g, D_g = D} R_g(z,t) \frac {\opd x \opd y}{y^2}
+	I(m, t) = C_k^{-1} m^{k-1} \int_\F \smashoperator[r]{\sum_{g, D_g = D}} R_g(z,t) \frac {\opd x \opd y}{y^2}
 	\,,
 \]
 wobei sich die Summe über alle binären quadratischen Formen $g \in Q_D$, also mit Diskriminante $D_g = D := t^2 - 4m$, erstreckt.
@@ -357,18 +357,18 @@ Ein beliebiges Element $\gamma \in \Gamma(1)$ liefert, angewendet auf $g$ durch
 \]
 wieder eine quadratische Form $\gamma g$. Es gilt zudem $R_{\gamma g} (z, t) = R_g (\gamma z, t)$. Daher können wir für jede Diskriminante $D = t^2 - 4m \equiv 0,1 \mod 4$ (Übung!) die Summe über alle quadratischen Formen mit dieser Diskrimante wie folgt aufteilen:
 \[
-	\sum_{g, D_g = D} R_g (z, t) = \sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}} \sum_{\gamma \in \modulo {\Gamma(1)} {\Gamma_g}} R_{\gamma g} (z,t) = \sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}} \sum_{\gamma \in \modulo {\Gamma(1)} {\Gamma_g}} R_g (\gamma z,t)
+	\smashoperator[r]{\sum_{g, D_g = D}} R_g (z, t) = \smashoperator[l]{\sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}}} \smashoperator[r]{\sum_{\gamma \in \modulo {\Gamma(1)} {\Gamma_g}}} R_{\gamma g} (z,t) = \smashoperator[l]{\sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}}} \smashoperator[r]{\sum_{\gamma \in \modulo {\Gamma(1)} {\Gamma_g}}} R_g (\gamma z,t)
 	\,.
 \]
 Hierbei erstreckt sich die erste Summe nur noch über ein Vertretersystem aller Klassen modulo $\Gamma(1)$ von binären quadratischen Formen $g$ mit Diskriminante $D_g = D$. Die zweite Summe erstreckt sich über alle Nebenklassen $\modulo {\Gamma(1)}{\Gamma_g}$, wobei $\Gamma_g$ die Fixgruppe von $g$ ist. 
 
 Für $D \neq 0$ gibt es nur endlich viele Klassen modulo $\Gamma(1)$, sodass die erste Summe endlich ist und wir schreiben können:
 \begin{equation}\label{eq:intFsumGforDneq0}
-	\int_\F \sum_{g, D_g = D} R_g(z,t) \frac{\opd x \opd y}{y^2} = \sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}} \int_{\F_g} R_g (z,t) \frac{\opd x \opd y}{y^2}
+	\int_\F \smashoperator[r]{\sum_{g, D_g = D}} R_g(z,t) \frac{\opd x \opd y}{y^2} = \smashoperator[l]{\sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}}} \int_{\F_g} R_g (z,t) \frac{\opd x \opd y}{y^2}
 \end{equation}
 mit 
 \[
-	\F_g = \bigcup_{\gamma \in \modulo {\Gamma(1)}{\Gamma_g}} \gamma \F
+	\F_g = \smashoperator{\bigcup_{\gamma \in \modulo {\Gamma(1)}{\Gamma_g}}} \, \gamma \F
 \]
 einem Fundamentalbereich für die Operation von $\Gamma_g$ auf $\HH$.
 
@@ -378,7 +378,7 @@ Für $D = 0$ ist dagegen ein (unendliches) System von Repräsentanten gegeben du
 \]
 Damit finden wir
 \begin{equation}\label{eq:intFsumGforD=0}
-	\int_\F \sum_{g, D_g = 0} R_g(z,t) \frac{\opd x \opd y}{y^2} = \int_\F R_{g_0} (z,t) \frac{\opd x \opd y}{y^2} + \int_{\F_\infty} \sum_{\substack{r \in \ZZ \\ r \neq 0}} R_{g_r}(z,t) \frac{\opd x \opd y}{y^2}
+	\int_\F \smashoperator[r]{\sum_{g, D_g = 0}} R_g(z,t) \frac{\opd x \opd y}{y^2} = \int_\F R_{g_0} (z,t) \frac{\opd x \opd y}{y^2} + \int_{\F_\infty} \sum_{\substack{r \in \ZZ \\ r \neq 0}} R_{g_r}(z,t) \frac{\opd x \opd y}{y^2}
 	\,,
 \end{equation}
 wobei $\F_\infty$ ein Fundamentalbereich für die Operation von $\Gamma(1)_\infty$ auf $\HH$ ist. Ein Beispiel hierfür ist der Vertikalstreifen $\Set {z \in \HH \mid 0 < \Re (z) < 1}$.
@@ -418,7 +418,7 @@ Im letzten Schritt geht hierbei ein, dass $D_g = \beta^2 - 4 \alpha \gamma$, als
 \]
 schreiben:
 \[
-	\sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}} \int_{\F_g} R_g(z,t) \frac{\opd x \opd y}{y^2} = \sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}} \frac{1}{\abs{\Gamma_g}} I(D,t) = 2 H(-D) \cdot I(D,t)
+	\sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}} \int_{\F_g} R_g(z,t) \frac{\opd x \opd y}{y^2} = \smashoperator[l]{\sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}}} \frac{1}{\abs{\Gamma_g}} I(D,t) = 2 H(-D) \cdot I(D,t)
 \]
 Die letzte Umformung liefert einen derart einfachen Term, da die Definition von $H$ wegen
 \[
@@ -450,8 +450,8 @@ erhält man mit $A = y^2 - ity - \frac 14 D$ schließlich
 Zusammengefasst gilt also (unter Beachtung von $D = t^2 - 4m < 0$), dass
 \begin{align*}
 	I(m, t) 
-	&= C_k^{-1} m^{k-1} \int_\F \sum_{g, D_g = D} R_g(z,t) \frac {\opd x \opd y}{y^2} \\
-	&\overset{\eqref{eq:intFsumGforDneq0}}= C_k^{-1} m^{k-1} \sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}} \int_{\F_g} R_g (z,t) \frac{\opd x \opd y}{y^2} \\
+	&= C_k^{-1} m^{k-1} \int_\F \smashoperator[r]{\sum_{g, D_g = D}} R_g(z,t) \frac {\opd x \opd y}{y^2} \\
+	&\overset{\eqref{eq:intFsumGforDneq0}}= C_k^{-1} m^{k-1} \smashoperator[l]{\sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}}} \int_{\F_g} R_g (z,t) \frac{\opd x \opd y}{y^2} \\
 	&= C_k^{-1} m^{k-1} \cdot 2 H(-D) \cdot I(D,t) \\
 	&= C_k^{-1} m^{k-1} \cdot 2 H (4m-t^2) \cdot \frac {2\pi}{k-1} \cdot \frac 1{\sqrt{4m-t^2}} \cdot \frac 1{\left( \sqrt{4m-t^2} - it \right)^{k-1}}
 	\,,
@@ -489,7 +489,7 @@ Daraus folgt in der Tat wie in \eqref{eq:meanI(m,t)} behauptet
 
 \emph{Fall 2:} $D = 0$. Wir benutzen hierfür die oben hergeleitete Formel \eqref{eq:intFsumGforD=0}
 \[
-	\int_\F \sum_{g, D_g = 0} R_g(z,t) \frac{\opd x \opd y}{y^2} = \int_\F R_{g_0} (z,t) \frac{\opd x \opd y}{y^2} + \int_{\F_\infty} \sum_{\substack{r \in \ZZ \\ r \neq 0}} R_{g_r}(z,t) \frac{\opd x \opd y}{y^2}
+	\int_\F \smashoperator[r]{\sum_{g, D_g = 0}} R_g(z,t) \frac{\opd x \opd y}{y^2} = \int_\F R_{g_0} (z,t) \frac{\opd x \opd y}{y^2} + \int_{\F_\infty} \sum_{\substack{r \in \ZZ \\ r \neq 0}} R_{g_r}(z,t) \frac{\opd x \opd y}{y^2}
 	\,.
 \]
 
@@ -517,7 +517,7 @@ Für den zweiten Term finden wir mit $g_r(u,v) = rv^2$, dass
 Für $t = \pm 2\sqrt m$ (da $D := t^2 - 4m = 0$) bekommen wir damit nach kurzer Rechnung
 \begin{align*}
 	I(m,t) 
-	&= C_k^{-1} m^{k-1} \int_\F \sum_{g, D_g = 0} R_g(z,t) \frac {\opd x \opd y}{y^{k-2}} \\
+	&= C_k^{-1} m^{k-1} \int_\F \smashoperator[r]{\sum_{g, D_g = 0}} R_g(z,t) \frac {\opd x \opd y}{y^{k-2}} \\
 	&= C_k^{-1} m^{k-1} \int_\F R_{g_0} (z,t) \frac{\opd x \opd y}{y^2} + C_k^{-1} m^{k-1} \int_{\F_\infty} \sum_{\substack{r \in \ZZ \\ r \neq 0}} R_{g_r}(z,t) \frac{\opd x \opd y}{y^2} \\
 	&= C_k^{-1} m^{k-1} (-1)^{\frac k2} \frac \pi{3t^k} + C_k^{-1} m^{k-1} (-1)^{\frac {k-2}{2}} \frac{\pi}{k-1} \abs{t}^{-k+1} \\
 	&= \frac {k-1}{24} m^{\frac {k-2}2} - \frac 14 m^{\frac {k-1}2}
@@ -526,11 +526,11 @@ Für $t = \pm 2\sqrt m$ (da $D := t^2 - 4m = 0$) bekommen wir damit nach kurzer 
 
 \emph{Fall 3:} $D = u^2$ mit $u \in \NN$. Wie in Fall 1 ($D < 0$) gibt es hier nur eine endliche Anzahl von Klassen mit Diskriminante $D$ und $\Gamma_g$ ist eine endliche Gruppe. Es folgt damit ähnlich wie in Fall 1
 \[
-	\int_\F \sum_{g, D_g = D} R_g(z,t) \frac {\opd x \opd y}{y^2} = H_D \cdot I(D, t)
+	\int_\F \smashoperator[r]{\sum_{g, D_g = D}} R_g(z,t) \frac {\opd x \opd y}{y^2} = H_D \cdot I(D, t)
 \]
 mit
 \[
-	H_D := \sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}} \frac 1{\abs{\Gamma_g}}
+	H_D := \smashoperator[l]{\sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}}} \frac 1{\abs{\Gamma_g}}
 \]
 und (vergleiche Fall 1)
 \[
@@ -556,7 +556,7 @@ wird. Es folgt wegen $\sqrt D = \sqrt {u^2} = u$, dass
 und somit nach kurzer Rechnung
 \begin{align*}
 	I(m,t)
-	&= C_k^{-1} m^{k-1} \int_\F \sum_{g, D_g = D} R_g(z,t) \frac {\opd x \opd y}{y^2} \\
+	&= C_k^{-1} m^{k-1} \int_\F \smashoperator[r]{\sum_{g, D_g = D}} R_g(z,t) \frac {\opd x \opd y}{y^2} \\
 	&= C_k^{-1} m^{k-1} H_D \cdot I(D, t) \\ 
 	&= C_k^{-1} m^{k-1} (-1)^{\frac {k-2}2} \frac{2\pi}{k-1} \cdot \frac 1{(u + \abs{t})^{k-1}} \\
 	&= - \frac 12 \left( \frac{\abs{t} - u}2 \right)^{k-1}
@@ -566,8 +566,8 @@ und somit nach kurzer Rechnung
 \emph{Fall 4}: $D > 0$, aber keine Quadratzahl. Wir zeigen in diesem Fall wie in \eqref{eq:meanI(m,t)} behauptet, dass 
 \begin{align*}
 	\frac 12 \left( I(m,t) + I(m,-t) \right) 
-	&= \frac 12 C_k^{-1} m^{k-1} \cdot \left( \int_\F \sum_{g, D_g = D} R_g(z,t) \frac {\opd x \opd y}{y^2} + \int_\F \sum_{g, D_g = D} R_g(z,-t) \frac {\opd x \opd y}{y^2} \right) \\
-	& \overset{\eqref{eq:intFsumGforDneq0}}= \frac 12 C_k^{-1} m^{k-1} \cdot \sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}} \left( \int_{\F_g} R_g (z,t) \frac{\opd x \opd y}{y^2} + \int_{\F_g} R_g (z,-t) \frac{\opd x \opd y}{y^2} \right)
+	&= \frac 12 C_k^{-1} m^{k-1} \cdot \left( \int_\F \smashoperator[r]{\sum_{g, D_g = D}} R_g(z,t) \frac {\opd x \opd y}{y^2} + \int_\F \smashoperator[r]{\sum_{g, D_g = D}} R_g(z,-t) \frac {\opd x \opd y}{y^2} \right) \\
+	& \overset{\eqref{eq:intFsumGforDneq0}}= \frac 12 C_k^{-1} m^{k-1} \cdot \smashoperator[l]{\sum_{\substack{g, D_g = D \\ g (\operatorname{mod} \Gamma(1))}}} \left( \int_{\F_g} R_g (z,t) \frac{\opd x \opd y}{y^2} + \int_{\F_g} R_g (z,-t) \frac{\opd x \opd y}{y^2} \right)
 	= 0
 	\,,
 \end{align*}

@@ -99,7 +99,7 @@
 
 Analog zur bedingten Konvergenzabszisse kann man (bei gewöhnlichen Dirichletreihen) die absolute Konvergenzabszisse definieren als die bedingte Konvergenzabszisse von
 \[
-\sum_{n=1}^\infty \abs{a(n)} n^{-s}
+\sum_{n=1}^\infty \, \abs{a(n)} n^{-s}
 \,.
 \]
 Wir bezeichnen $\sigma_a$ als die \myemph[Konvergenzsabszisse!absolute Konvergenzabszisse]{absolute} und $\sigma_c$ als die \myemph[Konvergenzsabszisse!bedingte Konvergenzabszisse]{bedingte Konvergenzabszisse}.
@@ -166,8 +166,8 @@ Wir bezeichnen $\sigma_a$ als die \myemph[Konvergenzsabszisse!absolute Konvergen
 	Sei $m$ der kleinste Index mit $a(m) \not= b(m)$.
 	Dann gilt für $\sigma$ groß genug (Identitätssatz)
 	\[
-	0 &= e^{\lambda_m \sigma} \biggl( \sum_{n=m}^\infty a(n) e^{-\lambda_n \sigma} - \sum_{n=m}^\infty b(n) e^{-\lambda_n \sigma} \biggl) \\
-	&= a(m) - b(m) + \sum_{n=m+1}^\infty \bigl(a(n)-b(n)\bigr) e^{-(\lambda_n-\lambda_m)\sigma}
+	0 &= e^{\lambda_m \sigma} \left( \sum_{n=m}^\infty a(n) e^{-\lambda_n \sigma} - \sum_{n=m}^\infty b(n) e^{-\lambda_n \sigma} \right) \\
+	&= a(m) - b(m) + \smashoperator{\sum_{n=m+1}^\infty} \, \bigl(a(n)-b(n)\bigr) e^{-(\lambda_n-\lambda_m)\sigma}
 	\,.
 	\]
 	In der Tat hat jedes Glied in der Reihe wegen $\lambda_n > \lambda_m$ den Limes 0 und die gleichmäßige Konvergenz impliziert, dass die Reihe für $\sigma\to\infty$ gegen 0 strebt, was $a(m) \not= b(m)$ widerspricht.
